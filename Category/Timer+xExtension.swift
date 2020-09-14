@@ -19,9 +19,9 @@ extension Timer {
     ///   - timeInterval: 间隔
     ///   - repeats: 是否重复
     ///   - block: 回调
-    public static func new(timeInterval : TimeInterval,
-                           repeats : Bool,
-                           handler : @escaping x_HandlerTimerInvoke) -> Timer
+    public static func x_new(timeInterval : TimeInterval,
+                             repeats : Bool,
+                             handler : @escaping x_HandlerTimerInvoke) -> Timer
     {
         let timer = Timer.scheduledTimer(timeInterval: timeInterval,
                                          target: self,

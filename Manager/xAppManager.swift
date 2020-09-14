@@ -20,9 +20,9 @@ class xAppManager: NSObject {
     var isDebug = true
     
     /// 主题色
-    var themeColor = UIColor.hex("#487FFC")
+    var themeColor = UIColor.x_hex("#487FFC")
     /// TableView背景色
-    var tableViewBackgroundColor = UIColor.hex("#F5F5F5")
+    var tableViewBackgroundColor = UIColor.x_hex("#F5F5F5")
     /// 导航栏背景色
     var navigationBarColor = UIColor.white
     /// 导航栏背阴影线条景色

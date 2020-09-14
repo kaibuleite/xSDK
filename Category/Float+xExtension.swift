@@ -13,8 +13,8 @@ extension Float {
     /// - Parameter precision: 最多保留小数点位数(默认保留2位)
     /// - Parameter clearMoreZero: 是否清除多余的0
     /// - Returns: 结果
-    public func toString(precision : Int,
-                         isClearMoreZero : Bool = true) -> String
+    public func x_toString(precision : Int,
+                           isClearMoreZero : Bool = true) -> String
     {
         let db = Double(self)
         let ret = db.x_toString(precision: precision,

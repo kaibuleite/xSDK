@@ -16,6 +16,10 @@
 		046CC75B250F3CA600C8B1D8 /* Double+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC75A250F3CA500C8B1D8 /* Double+xExtension.swift */; };
 		046CC75D250F444D00C8B1D8 /* xGlobalValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC75C250F444D00C8B1D8 /* xGlobalValue.swift */; };
 		046CC75F250F4C9A00C8B1D8 /* Timer+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC75E250F4C9A00C8B1D8 /* Timer+xExtension.swift */; };
+		046CC761250F4E2D00C8B1D8 /* Button+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC760250F4E2D00C8B1D8 /* Button+xExtension.swift */; };
+		046CC763250F50B200C8B1D8 /* Image+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC762250F50B200C8B1D8 /* Image+xExtension.swift */; };
+		046CC765250F558100C8B1D8 /* Label+Kit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC764250F558100C8B1D8 /* Label+Kit.swift */; };
+		046CC767250F56B400C8B1D8 /* View+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC766250F56B400C8B1D8 /* View+xExtension.swift */; };
 		3D2294FDC457ABD7E3C969B19EB8129A /* Pods-xSDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 607D9BA53AF454062F087271D7444E93 /* Pods-xSDK_Example-dummy.m */; };
 		74317E187870BCFB14F9B293D51D406D /* xSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EC0962B3937FDF7B900CAB97A4352BDB /* xSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A33D579C4A350B354C8EBBF4008B69B /* Pods-xSDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0AE4CCBA411BC052AC0A150733330B /* Pods-xSDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -55,6 +59,10 @@
 		046CC75A250F3CA500C8B1D8 /* Double+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+xExtension.swift"; sourceTree = "<group>"; };
 		046CC75C250F444D00C8B1D8 /* xGlobalValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGlobalValue.swift; sourceTree = "<group>"; };
 		046CC75E250F4C9A00C8B1D8 /* Timer+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+xExtension.swift"; sourceTree = "<group>"; };
+		046CC760250F4E2D00C8B1D8 /* Button+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+xExtension.swift"; sourceTree = "<group>"; };
+		046CC762250F50B200C8B1D8 /* Image+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+xExtension.swift"; sourceTree = "<group>"; };
+		046CC764250F558100C8B1D8 /* Label+Kit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Kit.swift"; sourceTree = "<group>"; };
+		046CC766250F56B400C8B1D8 /* View+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+xExtension.swift"; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D29C980BD77ED4D3A4F522051C1CDE8 /* Pods-xSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		16B01F165C44C681D42899AA588BEDBE /* Pods-xSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-xSDK_Example.modulemap"; sourceTree = "<group>"; };
@@ -124,8 +132,12 @@
 				046CC74C250F1A3300C8B1D8 /* String+xExtension.swift */,
 				046CC758250F3C9C00C8B1D8 /* Float+xExtension.swift */,
 				046CC75A250F3CA500C8B1D8 /* Double+xExtension.swift */,
-				046CC756250F378600C8B1D8 /* Color+xExtension.swift */,
 				046CC75E250F4C9A00C8B1D8 /* Timer+xExtension.swift */,
+				046CC760250F4E2D00C8B1D8 /* Button+xExtension.swift */,
+				046CC756250F378600C8B1D8 /* Color+xExtension.swift */,
+				046CC762250F50B200C8B1D8 /* Image+xExtension.swift */,
+				046CC764250F558100C8B1D8 /* Label+Kit.swift */,
+				046CC766250F56B400C8B1D8 /* View+xExtension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -443,10 +455,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046CC763250F50B200C8B1D8 /* Image+xExtension.swift in Sources */,
+				046CC767250F56B400C8B1D8 /* View+xExtension.swift in Sources */,
+				046CC761250F4E2D00C8B1D8 /* Button+xExtension.swift in Sources */,
 				046CC75F250F4C9A00C8B1D8 /* Timer+xExtension.swift in Sources */,
 				046CC755250F1F3E00C8B1D8 /* xAppManager.swift in Sources */,
 				046CC750250F1E1F00C8B1D8 /* xGlobalFunction.swift in Sources */,
 				046CC757250F378600C8B1D8 /* Color+xExtension.swift in Sources */,
+				046CC765250F558100C8B1D8 /* Label+Kit.swift in Sources */,
 				3D2294FDC457ABD7E3C969B19EB8129A /* Pods-xSDK_Example-dummy.m in Sources */,
 				046CC752250F1EFC00C8B1D8 /* xGlobalLog.swift in Sources */,
 				046CC75B250F3CA600C8B1D8 /* Double+xExtension.swift in Sources */,

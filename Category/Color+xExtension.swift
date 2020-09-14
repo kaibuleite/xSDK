@@ -9,14 +9,14 @@ import UIKit
 
 extension UIColor
 {
-    // MARK: - 创建
+    // MARK: - 创建新颜色
     /// 创建16进制色
     /// - Parameters:
     ///   - hex: 16进制内容
     ///   - alpha: 透明度
     /// - Returns: 颜色
-    public static func hex(_ hex : String,
-                          alpha : CGFloat = 1) -> UIColor
+    public static func x_hex(_ hex : String,
+                             alpha : CGFloat = 1) -> UIColor
     {
         var str = hex
         // 去掉16进制中开头的无用字符
@@ -48,8 +48,9 @@ extension UIColor
                                  alpha: alpha)
         return color
     }
-    
-    // MARK: - 创建随机色
+    /// 随机色
+    /// - Parameter alpha: 透明度
+    /// - Returns: 颜色
     public static func x_random(alpha : CGFloat = 1) -> UIColor
     {
         let r = CGFloat(arc4random() % 255) / 255.0
@@ -60,5 +61,21 @@ extension UIColor
                                  blue: b,
                                  alpha: alpha)
         return color
+    }
+    
+    // MARK: - 转换成UIImage类型数据
+    public func x_toImage(size : CGSize = .init(width: 1, height: 1)) -> UIImage?
+    {
+        let frame = CGRect.init(origin: .zero,
+                                size: size)
+        let view = UIView.init(frame: frame)
+        view.backgroundColor = self
+        // 绘画板
+        UIGraphicsBeginImageContext(size)
+        let ctx = UIGraphicsGetCurrentContext()
+        view.layer.render(in: ctx!)
+        let ret = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return ret
     }
 }
