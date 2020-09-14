@@ -26,6 +26,8 @@
 		046CC779250F692B00C8B1D8 /* xAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC778250F692B00C8B1D8 /* xAlert.swift */; };
 		046CC77B250F693900C8B1D8 /* xAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC77A250F693900C8B1D8 /* xAnimation.swift */; };
 		046CC77D250F69CD00C8B1D8 /* xInputAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC77C250F69CD00C8B1D8 /* xInputAlert.swift */; };
+		046CC784250F6F1D00C8B1D8 /* xCountDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC783250F6F1D00C8B1D8 /* xCountDownButton.swift */; };
+		046CC786250F6F2D00C8B1D8 /* xButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC785250F6F2D00C8B1D8 /* xButton.swift */; };
 		3D2294FDC457ABD7E3C969B19EB8129A /* Pods-xSDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 607D9BA53AF454062F087271D7444E93 /* Pods-xSDK_Example-dummy.m */; };
 		74317E187870BCFB14F9B293D51D406D /* xSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EC0962B3937FDF7B900CAB97A4352BDB /* xSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A33D579C4A350B354C8EBBF4008B69B /* Pods-xSDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0AE4CCBA411BC052AC0A150733330B /* Pods-xSDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -75,6 +77,8 @@
 		046CC778250F692B00C8B1D8 /* xAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xAlert.swift; sourceTree = "<group>"; };
 		046CC77A250F693900C8B1D8 /* xAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xAnimation.swift; sourceTree = "<group>"; };
 		046CC77C250F69CD00C8B1D8 /* xInputAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xInputAlert.swift; sourceTree = "<group>"; };
+		046CC783250F6F1D00C8B1D8 /* xCountDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCountDownButton.swift; sourceTree = "<group>"; };
+		046CC785250F6F2D00C8B1D8 /* xButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xButton.swift; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D29C980BD77ED4D3A4F522051C1CDE8 /* Pods-xSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		16B01F165C44C681D42899AA588BEDBE /* Pods-xSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-xSDK_Example.modulemap"; sourceTree = "<group>"; };
@@ -190,6 +194,30 @@
 				046CC77A250F693900C8B1D8 /* xAnimation.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		046CC77E250F6EB800C8B1D8 /* Kit */ = {
+			isa = PBXGroup;
+			children = (
+				046CC780250F6EE800C8B1D8 /* Button */,
+			);
+			path = Kit;
+			sourceTree = "<group>";
+		};
+		046CC77F250F6ED600C8B1D8 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		046CC780250F6EE800C8B1D8 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				046CC785250F6F2D00C8B1D8 /* xButton.swift */,
+				046CC783250F6F1D00C8B1D8 /* xCountDownButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		0F094EB1023A91BAA4BF2EF2FE703DB5 /* Development Pods */ = {
@@ -308,6 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				046CC753250F1F2F00C8B1D8 /* Manager */,
+				046CC77F250F6ED600C8B1D8 /* Product */,
+				046CC77E250F6EB800C8B1D8 /* Kit */,
 				046CC773250F677500C8B1D8 /* Tools */,
 				046CC76A250F5B2D00C8B1D8 /* Model */,
 				046CC74E250F1E0300C8B1D8 /* Global */,
@@ -489,6 +519,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046CC784250F6F1D00C8B1D8 /* xCountDownButton.swift in Sources */,
 				046CC775250F679300C8B1D8 /* Label+xExtension.swift in Sources */,
 				046CC763250F50B200C8B1D8 /* Image+xExtension.swift in Sources */,
 				046CC767250F56B400C8B1D8 /* View+xExtension.swift in Sources */,
@@ -498,6 +529,7 @@
 				046CC755250F1F3E00C8B1D8 /* xAppManager.swift in Sources */,
 				046CC76C250F5B3600C8B1D8 /* xModel.swift in Sources */,
 				046CC750250F1E1F00C8B1D8 /* xGlobalFunction.swift in Sources */,
+				046CC786250F6F2D00C8B1D8 /* xButton.swift in Sources */,
 				046CC757250F378600C8B1D8 /* Color+xExtension.swift in Sources */,
 				3D2294FDC457ABD7E3C969B19EB8129A /* Pods-xSDK_Example-dummy.m in Sources */,
 				046CC777250F67C300C8B1D8 /* xActionSheet.swift in Sources */,

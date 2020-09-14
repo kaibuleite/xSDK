@@ -19,13 +19,13 @@ class xAlert: NSObject {
     ///   - itemCancel: 取消标题
     ///   - sure: 确定回调
     ///   - cancel: 取消回调
-    class func x_display(from viewController : UIViewController,
-                         title : String?,
-                         message : String?,
-                         sureTitle : String? = "确定",
-                         cancelTitle : String? = "取消",
-                         sureHandler : @escaping () -> Void,
-                         cancelHandler : @escaping () -> Void) -> Void
+    open class func display(from viewController : UIViewController,
+                            title : String?,
+                            message : String?,
+                            sureTitle : String? = "确定",
+                            cancelTitle : String? = "取消",
+                            sureHandler : @escaping () -> Void,
+                            cancelHandler : @escaping () -> Void) -> Void
     {
         let alert = UIAlertController.init(title: title,
                                            message: message,
