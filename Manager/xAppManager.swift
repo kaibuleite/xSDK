@@ -13,11 +13,13 @@ class xAppManager: NSObject {
     static let shared = xAppManager()
     private override init() { }
     
-
-    /// 是否打印控制台信息
-    var isLog = true
+    
     /// 是否是测试环境
     var isDebug = true
+    /// 是否打印控制台信息
+    var isLog = true
+    /// 是否打印xModel参数缺少信息
+    var isLogModelNoPropertyTip = false
     
     /// 主题色
     var themeColor = UIColor.x_hex("#487FFC")

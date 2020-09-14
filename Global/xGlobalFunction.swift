@@ -110,3 +110,20 @@ public func x_lock(_ obj: AnyObject,
     objc_sync_exit(obj)
 }
 
+// MARK: - 根据设计高度计算实际宽高
+/// 根据设计高度计算实际高度
+/// - Parameter h: 设计高度
+/// - Returns: 实际高度
+public func x_getRealHeight(withDesignHeight h : CGFloat) -> CGFloat
+{
+    let ret = h / 375.0 * x_width
+    return ret
+}
+/// 根据设计宽度计算实际宽度
+/// - Parameter w: 设计宽度
+/// - Returns: 实际宽度
+public func x_getRealWidth(withDesignWidth w : CGFloat) -> CGFloat
+{
+    let ret = w / 375.0 * x_width
+    return ret
+}
