@@ -43,6 +43,6 @@ TODO: Add long description of the pod here.
   
   # 必备框架
   s.dependency 'Alamofire', '~> 4.9.1'  # API代码基于4.x，5.x后代码变动太大
-  s.dependency 'SDWebImage', '~> 5.8.4' # 可根据情况提高版本
+  s.dependency 'SDWebImage', '~> 5.8.3' # 可根据情况提高版本
   s.dependency 'MJRefresh', '~> 3.4.3'  # 可根据情况提高版本
 end
