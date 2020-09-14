@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'xSDK'
-  s.version          = '0.1.3'  # SDK版本号
+  s.version          = '0.1.4'  # SDK版本号
   s.summary          = '自定义框架'
   s.swift_version    = '9.0'    # Swift版本号
 
