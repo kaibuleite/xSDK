@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'xSDK_Example' do
+  pod 'xSDK', :path => '../'
+
+  target 'xSDK_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
