@@ -11,7 +11,7 @@ import CommonCrypto
 extension String {
 
     // MARK: - 哈希值
-    // TODO: 哈希算法类型枚举(长度不同)
+    /// 哈希算法类型枚举(长度不同)
     public enum x_HashAlgorithmType
     {
         case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
@@ -43,7 +43,6 @@ extension String {
         }
     }
     
-    // TODO: base64
     /// base64编码
     /// - Parameter options: 编码选项
     /// - Returns: 编码结果
@@ -53,6 +52,7 @@ extension String {
         let ret = data?.base64EncodedString(options: options)
         return ret
     }
+    
     /// base64解码
     /// - Parameter options: 解码选项
     /// - Returns: 解码结果
@@ -63,7 +63,6 @@ extension String {
         return ret
     }
     
-    // TODO: MD5
     /// MD5加密
     /// - Parameter salt: 加盐字符串，默认为空字符串
     /// - Returns: 加密后的字符串
@@ -92,7 +91,6 @@ extension String {
         return ret
     }
     
-    // TODO: SHA
     /// SHA加密
     /// - Parameters:
     ///   - type: 加密算法类型，具体参考枚举内容
@@ -129,7 +127,6 @@ extension String {
         return ret
     }
     
-    // TODO: HMAC
     /// HMAC加密方案
     /// - Parameters:
     ///   - type:  加密算法类型，具体参考枚举内容
@@ -160,7 +157,6 @@ extension String {
     }
     
     // MARK: - 字符串截取
-    // TODO: 截取指定范围字符串
     /// 截取指定范围字符串
     public func x_sub(range : NSRange) -> String?
     {
@@ -179,7 +175,6 @@ extension String {
         return ret
     }
     
-    // TODO: 替换指定范围字符串
     /// 替换指定范围字符串
     public func x_replace(range : NSRange,
                           to str : String) -> String?
@@ -199,7 +194,6 @@ extension String {
         return ret
     }
     
-    // TODO: 截取指定长度字符串
     /// 截取前几位字符串(截取失败返回空字符串)
     public func x_subPrefix(length : Int) -> String?
     {
@@ -207,6 +201,7 @@ extension String {
         let ret = self.x_sub(range: range)
         return ret
     }
+    
     /// 截取后几位字符串(截取失败返回空字符串)
     public func x_subSuffix(length : Int) -> String?
     {
@@ -217,25 +212,27 @@ extension String {
     }
     
     // MARK: - 类型转换
-    // TODO: 转换成数字
     /// 转换成Int类型数据
     public func x_toInt() -> Int
     {
         guard let ret = Int(self) else { return 0 }
         return ret
     }
+    
     /// 转换成Float类型数据
     public func x_toFloat() -> Float
     {
         guard let ret = Float(self) else { return 0 }
         return ret
     }
+    
     /// 转换成Double类型数据
     public func x_toDouble() -> Double
     {
         guard let ret = Double(self) else { return 0 }
         return ret
     }
+    
     /// bool字符串
     public func x_toBool() -> Bool
     {
@@ -248,7 +245,6 @@ extension String {
         return true
     }
     
-    // TODO: 转换成对象
     /// URL编码
     public func x_toUrlEncodeString() -> String?
     {
@@ -256,12 +252,14 @@ extension String {
         let ret = self.addingPercentEncoding(withAllowedCharacters: set)
         return ret
     }
+    
     /// URL编码
     public func x_toUrlDecodeString() -> String?
     {
         let ret = self.removingPercentEncoding
         return ret
     }
+    
     /// 转换成URL
     public func x_toURL() -> URL?
     {
@@ -277,6 +275,7 @@ extension String {
         }
         return nil
     }
+    
     /// 转换成UIImage类型数据
     public func x_toImage() -> UIImage?
     {
@@ -286,6 +285,7 @@ extension String {
         }
         return ret
     }
+    
     /// 转换成国际计数（三位分节法，每3位加一个","）
     public func x_toInternationalNumberString() -> String?
     {
@@ -317,6 +317,7 @@ extension String {
         }
         return ret
     }
+    
     /// 转换成日期格式
     /// - Parameters:
     ///   - format: 格式
@@ -335,7 +336,6 @@ extension String {
         return ret
     }
     
-    // TODO: 转换成富文本
     /// 字符串划线
     public func x_toLineString(color : UIColor = .lightGray) -> NSAttributedString
     {

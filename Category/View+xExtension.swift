@@ -9,7 +9,7 @@ import UIKit
 
 extension UIView
 {
-    // MARK: - 锚点修改
+    // MARK: - 锚点
     /// 重置锚点
     /// - Parameter anchorPoint: 新锚点
     public func x_reset(anchorPoint : CGPoint)

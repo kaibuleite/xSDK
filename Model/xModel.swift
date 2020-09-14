@@ -58,6 +58,16 @@ class xModel: NSObject {
         model.sourceDictionary = info
         return model as? Self
     }
+    /// 创建随机数据
+    public static func x_newRandom(count : Int = 10) -> [xModel]
+    {
+        var ret = [xModel]()
+        for _ in 0 ..< count {
+            let model = xModel()
+            ret.append(model)
+        }
+        return ret
+    }
     
     // MARK: - 重载方法
     /// 配对成员属性
@@ -252,14 +262,14 @@ class xModel: NSObject {
     }
     
     // MARK: - 数据转换
-    /// 成员属性字典
+    /// 转换成成员属性字典
     /// - Returns: 生成的字典
     public func x_toDictionary() -> [String : Any]
     {
         let dict = self.x_getDictionary(obj: self)
         return dict
     }
-    /// 成员属性字典(字符串成员)
+    /// 转换成成员属性字典(字符串成员)
     /// - Returns: 生成的字典
     public func x_toStringDictionary() -> [String : String]
     {

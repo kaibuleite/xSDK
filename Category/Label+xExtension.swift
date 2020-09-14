@@ -1,5 +1,5 @@
 //
-//  Label+Kit.swift
+//  Label+xExtension.swift
 //  Pods-xSDK_Example
 //
 //  Created by Mac on 2020/9/14.
@@ -9,7 +9,6 @@ import UIKit
 
 extension UILabel
 {
-    // MARK: - 计算内容大小
     /// 计算内容大小
     public func x_getContentSize() -> CGSize
     {

@@ -14,7 +14,7 @@ extension UIColor
     /// - Parameters:
     ///   - hex: 16进制内容
     ///   - alpha: 透明度
-    /// - Returns: 颜色
+    /// - Returns: 新颜色
     public static func x_hex(_ hex : String,
                              alpha : CGFloat = 1) -> UIColor
     {
@@ -50,7 +50,7 @@ extension UIColor
     }
     /// 随机色
     /// - Parameter alpha: 透明度
-    /// - Returns: 颜色
+    /// - Returns: 新颜色
     public static func x_random(alpha : CGFloat = 1) -> UIColor
     {
         let r = CGFloat(arc4random() % 255) / 255.0
@@ -63,7 +63,10 @@ extension UIColor
         return color
     }
     
-    // MARK: - 转换成UIImage类型数据
+    // MARK: - 数据转换
+    /// 转换成UIImage类型数据
+    /// - Parameter size: 指定大小
+    /// - Returns: 新图片
     public func x_toImage(size : CGSize = .init(width: 1, height: 1)) -> UIImage?
     {
         let frame = CGRect.init(origin: .zero,

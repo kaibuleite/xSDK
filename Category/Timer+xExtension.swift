@@ -31,7 +31,7 @@ extension Timer {
         return timer
     }
     
-    // MARK: - 私有方法
+    /// 触发回调
     @objc private static func timerInvoke(_ timer : Timer)
     {
         let block = timer.userInfo as? x_HandlerTimerInvoke
