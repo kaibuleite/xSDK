@@ -84,13 +84,14 @@ class xViewController: UIViewController {
         }
     }
     
-    // MARK: - 子类重写
+    // MARK: - 方法重写
     /// 初始化UI
-    open func initKit() { x_log("子类重写") }
+    open func initKit() { }
     /// 初始化子控制器
-    open func initChildrenViewController() { x_log("子类重写") }
+    open func initChildrenViewController() { }
     /// 快速实例化对象(storyboard比类名少指定后缀)
-    open class func quickInstancetype() -> Self {
+    open class func quickInstancetype() -> Self
+    {
         let vc = self.init()
         return vc
     }

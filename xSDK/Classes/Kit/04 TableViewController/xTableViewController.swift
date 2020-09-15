@@ -58,7 +58,9 @@ class xTableViewController: UITableViewController {
         // self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.rowHeight = 44
         
+        self.registerHeaders()
         self.registerCells()
+        self.registerFooters()
         DispatchQueue.main.async {
             self.initKit()
             self.initChildrenViewController()
@@ -73,7 +75,7 @@ class xTableViewController: UITableViewController {
         self.isAppear = false
     }
     
-    // MARK: - 子类调用
+    // MARK: - 方法调用
     /// 注册NibCell
     /// - Parameters:
     ///   - name: xib名称
@@ -98,19 +100,30 @@ class xTableViewController: UITableViewController {
                                 forCellReuseIdentifier: identifier)
     }
     
-    // MARK: - 子类重写
+    // MARK: - 方法重写
+    /// 注册Headers
+    open func registerHeaders() { }
     /// 注册Cells
-    open func registerCells() { x_log("子类重写") }
+    open func registerCells() { }
+    /// 注册Footers
+    open func registerFooters() { }
     /// 初始化UI
-    open func initKit() { x_log("子类重写") }
+    open func initKit() { }
     /// 初始化子控制器
-    open func initChildrenViewController() { x_log("子类重写") }
+    open func initChildrenViewController() { }
     /// 快速实例化对象(storyboard比类名少指定后缀)
-    open class func quickInstancetype() -> Self {
-        let vc = self.init()
-        return vc
+    open class func quickInstancetype() -> Self
+    {
+        let tvc = self.init(style: UITableView.Style.grouped)
+        return tvc
     }
-
+    required override init(style: UITableView.Style) {
+        super.init(style: style)
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     // MARK: - Table view delegate
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.01
@@ -118,15 +131,12 @@ class xTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
-    
-    // MARK: - Table view datasource
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: - Scroll view delegate
-    override func scrollViewDidScroll(_ scrollView: UIScrollView)
-    {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var offset = scrollView.contentOffset
         // 关闭顶部下拉
         if self.isCloseTopBounces {

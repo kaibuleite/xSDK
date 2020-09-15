@@ -45,17 +45,17 @@ class xCountDownButton: UIButton {
         self.layer.borderWidth = self.borderWidth
     }
     
-    // MARK: - 开始倒计时
+    // MARK: - 方法调用
     /// 开始倒计时
     /// - Parameters:
     ///   - totalTime: 倒计时时间(默认60s)
-    open func startCountDown(duration : Int = 60)
+    public func startCountDown(duration : Int = 60)
     {
         self.duration = duration
         self.openTimer()
     }
     
-    // MARK: - 开启定时器
+    // MARK: - 定时器
     /// 开启定时器
     private func openTimer()
     {
@@ -82,8 +82,6 @@ class xCountDownButton: UIButton {
         RunLoop.main.add(timer, forMode: .common)
         self.timer = timer
     }
-    
-    // MARK: - 关闭定时器
     /// 关闭定时器
     private func closeTimer()
     {

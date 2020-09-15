@@ -23,7 +23,10 @@ class xTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    // MARK: - 设置内容数据
+    /// 设置内容数据
+    open func setContentData(with model : xModel)
+    {
+        
     }
 }
