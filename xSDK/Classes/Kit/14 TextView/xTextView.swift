@@ -7,17 +7,20 @@
 
 import UIKit
 
-class xTextView: UITextView {
+open class xTextView: UITextView {
+    
+    // MARK: - IBInspectable Property
+    /// 占位字符串
+    @IBInspectable
+    public var placeholderString : String? = ""
     
     // MARK: - Public Property
     /// 输入内容
-    override var text: String! {
+    open override var text: String! {
         didSet {
             self.placeholderTextView.isHidden = self.text.count != 0
         }
     }
-    /// 占位字符串
-    @IBInspectable public var placeholderString : String? = ""
     
     // MARK: - Private Property
     /// 占位字符串控件
@@ -25,25 +28,27 @@ class xTextView: UITextView {
     /// 自定义键盘扩展视图
     private var accessoryView : xInputAccessoryView?
     
-    // MARK: - 视图加载
-    override func awakeFromNib() {
+    // MARK: - Open Override Func
+    open override func awakeFromNib() {
         super.awakeFromNib()
         // 或者在 init(coder:) 里实现
         self.setContentKit()
     }
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    override init(frame: CGRect, textContainer: NSTextContainer?) {
-        super.init(frame: frame, textContainer: textContainer)
-        self.setContentKit()
-    }
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         self.placeholderTextView.frame = self.bounds
     }
     
-    // MARK: - 方法重写
+    // MARK: - Public Override Func
+    public override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
+        self.setContentKit()
+    }
+    
+    // MARK: - Open Func
     /// 自定义键盘扩展视图
     open func loadAccessoryView() -> xInputAccessoryView?
     {
@@ -51,7 +56,7 @@ class xTextView: UITextView {
         return view
     }
     
-    // MARK: - 内部调用
+    // MARK: - Private Func
     /// 设置内容UI
     private func setContentKit()
     {

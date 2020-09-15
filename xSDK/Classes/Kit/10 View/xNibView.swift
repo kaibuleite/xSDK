@@ -7,9 +7,9 @@
 
 import UIKit
 
-class xNibView: UIView {
+open class xNibView: UIView {
     
-    // MARK: - 关联变量
+    // MARK: - IBOutlet Property
     /// 内容容器
     @IBOutlet var nibView: UIView!
     /// 绑定的视图控制器
@@ -20,25 +20,31 @@ class xNibView: UIView {
         self.vc = nil
     }
     
-    // MARK: - 视图加载
-    override func awakeFromNib() {
+    // MARK: - Open Override Func
+    open override func awakeFromNib() {
         super.awakeFromNib()
         // 或者在 init(coder:) 里实现
         self.setContentKit()
     }
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setContentKit()
-    }
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         self.nibView.frame = self.bounds
     }
     
-    // MARK: - 内部调用
+    // MARK: - Public Override Func
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setContentKit()
+    }
+    
+    // MARK: - Open Func
+    /// 设置通用数据，不要使用xib控件
+    open func initKit() { }
+    
+    // MARK: - Private Func
     /// 设置内容UI
     private func setContentKit()
     {
@@ -56,7 +62,4 @@ class xNibView: UIView {
         }
     }
     
-    // MARK: - 方法重写
-    /// 设置通用数据，不要使用xib控件
-    open func initKit() { }
 }

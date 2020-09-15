@@ -7,9 +7,9 @@
 
 import UIKit
 
-class xTableViewController: UITableViewController {
-
-    // MARK: - 数据源枚举
+open class xTableViewController: UITableViewController {
+    
+    // MARK: - Enum
     /// 数据源枚举
     public enum DataTypeEnum {
         /// 普通、默认
@@ -18,9 +18,12 @@ class xTableViewController: UITableViewController {
         case filter
     }
     
-    // MARK: - Public Property
+    // MARK: - IBInspectable Property
     /// 控制器描述
-    @IBInspectable public var xTitle : String = "控制器描述"
+    @IBInspectable
+    public var xTitle : String = "控制器描述"
+    
+    // MARK: - Public Property
     /// 是否显示中
     public var isAppear = false
     /// 是否完成数据加载
@@ -43,8 +46,8 @@ class xTableViewController: UITableViewController {
         x_log("🍂_\(self.xTitle) \(name)")
     }
     
-    // MARK: - 视图加载
-    override func viewDidLoad() {
+    // MARK: - Open Override Func
+    open override func viewDidLoad() {
         super.viewDidLoad()
         // 基本配置
         self.view.backgroundColor = .groupTableViewBackground
@@ -66,16 +69,40 @@ class xTableViewController: UITableViewController {
             self.initChildrenViewController()
         }
     }
-    override func viewDidAppear(_ animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.isAppear = true
     }
-    override func viewDidDisappear(_ animated: Bool) {
+    open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.isAppear = false
     }
     
-    // MARK: - 方法调用
+    // MARK: - Open Func
+    /// 注册Headers
+    open func registerHeaders() { }
+    /// 注册Cells
+    open func registerCells() { }
+    /// 注册Footers
+    open func registerFooters() { }
+    /// 初始化UI
+    open func initKit() { }
+    /// 初始化子控制器
+    open func initChildrenViewController() { }
+    /// 快速实例化对象(storyboard比类名少指定后缀)
+    open class func quickInstancetype() -> Self
+    {
+        let tvc = self.init(style: UITableView.Style.grouped)
+        return tvc
+    }
+    required public override init(style: UITableView.Style) {
+        super.init(style: style)
+    }
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    // MARK: - Public Func
     /// 注册NibCell
     /// - Parameters:
     ///   - name: xib名称
@@ -100,43 +127,19 @@ class xTableViewController: UITableViewController {
                                 forCellReuseIdentifier: identifier)
     }
     
-    // MARK: - 方法重写
-    /// 注册Headers
-    open func registerHeaders() { }
-    /// 注册Cells
-    open func registerCells() { }
-    /// 注册Footers
-    open func registerFooters() { }
-    /// 初始化UI
-    open func initKit() { }
-    /// 初始化子控制器
-    open func initChildrenViewController() { }
-    /// 快速实例化对象(storyboard比类名少指定后缀)
-    open class func quickInstancetype() -> Self
-    {
-        let tvc = self.init(style: UITableView.Style.grouped)
-        return tvc
-    }
-    required override init(style: UITableView.Style) {
-        super.init(style: style)
-    }
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
     // MARK: - Table view delegate
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    open override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.01
     }
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    open override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: - Scroll view delegate
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    open override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var offset = scrollView.contentOffset
         // 关闭顶部下拉
         if self.isCloseTopBounces {

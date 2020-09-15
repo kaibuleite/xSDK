@@ -9,7 +9,7 @@ import UIKit
 
 open class xViewController: UIViewController {
     
-    // MARK: - 关联变量
+    // MARK: - IBOutlet Property
     /// 自定义导航栏
     @IBOutlet open weak var topNaviBar: UIView?
     /// 安全区域
@@ -17,16 +17,18 @@ open class xViewController: UIViewController {
     /// 子控制器容器
     @IBOutlet open weak var childContainer: UIView?
     
-    // MARK: - Public Property
+    // MARK: - IBInspectable Property
     /// 控制器描述
     @IBInspectable
-    open var xTitle : String = "控制器描述"
+    public var xTitle : String = "控制器描述"
+    
+    // MARK: - Public Property
     /// 是否显示中
-    open var isAppear = false
+    public var isAppear = false
     /// 是否完成数据加载
-    open var isLoadRequestDataCompleted = true
+    public var isLoadRequestDataCompleted = true
     /// 是否是父控制器
-    open var isRootParentViewController = false
+    public var isRootParentViewController = false
     /// 顶部遮罩(状态栏)
     public let safeTopMaskView = UIView()
     /// 底部遮罩(Tabbar菜单)
@@ -41,7 +43,7 @@ open class xViewController: UIViewController {
         x_log("♻️_\(self.xTitle) \(name)")
     }
     
-    // MARK: - 视图加载
+    // MARK: - Open Override Func
     open override func viewDidLoad() {
         super.viewDidLoad() 
         // 强制白天模式
@@ -83,8 +85,6 @@ open class xViewController: UIViewController {
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
-    
-    // MARK: - 初始化子控制器
     open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard let ident = segue.identifier else { return }
@@ -94,7 +94,7 @@ open class xViewController: UIViewController {
         }
     }
     
-    // MARK: - 方法重写
+    // MARK: - Open Func
     /// 初始化UI
     open func initKit() { }
     /// 初始化子控制器

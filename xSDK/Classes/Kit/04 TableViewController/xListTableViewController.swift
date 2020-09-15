@@ -8,18 +8,18 @@
 import UIKit
 import MJRefresh
 
-class xListTableViewController: xTableViewController {
+open class xListTableViewController: xTableViewController {
     
     // MARK: - Public Property
     /// 分页数据
-    public var page = xPage()
+    public let page = xPage()
     /// 数据源
     public var dataArray = [xModel]()
     /// 空数据展示图
     public var dataEmptyView : UIView?
     
-    // MARK: - 视图加载
-    override func viewDidLoad() {
+    // MARK: - Open Override Func
+    open override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
             // 主线程执行(方便在子类的 viewDidLoad 里设置部分参数)
@@ -27,33 +27,46 @@ class xListTableViewController: xTableViewController {
         }
     }
     
-    // MARK: - 刷新Header
+    // MARK: - Open Func
     /// 添加头部刷新
-    open func addHeaderRefresh() {
+    open func addHeaderRefresh()
+    {
         let header = MJRefreshNormalHeader.init(refreshingTarget: self,
                                                 refreshingAction: #selector(refreshHeader))
         self.tableView.mj_header = header
     }
-    /// 刷新头部
-    @objc public func refreshHeader() {
-        self.page.current = 1
-        self.refreshDataList()
-    }
-    
-    // MARK: - 刷新Footer
     /// 添加尾部刷新
-    open func addFooterRefresh() {
+    open func addFooterRefresh()
+    {
         let footer = MJRefreshBackNormalFooter.init(refreshingTarget: self,
                                                     refreshingAction: #selector(refreshFooter))
         self.tableView.mj_footer = footer
     }
+    /// 添加刷新
+    open func addMJRefresh() { }
+    /// 刷新数据
+    open func refreshDataList() {
+        // 模拟数据
+        let list = xModel.newList()
+        self.refreshSuccess()
+        self.reloadData(list: list)
+    }
+    /// 空数据展示图
+    open func loadEmptyView() -> UIView? { return nil }
+    
+    // MARK: - Public Func
+    /// 刷新头部
+    @objc public func refreshHeader()
+    {
+        self.page.current = 1
+        self.refreshDataList()
+    }
     /// 刷新尾部
-    @objc public func refreshFooter() {
+    @objc public func refreshFooter()
+    {
         self.page.current += 1
         self.refreshDataList()
     }
-    
-    // MARK: - 方法调用
     /// 数据刷新成功
     public func refreshSuccess()
     {
@@ -89,17 +102,4 @@ class xListTableViewController: xTableViewController {
         self.dataEmptyView = emptyView
         self.tableView.addSubview(emptyView)
     }
-    
-    // MARK: - 方法重写
-    /// 添加刷新
-    open func addMJRefresh() { }
-    /// 刷新数据
-    open func refreshDataList() {
-        // 模拟数据
-        let list = xModel.newList()
-        self.refreshSuccess()
-        self.reloadData(list: list)
-    }
-    /// 空数据展示图
-    open func loadEmptyView() -> UIView? { return nil }
 }

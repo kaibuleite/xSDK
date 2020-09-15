@@ -7,9 +7,9 @@
 
 import UIKit
 
-class xInputAccessoryView: UIView {
+open class xInputAccessoryView: UIView {
     
-    // MARK: - 关联变量
+    // MARK: - IBOutlet Property
     /// 上一个
     @IBOutlet weak var previousBtn: UIButton!
     /// 下一个
@@ -19,8 +19,13 @@ class xInputAccessoryView: UIView {
     /// 文本内容
     @IBOutlet weak var textLbl: UILabel!
     
-    // MARK: - 实例化对象
-    class func loadNib() -> xInputAccessoryView {
+    // MARK: - Open Override Func
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    // MARK: - Public Func
+    public class func loadNib() -> xInputAccessoryView {
         let bundle = Bundle.init(for: self.classForCoder())
         let arr = bundle.loadNibNamed("xInputAccessoryView", owner: nil, options: nil)!
         let view = arr.first! as! xInputAccessoryView
@@ -29,11 +34,6 @@ class xInputAccessoryView: UIView {
         frame.size.height = 44.0
         view.frame = frame
         return view
-    }
-    
-    // MARK: - 视图加载
-    override func awakeFromNib() {
-        super.awakeFromNib()
     }
     
 }

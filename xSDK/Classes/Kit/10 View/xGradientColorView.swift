@@ -7,38 +7,33 @@
 
 import UIKit
 
-class xGradientColorView: UIView {
+open class xGradientColorView: UIView {
     
     // MARK: - Private Property
     /// 顶部渐变填充色Layer
     private var colorLayer = CAGradientLayer()
     
-    // MARK: - 视图加载
-    override func awakeFromNib() {
+    // MARK: - Open Override Func
+    open override func awakeFromNib() {
         super.awakeFromNib()
         // 或者在 init(coder:) 里实现
         self.setContentKit()
     }
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setContentKit()
-    }
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         self.colorLayer.frame = self.bounds
     }
     
-    // MARK: - 内部调用
-    /// 设置内容UI
-    private func setContentKit()
-    {
-        self.backgroundColor = .clear
+    // MARK: - Public Override Func
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setContentKit()
     }
     
-    // MARK: - 方法调用
+    // MARK: - Public Func
     /// 设置填充色
     public func setGradient(colors : [UIColor],
                             startPoint : CGPoint = .init(x: 0.5, y: 0),
@@ -57,5 +52,12 @@ class xGradientColorView: UIView {
         self.colorLayer.endPoint = endPoint
         
         self.layer.insertSublayer(self.colorLayer, at: 0)
+    }
+    
+    // MARK: - Private Func
+    /// 设置内容UI
+    private func setContentKit()
+    {
+        self.backgroundColor = .clear
     }
 }

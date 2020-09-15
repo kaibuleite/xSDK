@@ -7,13 +7,14 @@
 
 import UIKit
 
-class xAppManager: NSObject {
+open class xAppManager: NSObject {
 
     /// 单例
     static let shared = xAppManager()
     private override init() { }
     
     
+    // MARK: - Public Property
     /// 是否是测试环境
     public var isDebug = true
     /// 是否打印控制台信息

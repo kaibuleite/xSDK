@@ -7,22 +7,24 @@
 
 import UIKit
 
-class xLineView: UIView {
+open class xLineView: UIView {
     
-    // MARK: - Public Property
+    // MARK: - IBInspectable Property
     /// 线条颜色
-    @IBInspectable public var lineColor : UIColor = .groupTableViewBackground
+    @IBInspectable
+    public var lineColor : UIColor = .groupTableViewBackground
     
-    // MARK: - 视图加载
-    override func awakeFromNib() {
+    // MARK: - Open Override Func
+    open override func awakeFromNib() {
         super.awakeFromNib()
         // 或者在 init(coder:) 里实现
         self.setContentKit()
     }
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    override init(frame: CGRect) {
+    // MARK: - Public Override Func
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self.setContentKit()
     }

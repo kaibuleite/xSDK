@@ -7,19 +7,25 @@
 
 import UIKit
 
-class xTextField: UITextField, UITextFieldDelegate {
-
+open class xTextField: UITextField, UITextFieldDelegate {
+    
+    // MARK: - Handler
     /// 输入框内容回调
     public typealias xHandlerTextFieldInput = (String) -> Void
     public typealias xHandlerTextFieldChangeStatus = () -> Void
     
-    // MARK: - Public Property
+    // MARK: - IBInspectable Property
     /// 容器
-    @IBInspectable public var container : UIView?
+    @IBInspectable
+    public var container : UIView?
     /// 容器边框默认颜色
-    @IBInspectable public var containerBoardNomalColor : UIColor = .x_hex("E5E5E5")
+    @IBInspectable
+    public var containerBoardNomalColor : UIColor = .x_hex("E5E5E5")
     /// 边框选中颜色
-    @IBInspectable public var containerBoardSelectedColor : UIColor = .x_hex("EB0A1E")
+    @IBInspectable
+    public var containerBoardSelectedColor : UIColor = .x_hex("EB0A1E")
+    
+    // MARK: - Public Property
     /// 上一个输入框
     public weak var previousInput : xTextField?
     /// 下一个输入框
@@ -47,21 +53,31 @@ class xTextField: UITextField, UITextFieldDelegate {
         self.nextInput = nil
     }
     
-    // MARK: - 视图加载
-    override func awakeFromNib() {
+    // MARK: - Open Override Func
+    open override func awakeFromNib() {
         super.awakeFromNib()
         // 或者在 init(coder:) 里实现
         self.setContentKit()
     }
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    override init(frame: CGRect) {
+    
+    // MARK: - Public Override Func
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self.setContentKit()
     }
     
-    // MARK: - 方法调用
+    // MARK: - Open Func
+    /// 自定义键盘扩展视图
+    open func loadAccessoryView() -> xInputAccessoryView?
+    {
+        let view = xInputAccessoryView.loadNib()
+        return view
+    }
+    
+    // MARK: - Public Func
     /// 添加开始编辑回调
     public func addBeginEditHandler(_ handler : @escaping xHandlerTextFieldChangeStatus)
     {
@@ -95,15 +111,7 @@ class xTextField: UITextField, UITextFieldDelegate {
                        for: .editingChanged)
     }
     
-    // MARK: - 方法重写
-    /// 自定义键盘扩展视图
-    open func loadAccessoryView() -> xInputAccessoryView?
-    {
-        let view = xInputAccessoryView.loadNib()
-        return view
-    }
-    
-    // MARK: - 内部调用
+    // MARK: - Private Func
     /// 设置内容UI
     private func setContentKit()
     {
@@ -146,7 +154,7 @@ class xTextField: UITextField, UITextFieldDelegate {
 
     // MARK: - UITextFieldDelegate
     /// 开始编辑
-    func textFieldDidBeginEditing(_ textField: UITextField)
+    open func textFieldDidBeginEditing(_ textField: UITextField)
     {
         self.accessoryView?.previousBtn.isEnabled = (self.previousInput != nil)
         self.accessoryView?.nextBtn.isEnabled = (self.nextInput != nil)
@@ -157,7 +165,7 @@ class xTextField: UITextField, UITextFieldDelegate {
         }
     }
     /// 结束编辑
-    func textFieldDidEndEditing(_ textField: UITextField)
+    open func textFieldDidEndEditing(_ textField: UITextField)
     {
         self.handler_endEdit?()
         // 修改容器边框
@@ -166,7 +174,7 @@ class xTextField: UITextField, UITextFieldDelegate {
         }
     }
     /// 编辑完成
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    open func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         self.handler_return?()
         // 修改容器边框
@@ -176,7 +184,7 @@ class xTextField: UITextField, UITextFieldDelegate {
         return true
     }
     /// 清空内容
-    func textFieldShouldClear(_ textField: UITextField) -> Bool
+    open func textFieldShouldClear(_ textField: UITextField) -> Bool
     {
         return true
     }

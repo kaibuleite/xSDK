@@ -7,72 +7,24 @@
 
 import UIKit
 
-class xModel: NSObject {
+open class xModel: NSObject {
     
     // MARK: - Public Property
     /// 自定义id
-    var xid = 0
+    public var xid = 0
     /// 模拟数据
-    var xContent = "测试内容:\(arc4random() % 10000)"
+    public var xContent = "测试内容:\(arc4random() % 10000)"
     /// 原始字典
-    var xOrigin = [String : Any]()
+    public var xOrigin = [String : Any]()
     
     // MARK: - Private Property
     /// 计数器
     private static var xModelCount = 0
     
-    // MARK: - 实例化对象
-    // 在类的构造器前添加required修饰符表明所有该类的子类都必须实现该构造器,子类的子类可以不用管,默认调用子类的构造器
-    required override init() {
-        super.init()
-        // 通过对象锁保证唯一
-        objc_sync_enter(self)
-        xModel.xModelCount += 1
-        self.xid = xModel.xModelCount
-        objc_sync_exit(self)
-    }
-    /// 实例化对象
-    /// - Parameter info: 对象信息字典
-    /// - Returns: 对象
-    public class func new(dict : [String : Any]?) -> Self?
-    {
-        guard let info = dict else {
-            x_warning("初始化数据为nil")
-            return nil
-        }
-        guard info.keys.count != 0 else {
-            x_warning("初始化数据内容为空")
-            return nil
-        }
-        // 获取类的元类型(Meta), 为 AnyClass 格式, 有 type(类型) 和 self(值) 两个参数, 可以以此调用该类下的方法(方法必须实现)
-        // let test : MyModel.Type = MyModel.self
-        guard let className = self.classForCoder() as? xModel.Type else {
-            let classStr = NSStringFromClass(self.classForCoder())
-            x_warning("类型[\(classStr)]转换失败，不是继承于xModel")
-            return nil
-        }
-        // 因为在 init() 前加了 required 关键词,保证了 xModel 类必定有 init() 构造方法,可以放心的调用
-        let model = className.init()
-        model.setValuesForKeys(info)
-        // 保存原始字典
-        model.xOrigin = info
-        return model as? Self
-    }
-    /// 创建随机数据
-    public static func newList(count : Int = 10) -> [xModel]
-    {
-        var ret = [xModel]()
-        for _ in 0 ..< count {
-            let model = xModel()
-            ret.append(model)
-        }
-        return ret
-    }
-    
-    // MARK: - 重写父类方法
+    // MARK: - Open Override Func
     /// 配对成员属性
-    override func setValue(_ value: Any?,
-                           forKey key: String)
+    open override func setValue(_ value: Any?,
+                                forKey key: String)
     {
         guard let obj = value else {
             // xWarning("【\(self.classForCoder)】的【\(key)】为 nil")
@@ -112,8 +64,8 @@ class xModel: NSObject {
         }
     }
     /// 找不到key对应的成员属性
-    override func setValue(_ value: Any?,
-                           forUndefinedKey key: String)
+    open override func setValue(_ value: Any?,
+                                forUndefinedKey key: String)
     {
         guard xAppManager.shared.isLogModelNoPropertyTip else { return }
         let classname = type(of: self)
@@ -127,11 +79,62 @@ class xModel: NSObject {
         x_warning(str)
     }
     /// 找不到key对应的value
-    override func value(forUndefinedKey key: String) -> Any? {
+    open override func value(forUndefinedKey key: String) -> Any? {
         return nil
     }
     
-    // MARK: - 拼接指定对象的数据
+    // MARK: - Public Override Func
+    /// 在类的构造器前添加required修饰符表明所有该类的子类都必须实现该构造器,子类的子类可以不用管,默认调用子类的构造器
+    required public override init() {
+        super.init()
+        // 通过对象锁保证唯一
+        objc_sync_enter(self)
+        xModel.xModelCount += 1
+        self.xid = xModel.xModelCount
+        objc_sync_exit(self)
+    }
+    
+    // MARK: - Public Func
+    // TODO: 实例化对象
+    /// 实例化对象
+    /// - Parameter info: 对象信息字典
+    /// - Returns: 对象
+    public class func new(dict : [String : Any]?) -> Self?
+    {
+        guard let info = dict else {
+            x_warning("初始化数据为nil")
+            return nil
+        }
+        guard info.keys.count != 0 else {
+            x_warning("初始化数据内容为空")
+            return nil
+        }
+        // 获取类的元类型(Meta), 为 AnyClass 格式, 有 type(类型) 和 self(值) 两个参数, 可以以此调用该类下的方法(方法必须实现)
+        // let test : MyModel.Type = MyModel.self
+        guard let className = self.classForCoder() as? xModel.Type else {
+            let classStr = NSStringFromClass(self.classForCoder())
+            x_warning("类型[\(classStr)]转换失败，不是继承于xModel")
+            return nil
+        }
+        // 因为在 init() 前加了 required 关键词,保证了 xModel 类必定有 init() 构造方法,可以放心的调用
+        let model = className.init()
+        model.setValuesForKeys(info)
+        // 保存原始字典
+        model.xOrigin = info
+        return model as? Self
+    }
+    /// 创建随机数据
+    public static func newList(count : Int = 10) -> [xModel]
+    {
+        var ret = [xModel]()
+        for _ in 0 ..< count {
+            let model = xModel()
+            ret.append(model)
+        }
+        return ret
+    }
+    
+    // TODO: 拼接指定对象的数据
     /// 拼接指定对象的数据
     /// - Parameters:
     ///   - model: 要拼接的对象
@@ -161,7 +164,24 @@ class xModel: NSObject {
         }
     }
     
-    // MARK: - 获取一个对象的成员属性列表
+    // TODO:  数据转换
+    /// 转换成成员属性字典
+    /// - Returns: 生成的字典
+    public func toDictionary() -> [String : Any]
+    {
+        let dict = self.getDictionary(obj: self)
+        return dict
+    }
+    /// 转换成成员属性字典(字符串成员)
+    /// - Returns: 生成的字典
+    public func toStringDictionary() -> [String : String]
+    {
+        let dict = self.getStringDictionary(obj: self)
+        return dict
+    }
+    
+    // MARK: - Private Func
+    // TODO: 获取成员属性列表
     /// 获取一个对象的成员属性列表
     /// - Parameter obj: 指定的对象
     /// - Returns: 成员属性列表
@@ -216,7 +236,7 @@ class xModel: NSObject {
         return result
     }
     
-    // MARK: - 获取一个对象的成员属性键值表
+    // TODO: 获取成员属性键值表
     /// 获取一个对象的成员属性键值表
     /// - Parameter obj: 指定的对象
     /// - Returns: 成员属性键值表
@@ -261,19 +281,4 @@ class xModel: NSObject {
         return result
     }
     
-    // MARK: - 数据转换
-    /// 转换成成员属性字典
-    /// - Returns: 生成的字典
-    public func toDictionary() -> [String : Any]
-    {
-        let dict = self.getDictionary(obj: self)
-        return dict
-    }
-    /// 转换成成员属性字典(字符串成员)
-    /// - Returns: 生成的字典
-    public func toStringDictionary() -> [String : String]
-    {
-        let dict = self.getStringDictionary(obj: self)
-        return dict
-    }
 }

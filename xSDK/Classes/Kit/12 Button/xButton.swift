@@ -7,14 +7,15 @@
 
 import UIKit
 
-class xButton: UIButton {
+open class xButton: UIButton {
     
-    // MARK: - Public Property
+    // MARK: - IBInspectable Property
     /// 圆角
-    @IBInspectable public var cornerRadius : CGFloat = 0
+    @IBInspectable
+    public var cornerRadius : CGFloat = 0
     
-    // MARK: - 视图加载
-    override func awakeFromNib() {
+    // MARK: - Open Override Func
+    open override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.cornerRadius = self.cornerRadius
     }

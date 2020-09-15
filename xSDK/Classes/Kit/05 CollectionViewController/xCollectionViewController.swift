@@ -7,9 +7,9 @@
 
 import UIKit
 
-class xCollectionViewController: UICollectionViewController {
+open class xCollectionViewController: UICollectionViewController {
     
-    // MARK: - 数据源枚举
+    // MARK: - Enum
     /// 数据源枚举
     public enum DataTypeEnum {
         /// 普通、默认
@@ -18,9 +18,12 @@ class xCollectionViewController: UICollectionViewController {
         case filter
     }
     
-    // MARK: - Public Property
+    // MARK: - IBInspectable Property
     /// 控制器描述
-    @IBInspectable public var xTitle : String = "控制器描述"
+    @IBInspectable
+    public var xTitle : String = "控制器描述"
+    
+    // MARK: - Public Property
     /// 是否显示中
     public var isAppear = false
     /// 是否完成数据加载
@@ -54,8 +57,8 @@ class xCollectionViewController: UICollectionViewController {
         x_log("🥀_\(self.xTitle) \(name)")
     }
     
-    // MARK: - 视图加载
-    override func viewDidLoad() {
+    // MARK: - Open Override Func
+    open override func viewDidLoad() {
         super.viewDidLoad()
         // 基本配置
         self.view.backgroundColor = .groupTableViewBackground
@@ -71,16 +74,41 @@ class xCollectionViewController: UICollectionViewController {
             self.initChildrenViewController()
         }
     }
-    override func viewDidAppear(_ animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.isAppear = true
     }
-    override func viewDidDisappear(_ animated: Bool) {
+    open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.isAppear = false
     }
     
-    // MARK: - 方法调用
+    // MARK: - Open Func
+    /// 注册Headers
+    open func registerHeaders() { }
+    /// 注册Cells
+    open func registerCells() { }
+    /// 注册Footers
+    open func registerFooters() { }
+    /// 初始化UI
+    open func initKit() { }
+    /// 初始化子控制器
+    open func initChildrenViewController() { }
+    /// 快速实例化对象(storyboard比类名少指定后缀)
+    open class func quickInstancetype() -> Self
+    {
+        let layout = UICollectionViewFlowLayout()
+        let cvc = self.init(collectionViewLayout: layout)
+        return cvc
+    }
+    required public override init(collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(collectionViewLayout: layout)
+    }
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    // MARK: - Public Func
     /// 注册NibCell
     /// - Parameters:
     ///   - name: xib名称
@@ -105,38 +133,13 @@ class xCollectionViewController: UICollectionViewController {
                                      forCellWithReuseIdentifier: identifier)
     }
     
-    // MARK: - 方法重写
-    /// 注册Headers
-    open func registerHeaders() { }
-    /// 注册Cells
-    open func registerCells() { }
-    /// 注册Footers
-    open func registerFooters() { }
-    /// 初始化UI
-    open func initKit() { }
-    /// 初始化子控制器
-    open func initChildrenViewController() { }
-    /// 快速实例化对象(storyboard比类名少指定后缀)
-    open class func quickInstancetype() -> Self
-    {
-        let layout = UICollectionViewFlowLayout()
-        let cvc = self.init(collectionViewLayout: layout)
-        return cvc
-    }
-    required override init(collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(collectionViewLayout: layout)
-    }
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
     // MARK: - Collection view delegate
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    open override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     
     // MARK: - Scroll view delegate
-    override func scrollViewDidScroll(_ scrollView: UIScrollView)
+    open override func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         var offset = scrollView.contentOffset
         // 关闭顶部下拉
@@ -165,19 +168,19 @@ class xCollectionViewController: UICollectionViewController {
     }
 
     // MARK: - UICollectionViewDelegateFlowLayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return self.headerSize
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return self.minimumLineSpacing
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return self.minimumInteritem
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return self.sectionEdge
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return self.itemSize
     }
 }

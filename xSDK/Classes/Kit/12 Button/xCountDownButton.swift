@@ -7,26 +7,31 @@
 
 import UIKit
 
-class xCountDownButton: UIButton {
+open class xCountDownButton: xButton {
     
-    // MARK: - Public Property
+    // MARK: - IBInspectable Property
     /// 原标题
-    @IBInspectable public var title : String = "获取验证码"
+    @IBInspectable
+    public var title : String = "获取验证码"
     /// 普通时标题颜色
-    @IBInspectable public var normalTitleColor : UIColor = .darkText
+    @IBInspectable
+    public var normalTitleColor : UIColor = .darkText
     /// 普通时边框颜色
-    @IBInspectable public var normalBorderColor : UIColor = .darkText
+    @IBInspectable
+    public var normalBorderColor : UIColor = .darkText
     /// 倒计时标题颜色
-    @IBInspectable public var countdownTitleColor : UIColor = .lightGray
+    @IBInspectable
+    public var countdownTitleColor : UIColor = .lightGray
     /// 倒计时边框颜色
-    @IBInspectable public var countdownBorderColor : UIColor = .lightGray
+    @IBInspectable
+    public var countdownBorderColor : UIColor = .lightGray
     /// 边框粗细
-    @IBInspectable public var borderWidth : CGFloat = 0
-    
-    /// 总时长(默认60s)
-    public var duration = Int(60)
+    @IBInspectable
+    public var borderWidth : CGFloat = 0
     
     // MARK: - Private Property
+    /// 总时长(默认60s)
+    private var duration = Int(60)
     /// 定时器
     private var timer : Timer?
     
@@ -35,8 +40,8 @@ class xCountDownButton: UIButton {
         self.closeTimer()
     }
     
-    // MARK: - 视图加载
-    override func awakeFromNib() {
+    // MARK: - Open Override Func
+    open override func awakeFromNib() {
         super.awakeFromNib()
         self.tag = 0
         self.setTitle(" \(self.title) ", for: .normal)
@@ -45,7 +50,7 @@ class xCountDownButton: UIButton {
         self.layer.borderWidth = self.borderWidth
     }
     
-    // MARK: - 方法调用
+    // MARK: - Public Func
     /// 开始倒计时
     /// - Parameters:
     ///   - totalTime: 倒计时时间(默认60s)
@@ -55,7 +60,7 @@ class xCountDownButton: UIButton {
         self.openTimer()
     }
     
-    // MARK: - 定时器
+    // MARK: - Private Func
     /// 开启定时器
     private func openTimer()
     {

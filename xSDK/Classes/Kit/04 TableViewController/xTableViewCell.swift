@@ -7,7 +7,7 @@
 
 import UIKit
 
-class xTableViewCell: UITableViewCell {
+open class xTableViewCell: UITableViewCell {
     
     // MARK: - Public Property
     /// 绑定的视图控制器
@@ -18,12 +18,12 @@ class xTableViewCell: UITableViewCell {
         self.tvc = nil
     }
     
-    // MARK: - 视图加载
-    override func awakeFromNib() {
+    // MARK: - Open Override Func
+    open override func awakeFromNib() {
         super.awakeFromNib()
     }
-
-    // MARK: - 设置内容数据
+    
+    // MARK: - Open Func
     /// 设置内容数据
     open func setContentData(with model : xModel)
     {
