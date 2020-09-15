@@ -30,6 +30,11 @@
 		046CC786250F6F2D00C8B1D8 /* xButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC785250F6F2D00C8B1D8 /* xButton.swift */; };
 		04D4E42725104D5600580F41 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 04D4E42525104D5600580F41 /* .gitkeep */; };
 		04D4E42825104D5600580F41 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4E42625104D5600580F41 /* ReplaceMe.swift */; };
+		04D4E42A25104DA000580F41 /* xNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4E42925104DA000580F41 /* xNavigationController.swift */; };
+		04D4E42D25104E8500580F41 /* xViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4E42C25104E8500580F41 /* xViewController.swift */; };
+		04D4E430251051DE00580F41 /* xTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4E42F251051DE00580F41 /* xTableViewController.swift */; };
+		04D4E4322510560D00580F41 /* xListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4E4312510560D00580F41 /* xListTableViewController.swift */; };
+		04D4E4342510561A00580F41 /* xTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D4E4332510561A00580F41 /* xTableViewCell.swift */; };
 		3D2294FDC457ABD7E3C969B19EB8129A /* Pods-xSDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 607D9BA53AF454062F087271D7444E93 /* Pods-xSDK_Example-dummy.m */; };
 		74317E187870BCFB14F9B293D51D406D /* xSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EC0962B3937FDF7B900CAB97A4352BDB /* xSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A33D579C4A350B354C8EBBF4008B69B /* Pods-xSDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0AE4CCBA411BC052AC0A150733330B /* Pods-xSDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -83,6 +88,11 @@
 		046CC785250F6F2D00C8B1D8 /* xButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xButton.swift; sourceTree = "<group>"; };
 		04D4E42525104D5600580F41 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		04D4E42625104D5600580F41 /* ReplaceMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
+		04D4E42925104DA000580F41 /* xNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xNavigationController.swift; sourceTree = "<group>"; };
+		04D4E42C25104E8500580F41 /* xViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xViewController.swift; sourceTree = "<group>"; };
+		04D4E42F251051DE00580F41 /* xTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xTableViewController.swift; sourceTree = "<group>"; };
+		04D4E4312510560D00580F41 /* xListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xListTableViewController.swift; sourceTree = "<group>"; };
+		04D4E4332510561A00580F41 /* xTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xTableViewCell.swift; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D29C980BD77ED4D3A4F522051C1CDE8 /* Pods-xSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		16B01F165C44C681D42899AA588BEDBE /* Pods-xSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-xSDK_Example.modulemap"; sourceTree = "<group>"; };
@@ -203,6 +213,8 @@
 		046CC77E250F6EB800C8B1D8 /* Kit */ = {
 			isa = PBXGroup;
 			children = (
+				04D4E42E251051D600580F41 /* TableViewController */,
+				04D4E42B25104E6F00580F41 /* ViewController */,
 				04D4E42325104C9300580F41 /* NavigationController */,
 				046CC780250F6EE800C8B1D8 /* Button */,
 			);
@@ -228,6 +240,7 @@
 		04D4E42325104C9300580F41 /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
+				04D4E42925104DA000580F41 /* xNavigationController.swift */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -247,6 +260,24 @@
 			);
 			name = Classes;
 			path = ../../xSDK/Classes;
+			sourceTree = "<group>";
+		};
+		04D4E42B25104E6F00580F41 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04D4E42C25104E8500580F41 /* xViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		04D4E42E251051D600580F41 /* TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04D4E42F251051DE00580F41 /* xTableViewController.swift */,
+				04D4E4312510560D00580F41 /* xListTableViewController.swift */,
+				04D4E4332510561A00580F41 /* xTableViewCell.swift */,
+			);
+			path = TableViewController;
 			sourceTree = "<group>";
 		};
 		0F094EB1023A91BAA4BF2EF2FE703DB5 /* Development Pods */ = {
@@ -561,10 +592,15 @@
 				046CC752250F1EFC00C8B1D8 /* xGlobalLog.swift in Sources */,
 				046CC77B250F693900C8B1D8 /* xAnimation.swift in Sources */,
 				046CC770250F647500C8B1D8 /* xPage.swift in Sources */,
+				04D4E42A25104DA000580F41 /* xNavigationController.swift in Sources */,
 				046CC75B250F3CA600C8B1D8 /* Double+xExtension.swift in Sources */,
+				04D4E4322510560D00580F41 /* xListTableViewController.swift in Sources */,
 				046CC77D250F69CD00C8B1D8 /* xInputAlert.swift in Sources */,
 				046CC74D250F1A3300C8B1D8 /* String+xExtension.swift in Sources */,
 				046CC75D250F444D00C8B1D8 /* xGlobalValue.swift in Sources */,
+				04D4E42D25104E8500580F41 /* xViewController.swift in Sources */,
+				04D4E430251051DE00580F41 /* xTableViewController.swift in Sources */,
+				04D4E4342510561A00580F41 /* xTableViewCell.swift in Sources */,
 				046CC759250F3C9C00C8B1D8 /* Float+xExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
