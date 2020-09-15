@@ -1,15 +1,32 @@
 PODS:
-  - xSDK (0.1.0)
+  - Alamofire (4.9.1)
+  - MJRefresh (3.4.3)
+  - SDWebImage (5.8.3):
+    - SDWebImage/Core (= 5.8.3)
+  - SDWebImage/Core (5.8.3)
+  - xSDK (1.0.0):
+    - Alamofire (~> 4.9.1)
+    - MJRefresh (~> 3.4.3)
+    - SDWebImage (~> 5.8.3)
 
 DEPENDENCIES:
   - xSDK (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - MJRefresh
+    - SDWebImage
 
 EXTERNAL SOURCES:
   xSDK:
     :path: "../"
 
 SPEC CHECKSUMS:
-  xSDK: bf8c270dd1c6f9f5c08f9edb15ad726c21645ab1
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
+  SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
+  xSDK: d741977a182305628d32bf4ade4709190bcf9ca5
 
 PODFILE CHECKSUM: deef289b751b57ae7592493195e43644adc13065
 

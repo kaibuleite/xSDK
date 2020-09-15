@@ -1,22 +1,35 @@
 {
   "name": "xSDK",
-  "version": "0.1.0",
-  "summary": "A short description of xSDK.",
+  "version": "1.0.0",
+  "summary": "自定义框架",
+  "swift_versions": "5.0",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/177955297@qq.com/xSDK",
+  "homepage": "https://github.com/kaibuleite/xSDK",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "177955297@qq.com": "177955297@qq.com"
+    "kaibuleite": "177955297@qq.com"
   },
   "source": {
-    "git": "https://github.com/177955297@qq.com/xSDK.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/kaibuleite/xSDK.git",
+    "tag": "1.0.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
-  "source_files": "xSDK/Classes/**/*"
+  "source_files": "xSDK/Classes/**/*",
+  "dependencies": {
+    "Alamofire": [
+      "~> 4.9.1"
+    ],
+    "SDWebImage": [
+      "~> 5.8.3"
+    ],
+    "MJRefresh": [
+      "~> 3.4.3"
+    ]
+  },
+  "swift_version": "5.0"
 }
