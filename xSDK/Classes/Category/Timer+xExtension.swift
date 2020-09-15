@@ -11,7 +11,7 @@ import UIKit
 extension Timer {
 
     /// 定时器触发回调
-    public typealias x_HandlerTimerInvoke = (Timer) -> Void
+    public typealias xHandlerTimerInvoke = (Timer) -> Void
     
     // MARK: - 实例化对象
     /// 创建定时器
@@ -21,7 +21,7 @@ extension Timer {
     ///   - block: 回调
     public static func x_new(timeInterval : TimeInterval,
                              repeats : Bool,
-                             handler : @escaping x_HandlerTimerInvoke) -> Timer
+                             handler : @escaping xHandlerTimerInvoke) -> Timer
     {
         let timer = Timer.scheduledTimer(timeInterval: timeInterval,
                                          target: self,
@@ -34,7 +34,7 @@ extension Timer {
     /// 触发回调
     @objc private static func timerInvoke(_ timer : Timer)
     {
-        let block = timer.userInfo as? x_HandlerTimerInvoke
+        let block = timer.userInfo as? xHandlerTimerInvoke
         block?(timer)
     }
 }

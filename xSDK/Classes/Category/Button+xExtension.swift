@@ -10,7 +10,7 @@ import UIKit
 extension UIButton
 {
     /// 按钮点击回调
-    public typealias x_HandlerClickButton = (UIButton) -> Void
+    public typealias xHandlerBtnClick = (UIButton) -> Void
     
     // MARK: - 私有变量
     /// 事件关联Key
@@ -19,7 +19,7 @@ extension UIButton
         static let btnClick = UnsafeRawPointer.init(bitPattern: "xButtonClickEvent".hashValue)
     }
     /// 按钮点击回调
-    private var clickHandler : x_HandlerClickButton?
+    private var clickHandler : xHandlerBtnClick?
     {
         set {
             /* 关联回调对象
@@ -34,7 +34,7 @@ extension UIButton
         }
         get {
             let key = UIButton.xRuntimeKey.btnClick!
-            let value = objc_getAssociatedObject(self, key) as? x_HandlerClickButton
+            let value = objc_getAssociatedObject(self, key) as? xHandlerBtnClick
             return value
         }
     }
@@ -42,7 +42,7 @@ extension UIButton
     // MARK: - 按钮事件
     /// 添加按钮事件
     /// - Parameter handler: 按钮回调
-    public func x_addClick(handler : @escaping x_HandlerClickButton) -> Void
+    public func x_addClick(handler : @escaping xHandlerBtnClick) -> Void
     {
         self.clickHandler = handler
         // 重新绑定按钮系统事件
