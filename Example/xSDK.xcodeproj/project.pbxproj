@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04DE84532510AF50008615B3 /* Test01ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DE84512510AF50008615B3 /* Test01ViewController.swift */; };
+		04DE84542510AF50008615B3 /* Test01ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DE84522510AF50008615B3 /* Test01ViewController.xib */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04DE84512510AF50008615B3 /* Test01ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test01ViewController.swift; sourceTree = "<group>"; };
+		04DE84522510AF50008615B3 /* Test01ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test01ViewController.xib; sourceTree = "<group>"; };
 		06D657426FC4F6B8A0C34896 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8EBC98333D44841DE8D343 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* xSDK_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xSDK_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +73,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04DE844D2510AF25008615B3 /* 测试样例 */ = {
+			isa = PBXGroup;
+			children = (
+				04DE844E2510AF31008615B3 /* 01 网络请求遮罩 */,
+			);
+			path = "测试样例";
+			sourceTree = "<group>";
+		};
+		04DE844E2510AF31008615B3 /* 01 网络请求遮罩 */ = {
+			isa = PBXGroup;
+			children = (
+				04DE84512510AF50008615B3 /* Test01ViewController.swift */,
+				04DE84522510AF50008615B3 /* Test01ViewController.xib */,
+			);
+			path = "01 网络请求遮罩";
+			sourceTree = "<group>";
+		};
 		4B0C91E8CB9F473396C347D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +126,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				04DE844D2510AF25008615B3 /* 测试样例 */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -248,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				04DE84542510AF50008615B3 /* Test01ViewController.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -338,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04DE84532510AF50008615B3 /* Test01ViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

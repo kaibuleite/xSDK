@@ -7,8 +7,8 @@
 
 import UIKit
 
-extension UIView
-{
+extension UIView {
+    
     // MARK: - 锚点
     /// 重置锚点
     /// - Parameter anchorPoint: 新锚点

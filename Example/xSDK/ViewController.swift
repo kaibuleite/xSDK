@@ -7,18 +7,22 @@
 //
 
 import UIKit
+import xSDK
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        var vc : UIViewController?
+        switch indexPath.row {
+        case 0:
+            vc = Test01ViewController.init()
+        default:
+            break
+        }
+        guard let obj = vc else { return }
+        self.navigationController?.pushViewController(obj, animated: true)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
