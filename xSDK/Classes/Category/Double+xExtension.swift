@@ -8,7 +8,8 @@
 import UIKit
 
 extension Double {
-
+    
+    // MARK: - Public Func
     /// 转换成Double类型数据
     /// - Parameter precision: 最多保留小数点位数(默认保留2位)
     /// - Parameter clearMoreZero: 是否清除多余的0

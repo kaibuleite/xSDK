@@ -9,6 +9,7 @@ import UIKit
 
 extension UILabel
 {
+    // MARK: - Public Func
     /// 计算内容大小
     public func x_getContentSize() -> CGSize
     {

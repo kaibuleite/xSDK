@@ -7,37 +7,31 @@
 
 import UIKit
 
-class xViewController: UIViewController {
+open class xViewController: UIViewController {
     
     // MARK: - 关联变量
     /// 自定义导航栏
-    @IBOutlet public weak var topNaviBar: UIView?
+    @IBOutlet open weak var topNaviBar: UIView?
     /// 安全区域
-    @IBOutlet public weak var safeView: UIView?
+    @IBOutlet open weak var safeView: UIView?
     /// 子控制器容器
-    @IBOutlet public weak var childContainer: UIView?
+    @IBOutlet open weak var childContainer: UIView?
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 控制器描述
-    @IBInspectable public var xTitle : String = "控制器描述"
+    @IBInspectable
+    open var xTitle : String = "控制器描述"
     /// 是否显示中
-    public var isAppear = false
+    open var isAppear = false
     /// 是否完成数据加载
-    public var isLoadRequestDataCompleted = true
+    open var isLoadRequestDataCompleted = true
     /// 是否是父控制器
-    public var isRootParentViewController = false
+    open var isRootParentViewController = false
     /// 顶部遮罩(状态栏)
-    lazy var safeTopMaskView : UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear   // 默认色
-        return view
-    }()
+    public let safeTopMaskView = UIView()
     /// 底部遮罩(Tabbar菜单)
-    lazy var safeBottomMaskView : UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear   // 默认色
-        return view
-    }()
+    public let safeBottomMaskView = UIView()
+    
     // MARK: - 内存释放
     deinit {
         if self.isRootParentViewController {
@@ -48,7 +42,7 @@ class xViewController: UIViewController {
     }
     
     // MARK: - 视图加载
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad() 
         // 强制白天模式
         if #available(iOS 13.0, *) {
@@ -58,24 +52,40 @@ class xViewController: UIViewController {
         }
         DispatchQueue.main.async {
             
+            if let safeView = self.safeView {
+                var frame = safeView.bounds
+                
+                frame.origin.y -= frame.height
+                self.safeTopMaskView.frame = frame
+                self.safeTopMaskView.backgroundColor = self.topNaviBar?.backgroundColor ?? .clear
+                
+                frame.origin.y += 2 * frame.height
+                self.safeBottomMaskView.frame = frame
+                self.safeBottomMaskView.backgroundColor = .clear
+                
+                safeView.addSubview(self.safeTopMaskView)
+                safeView.addSubview(self.safeBottomMaskView)
+                
+            }
+            
             self.initKit()
             self.initChildrenViewController()
         }
     }
-    override func viewDidAppear(_ animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.isAppear = true
     }
-    override func viewDidDisappear(_ animated: Bool) {
+    open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.isAppear = false
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
     
     // MARK: - 初始化子控制器
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard let ident = segue.identifier else { return }
         if ident.hasPrefix("Child")

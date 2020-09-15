@@ -9,7 +9,7 @@ import UIKit
 
 class xImageView: UIImageView {
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 是否为圆形图片
     @IBInspectable var isCircle : Bool = false {
         didSet {

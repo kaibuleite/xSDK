@@ -13,7 +13,7 @@ class xTextField: UITextField, UITextFieldDelegate {
     public typealias xHandlerTextFieldInput = (String) -> Void
     public typealias xHandlerTextFieldChangeStatus = () -> Void
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 容器
     @IBInspectable public var container : UIView?
     /// 容器边框默认颜色
@@ -25,7 +25,7 @@ class xTextField: UITextField, UITextFieldDelegate {
     /// 下一个输入框
     public weak var nextInput : xTextField?
     
-    // MARK: - 私有变量
+    // MARK: - Private Property
     /// 自定义键盘扩展视图
     private var accessoryView : xInputAccessoryView?
     /// 开始编辑回调

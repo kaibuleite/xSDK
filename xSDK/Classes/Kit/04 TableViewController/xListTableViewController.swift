@@ -10,7 +10,7 @@ import MJRefresh
 
 class xListTableViewController: xTableViewController {
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 分页数据
     public var page = xPage()
     /// 数据源

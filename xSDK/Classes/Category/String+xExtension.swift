@@ -9,10 +9,10 @@ import UIKit
 import CommonCrypto
 
 extension String {
-
-    // MARK: - 哈希值
+    
+    // MARK: - Enum
     /// 哈希算法类型枚举(长度不同)
-    public enum x_HashAlgorithmType
+    public enum xHashAlgorithmType
     {
         case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
         /// 其对应的摘要长度值
@@ -43,6 +43,8 @@ extension String {
         }
     }
     
+    // MARK: - Public Func
+    // TODO: 哈希算法加密解密
     /// base64编码
     /// - Parameter options: 编码选项
     /// - Returns: 编码结果
@@ -69,7 +71,7 @@ extension String {
     public func x_toMD5String(salt : String = "") -> String
     {
         // 加密类型
-        let type = x_HashAlgorithmType.MD5
+        let type = xHashAlgorithmType.MD5
         // 加盐处理后的字符串
         let str = String(format: "%@%@", self, salt)
         // 声明指针(地址)
@@ -96,7 +98,7 @@ extension String {
     ///   - type: 加密算法类型，具体参考枚举内容
     ///   - salt: 加盐字符串，默认为空字符串
     /// - Returns: 加密后的字符串
-    public func x_toSHAString(type : x_HashAlgorithmType,
+    public func x_toSHAString(type : xHashAlgorithmType,
                               salt : String = "") -> String
     {
         // 加盐处理后的字符串
@@ -132,7 +134,7 @@ extension String {
     ///   - type:  加密算法类型，具体参考枚举内容
     ///   - key: 密钥
     /// - Returns: 加密后的字符串
-    public func x_toHMACString(type : x_HashAlgorithmType,
+    public func x_toHMACString(type : xHashAlgorithmType,
                                key : String) -> String
     {
         // 加密内容指针和长度
@@ -156,7 +158,7 @@ extension String {
         return ret
     }
     
-    // MARK: - 字符串截取
+    // TODO: 字符串截取
     /// 截取指定范围字符串
     public func x_sub(range : NSRange) -> String?
     {
@@ -211,7 +213,7 @@ extension String {
         return ret
     }
     
-    // MARK: - 类型转换
+    // TODO: 类型转换
     /// 转换成Int类型数据
     public func x_toInt() -> Int
     {
@@ -347,8 +349,8 @@ extension String {
                                           attributes: dic)
         return atr
     }
-
-    // MARK: - 其他
+    
+    // TODO: 其他
     /// 获取首字母
     public func x_getFirstLetter() -> String
     {
@@ -368,6 +370,7 @@ extension String {
         let ret = predA.evaluate(with: firstStr) ? firstStr : "#"
         return ret
     }
+    
     /// 判断字符串是否包含另外一个字符串
     /// - Parameters:
     ///   - find: 另外一个字符串
@@ -383,6 +386,4 @@ extension String {
             return self.range(of: subStr) != nil
         }
     }
-    
-
 }

@@ -9,11 +9,12 @@ import UIKit
 
 
 extension Timer {
-
+    
+    // MARK: - Handler
     /// 定时器触发回调
     public typealias xHandlerTimerInvoke = (Timer) -> Void
     
-    // MARK: - 实例化对象
+    // MARK: - Public Func
     /// 创建定时器
     /// - Parameters:
     ///   - timeInterval: 间隔

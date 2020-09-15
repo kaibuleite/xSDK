@@ -9,7 +9,7 @@ import UIKit
 
 class xCollectionViewCell: UICollectionViewCell {
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 绑定的视图控制器
     weak var cvc : xCollectionViewController?
     

@@ -9,10 +9,11 @@ import UIKit
 
 extension UIButton
 {
+    // MARK: - Handler
     /// 按钮点击回调
     public typealias xHandlerBtnClick = (UIButton) -> Void
     
-    // MARK: - 私有变量
+    // MARK: - Private Property
     /// 事件关联Key
     private struct xRuntimeKey {
         /// 按钮点击事件
@@ -39,7 +40,7 @@ extension UIButton
         }
     }
     
-    // MARK: - 按钮事件
+    // MARK: - Public Func
     /// 添加按钮事件
     /// - Parameter handler: 按钮回调
     public func x_addClick(handler : @escaping xHandlerBtnClick) -> Void
@@ -65,6 +66,7 @@ extension UIButton
         self.btnClick()
     }
     
+    // MARK: - Private Func
     /// 按钮点击
     @objc private func btnClick()
     {

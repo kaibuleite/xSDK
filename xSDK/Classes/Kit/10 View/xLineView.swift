@@ -9,7 +9,7 @@ import UIKit
 
 class xLineView: UIView {
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 线条颜色
     @IBInspectable public var lineColor : UIColor = .groupTableViewBackground
     

@@ -8,11 +8,12 @@
 import UIKit
 
 extension UIViewController {
-
-    // MARK: - 实例化对象
+    
+    // MARK: - Public Func
+    // TODO: 实例化对象
     /// 通过storyboard实例化
-    open class func new(storyboard name : String,
-                        identifier : String = "") -> Self?
+    public class func new(storyboard name : String,
+                          identifier : String = "") -> Self?
     {
         let bundle = Bundle.init(for: self.classForCoder())
         let sb = UIStoryboard.init(name: name, bundle: bundle)
@@ -24,6 +25,34 @@ extension UIViewController {
             let vc = sb.instantiateViewController(withIdentifier: identifier)
             return vc as? Self
         }
-        
+    }
+    
+}
+
+extension xViewController {
+    
+    // MARK: - Public Func
+    // TODO: - 添加子控制器
+    /// 添加子控制器
+    @discardableResult
+    public func addChild(_ vc : UIViewController?,
+                         in container : UIView?,
+                         frame : CGRect = .zero) -> Bool
+    {
+        guard let obj = vc else {
+            x_warning("子控制器为nil")
+            return false
+        }
+        guard let view = container else {
+            x_warning("子控制器容器为nil")
+            return false
+        }
+        self.addChild(obj)
+        obj.view.frame = frame
+        if frame == .zero {
+            obj.view.frame = view.bounds
+        }
+        view.addSubview(obj.view)
+        return true
     }
 }

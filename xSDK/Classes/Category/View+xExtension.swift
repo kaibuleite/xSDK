@@ -9,7 +9,8 @@ import UIKit
 
 extension UIView {
     
-    // MARK: - 锚点
+    // MARK: - Public Func
+    // TODO: 锚点
     /// 重置锚点
     /// - Parameter anchorPoint: 新锚点
     public func x_reset(anchorPoint : CGPoint)
@@ -25,7 +26,7 @@ extension UIView {
         self.center = center
     }
     
-    // MARK: - 数据转换
+    // TODO: 数据转换
     /// 将当前视图转为UIImage
     public func x_toImage() -> UIImage?
     {

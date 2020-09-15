@@ -9,10 +9,17 @@
 import UIKit
 import xSDK
 
-class Test01ViewController: UIViewController {
+class Test01ViewController: xViewController {
  
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.isAppear = false
+        
+    }
     @IBAction func defaultBtnClick() {
         
+        let vc = xViewController.init()
         
         
     }

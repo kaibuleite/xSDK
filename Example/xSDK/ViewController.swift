@@ -26,3 +26,9 @@ class ViewController: UITableViewController {
     }
 }
 
+class tv : xViewController {
+    
+    override func initKit() {
+        
+    }
+}

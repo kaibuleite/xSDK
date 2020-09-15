@@ -9,7 +9,7 @@ import UIKit
 
 class xTextView: UITextView {
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 输入内容
     override var text: String! {
         didSet {
@@ -19,7 +19,7 @@ class xTextView: UITextView {
     /// 占位字符串
     @IBInspectable public var placeholderString : String? = ""
     
-    // MARK: - 私有变量
+    // MARK: - Private Property
     /// 占位字符串控件
     private let placeholderTextView = UITextView()
     /// 自定义键盘扩展视图

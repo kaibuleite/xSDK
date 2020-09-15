@@ -9,7 +9,8 @@ import UIKit
 
 extension UIColor
 {
-    // MARK: - 创建新颜色
+    // MARK: - Public Func
+    // TODO: 实例化新颜色
     /// 创建16进制色
     /// - Parameters:
     ///   - hex: 16进制内容
@@ -63,7 +64,7 @@ extension UIColor
         return color
     }
     
-    // MARK: - 数据转换
+    // TODO: 数据转换
     /// 转换成UIImage类型数据
     /// - Parameter size: 指定大小
     /// - Returns: 新图片

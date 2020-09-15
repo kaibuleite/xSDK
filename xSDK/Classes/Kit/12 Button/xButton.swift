@@ -9,7 +9,7 @@ import UIKit
 
 class xButton: UIButton {
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 圆角
     @IBInspectable public var cornerRadius : CGFloat = 0
     

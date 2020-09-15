@@ -18,7 +18,7 @@ class xCollectionViewController: UICollectionViewController {
         case filter
     }
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 控制器描述
     @IBInspectable public var xTitle : String = "控制器描述"
     /// 是否显示中

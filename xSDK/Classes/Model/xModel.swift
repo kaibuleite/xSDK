@@ -9,7 +9,7 @@ import UIKit
 
 class xModel: NSObject {
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 自定义id
     var xid = 0
     /// 模拟数据
@@ -17,7 +17,7 @@ class xModel: NSObject {
     /// 原始字典
     var xOrigin = [String : Any]()
     
-    // MARK: - 私有变量
+    // MARK: - Private Property
     /// 计数器
     private static var xModelCount = 0
     
@@ -69,7 +69,7 @@ class xModel: NSObject {
         return ret
     }
     
-    // MARK: - 重载方法
+    // MARK: - 重写父类方法
     /// 配对成员属性
     override func setValue(_ value: Any?,
                            forKey key: String)

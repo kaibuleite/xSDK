@@ -9,7 +9,8 @@ import UIKit
 
 extension UIImage
 {
-    // MARK: - 绘制图片
+    // MARK: - Public Func
+    // TODO: 绘制图片
     /// 绘制图片
     /// - Parameters:
     ///   - rect: 绘制范围
@@ -66,7 +67,7 @@ extension UIImage
         return ret
     }
     
-    // MARK: - 图片缩放
+    // TODO: 图片缩放
     /// 缩放图片(等比例)
     /// - Parameter size: 缩放大小
     /// - Returns: 新图片
@@ -123,7 +124,7 @@ extension UIImage
         return ret
     }
     
-    // MARK: - 图片拼接
+    // TODO: 图片拼接
     /// 拼接图片
     /// - Parameters:
     ///   - image: 要拼接的图片
@@ -183,7 +184,7 @@ extension UIImage
         return ret
     }
     
-    // MARK: - 数据转换
+    // TODO: 数据转换
     /// 转换成 UIColor 类型数据
     public func x_toColor() -> UIColor
     {

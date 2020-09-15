@@ -9,7 +9,7 @@ import UIKit
 
 class xGradientColorView: UIView {
     
-    // MARK: - 私有变量
+    // MARK: - Private Property
     /// 顶部渐变填充色Layer
     private var colorLayer = CAGradientLayer()
     

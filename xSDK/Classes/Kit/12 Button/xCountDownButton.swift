@@ -9,7 +9,7 @@ import UIKit
 
 class xCountDownButton: UIButton {
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 原标题
     @IBInspectable public var title : String = "获取验证码"
     /// 普通时标题颜色
@@ -26,7 +26,7 @@ class xCountDownButton: UIButton {
     /// 总时长(默认60s)
     public var duration = Int(60)
     
-    // MARK: - 私有变量
+    // MARK: - Private Property
     /// 定时器
     private var timer : Timer?
     

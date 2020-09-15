@@ -9,7 +9,7 @@ import UIKit
 
 class xPage: NSObject {
     
-    // MARK: - 公有变量
+    // MARK: - Public Property
     /// 当前页数
     var current : Int = 1
     /// 总页数(默认1页,从服务器返回具体数据)
