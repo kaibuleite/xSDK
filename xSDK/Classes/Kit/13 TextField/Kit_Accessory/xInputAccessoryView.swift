@@ -21,7 +21,8 @@ class xInputAccessoryView: UIView {
     
     // MARK: - 实例化对象
     class func loadNib() -> xInputAccessoryView {
-        let arr = Bundle.main.loadNibNamed("xInputAccessoryView", owner: nil, options: nil)!
+        let bundle = Bundle.init(for: self.classForCoder())
+        let arr = bundle.loadNibNamed("xInputAccessoryView", owner: nil, options: nil)!
         let view = arr.first! as! xInputAccessoryView
         var frame = CGRect.zero
         frame.size.width = x_width

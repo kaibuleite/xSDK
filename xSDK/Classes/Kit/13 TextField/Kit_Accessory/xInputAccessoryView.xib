@@ -10,46 +10,59 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="RPy-jT-1Bg" customClass="xInputAccessoryView" customModule="Alamofire" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="RPy-jT-1Bg" customClass="xInputAccessoryView" customModule="xSDK" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="574" height="49"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="254" horizontalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b13-Ye-r7I">
-                    <rect key="frame" x="529" y="0.0" width="30" height="49"/>
-                    <state key="normal" title="╳"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" horizontalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzL-h9-cW1">
-                    <rect key="frame" x="10" y="0.0" width="30" height="49"/>
-                    <state key="normal" title="↑"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" horizontalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsJ-pz-24W">
-                    <rect key="frame" x="50" y="0.0" width="30" height="49"/>
-                    <state key="normal" title="↓"/>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dc-eD-XLL">
-                    <rect key="frame" x="287" y="0.0" width="0.0" height="49"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJW-5I-W8c">
+                    <rect key="frame" x="0.0" y="0.0" width="574" height="49"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" horizontalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzL-h9-cW1">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="49"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="4DN-fc-aLb"/>
+                            </constraints>
+                            <state key="normal" title="↑"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" horizontalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsJ-pz-24W">
+                            <rect key="frame" x="40" y="0.0" width="40" height="49"/>
+                            <state key="normal" title="↓"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dc-eD-XLL">
+                            <rect key="frame" x="80" y="0.0" width="450" height="49"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="254" horizontalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b13-Ye-r7I">
+                            <rect key="frame" x="530" y="0.0" width="44" height="49"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="WEa-A5-Vji"/>
+                            </constraints>
+                            <state key="normal" title="╳"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="XzL-h9-cW1" firstAttribute="width" secondItem="HsJ-pz-24W" secondAttribute="width" id="8fx-La-9bJ"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVb-4z-fIc" customClass="xLineView" customModule="xSDK" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="574" height="1"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="ES3-4E-JRm"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="8dc-eD-XLL" firstAttribute="centerY" secondItem="RPy-jT-1Bg" secondAttribute="centerY" id="6eV-Yt-pjl"/>
-                <constraint firstItem="HsJ-pz-24W" firstAttribute="leading" secondItem="XzL-h9-cW1" secondAttribute="trailing" constant="10" id="7VO-tp-dXb"/>
-                <constraint firstItem="b13-Ye-r7I" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8dc-eD-XLL" secondAttribute="trailing" constant="10" id="9LD-11-Q9n"/>
-                <constraint firstAttribute="bottom" secondItem="XzL-h9-cW1" secondAttribute="bottom" id="JlM-Y6-hYQ"/>
-                <constraint firstItem="XzL-h9-cW1" firstAttribute="leading" secondItem="Cui-Cz-GXr" secondAttribute="leading" constant="10" id="NER-Ih-2Yc"/>
-                <constraint firstItem="HsJ-pz-24W" firstAttribute="top" secondItem="RPy-jT-1Bg" secondAttribute="top" id="aGt-rR-G70"/>
-                <constraint firstItem="b13-Ye-r7I" firstAttribute="centerY" secondItem="RPy-jT-1Bg" secondAttribute="centerY" id="c7Y-v0-VtN"/>
-                <constraint firstItem="XzL-h9-cW1" firstAttribute="top" secondItem="RPy-jT-1Bg" secondAttribute="top" id="fKE-XV-YW1"/>
-                <constraint firstItem="8dc-eD-XLL" firstAttribute="top" secondItem="RPy-jT-1Bg" secondAttribute="top" id="nKu-75-wTp"/>
-                <constraint firstItem="8dc-eD-XLL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HsJ-pz-24W" secondAttribute="trailing" constant="10" id="onU-by-Pfj"/>
-                <constraint firstItem="Cui-Cz-GXr" firstAttribute="trailing" secondItem="b13-Ye-r7I" secondAttribute="trailing" constant="15" id="qT7-hH-EsX"/>
-                <constraint firstItem="8dc-eD-XLL" firstAttribute="centerX" secondItem="RPy-jT-1Bg" secondAttribute="centerX" id="sDA-wv-9Fk"/>
-                <constraint firstAttribute="bottom" secondItem="HsJ-pz-24W" secondAttribute="bottom" id="tzl-oL-w4s"/>
-                <constraint firstItem="b13-Ye-r7I" firstAttribute="top" secondItem="RPy-jT-1Bg" secondAttribute="top" id="yC5-Ck-q3h"/>
-                <constraint firstItem="HsJ-pz-24W" firstAttribute="width" secondItem="XzL-h9-cW1" secondAttribute="width" id="zzg-yV-94a"/>
+                <constraint firstAttribute="bottom" secondItem="AJW-5I-W8c" secondAttribute="bottom" id="3ax-VI-oOg"/>
+                <constraint firstItem="jVb-4z-fIc" firstAttribute="top" secondItem="RPy-jT-1Bg" secondAttribute="top" id="EMg-k4-pLc"/>
+                <constraint firstItem="AJW-5I-W8c" firstAttribute="top" secondItem="RPy-jT-1Bg" secondAttribute="top" id="Ngy-hR-bxE"/>
+                <constraint firstItem="Cui-Cz-GXr" firstAttribute="trailing" secondItem="jVb-4z-fIc" secondAttribute="trailing" id="ZDE-9l-6pM"/>
+                <constraint firstItem="jVb-4z-fIc" firstAttribute="leading" secondItem="Cui-Cz-GXr" secondAttribute="leading" id="ky2-mU-JkB"/>
+                <constraint firstItem="Cui-Cz-GXr" firstAttribute="trailing" secondItem="AJW-5I-W8c" secondAttribute="trailing" id="o4d-Bz-asy"/>
+                <constraint firstItem="AJW-5I-W8c" firstAttribute="leading" secondItem="Cui-Cz-GXr" secondAttribute="leading" id="r73-Ep-O8d"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="Cui-Cz-GXr"/>
@@ -59,7 +72,7 @@
                 <outlet property="previousBtn" destination="XzL-h9-cW1" id="yF6-Bo-l7V"/>
                 <outlet property="textLbl" destination="8dc-eD-XLL" id="yj5-Wh-QNg"/>
             </connections>
-            <point key="canvasLocation" x="-181" y="247"/>
+            <point key="canvasLocation" x="-181.15942028985509" y="246.76339285714283"/>
         </view>
     </objects>
 </document>

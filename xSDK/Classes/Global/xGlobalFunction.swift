@@ -74,7 +74,10 @@ public func x_getClassName(withObject object : AnyObject,
     }
     else {
         // 从info.plist读取命名空间并删掉
-        spaceName = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
+        let bundle = Bundle.init(for: aClass)
+        guard let info = bundle.infoDictionary else { return nil }
+        guard let name = info["CFBundleExecutable"] as? String else { return nil }
+        spaceName = name
         className = classStr.replacingOccurrences(of: spaceName, with: "")
         className = className.replacingOccurrences(of: ".", with: "")
     }
@@ -95,6 +98,48 @@ public func x_call(phone : String)
     if UIApplication.shared.canOpenURL(url) {
          UIApplication.shared.openURL(url)
     }
+}
+
+// MARK: - 显示提示标签
+/// 显示提示标签
+public func x_alert(message : String,
+                    duration : Double = 0) -> Void
+{
+    guard message.count > 0 else { return }
+    // 移除旧控件
+    guard let win = x_getKeyWindow() else { return }
+    let tag = 124090    // 固定tag
+    win.viewWithTag(tag)?.removeFromSuperview()
+    // 创建提示标签
+    let lbl = UILabel.init()
+    lbl.tag = tag
+    lbl.numberOfLines = 0
+    lbl.preferredMaxLayoutWidth = x_width - 100
+    lbl.text = message
+    lbl.textAlignment = NSTextAlignment.center
+    lbl.textColor = UIColor.white
+    lbl.backgroundColor = UIColor.init(white: 0, alpha: 0.8)
+    lbl.layer.masksToBounds = true
+    lbl.layer.cornerRadius = 5
+    lbl.alpha = 1
+    // 修改坐标
+    var frame = CGRect.init(origin: CGPoint.zero, size: lbl.x_getContentSize())
+    frame.size.width += 16
+    frame.size.height += 10
+    lbl.frame = frame
+    lbl.center = CGPoint.init(x: win.bounds.size.width / 2.0, y: win.bounds.size.height / 2.0)
+    win.addSubview(lbl)
+    // 设置动画
+    var time = duration
+    if duration == 0 {
+        time = 2.0 + 0.05 * Double(message.count)
+    }
+    UIView.animate(withDuration: time, animations: {
+        lbl.alpha = 0
+    }, completion: {
+        (finished) in
+        lbl.removeFromSuperview()
+    })
 }
 
 // MARK: - 对象锁

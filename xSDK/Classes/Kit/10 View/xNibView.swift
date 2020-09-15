@@ -45,7 +45,8 @@ class xNibView: UIView {
         self.backgroundColor = .clear
         guard let name = x_getClassName(withObject: self) else { return }
         // 加载xib
-        Bundle.main.loadNibNamed(name, owner: self, options: nil)
+        let bundle = Bundle.init(for: self.classForCoder)
+        bundle.loadNibNamed(name, owner: nil, options: nil) 
         // 添加view
         self.addSubview(self.nibView)
         // 改变布局层次
