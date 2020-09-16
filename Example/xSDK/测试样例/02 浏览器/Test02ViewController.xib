@@ -37,7 +37,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="noNaviBtnClick" destination="-1" eventType="touchUpInside" id="nWL-N0-3dO"/>
+                                <action selector="webBtnClick" destination="-1" eventType="touchUpInside" id="HCm-5h-PFZ"/>
                             </connections>
                         </button>
                     </subviews>

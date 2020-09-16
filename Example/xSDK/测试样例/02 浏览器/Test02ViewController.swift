@@ -11,7 +11,7 @@ import xSDK
 
 class Test02ViewController: UIViewController {
     
-    @IBAction func noNaviBtnClick() {
+    @IBAction func webBtnClick() {
         let vc = xWebViewController.quickInstancetype()
         self.navigationController?.pushViewController(vc, animated: true)
         vc.load(url: "https://www.jianshu.com/p/747b7a1dfd06")
