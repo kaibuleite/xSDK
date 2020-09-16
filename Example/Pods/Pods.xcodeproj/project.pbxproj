@@ -14,6 +14,7 @@
 		033813F58E3D20FA511AF1B5C3D58FA7 /* UIView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 100ECE987A302113C261CC4BFD49CEF8 /* UIView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		046266CD2511EE3900D06EFA /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 046266CC2511EE3800D06EFA /* Resource.bundle */; };
 		046266D02511F3C300D06EFA /* xWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266CF2511F3C300D06EFA /* xWebViewController.swift */; };
+		046266D42511F68E00D06EFA /* xWebJavaScriptManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266D32511F68E00D06EFA /* xWebJavaScriptManager.swift */; };
 		050A189DF0B4F405E9D3389F24EDF835 /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = E608848BA535BC2129AE241EDBE1E3B6 /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06AEA7117FE98F2409D2432AAEC326A8 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C369738F3350551E606861147D0D9E42 /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C43862CF5253B4A096F6A913530FE2 /* SDImageLoadersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A44ECD4A1ECED8254C60532415D90A /* SDImageLoadersManager.m */; };
@@ -349,6 +350,7 @@
 		03D7D01F55468A19735E6A2FBFD37D55 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		046266CC2511EE3800D06EFA /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Resource.bundle; path = xSDK/Assets/Resource.bundle; sourceTree = "<group>"; };
 		046266CF2511F3C300D06EFA /* xWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xWebViewController.swift; sourceTree = "<group>"; };
+		046266D32511F68E00D06EFA /* xWebJavaScriptManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xWebJavaScriptManager.swift; sourceTree = "<group>"; };
 		068790B7C5F03FAA1A9778885C830684 /* xAlert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xAlert.swift; sourceTree = "<group>"; };
 		07EDE605D535B6C8F4DD8DC5BFACE205 /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -723,6 +725,7 @@
 			isa = PBXGroup;
 			children = (
 				046266CF2511F3C300D06EFA /* xWebViewController.swift */,
+				046266D32511F68E00D06EFA /* xWebJavaScriptManager.swift */,
 			);
 			path = "02 浏览器";
 			sourceTree = "<group>";
@@ -1914,6 +1917,7 @@
 				50120D881C8A7B2D969BF4951B2C5369 /* xRequestMask+AnimeLineJump.swift in Sources */,
 				39B9BD7FCA4B62FC6BD544E9346CD806 /* xRequestMask+AnimeMagic1.swift in Sources */,
 				A3CE53BCB6757EC15C227D16CF926B59 /* xRequestMask.storyboard in Sources */,
+				046266D42511F68E00D06EFA /* xWebJavaScriptManager.swift in Sources */,
 				BA1D20014B35A353B19B80C11AB84410 /* xRequestMaskConfig.swift in Sources */,
 				511D28CB36BAB683B5A3A5F84C09B19E /* xRequestMaskViewController.swift in Sources */,
 				E74034278B996EDF897835AAD24AA740 /* xSDK-dummy.m in Sources */,

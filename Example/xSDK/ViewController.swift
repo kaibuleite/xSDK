@@ -34,6 +34,8 @@ class ViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             vc = Test01ViewController.init()
+        case 1:
+            vc = Test02ViewController.init()
         default:
             break
         }

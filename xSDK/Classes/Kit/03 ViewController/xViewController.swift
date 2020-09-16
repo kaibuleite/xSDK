@@ -11,7 +11,7 @@ open class xViewController: UIViewController {
     
     // MARK: - IBOutlet Property
     /// 自定义导航栏
-    @IBOutlet open weak var topNaviBar: UIView?
+    @IBOutlet open weak var topNaviBar: xNavigationView?
     /// 安全区域
     @IBOutlet open weak var safeView: UIView?
     /// 子控制器容器
