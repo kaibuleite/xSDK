@@ -9,6 +9,22 @@
 import UIKit
 import xSDK
 
+// MARK: - Enum
+// MARK: - Handler
+
+// MARK: - IBOutlet Property
+// MARK: - IBInspectable Property
+
+// MARK: - Open Property
+// MARK: - Public Property
+// MARK: - Private Property
+
+// MARK: - Open Override Func
+// MARK: - Public Override Func
+// MARK: - Open Func
+// MARK: - Public Func
+// MARK: - Private Func
+
 class ViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

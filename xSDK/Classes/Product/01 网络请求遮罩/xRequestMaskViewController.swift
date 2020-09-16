@@ -30,7 +30,7 @@ public class xRequestMaskViewController: xViewController {
     var isShow = false
     
     // MARK: - Public Override Func
-    static let shared = xRequestMaskViewController.quickInstancetype()
+    public static let shared = xRequestMaskViewController.quickInstancetype()
     public override class func quickInstancetype() -> Self {
         if let vc = xRequestMaskViewController.new(storyboard: "xRequestMask") {
             return vc as! Self
@@ -68,10 +68,11 @@ public class xRequestMaskViewController: xViewController {
     ///   - style: 遮罩样式
     ///   - msg: 提示内容
     public static func display(msg : String? = nil,
-                               delay : TimeInterval = 30)
+                               delay : TimeInterval = 10)
     {
         guard shared.isShow == false else { return }    // 保证只显示1个遮罩
         guard let window = x_getKeyWindow() else { return }
+        shared.view.tag += 1
         shared.isShow = true
         // 添加UI
         shared.view.alpha = 0
@@ -85,6 +86,7 @@ public class xRequestMaskViewController: xViewController {
         }, completion: {
             (finish) in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay, execute: {
+                shared.view.tag = 1 // 强制关闭
                 self.dismiss()
             })
         })
@@ -92,7 +94,10 @@ public class xRequestMaskViewController: xViewController {
     /// 隐藏遮罩
     public static func dismiss()
     {
+        shared.view.tag -= 1
         guard shared.isShow else { return }
+        guard shared.view.tag <= 0 else { return }
+        shared.view.tag = 0
         UIView.animate(withDuration: 0.25, animations: {
             shared.view.alpha = 0
         }, completion: {
@@ -118,19 +123,19 @@ public class xRequestMaskViewController: xViewController {
         case .clear:
             self.view.backgroundColor = .clear
         case .gray:
-            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         }
         // 加载控件样式
+        let arr = [self.aiView, self.gifIcon, self.animeContainer]
+        var idx = 0
         switch config.flagStyle {
-        case .indicator:
-            self.gifIcon.isHidden = true
-            self.aiView.isHidden = false
-        case .gif:
-            self.gifIcon.isHidden = false
-            self.aiView.isHidden = true
-        case .anime:
-            self.gifIcon.isHidden = true
-            self.aiView.isHidden = true
+        case .indicator:    idx = 0
+        case .gif:          idx = 1
+        case .anime:        idx = 2
+        }
+        for (i, obj) in arr.enumerated() {
+            let spv = obj?.superview ?? obj
+            spv?.isHidden = i != idx
         }
     }
     /// 开始动画

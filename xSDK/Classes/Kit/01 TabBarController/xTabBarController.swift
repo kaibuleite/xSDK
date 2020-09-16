@@ -9,24 +9,6 @@ import UIKit
 
 open class xTabBarController: UITabBarController {
     
-    
-    // MARK: - Enum
-    // MARK: - Handler
-    
-    // MARK: - IBOutlet Property
-    // MARK: - IBInspectable Property
-    
-    // MARK: - Open Property
-    // MARK: - Public Property
-    // MARK: - Private Property
-    
-    // MARK: - Open Override Func
-    // MARK: - Public Override Func
-    // MARK: - Open Func
-    // MARK: - Public Func
-    // MARK: - Private Func
-    
-    
     // MARK: - 内存释放
     deinit {
         guard let name = x_getClassName(withObject: self) else { return }
