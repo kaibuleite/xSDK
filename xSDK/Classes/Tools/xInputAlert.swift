@@ -7,9 +7,9 @@
 
 import UIKit
 
-class xInputAlert: NSObject {
+public class xInputAlert: NSObject {
     
-    // MARK: - 显示输入提示窗
+    // MARK: - Open Func
     /// 显示输入提示窗
     /// - Parameters:
     ///   - viewController: 父控制器
@@ -20,14 +20,14 @@ class xInputAlert: NSObject {
     ///   - cancelTitle: 取消标题
     ///   - sureHandler: 确定回调
     ///   - cancelHandler: 取消回调
-    open class func display(from viewController : UIViewController,
-                            title : String?,
-                            placeholder : String?,
-                            keyboardType : UIKeyboardType = .default,
-                            sureTitle : String? = "确定",
-                            cancelTitle : String? = "取消",
-                            sureHandler : @escaping (String) -> Void,
-                            cancelHandler : @escaping () -> Void) -> Void
+    public static func display(from viewController : UIViewController,
+                               title : String?,
+                               placeholder : String?,
+                               keyboardType : UIKeyboardType = .default,
+                               sureTitle : String? = "确定",
+                               cancelTitle : String? = "取消",
+                               sureHandler : @escaping (String) -> Void,
+                               cancelHandler : @escaping () -> Void) -> Void
     {
         let alert = UIAlertController.init(title: title,
                                            message: nil,

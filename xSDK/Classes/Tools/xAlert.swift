@@ -7,9 +7,9 @@
 
 import UIKit
 
-class xAlert: NSObject {
+public class xAlert: NSObject {
     
-    // MARK: - 显示提示窗
+    // MARK: - Open Func
     /// 显示提示窗
     /// - Parameters:
     ///   - viewController: 父控制器
@@ -19,13 +19,13 @@ class xAlert: NSObject {
     ///   - itemCancel: 取消标题
     ///   - sure: 确定回调
     ///   - cancel: 取消回调
-    open class func display(from viewController : UIViewController,
-                            title : String?,
-                            message : String?,
-                            sureTitle : String? = "确定",
-                            cancelTitle : String? = "取消",
-                            sureHandler : @escaping () -> Void,
-                            cancelHandler : @escaping () -> Void) -> Void
+    public static func display(from viewController : UIViewController,
+                               title : String?,
+                               message : String?,
+                               sureTitle : String? = "确定",
+                               cancelTitle : String? = "取消",
+                               sureHandler : @escaping () -> Void,
+                               cancelHandler : @escaping () -> Void) -> Void
     {
         let alert = UIAlertController.init(title: title,
                                            message: message,

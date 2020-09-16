@@ -7,9 +7,9 @@
 
 import UIKit
 
-class xActionSheet: NSObject {
+public class xActionSheet: NSObject {
     
-    // MARK: - 显示选择提示窗
+    // MARK: - Open Func
     /// 显示选择提示窗
     /// - Parameters:
     ///   - viewController: 父控制器
@@ -19,12 +19,12 @@ class xActionSheet: NSObject {
     ///   - cancelTitle: 取消标题
     ///   - sureHandler: 确定回调
     ///   - cancelHandler: 取消回调
-    open class func display(from viewController : UIViewController,
-                            title : String?,
-                            dataArray : [String],
-                            cancelTitle : String? = "取消",
-                            itemHandler : @escaping (Int, String) -> Void,
-                            cancelHandler : @escaping () -> Void) -> Void
+    public static func display(from viewController : UIViewController,
+                               title : String?,
+                               dataArray : [String],
+                               cancelTitle : String? = "取消",
+                               itemHandler : @escaping (Int, String) -> Void,
+                               cancelHandler : @escaping () -> Void) -> Void
     {
         let actionSheet = UIAlertController.init(title: title,
                                                  message: nil,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class xPage: NSObject {
+public class xPage: NSObject {
     
     // MARK: - Public Property
     /// 当前页数
