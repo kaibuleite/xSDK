@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xXB-Ke-4MH">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Request Mask View Controller-->
+        <scene sceneID="DGf-cG-bSR">
+            <objects>
+                <viewController id="xXB-Ke-4MH" customClass="xRequestMaskViewController" customModule="xSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CgU-n5-Ezv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DTk-Zh-uOx" customClass="xSafeView" customModule="xSDK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JWn-3K-MNK">
+                                        <rect key="frame" x="30" y="319" width="354" height="180.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1s-XH-OlL" customClass="xClearView" customModule="xSDK" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H6s-jw-80O">
+                                                        <rect key="frame" x="152" y="0.0" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="Xgp-GL-WEH"/>
+                                                            <constraint firstAttribute="width" secondItem="H6s-jw-80O" secondAttribute="height" multiplier="1:1" id="wDE-Mt-c1J"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="H6s-jw-80O" firstAttribute="centerY" secondItem="S1s-XH-OlL" secondAttribute="centerY" id="ESa-9A-bVd"/>
+                                                    <constraint firstItem="H6s-jw-80O" firstAttribute="top" secondItem="S1s-XH-OlL" secondAttribute="top" id="gV3-wf-ce4"/>
+                                                    <constraint firstItem="H6s-jw-80O" firstAttribute="centerX" secondItem="S1s-XH-OlL" secondAttribute="centerX" id="j13-kd-skp"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZ8-Jz-Crk" customClass="xClearView" customModule="xSDK" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="58" width="354" height="37"/>
+                                                <subviews>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="75E-6b-uhR">
+                                                        <rect key="frame" x="158.5" y="0.0" width="37" height="37"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="75E-6b-uhR" secondAttribute="height" multiplier="1:1" id="AgS-80-LKU"/>
+                                                        </constraints>
+                                                        <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </activityIndicatorView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="75E-6b-uhR" firstAttribute="centerX" secondItem="eZ8-Jz-Crk" secondAttribute="centerX" id="Wdn-iO-eIi"/>
+                                                    <constraint firstItem="75E-6b-uhR" firstAttribute="centerY" secondItem="eZ8-Jz-Crk" secondAttribute="centerY" id="bCD-e6-gky"/>
+                                                    <constraint firstItem="75E-6b-uhR" firstAttribute="top" secondItem="eZ8-Jz-Crk" secondAttribute="top" id="fZg-3Y-nnr"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R82-Kw-7vd" customClass="xClearView" customModule="xSDK" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="103" width="354" height="50"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrx-5N-sEM" customClass="xClearView" customModule="xSDK">
+                                                        <rect key="frame" x="152" y="0.0" width="50" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="4xk-oD-BRU"/>
+                                                            <constraint firstAttribute="width" secondItem="nrx-5N-sEM" secondAttribute="height" id="H0a-1l-WXr"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="nrx-5N-sEM" firstAttribute="top" secondItem="R82-Kw-7vd" secondAttribute="top" id="Gmf-3L-K3t"/>
+                                                    <constraint firstItem="nrx-5N-sEM" firstAttribute="centerX" secondItem="R82-Kw-7vd" secondAttribute="centerX" id="SAf-c7-LBW"/>
+                                                    <constraint firstItem="nrx-5N-sEM" firstAttribute="centerY" secondItem="R82-Kw-7vd" secondAttribute="centerY" id="Z6Q-Uy-R8S"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="MSG" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoE-N3-4t6">
+                                                <rect key="frame" x="0.0" y="161" width="354" height="19.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="JWn-3K-MNK" firstAttribute="centerY" secondItem="DTk-Zh-uOx" secondAttribute="centerY" id="1zl-MO-JNp"/>
+                                    <constraint firstItem="JWn-3K-MNK" firstAttribute="centerX" secondItem="DTk-Zh-uOx" secondAttribute="centerX" id="I1B-F5-ccD"/>
+                                    <constraint firstItem="JWn-3K-MNK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DTk-Zh-uOx" secondAttribute="leading" constant="30" id="mne-uG-qdd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DTk-Zh-uOx" firstAttribute="bottom" secondItem="aAl-mt-KXh" secondAttribute="bottom" id="J5P-ib-u3g"/>
+                            <constraint firstItem="DTk-Zh-uOx" firstAttribute="leading" secondItem="aAl-mt-KXh" secondAttribute="leading" id="aGw-hd-ltq"/>
+                            <constraint firstItem="DTk-Zh-uOx" firstAttribute="top" secondItem="aAl-mt-KXh" secondAttribute="top" id="oe7-LD-JiQ"/>
+                            <constraint firstItem="DTk-Zh-uOx" firstAttribute="trailing" secondItem="aAl-mt-KXh" secondAttribute="trailing" id="wkq-cA-2Gg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aAl-mt-KXh"/>
+                    </view>
+                    <connections>
+                        <outlet property="aiView" destination="75E-6b-uhR" id="7wv-Qb-M7b"/>
+                        <outlet property="animeContainer" destination="nrx-5N-sEM" id="jFf-k0-jYr"/>
+                        <outlet property="gifIcon" destination="H6s-jw-80O" id="ugm-73-62n"/>
+                        <outlet property="msgLbl" destination="KoE-N3-4t6" id="DKm-Az-QEE"/>
+                        <outlet property="safeView" destination="DTk-Zh-uOx" id="lpa-4b-J3O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="656-EF-NL7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="283" y="-137"/>
+        </scene>
+    </scenes>
+</document>

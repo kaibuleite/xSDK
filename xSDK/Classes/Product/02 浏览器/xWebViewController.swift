@@ -17,7 +17,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     public var isShowLoadingProgress : Bool = true
     /// 进度条颜色
     @IBInspectable
-    public var loadingProgressColor : UIColor = .blue {
+    public var loadingProgressColor : UIColor = UIColor.blue.withAlphaComponent(0.5) {
         didSet {
             self.progressView.progressTintColor = self.loadingProgressColor
         }
@@ -45,7 +45,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     
     // MARK: - Open Override Func
     open override class func quickInstancetype() -> Self {
-        let vc = xWebViewController()
+        let vc = xWebViewController.new(storyboard: "xWebViewController")
         return vc as! Self
     }
     open override func viewDidLoad() {
@@ -55,12 +55,12 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         // web
         self.web.allowsBackForwardNavigationGestures = true // 是否支持手势返回
         self.web.navigationDelegate = self
-        self.view.addSubview(web)
+        self.safeView?.addSubview(web)
         // 进度条
         self.progressView.progressTintColor = self.loadingProgressColor
         self.progressView.trackTintColor = .groupTableViewBackground
         self.progressView.isHidden = true
-        self.view.addSubview(self.progressView)
+        self.safeView?.addSubview(self.progressView)
         // 其他
         self.addObserver()
     }
@@ -68,7 +68,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         super.viewDidAppear(animated)
         var frame = self.view.bounds
         self.web.frame = frame
-        frame = .init(x: 0, y: 5, width: x_width, height: 2)
+        frame.size.height = 2
         self.progressView.frame = frame
     }
     open override func observeValue(forKeyPath keyPath: String?,

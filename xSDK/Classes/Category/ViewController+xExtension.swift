@@ -13,17 +13,17 @@ extension UIViewController {
     // TODO: 实例化对象
     /// 通过storyboard实例化
     public class func new(storyboard name : String,
-                          identifier : String = "") -> Self?
+                          identifier : String = "") -> Self
     {
         let bundle = Bundle.init(for: self.classForCoder())
         let sb = UIStoryboard.init(name: name, bundle: bundle)
         if identifier == "" {
             let vc = sb.instantiateInitialViewController()
-            return vc as? Self
+            return vc as! Self
         }
         else {
             let vc = sb.instantiateViewController(withIdentifier: identifier)
-            return vc as? Self
+            return vc as! Self
         }
     }
     

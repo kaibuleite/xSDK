@@ -31,15 +31,13 @@ public class xRequestMaskViewController: xViewController {
     
     // MARK: - Public Override Func
     public static let shared = xRequestMaskViewController.quickInstancetype()
-    public override class func quickInstancetype() -> Self {
-        if let vc = xRequestMaskViewController.new(storyboard: "xRequestMask") {
-            return vc as! Self
-        }
-        return xRequestMaskViewController() as! Self
+    public override class func quickInstancetype() -> Self { 
+        let vc = xRequestMaskViewController.new(storyboard: "xRequestMaskViewController")
+        return vc as! Self
     }
     public override func viewDidLoad() {
         super.viewDidLoad()
-        xRequestMaskViewController.recoverDefaultStyle()
+        // 基本配置
         self.animeLayer.backgroundColor = UIColor.clear.cgColor
         self.animeLayer.fillColor = UIColor.clear.cgColor
         self.animeContainer.layer.addSublayer(self.animeLayer)

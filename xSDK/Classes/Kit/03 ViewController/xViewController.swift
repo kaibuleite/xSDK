@@ -13,9 +13,9 @@ open class xViewController: UIViewController {
     /// 自定义导航栏
     @IBOutlet open weak var topNaviBar: xNavigationView?
     /// 安全区域
-    @IBOutlet open weak var safeView: UIView?
+    @IBOutlet open weak var safeView: xSafeView?
     /// 子控制器容器
-    @IBOutlet open weak var childContainer: UIView?
+    @IBOutlet open weak var childContainer: xContainerView?
     
     // MARK: - IBInspectable Property
     /// 控制器描述

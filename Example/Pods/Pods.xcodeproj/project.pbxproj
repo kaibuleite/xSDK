@@ -15,6 +15,10 @@
 		046266CD2511EE3900D06EFA /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 046266CC2511EE3800D06EFA /* Resource.bundle */; };
 		046266D02511F3C300D06EFA /* xWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266CF2511F3C300D06EFA /* xWebViewController.swift */; };
 		046266D42511F68E00D06EFA /* xWebJavaScriptManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266D32511F68E00D06EFA /* xWebJavaScriptManager.swift */; };
+		046266E72512125A00D06EFA /* xSafeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266E52512121A00D06EFA /* xSafeView.swift */; };
+		046266E9251212A200D06EFA /* xContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266E8251212A200D06EFA /* xContainerView.swift */; };
+		046266EB2512134E00D06EFA /* xRequestMaskViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046266EA2512134E00D06EFA /* xRequestMaskViewController.storyboard */; };
+		046266ED2512135D00D06EFA /* xWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046266EC2512135D00D06EFA /* xWebViewController.storyboard */; };
 		050A189DF0B4F405E9D3389F24EDF835 /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = E608848BA535BC2129AE241EDBE1E3B6 /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06AEA7117FE98F2409D2432AAEC326A8 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C369738F3350551E606861147D0D9E42 /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C43862CF5253B4A096F6A913530FE2 /* SDImageLoadersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A44ECD4A1ECED8254C60532415D90A /* SDImageLoadersManager.m */; };
@@ -193,7 +197,6 @@
 		A26011648EA7CD910788DBBF08C36F32 /* SDImageCacheDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 20F712038A17C6A49EC7810BD431912F /* SDImageCacheDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A364C7F117EBEAA69A46A224ACB81690 /* xCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFC9799E26C90D1A4D368053716A5A3 /* xCollectionViewController.swift */; };
 		A3A38FFF99F8F65D21F6526D4D257230 /* SDWebImageDownloaderConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D0B9578B859DB5A01D45DAECD8CC78F /* SDWebImageDownloaderConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A3CE53BCB6757EC15C227D16CF926B59 /* xRequestMask.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 4301DCB219FDABF0350C196FDFF24D3F /* xRequestMask.storyboard */; };
 		A5AD02C445E69C15836B9F7FF6A6A7FB /* SDWebImageCacheKeyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F30B826C018D329BEB6369709DB858 /* SDWebImageCacheKeyFilter.m */; };
 		A7B257D75993F5C90FAEEB16780CC215 /* NSBundle+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7C29BCBBC1BEE59654DC508F8107F8 /* NSBundle+MJRefresh.m */; };
 		A877D80347EA51F3E7BAAD263914CA86 /* Image+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8953E3927E726AE5CE695BA23F143E83 /* Image+xExtension.swift */; };
@@ -351,6 +354,10 @@
 		046266CC2511EE3800D06EFA /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Resource.bundle; path = xSDK/Assets/Resource.bundle; sourceTree = "<group>"; };
 		046266CF2511F3C300D06EFA /* xWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xWebViewController.swift; sourceTree = "<group>"; };
 		046266D32511F68E00D06EFA /* xWebJavaScriptManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xWebJavaScriptManager.swift; sourceTree = "<group>"; };
+		046266E52512121A00D06EFA /* xSafeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xSafeView.swift; sourceTree = "<group>"; };
+		046266E8251212A200D06EFA /* xContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xContainerView.swift; sourceTree = "<group>"; };
+		046266EA2512134E00D06EFA /* xRequestMaskViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xRequestMaskViewController.storyboard; sourceTree = "<group>"; };
+		046266EC2512135D00D06EFA /* xWebViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xWebViewController.storyboard; sourceTree = "<group>"; };
 		068790B7C5F03FAA1A9778885C830684 /* xAlert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xAlert.swift; sourceTree = "<group>"; };
 		07EDE605D535B6C8F4DD8DC5BFACE205 /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -428,7 +435,6 @@
 		4160BE07A6F03F929A605122DC0EEC0B /* SDWebImageError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageError.m; path = SDWebImage/Core/SDWebImageError.m; sourceTree = "<group>"; };
 		4261D033624164B55F0A9E06D558097D /* String+xExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+xExtension.swift"; sourceTree = "<group>"; };
 		42A44ECD4A1ECED8254C60532415D90A /* SDImageLoadersManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageLoadersManager.m; path = SDWebImage/Core/SDImageLoadersManager.m; sourceTree = "<group>"; };
-		4301DCB219FDABF0350C196FDFF24D3F /* xRequestMask.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = xRequestMask.storyboard; sourceTree = "<group>"; };
 		44671298AC47EF582109898D588E6E45 /* SDImageAPNGCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageAPNGCoder.m; path = SDWebImage/Core/SDImageAPNGCoder.m; sourceTree = "<group>"; };
 		44D833A27CD239348B201FA45C4C3100 /* xGlobalValue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xGlobalValue.swift; sourceTree = "<group>"; };
 		4522DA350D710DF7BFF7C4F8C9668049 /* xSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = xSDK.release.xcconfig; sourceTree = "<group>"; };
@@ -725,6 +731,7 @@
 			isa = PBXGroup;
 			children = (
 				046266CF2511F3C300D06EFA /* xWebViewController.swift */,
+				046266EC2512135D00D06EFA /* xWebViewController.storyboard */,
 				046266D32511F68E00D06EFA /* xWebJavaScriptManager.swift */,
 			);
 			path = "02 浏览器";
@@ -989,6 +996,8 @@
 				F317221B766EA80470F75554D057F23C /* xNavigationView.swift */,
 				8A08B872B2CC1E3EE16DF38E6BF47692 /* xNavigationView.xib */,
 				30C41B96D90B8E30E035BA83C3EC6CD3 /* xNibView.swift */,
+				046266E52512121A00D06EFA /* xSafeView.swift */,
+				046266E8251212A200D06EFA /* xContainerView.swift */,
 			);
 			path = "10 View";
 			sourceTree = "<group>";
@@ -1330,9 +1339,9 @@
 		C4777B639412F00061A35373351D9AA1 /* 01 网络请求遮罩 */ = {
 			isa = PBXGroup;
 			children = (
-				4301DCB219FDABF0350C196FDFF24D3F /* xRequestMask.storyboard */,
 				DC0A8775D697834E6850B8EB6B27F1F0 /* xRequestMaskConfig.swift */,
 				CC6B6EEF9BB185223D88339DDA0C8C29 /* xRequestMaskViewController.swift */,
+				046266EA2512134E00D06EFA /* xRequestMaskViewController.storyboard */,
 				424BF6203994D3A869435159629766AE /* Animation */,
 			);
 			path = "01 网络请求遮罩";
@@ -1723,6 +1732,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046266EB2512134E00D06EFA /* xRequestMaskViewController.storyboard in Resources */,
+				046266ED2512135D00D06EFA /* xWebViewController.storyboard in Resources */,
 				046266CD2511EE3900D06EFA /* Resource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1875,6 +1886,7 @@
 				EDF813CCD806C182B3E409D8B7E7EBD2 /* Color+xExtension.swift in Sources */,
 				18962E12A6F6B0B692B6E568B640A938 /* Double+xExtension.swift in Sources */,
 				65FA40F5360942D98FEAFD96A0E11C67 /* Float+xExtension.swift in Sources */,
+				046266E9251212A200D06EFA /* xContainerView.swift in Sources */,
 				A877D80347EA51F3E7BAAD263914CA86 /* Image+xExtension.swift in Sources */,
 				B65494BD0BBDF40BC1B2BD824C2A5E76 /* Label+xExtension.swift in Sources */,
 				CDB1AFB17D0666E573E8A4117E4A26B7 /* ReplaceMe.swift in Sources */,
@@ -1915,8 +1927,8 @@
 				7ADAEC6FDD4A3B21C9D11F8AB4D9D3E8 /* xRequestMask+AnimeEatBeans.swift in Sources */,
 				22805D39E79B5EE78E80407AD90F15B5 /* xRequestMask+AnimeLayer.swift in Sources */,
 				50120D881C8A7B2D969BF4951B2C5369 /* xRequestMask+AnimeLineJump.swift in Sources */,
+				046266E72512125A00D06EFA /* xSafeView.swift in Sources */,
 				39B9BD7FCA4B62FC6BD544E9346CD806 /* xRequestMask+AnimeMagic1.swift in Sources */,
-				A3CE53BCB6757EC15C227D16CF926B59 /* xRequestMask.storyboard in Sources */,
 				046266D42511F68E00D06EFA /* xWebJavaScriptManager.swift in Sources */,
 				BA1D20014B35A353B19B80C11AB84410 /* xRequestMaskConfig.swift in Sources */,
 				511D28CB36BAB683B5A3A5F84C09B19E /* xRequestMaskViewController.swift in Sources */,
