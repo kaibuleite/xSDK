@@ -43,6 +43,8 @@ open class xAPI: NSObject {
     /// 单例
     public static let shared = xAPI()
     private override init() { }
+
+    // MARK: - Private Property
     /// 请求次数
     var requestCount = 0
     /// 请求记录
@@ -51,11 +53,6 @@ open class xAPI: NSObject {
             //xLog("🍥🍥🍥 ReqCount = \(self.requestRecordList.count)   🍥🍥🍥")
         }
     }
-    /// 出错Html提示
-//    let errorHtmlWeb = MyWebBrowserViewController.quickInstancetype()
-    let errorHtmlWeb = xViewController.quickInstancetype()
-    
-    
     
     // MARK: - Open Func
     // TODO: 参数处理
