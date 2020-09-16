@@ -18,4 +18,5 @@ public let x_statusHeight = UIApplication.shared.statusBarFrame.height
 public let x_navigationBarHeight = UINavigationController().navigationBar.frame.height
 /// 菜单栏高度
 public let x_tabbarHeight = UITabBarController().tabBar.frame.height
-
+/// 重新登录提示
+public let x_NotificationReLogin = Notification.Name.init("x重新登录")
