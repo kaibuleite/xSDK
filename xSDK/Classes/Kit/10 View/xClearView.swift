@@ -7,10 +7,10 @@
 
 import UIKit
 
-open class xClearView: UIView {
+public class xClearView: UIView {
     
-    // MARK: - Open Override Func
-    open override func awakeFromNib() {
+    // MARK: - Public Override Func
+    public override func awakeFromNib() {
         super.awakeFromNib()
         // 或者在 init(coder:) 里实现
         self.setContentKit()
@@ -18,8 +18,6 @@ open class xClearView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    // MARK: - Public Override Func
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.setContentKit()

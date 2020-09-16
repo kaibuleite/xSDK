@@ -13,6 +13,7 @@
 		02B6598C52131C10E3CA344FB49B87FA /* SDWebImageTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D59871803F53A16039EC97BA290760F /* SDWebImageTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		033813F58E3D20FA511AF1B5C3D58FA7 /* UIView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 100ECE987A302113C261CC4BFD49CEF8 /* UIView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		046266CD2511EE3900D06EFA /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 046266CC2511EE3800D06EFA /* Resource.bundle */; };
+		046266D02511F3C300D06EFA /* xWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266CF2511F3C300D06EFA /* xWebViewController.swift */; };
 		050A189DF0B4F405E9D3389F24EDF835 /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = E608848BA535BC2129AE241EDBE1E3B6 /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06AEA7117FE98F2409D2432AAEC326A8 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C369738F3350551E606861147D0D9E42 /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C43862CF5253B4A096F6A913530FE2 /* SDImageLoadersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A44ECD4A1ECED8254C60532415D90A /* SDImageLoadersManager.m */; };
@@ -347,6 +348,7 @@
 /* Begin PBXFileReference section */
 		03D7D01F55468A19735E6A2FBFD37D55 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		046266CC2511EE3800D06EFA /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Resource.bundle; path = xSDK/Assets/Resource.bundle; sourceTree = "<group>"; };
+		046266CF2511F3C300D06EFA /* xWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xWebViewController.swift; sourceTree = "<group>"; };
 		068790B7C5F03FAA1A9778885C830684 /* xAlert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xAlert.swift; sourceTree = "<group>"; };
 		07EDE605D535B6C8F4DD8DC5BFACE205 /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -717,10 +719,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		046266CE2511F3A500D06EFA /* 02 浏览器 */ = {
+			isa = PBXGroup;
+			children = (
+				046266CF2511F3C300D06EFA /* xWebViewController.swift */,
+			);
+			path = "02 浏览器";
+			sourceTree = "<group>";
+		};
 		1D3BCC41FE12D78C2CC6E85540A58D93 /* Product */ = {
 			isa = PBXGroup;
 			children = (
 				C4777B639412F00061A35373351D9AA1 /* 01 网络请求遮罩 */,
+				046266CE2511F3A500D06EFA /* 02 浏览器 */,
 			);
 			name = Product;
 			path = xSDK/Classes/Product;
@@ -1871,6 +1882,7 @@
 				7F75C91429AA2628597BEB1A07B9A208 /* xActionSheet.swift in Sources */,
 				E63D4D69FFF1AAE6A8921617B6C0CD9B /* xAlert.swift in Sources */,
 				70085C48A590D047A35D7D10DD997C64 /* xAnimation.swift in Sources */,
+				046266D02511F3C300D06EFA /* xWebViewController.swift in Sources */,
 				358D8DF0496F6F1B4426FAF2D4E35DAC /* xAPI.swift in Sources */,
 				34BB2953C16FEA9E6AD7154186A586E9 /* xAPIConfig.swift in Sources */,
 				444D593510182861263C7E2F25BF2146 /* xAPIRecord.swift in Sources */,
