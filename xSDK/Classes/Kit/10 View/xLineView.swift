@@ -12,7 +12,11 @@ open class xLineView: UIView {
     // MARK: - IBInspectable Property
     /// 线条颜色
     @IBInspectable
-    public var lineColor : UIColor = .groupTableViewBackground
+    public var lineColor : UIColor = .groupTableViewBackground {
+        didSet {
+            self.backgroundColor = self.lineColor
+        }
+    }
     
     // MARK: - Open Override Func
     open override func awakeFromNib() {

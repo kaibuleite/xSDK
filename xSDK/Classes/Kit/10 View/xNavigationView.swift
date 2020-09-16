@@ -11,9 +11,11 @@ public class xNavigationView: xNibView {
     
     // MARK: - IBOutlet Property
     /// 返回按钮
-    @IBOutlet public weak var backBtn: UIButton!
+    @IBOutlet weak var backBtn: UIButton!
     /// 标题标签
-    @IBOutlet public weak  var titleLbl: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
+    /// 分割线
+    @IBOutlet weak var lineView: xLineView!
     
     // MARK: - IBInspectable Property
     /// 是否返回root（默认false）
@@ -27,7 +29,7 @@ public class xNavigationView: xNibView {
         }
     }
     /// 标题
-    @IBInspectable var title : String? {
+    @IBInspectable var title : String = "" {
         didSet {
             self.titleLbl.text = self.title
         }
@@ -36,34 +38,44 @@ public class xNavigationView: xNibView {
     @IBInspectable var titleColor: UIColor = .darkText {
         didSet {
             self.titleLbl.textColor = self.titleColor
+            self.backBtn.tintColor = self.titleColor
+        }
+    }
+    /// 分割线颜色
+    @IBInspectable var lineColor: UIColor = .groupTableViewBackground {
+        didSet {
+            self.lineView.lineColor = self.lineColor
         }
     }
     /// 导航栏颜色
-    @IBInspectable var barColor : UIColor = xNavigationBarColor {
+    @IBInspectable var barColor : UIColor = .white {
         didSet {
             self.backgroundColor = self.barColor
         }
     }
     
-    // MARK: - 重载方法
-    override func setGlobalStyle() {
-        super.setGlobalStyle()
+    // MARK: - Public Override Func
+    public override func initKit()
+    {
+        super.initKit()
         self.backgroundColor = self.barColor
-        // 优先显示绑定的视图控制器title
-        if let title = self.vc?.title {
-            self.titleLbl.text = title
-        } else {
-            self.titleLbl.text = self.title
-        }
         self.titleLbl.textColor = self.titleColor
+        self.backBtn.tintColor = self.titleColor
         self.backBtn.isHidden = !self.isShowBackBtn
+        // 标题
+        self.titleLbl.text = self.title
+        if self.title.isEmpty {
+            self.titleLbl.text = self.vc?.title
+        }
     }
-    
-    // MARK: - 返回
-    @IBAction func backBtnClick(_ sender: UIButton) {
-        self.xibView.endEditing(true)
+
+    // MARK: - IBAction Func
+    /// 返回
+    @IBAction func backBtnClick(_ sender: UIButton)
+    {
+        x_getKeyWindow()?.endEditing(true)
+        // 尝试模态退出
         guard let nvc = self.vc?.navigationController else {
-            // 尝试模态退出
             self.vc?.dismiss(animated: true, completion: nil)
             return
         }

@@ -54,10 +54,11 @@ open class xNibView: UIView {
         let bundle = Bundle.init(for: self.classForCoder)
         bundle.loadNibNamed(name, owner: nil, options: nil) 
         // 添加view
+        self.nibView.backgroundColor = .clear
         self.addSubview(self.nibView)
-        // 改变布局层次
-        self.sendSubviewToBack(self.nibView)
         DispatchQueue.main.async {
+            // 改变布局层次
+            self.sendSubviewToBack(self.nibView)
             self.initKit()
         }
     }
