@@ -1,5 +1,5 @@
 //
-//  xRequestMaskViewController.swift
+//  xMaskViewController.swift
 //  Alamofire
 //
 //  Created by Mac on 2020/9/15.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class xRequestMaskViewController: xViewController {
+public class xMaskViewController: xViewController {
     
     // MARK: - IBOutlet Property
     /// 菊花控件
@@ -21,7 +21,7 @@ public class xRequestMaskViewController: xViewController {
     
     // MARK: - Public Property
     /// 配置
-    public var config = xRequestMaskConfig()
+    public var config = xMaskConfig()
     
     // MARK: - Private Property
     /// 承载动画的layer
@@ -30,9 +30,9 @@ public class xRequestMaskViewController: xViewController {
     var isShow = false
     
     // MARK: - Public Override Func
-    public static let shared = xRequestMaskViewController.quickInstancetype()
+    public static let shared = xMaskViewController.quickInstancetype()
     public override class func quickInstancetype() -> Self { 
-        let vc = xRequestMaskViewController.new(storyboard: "xRequestMaskViewController")
+        let vc = xMaskViewController.new(storyboard: "xMaskViewController")
         return vc as! Self
     }
     public override func viewDidLoad() {
@@ -57,7 +57,7 @@ public class xRequestMaskViewController: xViewController {
         let config = shared.config
         config.bgStyle = arc4random() % 2 == 0 ? .clear : .gray
         config.flagStyle = arc4random() % 2 == 0 ? .indicator : .anime
-        let arr : [xRequestMaskConfig.xLoadingAnimeTypeEnum] = [.lineJump, .eatBeans, .magic1, .magic2]
+        let arr : [xMaskConfig.xLoadingAnimeTypeEnum] = [.lineJump, .eatBeans, .magic1, .magic2]
         let idx = arc4random() % 4
         config.animeStyle = arr[Int(idx)]
     }

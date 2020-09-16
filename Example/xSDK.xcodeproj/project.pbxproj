@@ -89,19 +89,19 @@
 		04DE844D2510AF25008615B3 /* 测试样例 */ = {
 			isa = PBXGroup;
 			children = (
-				04DE844E2510AF31008615B3 /* 01 网络请求遮罩 */,
+				04DE844E2510AF31008615B3 /* 01 遮罩 */,
 				046266D52511FF6000D06EFA /* 02 浏览器 */,
 			);
 			path = "测试样例";
 			sourceTree = "<group>";
 		};
-		04DE844E2510AF31008615B3 /* 01 网络请求遮罩 */ = {
+		04DE844E2510AF31008615B3 /* 01 遮罩 */ = {
 			isa = PBXGroup;
 			children = (
 				04DE84512510AF50008615B3 /* Test01ViewController.swift */,
 				04DE84522510AF50008615B3 /* Test01ViewController.xib */,
 			);
-			path = "01 网络请求遮罩";
+			path = "01 遮罩";
 			sourceTree = "<group>";
 		};
 		4B0C91E8CB9F473396C347D4 /* Frameworks */ = {

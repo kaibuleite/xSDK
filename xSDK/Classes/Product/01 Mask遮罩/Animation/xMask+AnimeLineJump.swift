@@ -1,5 +1,5 @@
 //
-//  xRequestMask+AnimeLineJump.swift
+//  xMask+AnimeLineJump.swift
 //  xSDK
 //
 //  Created by Mac on 2020/9/15.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension xRequestMaskViewController {
+extension xMaskViewController {
     
     // MARK: - Public Func
     /// 添加线条跳动动画

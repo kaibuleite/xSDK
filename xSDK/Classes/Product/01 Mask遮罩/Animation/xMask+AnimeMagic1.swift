@@ -1,5 +1,5 @@
 //
-//  xRequestMask+AnimeMagic1.swift
+//  xMask+AnimeMagic1.swift
 //  xSDK
 //
 //  Created by Mac on 2020/9/15.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension xRequestMaskViewController {
+extension xMaskViewController {
     
     // MARK: - Public Func
     /// 添加魔法阵动画

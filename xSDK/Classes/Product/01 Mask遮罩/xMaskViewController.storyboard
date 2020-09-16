@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Request Mask View Controller-->
+        <!--Mask View Controller-->
         <scene sceneID="DGf-cG-bSR">
             <objects>
-                <viewController id="xXB-Ke-4MH" customClass="xRequestMaskViewController" customModule="xSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xXB-Ke-4MH" customClass="xMaskViewController" customModule="xSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CgU-n5-Ezv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -1,5 +1,5 @@
 //
-//  xRequestMaskConfig.swift
+//  xMaskConfig.swift
 //  Alamofire
 //
 //  Created by Mac on 2020/9/15.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class xRequestMaskConfig: NSObject {
+public class xMaskConfig: NSObject {
     
     // MARK: - Enum
     /// 遮罩背景样式

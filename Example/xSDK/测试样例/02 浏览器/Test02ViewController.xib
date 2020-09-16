@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Test02ViewController" customModule="xSDK_Example" customModuleProvider="target">
             <connections>
+                <outlet property="urlInput" destination="ZIP-Ht-psc" id="PTS-md-ebe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,16 +20,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GZu-eQ-Nrb">
-                    <rect key="frame" x="132" y="428" width="150" height="40"/>
+                    <rect key="frame" x="10" y="404" width="394" height="88"/>
                     <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="https://www.jianshu.com/p/747b7a1dfd06" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZIP-Ht-psc" customClass="xTextField" customModule="xSDK">
+                            <rect key="frame" x="0.0" y="0.0" width="394" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4q-ae-n43" customClass="xButton" customModule="xSDK">
-                            <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                            <rect key="frame" x="0.0" y="48" width="394" height="40"/>
                             <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="D0y-do-op8"/>
-                                <constraint firstAttribute="width" constant="150" id="Rtl-Lc-ZrH"/>
                             </constraints>
-                            <state key="normal" title="不带导航栏">
+                            <state key="normal" title="前往">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -37,7 +42,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="webBtnClick" destination="-1" eventType="touchUpInside" id="HCm-5h-PFZ"/>
+                                <action selector="goBtnClick" destination="-1" eventType="touchUpInside" id="bU7-KP-DNQ"/>
                             </connections>
                         </button>
                     </subviews>
@@ -47,6 +52,7 @@
             <constraints>
                 <constraint firstItem="GZu-eQ-Nrb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="2F7-he-cQu"/>
                 <constraint firstItem="GZu-eQ-Nrb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Q3n-IV-BVU"/>
+                <constraint firstItem="GZu-eQ-Nrb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="yoS-UF-doc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="133" y="154"/>

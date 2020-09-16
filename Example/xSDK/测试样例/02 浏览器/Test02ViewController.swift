@@ -11,10 +11,16 @@ import xSDK
 
 class Test02ViewController: UIViewController {
     
-    @IBAction func webBtnClick() {
+    @IBOutlet weak var urlInput: xTextField!
+    
+    @IBAction func goBtnClick() {
         let vc = xWebViewController.quickInstancetype()
         self.navigationController?.pushViewController(vc, animated: true)
-        vc.load(url: "https://www.jianshu.com/p/747b7a1dfd06")
+        var str = self.urlInput.text ?? ""
+        if str.isEmpty {
+            str = self.urlInput.placeholder!
+        }
+        vc.load(url: str)
         vc.jsMgr.addReceiveWebJS {
             (name) in
             x_log("js事件 ——— \(name)")
