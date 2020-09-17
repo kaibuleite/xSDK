@@ -46,6 +46,8 @@ public class xSegmentViewController: xViewController {
         // 基本配置
         self.view.backgroundColor = .white
         self.view.addSubview(self.contentScroll)
+        self.contentScroll.showsVerticalScrollIndicator = false
+        self.contentScroll.showsHorizontalScrollIndicator = false
         // 其他
         self.contentScroll.addSubview(self.lineView)
     }
@@ -96,27 +98,25 @@ public class xSegmentViewController: xViewController {
         self.clearOldSegmentItem()
         self.handler = handler
         // 排列控件
+        let cfg = self.config
         for (i, view) in itemViewArray.enumerated()
         {
             view.layer.masksToBounds = true
-            view.layer.cornerRadius = self.config.cornerRadius
-            view.layer.borderWidth = self.config.borderWidth
-            view.layer.borderColor = self.config.itemNormalBorderColor.cgColor
-            view.backgroundColor = self.config.itemNormalBackgroundColor
+            view.layer.cornerRadius = cfg.cornerRadius
+            view.layer.borderWidth = cfg.borderWidth
+            view.layer.borderColor = cfg.itemNormalBorderColor.cgColor
+            view.backgroundColor = cfg.itemNormalBackgroundColor
             if let btn = view as? UIButton {
-                btn.setTitleColor(self.config.itemNormalTitleColor, for: .normal)
+                btn.setTitleColor(cfg.itemNormalTitleColor, for: .normal)
             }
             if let lbl = view as? UILabel {
-                lbl.textColor = self.config.itemNormalTitleColor
+                lbl.textColor = cfg.itemNormalTitleColor
             }
             
             view.tag = i
             view.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapItem(_:)))
             view.addGestureRecognizer(tap)
-            
-            // 测试
-            view.backgroundColor = .x_random()
             
             self.itemViewArray.append(view)
             self.contentScroll.addSubview(view)
@@ -136,43 +136,70 @@ public class xSegmentViewController: xViewController {
     {
         guard idx >= 0 else { return }
         guard idx < self.itemViewArray.count else { return }
-        
-        let config = self.config
-        let old = self.itemViewArray[self.currentChooseIdx]
-        old.backgroundColor = config.itemNormalBackgroundColor
-        old.layer.borderColor = config.itemNormalBorderColor.cgColor
-        if let btn = old as? UIButton {
-            btn.setTitleColor(config.itemNormalTitleColor, for: .normal)
+        let cfg = self.config
+        // 旧的视图
+        let item1 = self.itemViewArray[self.currentChooseIdx]
+        item1.backgroundColor = cfg.itemNormalBackgroundColor
+        item1.layer.borderColor = cfg.itemNormalBorderColor.cgColor
+        if let btn = item1 as? UIButton {
+            btn.setTitleColor(cfg.itemNormalTitleColor, for: .normal)
         }
-        if let lbl = old as? UILabel {
-            lbl.textColor = config.itemNormalTitleColor
+        if let lbl = item1 as? UILabel {
+            lbl.textColor = cfg.itemNormalTitleColor
         }
-        
-        let new = self.itemViewArray[idx]
-        new.backgroundColor = config.itemSelectedBackgroundColor
-        new.layer.borderColor = config.itemSelectedBorderColor.cgColor
-        if let btn = old as? UIButton {
-            btn.setTitleColor(config.itemSelectedTitleColor, for: .normal)
+        // 新选中的视图
+        let item2 = self.itemViewArray[idx]
+        item2.backgroundColor = cfg.itemSelectedBackgroundColor
+        item2.layer.borderColor = cfg.itemSelectedBorderColor.cgColor
+        if let btn = item2 as? UIButton {
+            btn.setTitleColor(cfg.itemSelectedTitleColor, for: .normal)
         }
-        if let lbl = new as? UILabel {
-            lbl.textColor = config.itemSelectedTitleColor
+        if let lbl = item2 as? UILabel {
+            lbl.textColor = cfg.itemSelectedTitleColor
         }
-        
         self.currentChooseIdx = idx
-        
+        // 指示线
         self.view.layoutIfNeeded()
-        var frame = new.frame
-        frame.origin.y = frame.height - self.config.lineHeight
-        frame.size.height = self.config.lineHeight
+        var lineFrame1 = item2.frame
+        lineFrame1.origin.y = lineFrame1.height - cfg.lineHeight
+        lineFrame1.size.height = cfg.lineHeight
         if self.lineView.frame == .zero {
-            var frame2 = frame
-            frame2.size.width = 0
-            self.lineView.frame = frame2
+            var lineFrame2 = lineFrame1
+            lineFrame2.size.width = 0
+            self.lineView.frame = lineFrame2
         }
         UIView.animate(withDuration: 0.25, animations: {
             [unowned self] in
-            self.lineView.frame = frame
+            self.lineView.frame = lineFrame1
         })
+        // 最终位置
+        let totalWidth = self.contentScroll.contentSize.width
+        let scrolWidth = self.contentScroll.bounds.width
+        var offset = CGPoint.zero
+        guard totalWidth > scrolWidth else { return }
+        if idx <= 1 {
+            self.contentScroll.setContentOffset(offset, animated: true)
+            return
+        }
+        if idx >= self.itemViewArray.count - 2 {
+            offset.x = totalWidth - scrolWidth
+            self.contentScroll.setContentOffset(offset, animated: true)
+            return
+        }
+        let scrolOfx = self.contentScroll.contentOffset.x
+        let newOfx = item2.frame.origin.x
+        let newWidth = item2.frame.width
+        if newOfx < scrolOfx {
+            // 左侧超出
+            offset.x = newOfx - cfg.itemsMargin - newWidth
+            self.contentScroll.setContentOffset(offset, animated: true)
+        }
+        else
+        if newOfx + newWidth >= scrolOfx + scrolWidth - cfg.itemsMargin - 1 {
+            // 右侧超出
+            offset.x = newOfx + newWidth + cfg.itemsMargin + newWidth - scrolWidth
+            self.contentScroll.setContentOffset(offset, animated: true)
+        }
     }
     
     // MARK: - Private Func
