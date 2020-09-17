@@ -25,12 +25,12 @@ class Test03ViewController: xViewController {
     public func addSegment1()
     {
         let config = xSegmentConfig()
-        config.itemsMargin = 10
+        config.itemsMargin = 5
         config.itemSelectedTitleColor = .red
         let seg =  xSegmentViewController.quickInstancetype()
         seg.config = config
         let arr = ["苹果", "香蕉", "梨子", "芒果", "葡萄"]
-        seg.reload(titleArray: arr, fontSize: 10) {
+        seg.reload(titleArray: arr, isEqualItemWidth: true, fontSize: 10) {
             (idx) in
             x_log(arr[idx])
         }
@@ -41,15 +41,17 @@ class Test03ViewController: xViewController {
     public func addSegment2()
     {
         let config = xSegmentConfig()
-        config.itemsMargin = 0
+        config.itemsMargin = 10
         config.itemSelectedTitleColor = .blue
-        config.lineColor = .blue
+        config.lineColor = .clear
+        config.borderWidth = 1
+        config.itemSelectedBorderColor = .blue
         let seg =  xSegmentViewController.quickInstancetype()
         seg.config = config
         let arr = ["马铃薯", "菠菜", "西红柿", "茄子", "辣椒",
                    "黄瓜", "南瓜", "冬瓜", "秋葵", "花菜", "玉米",
                    "韭菜", "青菜", "萝卜", "芋头", "红薯", "青椒"]
-        seg.reload(titleArray: arr, fontSize: 14) {
+        seg.reload(titleArray: arr, isEqualItemWidth: false, fontSize: 14) {
             (idx) in
             x_log(arr[idx])
         }

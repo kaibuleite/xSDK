@@ -32,6 +32,8 @@ public class xSegmentViewController: xViewController {
     private var itemViewArray = [UIView]()
     /// 当前选中的idx
     private var currentChooseIdx = 0
+    /// 子视图是否等宽
+    private var isEqualItemWidth = false
     /// 回调
     private var handler : xHandlerChooseSegmentItem?
     
@@ -57,36 +59,58 @@ public class xSegmentViewController: xViewController {
         var frame = self.view.bounds
         self.contentScroll.frame = frame
         var totalWidth = CGFloat.zero
+        let scrolWdith = frame.width
+        let count = CGFloat(self.itemViewArray.count)
+        let margin = self.config.itemsMargin
+        let equalWidth = (scrolWdith - margin * (count - 1)) / count
         self.itemViewArray.forEach {
             (view) in
-            frame.size.width = view.bounds.width
+            if self.isEqualItemWidth {
+                frame.size.width = equalWidth // 等宽
+            } else {
+                frame.size.width = view.bounds.width
+            }
             view.frame = frame
-            totalWidth += (frame.width + self.config.itemsMargin)
+            totalWidth += (frame.width + margin)
             frame.origin.x = totalWidth
         }
         totalWidth -= self.config.itemsMargin
         self.contentScroll.contentSize = .init(width: totalWidth, height: 0)
+        self.contentScroll.isScrollEnabled = totalWidth > scrolWdith
     }
 
     // MARK: - Public Func
     /// 加载默认分段数据
+    /// - Parameters:
+    ///   - titleArray: 标题
+    ///   - isEqualItemWidth: 是否等宽
+    ///   - fontSize: 字号
+    ///   - handler: 回调
     public func reload(titleArray : [String],
+                       isEqualItemWidth : Bool,
                        fontSize : CGFloat = 15,
                        handler : @escaping xHandlerChooseSegmentItem)
     {
+        self.isEqualItemWidth = isEqualItemWidth
         var itemViewArray = [UIView]()
         for title in titleArray {
             let lbl = UILabel()
             lbl.text = title // 填充
             lbl.textAlignment = .center
-            let size = lbl.x_getContentSize()
-            lbl.frame = .init(origin: .zero, size: size)
+            lbl.frame = .zero
+            if isEqualItemWidth == false {
+                let size = lbl.x_getContentSize()
+                lbl.frame = .init(origin: .zero, size: size)
+            }
             lbl.font = .systemFont(ofSize: fontSize)
             itemViewArray.append(lbl)
         }
         self.reload(itemViewArray: itemViewArray, handler: handler)
     }
     /// 加载自定义分段数据(view的frame自己设)
+    /// - Parameters:
+    ///   - itemViewArray: 视图列表
+    ///   - handler: 回调
     public func reload(itemViewArray : [UIView],
                        handler : @escaping xHandlerChooseSegmentItem)
     {
@@ -136,6 +160,7 @@ public class xSegmentViewController: xViewController {
     {
         guard idx >= 0 else { return }
         guard idx < self.itemViewArray.count else { return }
+        self.view.layoutIfNeeded()
         let cfg = self.config
         // 旧的视图
         let item1 = self.itemViewArray[self.currentChooseIdx]
@@ -159,7 +184,6 @@ public class xSegmentViewController: xViewController {
         }
         self.currentChooseIdx = idx
         // 指示线
-        self.view.layoutIfNeeded()
         var lineFrame1 = item2.frame
         lineFrame1.origin.y = lineFrame1.height - cfg.lineHeight
         lineFrame1.size.height = cfg.lineHeight
