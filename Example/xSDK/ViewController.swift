@@ -59,6 +59,10 @@ class ViewController: UITableViewController {
         switch row {
         case 1:
             return Kit01ViewController.init()
+        case 2:
+            return Kit02ViewController.init()
+        case 3:
+            return Kit03ViewController.init()
         default:
             return nil
         }

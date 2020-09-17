@@ -32,20 +32,20 @@ public class xInputAlert: NSObject {
         let alert = UIAlertController.init(title: title,
                                            message: nil,
                                            preferredStyle: .alert)
-        // TODO: 输入框
+        // 输入框
         alert.addTextField {
             (input) in
             input.placeholder = placeholder
             input.keyboardType = keyboardType
         }
-        // TODO: 确定按钮
+        // 确定
         let sure = UIAlertAction.init(title: sureTitle, style: .default){
             (sender) in
             let str = alert.textFields?.first?.text ?? ""
             sureHandler(str)
         }
         alert.addAction(sure)
-        // TODO: 取消按钮
+        // 取消
         let cancel = UIAlertAction.init(title: cancelTitle, style: .cancel) {
             (sender) in
             cancelHandler()

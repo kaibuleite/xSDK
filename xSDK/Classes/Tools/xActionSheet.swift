@@ -29,7 +29,7 @@ public class xActionSheet: NSObject {
         let actionSheet = UIAlertController.init(title: title,
                                                  message: nil,
                                                  preferredStyle: .actionSheet)
-        // TODO: 操作选项
+        // 操作选项
         for (i, title) in dataArray.enumerated() {
             let item = UIAlertAction.init(title: title, style: .default) {
                 (sender) in
@@ -37,7 +37,7 @@ public class xActionSheet: NSObject {
             }
             actionSheet.addAction(item)
         }
-        // TODO: 取消按钮
+        // 取消
         let cancel = UIAlertAction.init(title: cancelTitle, style: .cancel) {
             (sender) in
             cancelHandler()

@@ -106,7 +106,6 @@ open class xAPI: NSObject {
     open class func showDebugWeb(html : String)
     {
         guard let root = x_getKeyWindow()?.rootViewController else { return }
-        
 //        if let web = shared.errorHtmlWeb {
 //            web.html = html
 //            let nvc = xNavigationController.init(rootViewController: web)

@@ -30,13 +30,13 @@ public class xAlert: NSObject {
         let alert = UIAlertController.init(title: title,
                                            message: message,
                                            preferredStyle: .alert)
-        // TODO: 确定按钮
+        // 确定
         let sure = UIAlertAction.init(title: sureTitle, style: .default) {
             (sender) in
             sureHandler()
         }
         alert.addAction(sure)
-        // TODO: 取消按钮
+        // 取消
         let cancel = UIAlertAction.init(title: cancelTitle, style: .cancel) {
             (sender) in
             cancelHandler()
