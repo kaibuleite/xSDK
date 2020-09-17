@@ -23,6 +23,8 @@
 		04D8D7282512F07000F0B14B /* xSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8D7262512F07000F0B14B /* xSegmentViewController.swift */; };
 		04D8D73125133D6000F0B14B /* xRoundCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8D72F25133D5600F0B14B /* xRoundCornerView.swift */; };
 		04D8D73D2513495500F0B14B /* xView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8D73C2513495500F0B14B /* xView.swift */; };
+		04D8D73F25135A9C00F0B14B /* xDataEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8D73E25135A9C00F0B14B /* xDataEmptyView.swift */; };
+		04D8D74125135AE400F0B14B /* xDataEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D8D74025135AE400F0B14B /* xDataEmptyView.xib */; };
 		050A189DF0B4F405E9D3389F24EDF835 /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = E608848BA535BC2129AE241EDBE1E3B6 /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06AEA7117FE98F2409D2432AAEC326A8 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C369738F3350551E606861147D0D9E42 /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C43862CF5253B4A096F6A913530FE2 /* SDImageLoadersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A44ECD4A1ECED8254C60532415D90A /* SDImageLoadersManager.m */; };
@@ -366,6 +368,8 @@
 		04D8D7262512F07000F0B14B /* xSegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xSegmentViewController.swift; sourceTree = "<group>"; };
 		04D8D72F25133D5600F0B14B /* xRoundCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xRoundCornerView.swift; sourceTree = "<group>"; };
 		04D8D73C2513495500F0B14B /* xView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xView.swift; sourceTree = "<group>"; };
+		04D8D73E25135A9C00F0B14B /* xDataEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDataEmptyView.swift; sourceTree = "<group>"; };
+		04D8D74025135AE400F0B14B /* xDataEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xDataEmptyView.xib; sourceTree = "<group>"; };
 		068790B7C5F03FAA1A9778885C830684 /* xAlert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xAlert.swift; sourceTree = "<group>"; };
 		07EDE605D535B6C8F4DD8DC5BFACE205 /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -832,15 +836,6 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
-		45499F6A0370B2D661B9F02C3DA47052 /* Kit_Accessory */ = {
-			isa = PBXGroup;
-			children = (
-				F5FB6A394B49E8BA70861350497992EC /* xInputAccessoryView.swift */,
-				4999407726D18F59A513CADD694DEB62 /* xInputAccessoryView.xib */,
-			);
-			path = Kit_Accessory;
-			sourceTree = "<group>";
-		};
 		48483C7E998B47E098B4A37175554CD2 /* 04 TableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1018,6 +1013,10 @@
 				F317221B766EA80470F75554D057F23C /* xNavigationView.swift */,
 				8A08B872B2CC1E3EE16DF38E6BF47692 /* xNavigationView.xib */,
 				04D8D72F25133D5600F0B14B /* xRoundCornerView.swift */,
+				04D8D73E25135A9C00F0B14B /* xDataEmptyView.swift */,
+				04D8D74025135AE400F0B14B /* xDataEmptyView.xib */,
+				F5FB6A394B49E8BA70861350497992EC /* xInputAccessoryView.swift */,
+				4999407726D18F59A513CADD694DEB62 /* xInputAccessoryView.xib */,
 			);
 			path = "10 View";
 			sourceTree = "<group>";
@@ -1351,7 +1350,6 @@
 			isa = PBXGroup;
 			children = (
 				0C451F02EE5C938DC19E4D7873AD4E12 /* xTextField.swift */,
-				45499F6A0370B2D661B9F02C3DA47052 /* Kit_Accessory */,
 			);
 			path = "13 TextField";
 			sourceTree = "<group>";
@@ -1755,6 +1753,7 @@
 				046266EB2512134E00D06EFA /* xMaskViewController.storyboard in Resources */,
 				046266ED2512135D00D06EFA /* xWebViewController.storyboard in Resources */,
 				046266CD2511EE3900D06EFA /* Resource.bundle in Resources */,
+				04D8D74125135AE400F0B14B /* xDataEmptyView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1959,6 +1958,7 @@
 				E74034278B996EDF897835AAD24AA740 /* xSDK-dummy.m in Sources */,
 				7102D4C082851B198FA2F0A6DA064731 /* xTabBarController.swift in Sources */,
 				2E3012398155EB5799343743852EF6B8 /* xTableViewCell.swift in Sources */,
+				04D8D73F25135A9C00F0B14B /* xDataEmptyView.swift in Sources */,
 				8AC04086CE7936F6D49C7AD07BA76B8F /* xTableViewController.swift in Sources */,
 				4AAEF826D3B673BA258BE0A032134C3E /* xTextField.swift in Sources */,
 				50BAC2312C18465DEA24EE02BEA9CEB1 /* xTextView.swift in Sources */,

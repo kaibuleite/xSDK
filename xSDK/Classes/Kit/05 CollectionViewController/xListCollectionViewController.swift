@@ -50,7 +50,14 @@ open class xListCollectionViewController: xCollectionViewController {
         self.reloadData(list: list)
     }
     /// 空数据展示图
-    open func loadEmptyView() -> UIView? { return nil }
+    open func loadEmptyView() -> UIView? {
+        var frame = self.collectionView.bounds
+        frame.origin.y = self.headerSize.height
+        frame.size.width -= self.headerSize.height
+        let view = xDataEmptyView.loadNib()
+        view.frame = frame
+        return view
+    }
     
     // MARK: - Public Func
     /// 刷新头部

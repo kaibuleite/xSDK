@@ -52,7 +52,15 @@ open class xListTableViewController: xTableViewController {
         self.reloadData(list: list)
     }
     /// 空数据展示图
-    open func loadEmptyView() -> UIView? { return nil }
+    open func loadEmptyView() -> UIView? {
+        var frame = self.tableView.bounds
+        frame.origin.y = self.tableView.sectionHeaderHeight
+        frame.size.width -= self.tableView.sectionHeaderHeight
+        frame.size.width -= self.tableView.sectionFooterHeight
+        let view = xDataEmptyView.loadNib()
+        view.frame = frame
+        return view
+    }
     
     // MARK: - Public Func
     /// 刷新头部
