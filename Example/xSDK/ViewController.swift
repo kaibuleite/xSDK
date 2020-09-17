@@ -28,27 +28,39 @@ import xSDK
 // 组件化：https://www.jianshu.com/p/b075c34e2349
 class ViewController: UITableViewController {
 
+    /// 是否是测试视图
+    @IBInspectable var isKit : Bool = false
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        var vc : UIViewController?
-        switch indexPath.row {
-        case 0:
-            vc = Test01ViewController.init()
-        case 1:
-            vc = Test02ViewController.init()
-        case 2:
-            vc = Test03ViewController.init()
-        default:
-            break
-        }
-        guard let obj = vc else { return }
-        self.navigationController?.pushViewController(obj, animated: true)
+        let row = indexPath.row
+        guard let vc = self.isKit ? self.kit(row: row) : self.test(row: row) else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-}
-
-class tv : xViewController {
     
-    override func addKit() {
+    // MARK: - 测试样例
+    public func test(row : Int) -> UIViewController?
+    {
+        switch row {
+        case 1:
+            return Test01ViewController.init()
+        case 2:
+            return Test02ViewController.init()
+        case 3:
+            return Test03ViewController.init()
+        default:
+            return nil
+        }
+    }
+    
+    // MARK: - 测试视图
+    public func kit(row : Int) -> UIViewController?
+    {
+        switch row {
+        case 1:
+            return Kit01ViewController.init()
+        default:
+            return nil
+        }
     }
 }

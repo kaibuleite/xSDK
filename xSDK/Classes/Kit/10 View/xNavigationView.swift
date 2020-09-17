@@ -29,35 +29,37 @@ public class xNavigationView: xNibView {
         }
     }
     /// 标题
-    @IBInspectable var title : String = "" {
+    @IBInspectable
+    public var title : String = "" {
         didSet {
             self.titleLbl.text = self.title
         }
     }
     /// 标题颜色
-    @IBInspectable var titleColor: UIColor = .darkText {
+    @IBInspectable
+    public var titleColor: UIColor = .darkText {
         didSet {
             self.titleLbl.textColor = self.titleColor
             self.backBtn.tintColor = self.titleColor
         }
     }
     /// 分割线颜色
-    @IBInspectable var lineColor: UIColor = .groupTableViewBackground {
+    @IBInspectable
+    public var lineColor: UIColor = .groupTableViewBackground {
         didSet {
             self.lineView.lineColor = self.lineColor
         }
     }
     /// 导航栏颜色
-    @IBInspectable var barColor : UIColor = .white {
+    @IBInspectable
+    public var barColor : UIColor = .white {
         didSet {
             self.backgroundColor = self.barColor
         }
     }
     
     // MARK: - Public Override Func
-    public override func addKit()
-    {
-        super.addKit()
+    public override func initKit() {
         self.backgroundColor = self.barColor
         self.titleLbl.textColor = self.titleColor
         self.backBtn.tintColor = self.titleColor

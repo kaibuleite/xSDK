@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class xNibView: UIView {
+open class xNibView: xView {
     
     // MARK: - IBOutlet Property
     /// 内容容器
@@ -23,44 +23,35 @@ open class xNibView: UIView {
     // MARK: - Open Override Func
     open override func awakeFromNib() {
         super.awakeFromNib()
-        // 或者在 init(coder:) 里实现
-        self.setContentKit()
+        self.loadNib()
     }
     required public init?(coder aDecoder: NSCoder) {
+        // 没有指定构造器时，需要实现NSCoding的指定构造器
         super.init(coder: aDecoder)
+        // self.loadNib() // awakeFromNib会调用，不需要重复初始化
     }
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        x_warning("该类型视图必须搭配nib初始化")
+        // self.loadNib()
+    }
+    
     open override func layoutSubviews() {
         super.layoutSubviews()
         self.nibView.frame = self.bounds
     }
     
-    // MARK: - Public Override Func
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setContentKit()
-    }
-    
-    // MARK: - Open Func
-    /// 设置通用数据，不要使用xib控件
-    open func addKit() { }
-    
     // MARK: - Private Func
-    /// 设置内容UI
-    private func setContentKit()
+    /// 加载nib
+    private func loadNib()
     {
-        self.backgroundColor = .clear
         guard let name = x_getClassName(withObject: self) else { return }
         // 加载xib
         let bundle = Bundle.init(for: self.classForCoder)
-        bundle.loadNibNamed(name, owner: nil, options: nil) 
+        bundle.loadNibNamed(name, owner: nil, options: nil)
         // 添加view
         self.nibView.backgroundColor = .clear
         self.addSubview(self.nibView)
-        DispatchQueue.main.async {
-            // 改变布局层次
-            self.sendSubviewToBack(self.nibView)
-            self.addKit()
-        }
+        self.sendSubviewToBack(self.nibView)
     }
-    
 }
