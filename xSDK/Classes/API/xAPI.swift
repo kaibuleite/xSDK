@@ -39,6 +39,10 @@ open class xAPI: NSObject {
     /// 上传过程回调
     public typealias xHandlerApiUploadProgress = (Progress) -> Void
     
+    // MARK: - Open Property
+    /// URL前缀
+    open var urlPrefix = ""
+    
     // MARK: - Public Property
     /// 单例
     public static let shared = xAPI()
@@ -56,11 +60,6 @@ open class xAPI: NSObject {
     
     // MARK: - Open Func
     // TODO: 参数处理
-    /// URL前缀
-    open class func urlPrefix() -> String
-    {
-        return ""
-    }
     /// 格式化接口配置
     open class func formatApiConfig() -> xAPIConfig
     {
@@ -73,7 +72,7 @@ open class xAPI: NSObject {
         x_getKeyWindow()?.endEditing(true)
         var url = urlStr
         if urlStr.hasPrefix("http") == false {
-            url = self.urlPrefix() + urlStr
+            url = shared.urlPrefix + urlStr
         }
         // 转码
         let chaset = CharacterSet.urlQueryAllowed

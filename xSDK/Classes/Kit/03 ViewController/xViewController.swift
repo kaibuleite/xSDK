@@ -20,7 +20,7 @@ open class xViewController: UIViewController {
     // MARK: - IBInspectable Property
     /// 控制器描述
     @IBInspectable
-    public var xTitle : String = "控制器描述"
+    public var xTitle : String = ""
     
     // MARK: - Public Property
     /// 是否显示中
@@ -40,7 +40,7 @@ open class xViewController: UIViewController {
             x_log("****************************")
         }
         guard let name = x_getClassName(withObject: self) else { return }
-        x_log("♻️_\(self.xTitle) \(name)")
+        x_log("♻️ \(self.xTitle) \(name)")
     }
     
     // MARK: - Open Override Func
@@ -70,8 +70,8 @@ open class xViewController: UIViewController {
                 
             }
             
-            self.initKit()
-            self.initChildrenViewController()
+            self.addKit()
+            self.addChildren()
         }
     }
     open override func viewDidAppear(_ animated: Bool) {
@@ -96,9 +96,9 @@ open class xViewController: UIViewController {
     
     // MARK: - Open Func
     /// 初始化UI
-    open func initKit() { }
+    open func addKit() { }
     /// 初始化子控制器
-    open func initChildrenViewController() { }
+    open func addChildren() { }
     /// 快速实例化对象(storyboard比类名少指定后缀)
     open class func quickInstancetype() -> Self
     {

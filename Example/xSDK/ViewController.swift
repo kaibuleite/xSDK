@@ -25,6 +25,7 @@ import xSDK
 // MARK: - Public Func
 // MARK: - Private Func
 
+// 组件化：https://www.jianshu.com/p/b075c34e2349
 class ViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -36,6 +37,8 @@ class ViewController: UITableViewController {
             vc = Test01ViewController.init()
         case 1:
             vc = Test02ViewController.init()
+        case 2:
+            vc = Test03ViewController.init()
         default:
             break
         }
@@ -46,7 +49,6 @@ class ViewController: UITableViewController {
 
 class tv : xViewController {
     
-    override func initKit() {
-        
+    override func addKit() {
     }
 }

@@ -55,9 +55,9 @@ public class xNavigationView: xNibView {
     }
     
     // MARK: - Public Override Func
-    public override func initKit()
+    public override func addKit()
     {
-        super.initKit()
+        super.addKit()
         self.backgroundColor = self.barColor
         self.titleLbl.textColor = self.titleColor
         self.backBtn.tintColor = self.titleColor

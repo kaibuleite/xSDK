@@ -21,7 +21,7 @@ open class xTableViewController: UITableViewController {
     // MARK: - IBInspectable Property
     /// 控制器描述
     @IBInspectable
-    public var xTitle : String = "控制器描述"
+    public var xTitle : String = ""
     
     // MARK: - Public Property
     /// 是否显示中
@@ -43,7 +43,7 @@ open class xTableViewController: UITableViewController {
             x_log("****************************")
         }
         guard let name = x_getClassName(withObject: self) else { return }
-        x_log("🍂_\(self.xTitle) \(name)")
+        x_log("🍂 \(self.xTitle) \(name)")
     }
     
     // MARK: - Open Override Func
@@ -65,8 +65,8 @@ open class xTableViewController: UITableViewController {
         self.registerCells()
         self.registerFooters()
         DispatchQueue.main.async {
-            self.initKit()
-            self.initChildrenViewController()
+            self.addKit()
+            self.addChildren()
         }
     }
     open override func viewDidAppear(_ animated: Bool) {
@@ -86,9 +86,9 @@ open class xTableViewController: UITableViewController {
     /// 注册Footers
     open func registerFooters() { }
     /// 初始化UI
-    open func initKit() { }
+    open func addKit() { }
     /// 初始化子控制器
-    open func initChildrenViewController() { }
+    open func addChildren() { }
     /// 快速实例化对象(storyboard比类名少指定后缀)
     open class func quickInstancetype() -> Self
     {

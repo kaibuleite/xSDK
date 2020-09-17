@@ -29,8 +29,8 @@ open class xNavigationController: UINavigationController {
             // Fallback on earlier versions
         }
         DispatchQueue.main.async {
-            self.initKit()
-            self.initChildrenViewController()
+            self.addKit()
+            self.addChildren()
         }
     }
     /// 修改状态栏样式
@@ -55,9 +55,9 @@ open class xNavigationController: UINavigationController {
     
     // MARK: - Open Func
     /// 初始化UI
-    open func initKit() { }
+    open func addKit() { }
     /// 初始化子控制器
-    open func initChildrenViewController() { }
+    open func addChildren() { }
     /// 设置导航栏颜色
     /// - Parameter color: 指定颜色
     open func setBarBackgroupColor(_ color : UIColor)

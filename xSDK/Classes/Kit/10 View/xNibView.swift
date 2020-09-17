@@ -42,7 +42,7 @@ open class xNibView: UIView {
     
     // MARK: - Open Func
     /// 设置通用数据，不要使用xib控件
-    open func initKit() { }
+    open func addKit() { }
     
     // MARK: - Private Func
     /// 设置内容UI
@@ -59,7 +59,7 @@ open class xNibView: UIView {
         DispatchQueue.main.async {
             // 改变布局层次
             self.sendSubviewToBack(self.nibView)
-            self.initKit()
+            self.addKit()
         }
     }
     
