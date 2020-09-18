@@ -11,7 +11,7 @@ import xSDK
 
 class Test02ViewController: UIViewController {
     
-    @IBOutlet weak var urlInput: xTextField!
+    @IBOutlet weak var urlInput: UITextField!
     
     @IBAction func goBtnClick() {
         let vc = xWebViewController.quickInstancetype()

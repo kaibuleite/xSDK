@@ -11,8 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="xNavigationView" customModule="xSDK" customModuleProvider="target">
             <connections>
                 <outlet property="backBtn" destination="Egi-h4-rqm" id="6Oz-EK-ftz"/>
+                <outlet property="barColorView" destination="taO-RZ-TiQ" id="wb7-cE-ecU"/>
                 <outlet property="lineView" destination="dgC-Q3-OVE" id="ACN-8I-EiV"/>
-                <outlet property="nibView" destination="3B7-A7-4hG" id="uhm-PF-V3u"/>
+                <outlet property="nibView" destination="3B7-A7-4hG" id="ghd-JJ-TFR"/>
                 <outlet property="titleLbl" destination="4TI-zj-gYw" id="29p-Bc-jRa"/>
             </connections>
         </placeholder>
@@ -21,6 +22,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taO-RZ-TiQ" customClass="xGradientColorView" customModule="xSDK" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="-56" width="414" height="100"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="t0z-vC-gVD"/>
+                    </constraints>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ElF-F4-WqK">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                     <subviews>
@@ -39,8 +47,8 @@
                             <rect key="frame" x="44" y="0.0" width="370" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4TI-zj-gYw">
-                                    <rect key="frame" x="145" y="0.0" width="36.5" height="44"/>
-                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                    <rect key="frame" x="146" y="0.0" width="34.5" height="44"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -58,19 +66,22 @@
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgC-Q3-OVE" customClass="xLineView" customModule="xSDK" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="43" width="414" height="1"/>
+                    <rect key="frame" x="0.0" y="43.5" width="414" height="0.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="1" id="k9Z-W5-kgK"/>
+                        <constraint firstAttribute="height" constant="0.5" id="k9Z-W5-kgK"/>
                     </constraints>
                 </view>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="dgC-Q3-OVE" secondAttribute="trailing" id="4Ln-eH-dVZ"/>
+                <constraint firstAttribute="trailing" secondItem="taO-RZ-TiQ" secondAttribute="trailing" id="4Lw-2X-tQD"/>
+                <constraint firstAttribute="bottom" secondItem="taO-RZ-TiQ" secondAttribute="bottom" id="7NI-bz-3Gx"/>
                 <constraint firstItem="4TI-zj-gYw" firstAttribute="centerY" secondItem="uFe-gI-xlT" secondAttribute="centerY" id="7Pf-X7-Lhm"/>
                 <constraint firstItem="ElF-F4-WqK" firstAttribute="leading" secondItem="kOB-Cw-90a" secondAttribute="leading" id="9TT-GR-rCj"/>
                 <constraint firstItem="ElF-F4-WqK" firstAttribute="top" secondItem="3B7-A7-4hG" secondAttribute="top" id="MQA-HC-mI0"/>
                 <constraint firstItem="dgC-Q3-OVE" firstAttribute="leading" secondItem="3B7-A7-4hG" secondAttribute="leading" id="YIA-eL-cg6"/>
+                <constraint firstItem="taO-RZ-TiQ" firstAttribute="leading" secondItem="3B7-A7-4hG" secondAttribute="leading" id="dAs-a4-t98"/>
                 <constraint firstAttribute="bottom" secondItem="ElF-F4-WqK" secondAttribute="bottom" id="fHq-BG-e1c"/>
                 <constraint firstItem="kOB-Cw-90a" firstAttribute="trailing" secondItem="ElF-F4-WqK" secondAttribute="trailing" id="hmZ-kD-VTB"/>
                 <constraint firstAttribute="bottom" secondItem="dgC-Q3-OVE" secondAttribute="bottom" id="kRB-WF-M7O"/>

@@ -50,7 +50,7 @@ open class xTableViewController: UITableViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         // 基本配置
-        self.view.backgroundColor = .groupTableViewBackground
+        self.view.backgroundColor = xAppManager.shared.tableViewBackgroundColor
         self.tableView.showsVerticalScrollIndicator = false
         self.tableView.showsHorizontalScrollIndicator = false
         self.tableView.keyboardDismissMode = .onDrag

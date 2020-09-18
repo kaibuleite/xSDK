@@ -14,9 +14,6 @@ public class xGradientColorView: xView {
     private var colorLayer = CAGradientLayer()
     
     // MARK: - Public Override Func
-    public override func initKit() {
-        self.backgroundColor = .clear
-    }
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.colorLayer.frame = self.bounds
@@ -26,7 +23,8 @@ public class xGradientColorView: xView {
     /// 设置填充色
     public func setGradient(colors : [UIColor],
                             startPoint : CGPoint = .init(x: 0.5, y: 0),
-                            endPoint : CGPoint = .init(x: 0.5, y: 1))
+                            endPoint : CGPoint = .init(x: 0.5, y: 1),
+                            locations : [Double] = [0, 1])
     {
         self.backgroundColor = .clear
         self.colorLayer.removeFromSuperlayer()
@@ -39,6 +37,13 @@ public class xGradientColorView: xView {
         self.colorLayer.colors = cgcolors
         self.colorLayer.startPoint = startPoint
         self.colorLayer.endPoint = endPoint
+        var loc = [NSNumber]()
+        locations.forEach {
+            (obj) in
+            let num = NSNumber.init(floatLiteral: obj)
+            loc.append(num)
+        }
+        self.colorLayer.locations = loc
         
         self.layer.insertSublayer(self.colorLayer, at: 0)
     }

@@ -35,6 +35,8 @@ class ViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row
         guard let vc = self.isKit ? self.kit(row: row) : self.test(row: row) else { return }
+        let cell = tableView.cellForRow(at: indexPath)
+        vc.title = cell?.textLabel?.text
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -42,14 +44,10 @@ class ViewController: UITableViewController {
     public func test(row : Int) -> UIViewController?
     {
         switch row {
-        case 1:
-            return Test01ViewController.init()
-        case 2:
-            return Test02ViewController.init()
-        case 3:
-            return Test03ViewController.init()
-        default:
-            return nil
+        case 1:     return Test01ViewController.init()
+        case 2:     return Test02ViewController.init()
+        case 3:     return Test03ViewController.init()
+        default:    return nil
         }
     }
     
@@ -57,14 +55,13 @@ class ViewController: UITableViewController {
     public func kit(row : Int) -> UIViewController?
     {
         switch row {
-        case 1:
-            return Kit01ViewController.init()
-        case 2:
-            return Kit02ViewController.init()
-        case 3:
-            return Kit03ViewController.init()
-        default:
-            return nil
+        case 1:     return Kit01ViewController.init()
+        case 2:     return Kit02ViewController.init()
+        case 3:     return Kit03ViewController.init()
+        case 4:     return Kit04ViewController.init()
+        case 5:     return Kit05ViewController.init()
+        case 6:     return Kit06ViewController.init()
+        default:    return nil
         }
     }
 }

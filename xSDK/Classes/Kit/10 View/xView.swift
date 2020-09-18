@@ -8,20 +8,25 @@
 import UIKit
 
 open class xView: UIView {
+
+    // MARK: - Private Property
+    /// 是否初始化样式
+    private var isLoadViewStyle = false
     
     // MARK: - Open Override Func
     open override func awakeFromNib() {
         super.awakeFromNib()
-        self.setContentKit()
+        self.loadViewStyle()
     }
     required public init?(coder aDecoder: NSCoder) {
         // 没有指定构造器时，需要实现NSCoding的指定构造器
         super.init(coder: aDecoder)
-        // self.setContentKit() // awakeFromNib会调用，不需要重复初始化
+        // 如果没有实现awakeFromNib，则会调用该方法
+        self.loadViewStyle()  
     }
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setContentKit()
+        self.loadViewStyle()
     }
 
     // MARK: - Open Func
@@ -31,13 +36,20 @@ open class xView: UIView {
     open func addKit() { }
     
     // MARK: - Private Func
-    /// 设置内容UI
-    private func setContentKit()
+    /// 加载视图样式
+    private func loadViewStyle()
     {
+        // 添加锁,防止重复加载
+        objc_sync_enter(self)
+        guard self.isLoadViewStyle == false else { return }
+        
         self.backgroundColor = .clear
         DispatchQueue.main.async {
             self.initKit()
             self.addKit()
         }
+        
+        self.isLoadViewStyle = true
+        objc_sync_exit(self)
     }
 }

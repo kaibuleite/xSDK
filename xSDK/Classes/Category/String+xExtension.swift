@@ -292,9 +292,10 @@ extension String {
     public func x_toInternationalNumberString() -> String?
     {
         // 0没啥好转换的
-        guard self.x_toDouble() != 0 else { return "0" }
+        let str = self.replacingOccurrences(of: ",", with: "")
+        guard str.x_toDouble() != 0 else { return "0" }
         // 获取整数和小数位
-        let arr = self.components(separatedBy: ".")
+        let arr = str.components(separatedBy: ".")
         var intStr = "\(arr.first!.x_toInt())"
         // 整数长度
         var len = intStr.count

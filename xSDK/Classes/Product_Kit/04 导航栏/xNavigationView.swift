@@ -10,6 +10,8 @@ import UIKit
 public class xNavigationView: xNibView {
     
     // MARK: - IBOutlet Property
+    /// 背景色
+    @IBOutlet public weak var barColorView: xGradientColorView!
     /// 返回按钮
     @IBOutlet weak var backBtn: UIButton!
     /// 标题标签
@@ -45,23 +47,25 @@ public class xNavigationView: xNibView {
     }
     /// 分割线颜色
     @IBInspectable
-    public var lineColor: UIColor = .groupTableViewBackground {
+    public var lineColor: UIColor = xAppManager.shared.navigationBarShadowColor {
         didSet {
             self.lineView.lineColor = self.lineColor
         }
     }
     /// 导航栏颜色
     @IBInspectable
-    public var barColor : UIColor = .white {
+    public var barColor : UIColor = xAppManager.shared.navigationBarColor {
         didSet {
             self.backgroundColor = self.barColor
         }
     }
     
     // MARK: - Public Override Func
-    public override func initKit() {
-        self.backgroundColor = self.barColor
+    public override func initKit()
+    {
         self.titleLbl.textColor = self.titleColor
+        self.lineView.lineColor = self.lineColor
+        self.barColorView.backgroundColor = self.barColor
         self.backBtn.tintColor = self.titleColor
         self.backBtn.isHidden = !self.isShowBackBtn
         // 标题

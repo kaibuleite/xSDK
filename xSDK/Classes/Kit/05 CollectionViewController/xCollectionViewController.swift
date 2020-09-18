@@ -61,7 +61,7 @@ open class xCollectionViewController: UICollectionViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         // 基本配置
-        self.view.backgroundColor = .groupTableViewBackground
+        self.view.backgroundColor = xAppManager.shared.tableViewBackgroundColor
         self.collectionView.showsVerticalScrollIndicator = false
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.keyboardDismissMode = .onDrag

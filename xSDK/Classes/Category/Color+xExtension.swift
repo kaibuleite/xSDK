@@ -39,13 +39,16 @@ extension UIColor
         let gStr = str.x_sub(range: NSMakeRange(2, 2)) ?? "00"
         let bStr = str.x_sub(range: NSMakeRange(4, 2)) ?? "00"
         
-        var r = Float(0), g = Float(0), b = Float(0)
-        Scanner(string: rStr).scanHexFloat(&r)
-        Scanner(string: gStr).scanHexFloat(&g)
-        Scanner(string: bStr).scanHexFloat(&b)
-        let color = UIColor.init(red: CGFloat(r),
-                                 green: CGFloat(g),
-                                 blue: CGFloat(b),
+        var r = UInt32(0)
+        var g = r
+        var b = r
+        Scanner(string: rStr).scanHexInt32(&r)
+        Scanner(string: gStr).scanHexInt32(&g)
+        Scanner(string: bStr).scanHexInt32(&b)
+        
+        let color = UIColor.init(red: CGFloat(r) / 255,
+                                 green: CGFloat(g) / 255,
+                                 blue: CGFloat(b) / 255,
                                  alpha: alpha)
         return color
     }
@@ -80,6 +83,15 @@ extension UIColor
         view.layer.render(in: ctx!)
         let ret = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        return ret
+    }
+    
+    /// 修改透明度
+    /// - Parameter alpha: 透明度
+    /// - Returns: 新颜色
+    public func x_edit(alpha : CGFloat) -> UIColor
+    {
+        let ret = self.withAlphaComponent(alpha)
         return ret
     }
 }

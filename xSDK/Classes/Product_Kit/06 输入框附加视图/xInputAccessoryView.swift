@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class xInputAccessoryView: UIView {
+public class xInputAccessoryView: UIView {
     
     // MARK: - IBOutlet Property
     /// 上一个
@@ -19,8 +19,8 @@ open class xInputAccessoryView: UIView {
     /// 文本内容
     @IBOutlet weak var textLbl: UILabel!
     
-    // MARK: - Open Override Func
-    open override func awakeFromNib() {
+    // MARK: - Public Override Func
+    public override func awakeFromNib() {
         super.awakeFromNib()
     }
     

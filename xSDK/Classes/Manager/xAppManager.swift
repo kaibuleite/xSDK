@@ -23,9 +23,9 @@ public class xAppManager: NSObject {
     /// 主题色
     public var themeColor = UIColor.x_hex("#487FFC")
     /// TableView背景色
-    public var tableViewBackgroundColor = UIColor.x_hex("#F5F5F5")
+    public var tableViewBackgroundColor = UIColor.groupTableViewBackground
     /// 导航栏背景色
-    public var navigationBarColor = UIColor.white
+    public var navigationBarColor = UIColor.x_hex("F7F6F6")
     /// 导航栏背阴影线条景色
-    public var navigationBarShadowColor = UIColor.clear
+    public var navigationBarShadowColor = UIColor.lightGray
 }

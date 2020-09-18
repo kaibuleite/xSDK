@@ -29,10 +29,6 @@ open class xViewController: UIViewController {
     public var isLoadRequestDataCompleted = true
     /// 是否是父控制器
     public var isRootParentViewController = false
-    /// 顶部遮罩(状态栏)
-    public let safeTopMaskView = UIView()
-    /// 底部遮罩(Tabbar菜单)
-    public let safeBottomMaskView = UIView()
     
     // MARK: - 内存释放
     deinit {
@@ -53,23 +49,6 @@ open class xViewController: UIViewController {
             // Fallback on earlier versions
         }
         DispatchQueue.main.async {
-            
-            if let safeView = self.safeView {
-                var frame = safeView.bounds
-                
-                frame.origin.y -= frame.height
-                self.safeTopMaskView.frame = frame
-                self.safeTopMaskView.backgroundColor = self.topNaviBar?.backgroundColor ?? .clear
-                
-                frame.origin.y += 2 * frame.height
-                self.safeBottomMaskView.frame = frame
-                self.safeBottomMaskView.backgroundColor = .clear
-                
-                safeView.addSubview(self.safeTopMaskView)
-                safeView.addSubview(self.safeBottomMaskView)
-                
-            }
-            
             self.addKit()
             self.addChildren()
         }
