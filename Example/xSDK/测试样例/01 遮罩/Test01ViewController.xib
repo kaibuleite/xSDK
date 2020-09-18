@@ -19,14 +19,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hhe-9c-BMV">
-                    <rect key="frame" x="132" y="332" width="150" height="232"/>
+                    <rect key="frame" x="30" y="332" width="354" height="232"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1p-Qh-p9V" customClass="xButton" customModule="xSDK">
-                            <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
                             <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="INm-H1-b1K"/>
-                                <constraint firstAttribute="width" constant="150" id="NOR-fe-BI2"/>
                             </constraints>
                             <state key="normal" title="默认">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -41,7 +40,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EjN-Fm-cqP" customClass="xButton" customModule="xSDK">
-                            <rect key="frame" x="0.0" y="48" width="150" height="40"/>
+                            <rect key="frame" x="0.0" y="48" width="354" height="40"/>
                             <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="动画1">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -56,7 +55,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dj-wt-BaD" customClass="xButton" customModule="xSDK">
-                            <rect key="frame" x="0.0" y="96" width="150" height="40"/>
+                            <rect key="frame" x="0.0" y="96" width="354" height="40"/>
                             <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="动画2">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,7 +70,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xj2-85-zFU" customClass="xButton" customModule="xSDK">
-                            <rect key="frame" x="0.0" y="144" width="150" height="40"/>
+                            <rect key="frame" x="0.0" y="144" width="354" height="40"/>
                             <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="动画3">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,7 +85,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUm-Wf-j8g" customClass="xButton" customModule="xSDK">
-                            <rect key="frame" x="0.0" y="192" width="150" height="40"/>
+                            <rect key="frame" x="0.0" y="192" width="354" height="40"/>
                             <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="动画4">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -107,6 +106,7 @@
             <constraints>
                 <constraint firstItem="Hhe-9c-BMV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Fb1-YO-82J"/>
                 <constraint firstItem="Hhe-9c-BMV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="YNf-bC-ZFj"/>
+                <constraint firstItem="Hhe-9c-BMV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="lXi-c8-JrX"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="133" y="137"/>

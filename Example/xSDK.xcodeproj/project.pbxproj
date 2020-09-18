@@ -27,6 +27,8 @@
 		04E08A8F2514446900780C15 /* Kit06ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E08A8D2514446900780C15 /* Kit06ViewController.xib */; };
 		04E08AA12514676400780C15 /* Kit07ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E08A9F2514676400780C15 /* Kit07ViewController.swift */; };
 		04E08AA22514676400780C15 /* Kit07ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E08AA02514676400780C15 /* Kit07ViewController.xib */; };
+		04E08AB025149BD800780C15 /* Test04ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E08AAE25149BD800780C15 /* Test04ViewController.swift */; };
+		04E08AB125149BD800780C15 /* Test04ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E08AAF25149BD800780C15 /* Test04ViewController.xib */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -68,6 +70,8 @@
 		04E08A8D2514446900780C15 /* Kit06ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit06ViewController.xib; sourceTree = "<group>"; };
 		04E08A9F2514676400780C15 /* Kit07ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit07ViewController.swift; sourceTree = "<group>"; };
 		04E08AA02514676400780C15 /* Kit07ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit07ViewController.xib; sourceTree = "<group>"; };
+		04E08AAE25149BD800780C15 /* Test04ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test04ViewController.swift; sourceTree = "<group>"; };
+		04E08AAF25149BD800780C15 /* Test04ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test04ViewController.xib; sourceTree = "<group>"; };
 		06D657426FC4F6B8A0C34896 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8EBC98333D44841DE8D343 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* xSDK_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xSDK_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,9 +175,11 @@
 		04DE844D2510AF25008615B3 /* 测试样例 */ = {
 			isa = PBXGroup;
 			children = (
+				04E08AB52514A8E000780C15 /* 05 数据选择器 */,
 				04DE844E2510AF31008615B3 /* 01 遮罩 */,
 				046266D52511FF6000D06EFA /* 02 浏览器 */,
 				04D8D72A2513079600F0B14B /* 03 菜单 */,
+				04E08AAD25149BCC00780C15 /* 04 日期选择器 */,
 			);
 			path = "测试样例";
 			sourceTree = "<group>";
@@ -221,6 +227,22 @@
 				04E08AA02514676400780C15 /* Kit07ViewController.xib */,
 			);
 			path = "07 图片验证码";
+			sourceTree = "<group>";
+		};
+		04E08AAD25149BCC00780C15 /* 04 日期选择器 */ = {
+			isa = PBXGroup;
+			children = (
+				04E08AAE25149BD800780C15 /* Test04ViewController.swift */,
+				04E08AAF25149BD800780C15 /* Test04ViewController.xib */,
+			);
+			path = "04 日期选择器";
+			sourceTree = "<group>";
+		};
+		04E08AB52514A8E000780C15 /* 05 数据选择器 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "05 数据选择器";
 			sourceTree = "<group>";
 		};
 		4B0C91E8CB9F473396C347D4 /* Frameworks */ = {
@@ -409,6 +431,7 @@
 				046266D92511FF7100D06EFA /* Test02ViewController.xib in Resources */,
 				04D8D74D2513626800F0B14B /* Kit03ViewController.xib in Resources */,
 				04E08A852514423900780C15 /* Kit04ViewController.xib in Resources */,
+				04E08AB125149BD800780C15 /* Test04ViewController.xib in Resources */,
 				04DE84542510AF50008615B3 /* Test01ViewController.xib in Resources */,
 				04E08A892514424600780C15 /* Kit05ViewController.xib in Resources */,
 				04E08AA22514676400780C15 /* Kit07ViewController.xib in Resources */,
@@ -516,6 +539,7 @@
 				04E08A842514423900780C15 /* Kit04ViewController.swift in Sources */,
 				04D8D74C2513626800F0B14B /* Kit03ViewController.swift in Sources */,
 				04D8D7472513606200F0B14B /* Kit02ViewController.swift in Sources */,
+				04E08AB025149BD800780C15 /* Test04ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

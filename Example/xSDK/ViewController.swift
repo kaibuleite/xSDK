@@ -47,6 +47,7 @@ class ViewController: UITableViewController {
         case 1:     return Test01ViewController.init()
         case 2:     return Test02ViewController.init()
         case 3:     return Test03ViewController.init()
+        case 4:     return Test04ViewController.init()
         default:    return nil
         }
     }
