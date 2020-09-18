@@ -11,7 +11,18 @@ import WebKit
 /// 方法详情可以参考 https://www.jianshu.com/p/747b7a1dfd06
 open class xWebViewController: xViewController, WKNavigationDelegate {
 
+    // MARK: - IBOutlet Property
+    /// 关闭按钮
+    @IBOutlet weak var closeBtn: UIButton!
+    
     // MARK: - IBInspectable Property
+    /// 是否显示关闭按钮
+    @IBInspectable
+    public var isShowCloseBtn : Bool = true {
+        didSet {
+            self.closeBtn.isHidden = !self.isShowCloseBtn
+        }
+    }
     /// 是否显示加载进度条(默认显示)
     @IBInspectable
     public var isShowLoadingProgress : Bool = true
@@ -50,7 +61,9 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     }
     open override func viewDidLoad() {
         super.viewDidLoad()
+        // 基本配置
         self.view.backgroundColor = .white
+        self.closeBtn.isHidden = !self.isShowCloseBtn
         self.jsMgr.xWeb = self
         // web
         self.web.allowsBackForwardNavigationGestures = true // 是否支持手势返回
@@ -146,6 +159,24 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         self.jsNameArray.forEach {
             [unowned self] (name) in
             uc.add(self.jsMgr, name: name)
+        }
+    }
+
+    // MARK: - IBAction Private Func
+    @IBAction func closeBtnClick() {
+        guard let nvc = self.navigationController else {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        guard let root = nvc.children.first else {
+            x_warning("空的导航栏？？？？")
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        if root == self {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            nvc.popViewController(animated: true)
         }
     }
     

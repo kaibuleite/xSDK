@@ -18,7 +18,21 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pt4-LV-yiK" customClass="xSafeView" customModule="xSDK" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0c-91-9JQ">
+                                        <rect key="frame" x="370" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="0Nv-zI-l5g"/>
+                                            <constraint firstAttribute="width" constant="44" id="lyh-QP-SDf"/>
+                                        </constraints>
+                                        <state key="normal" image="close_28.png"/>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="B0c-91-9JQ" firstAttribute="top" secondItem="Pt4-LV-yiK" secondAttribute="top" id="4iv-O2-pjP"/>
+                                    <constraint firstAttribute="trailing" secondItem="B0c-91-9JQ" secondAttribute="trailing" id="LiC-ED-oYS"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -31,6 +45,7 @@
                         <viewLayoutGuide key="safeArea" id="lgM-j0-hjF"/>
                     </view>
                     <connections>
+                        <outlet property="closeBtn" destination="B0c-91-9JQ" id="hg5-fo-tRX"/>
                         <outlet property="safeView" destination="Pt4-LV-yiK" id="HJR-1P-hIZ"/>
                     </connections>
                 </viewController>
@@ -39,4 +54,7 @@
             <point key="canvasLocation" x="249" y="-131"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="close_28.png" width="14" height="14"/>
+    </resources>
 </document>
