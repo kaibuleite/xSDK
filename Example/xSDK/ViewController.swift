@@ -61,6 +61,7 @@ class ViewController: UITableViewController {
         case 4:     return Kit04ViewController.init()
         case 5:     return Kit05ViewController.init()
         case 6:     return Kit06ViewController.init()
+        case 7:     return Kit07ViewController.init()
         default:    return nil
         }
     }

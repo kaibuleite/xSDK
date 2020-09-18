@@ -16,6 +16,7 @@
 		04E08A962514615400780C15 /* xMaskViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E08A952514615400780C15 /* xMaskViewController.storyboard */; };
 		04E08A982514615D00780C15 /* xWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E08A972514615D00780C15 /* xWebViewController.storyboard */; };
 		04E08A9B2514640900780C15 /* xCaptchaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E08A9A2514640900780C15 /* xCaptchaView.swift */; };
+		04E08A9D251465F100780C15 /* xCaptchaConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E08A9C251465F100780C15 /* xCaptchaConfig.swift */; };
 		050A189DF0B4F405E9D3389F24EDF835 /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = E608848BA535BC2129AE241EDBE1E3B6 /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06AEA7117FE98F2409D2432AAEC326A8 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C369738F3350551E606861147D0D9E42 /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C43862CF5253B4A096F6A913530FE2 /* SDImageLoadersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A44ECD4A1ECED8254C60532415D90A /* SDImageLoadersManager.m */; };
@@ -377,6 +378,7 @@
 		04E08A952514615400780C15 /* xMaskViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = xMaskViewController.storyboard; sourceTree = "<group>"; };
 		04E08A972514615D00780C15 /* xWebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = xWebViewController.storyboard; sourceTree = "<group>"; };
 		04E08A9A2514640900780C15 /* xCaptchaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCaptchaView.swift; sourceTree = "<group>"; };
+		04E08A9C251465F100780C15 /* xCaptchaConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCaptchaConfig.swift; sourceTree = "<group>"; };
 		05A89A4CFD05BE19239E582195B3F158 /* xAppManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xAppManager.swift; sourceTree = "<group>"; };
 		07EDE605D535B6C8F4DD8DC5BFACE205 /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -836,6 +838,7 @@
 			isa = PBXGroup;
 			children = (
 				04E08A9A2514640900780C15 /* xCaptchaView.swift */,
+				04E08A9C251465F100780C15 /* xCaptchaConfig.swift */,
 			);
 			path = "07 图片验证码";
 			sourceTree = "<group>";
@@ -1093,13 +1096,13 @@
 		81E2D23E08EAC52889E490B3CC772B73 /* Product_Kit */ = {
 			isa = PBXGroup;
 			children = (
-				04E08A992514632400780C15 /* 07 图片验证码 */,
 				1CD4E201BD80208A1E22045306522882 /* 01 圆角矩形容器 */,
 				F3373D5CAE32FF56F1CE74089709B2FE /* 02 相册 */,
 				04E08A7C2514411F00780C15 /* 03 列表空数据 */,
 				04E08A7B251440EE00780C15 /* 04 导航栏 */,
 				04E08A7D2514414400780C15 /* 05 渐变色 */,
 				04E08A7E2514417400780C15 /* 06 输入框附加视图 */,
+				04E08A992514632400780C15 /* 07 图片验证码 */,
 			);
 			name = Product_Kit;
 			path = xSDK/Classes/Product_Kit;
@@ -2079,6 +2082,7 @@
 				F29B418F297B2A7E13D6E34863A1EB6A /* xMask+AnimeLineJump.swift in Sources */,
 				A58740B703F291F353D7BFB0BE532F2B /* xMask+AnimeMagic1.swift in Sources */,
 				CE8BD8517E7085F2F5D52BFF85C1C4E2 /* xMaskConfig.swift in Sources */,
+				04E08A9D251465F100780C15 /* xCaptchaConfig.swift in Sources */,
 				E82958143A045F3E00F02959E047E963 /* xMaskViewController.swift in Sources */,
 				52F4AB2DC1221656AFF941B2B3F123AF /* xModel.swift in Sources */,
 				F41A66C38DA1C5FD1283CF6281046DCF /* xNavigationController.swift in Sources */,
