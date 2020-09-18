@@ -40,6 +40,10 @@ class Kit06ViewController: UIViewController {
             ws.numberInput.text = str
             // ws.numberInput.reset(text: str)
         }
+        
+        let inputArr = [self.normalInput,
+                        self.numberInput]
+        xTextField.relateInput(list: inputArr)
     }
 
 }

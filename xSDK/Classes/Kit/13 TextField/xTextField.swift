@@ -110,6 +110,23 @@ open class xTextField: UITextField, UITextFieldDelegate {
                        action: #selector(textChanged),
                        for: .editingChanged)
     }
+    /// 关联输入框上下级
+    public static func relateInput(list : [xTextField?])
+    {
+        let count = list.count
+        guard count > 1 else { return }
+        for i in 0 ..< count {
+            guard let input = list[i] else { continue }
+            let preIdx = i - 1
+            let nexIdx = i + 1
+            if preIdx >= 0 {
+                input.previousInput = list[preIdx]
+            }
+            if nexIdx < count {
+                input.nextInput = list[nexIdx]
+            }
+        }
+    }
     
     // MARK: - Private Func
     /// 设置内容UI

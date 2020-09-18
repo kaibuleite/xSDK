@@ -77,8 +77,8 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         // 其他
         self.addObserver()
     }
-    open override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         var frame = self.view.bounds
         self.web.frame = frame
         frame.size.height = 2
