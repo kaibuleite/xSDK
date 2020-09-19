@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		046266D82511FF7100D06EFA /* Test02ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266D62511FF7100D06EFA /* Test02ViewController.swift */; };
 		046266D92511FF7100D06EFA /* Test02ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046266D72511FF7100D06EFA /* Test02ViewController.xib */; };
+		04CDB88A2515A230005F531F /* Test06ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8882515A230005F531F /* Test06ViewController.swift */; };
+		04CDB88B2515A230005F531F /* Test06ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8892515A230005F531F /* Test06ViewController.xib */; };
 		04D8D72D251307EA00F0B14B /* Test03ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8D72B251307EA00F0B14B /* Test03ViewController.swift */; };
 		04D8D72E251307EA00F0B14B /* Test03ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D8D72C251307EA00F0B14B /* Test03ViewController.xib */; };
 		04D8D73A2513445100F0B14B /* Kit01ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8D7382513445100F0B14B /* Kit01ViewController.swift */; };
@@ -29,6 +31,8 @@
 		04E08AA22514676400780C15 /* Kit07ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E08AA02514676400780C15 /* Kit07ViewController.xib */; };
 		04E08AB025149BD800780C15 /* Test04ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E08AAE25149BD800780C15 /* Test04ViewController.swift */; };
 		04E08AB125149BD800780C15 /* Test04ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E08AAF25149BD800780C15 /* Test04ViewController.xib */; };
+		04E08AB82514A92500780C15 /* Test05ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E08AB62514A92500780C15 /* Test05ViewController.swift */; };
+		04E08AB92514A92500780C15 /* Test05ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E08AB72514A92500780C15 /* Test05ViewController.xib */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -52,6 +56,8 @@
 /* Begin PBXFileReference section */
 		046266D62511FF7100D06EFA /* Test02ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test02ViewController.swift; sourceTree = "<group>"; };
 		046266D72511FF7100D06EFA /* Test02ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test02ViewController.xib; sourceTree = "<group>"; };
+		04CDB8882515A230005F531F /* Test06ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test06ViewController.swift; sourceTree = "<group>"; };
+		04CDB8892515A230005F531F /* Test06ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test06ViewController.xib; sourceTree = "<group>"; };
 		04D8D72B251307EA00F0B14B /* Test03ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test03ViewController.swift; sourceTree = "<group>"; };
 		04D8D72C251307EA00F0B14B /* Test03ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test03ViewController.xib; sourceTree = "<group>"; };
 		04D8D7382513445100F0B14B /* Kit01ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit01ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +78,8 @@
 		04E08AA02514676400780C15 /* Kit07ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit07ViewController.xib; sourceTree = "<group>"; };
 		04E08AAE25149BD800780C15 /* Test04ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test04ViewController.swift; sourceTree = "<group>"; };
 		04E08AAF25149BD800780C15 /* Test04ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test04ViewController.xib; sourceTree = "<group>"; };
+		04E08AB62514A92500780C15 /* Test05ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test05ViewController.swift; sourceTree = "<group>"; };
+		04E08AB72514A92500780C15 /* Test05ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test05ViewController.xib; sourceTree = "<group>"; };
 		06D657426FC4F6B8A0C34896 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8EBC98333D44841DE8D343 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* xSDK_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xSDK_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +128,15 @@
 				046266D72511FF7100D06EFA /* Test02ViewController.xib */,
 			);
 			path = "02 浏览器";
+			sourceTree = "<group>";
+		};
+		04CDB8852515A213005F531F /* 06 可变数据选择器 */ = {
+			isa = PBXGroup;
+			children = (
+				04CDB8882515A230005F531F /* Test06ViewController.swift */,
+				04CDB8892515A230005F531F /* Test06ViewController.xib */,
+			);
+			path = "06 可变数据选择器";
 			sourceTree = "<group>";
 		};
 		04D8D72A2513079600F0B14B /* 03 菜单 */ = {
@@ -175,6 +192,7 @@
 		04DE844D2510AF25008615B3 /* 测试样例 */ = {
 			isa = PBXGroup;
 			children = (
+				04CDB8852515A213005F531F /* 06 可变数据选择器 */,
 				04E08AB52514A8E000780C15 /* 05 数据选择器 */,
 				04DE844E2510AF31008615B3 /* 01 遮罩 */,
 				046266D52511FF6000D06EFA /* 02 浏览器 */,
@@ -241,6 +259,8 @@
 		04E08AB52514A8E000780C15 /* 05 数据选择器 */ = {
 			isa = PBXGroup;
 			children = (
+				04E08AB62514A92500780C15 /* Test05ViewController.swift */,
+				04E08AB72514A92500780C15 /* Test05ViewController.xib */,
 			);
 			path = "05 数据选择器";
 			sourceTree = "<group>";
@@ -437,7 +457,9 @@
 				04E08AA22514676400780C15 /* Kit07ViewController.xib in Resources */,
 				04D8D72E251307EA00F0B14B /* Test03ViewController.xib in Resources */,
 				04E08A8F2514446900780C15 /* Kit06ViewController.xib in Resources */,
+				04E08AB92514A92500780C15 /* Test05ViewController.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				04CDB88B2515A230005F531F /* Test06ViewController.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,6 +552,7 @@
 				04D8D72D251307EA00F0B14B /* Test03ViewController.swift in Sources */,
 				04E08A8E2514446900780C15 /* Kit06ViewController.swift in Sources */,
 				04E08AA12514676400780C15 /* Kit07ViewController.swift in Sources */,
+				04E08AB82514A92500780C15 /* Test05ViewController.swift in Sources */,
 				04DE84532510AF50008615B3 /* Test01ViewController.swift in Sources */,
 				04E08A882514424600780C15 /* Kit05ViewController.swift in Sources */,
 				04D8D73A2513445100F0B14B /* Kit01ViewController.swift in Sources */,
@@ -540,6 +563,7 @@
 				04D8D74C2513626800F0B14B /* Kit03ViewController.swift in Sources */,
 				04D8D7472513606200F0B14B /* Kit02ViewController.swift in Sources */,
 				04E08AB025149BD800780C15 /* Test04ViewController.swift in Sources */,
+				04CDB88A2515A230005F531F /* Test06ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

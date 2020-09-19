@@ -33,37 +33,15 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        // 获取类名
         let row = indexPath.row
-        guard let vc = self.isKit ? self.kit(row: row) : self.test(row: row) else { return }
+        let name = String.init(format: "xSDK_Example.\(self.isKit ? "Kit" : "Test")%02dViewController", row)
+        guard let xclass = NSClassFromString(name) else { return }
+        guard let vcclass = xclass as? UIViewController.Type else { return }
+        // 初始化控制器
+        let vc = vcclass.init()
         let cell = tableView.cellForRow(at: indexPath)
         vc.title = cell?.textLabel?.text
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    // MARK: - 测试样例
-    public func test(row : Int) -> UIViewController?
-    {
-        switch row {
-        case 1:     return Test01ViewController.init()
-        case 2:     return Test02ViewController.init()
-        case 3:     return Test03ViewController.init()
-        case 4:     return Test04ViewController.init()
-        default:    return nil
-        }
-    }
-    
-    // MARK: - 测试视图
-    public func kit(row : Int) -> UIViewController?
-    {
-        switch row {
-        case 1:     return Kit01ViewController.init()
-        case 2:     return Kit02ViewController.init()
-        case 3:     return Kit03ViewController.init()
-        case 4:     return Kit04ViewController.init()
-        case 5:     return Kit05ViewController.init()
-        case 6:     return Kit06ViewController.init()
-        case 7:     return Kit07ViewController.init()
-        default:    return nil
-        }
     }
 }
