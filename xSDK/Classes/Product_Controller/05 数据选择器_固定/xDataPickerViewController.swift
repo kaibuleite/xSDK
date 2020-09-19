@@ -11,7 +11,7 @@ public class xDataPickerViewController: xPushAlertViewController, UIPickerViewDa
     
     // MARK: - Handler
     /// 选择数据回调
-    public typealias xHandlerChooseData = ([String]) -> Void
+    public typealias xHandlerChooseData = ([xDataPickerModel]) -> Void
     
     // MARK: - IBOutlet Property
     /// 标题标签
@@ -21,7 +21,7 @@ public class xDataPickerViewController: xPushAlertViewController, UIPickerViewDa
     
     // MARK: - Private Property
     /// 数据源
-    private var dataArray = [[String]]()
+    private var dataArray = [[xDataPickerModel]]()
     /// 每一列选中的行
     private var columnChooseRowArray = [Int]()
     /// 回调
@@ -45,35 +45,17 @@ public class xDataPickerViewController: xPushAlertViewController, UIPickerViewDa
         self.dismiss()
     }
     @IBAction func sureBtnClick(_ sender: UIButton) {
-        var arr = [String]()
+        var arr = [xDataPickerModel]()
         for (i, list) in self.dataArray.enumerated() {
             let row = self.columnChooseRowArray[i]
-            let str = list[row]
-            arr.append(str)
+            let model = list[row]
+            arr.append(model)
         }
         self.handler?(arr)
         self.dismiss()
     }
 
     // MARK: - Public Func
-    /// 重新加载数据
-    public func reload(dataArray : [[String]])
-    {
-        self.picker.dataSource = self
-        self.picker.delegate = self
-        // 清空数据
-        self.dataArray.removeAll()
-        self.columnChooseRowArray = [Int].init(repeating: 0,
-                                               count: dataArray.count)
-        // 重新加载
-        self.dataArray = dataArray
-        self.picker.reloadAllComponents()
-        // 重置状态
-        for i in 0 ..< dataArray.count {
-            self.picker.selectRow(0, inComponent: i, animated: false)
-        }
-    }
-    
     /// 显示选择器
     /// - Parameters:
     ///   - title: 标题
@@ -89,6 +71,24 @@ public class xDataPickerViewController: xPushAlertViewController, UIPickerViewDa
         self.handler = handler
         // 执行动画
         super.display(isSpring: isSpring)
+    }
+    /// 重新加载数据
+    public func reload(dataArray : [[xDataPickerModel]])
+    {
+        guard dataArray.count > 0 else {
+            x_warning("没有数据，不加载")
+            return
+        }
+        self.picker.dataSource = self
+        self.picker.delegate = self
+        // 重新加载
+        self.dataArray = dataArray
+        self.columnChooseRowArray = .init(repeating: 0, count: dataArray.count)
+        self.picker.reloadAllComponents()
+        // 重置状态
+        for i in 0 ..< dataArray.count {
+            self.picker.selectRow(0, inComponent: i, animated: false)
+        }
     }
     
     // MARK: - UIPickerViewDataSource
@@ -110,8 +110,8 @@ public class xDataPickerViewController: xPushAlertViewController, UIPickerViewDa
                            forComponent component: Int) -> String?
     {
         let list = self.dataArray[component]
-        let name = list[row]
-        return name
+        let model = list[row]
+        return model.name
     }
     
     // MARK: - UIPickerViewDelegate

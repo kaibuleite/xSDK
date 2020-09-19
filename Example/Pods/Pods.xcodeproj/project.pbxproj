@@ -16,6 +16,7 @@
 		04CDB88125159C25005F531F /* xMutableDataPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB88025159C25005F531F /* xMutableDataPickerViewController.swift */; };
 		04CDB88425159E1E005F531F /* xMutableDataPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB88225159E1B005F531F /* xMutableDataPickerModel.swift */; };
 		04CDB88D2515A316005F531F /* xMutableDataPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB88C2515A316005F531F /* xMutableDataPickerViewController.storyboard */; };
+		04CDB8912515AFC3005F531F /* xDataPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8902515AFC3005F531F /* xDataPickerModel.swift */; };
 		04E08A962514615400780C15 /* xMaskViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E08A952514615400780C15 /* xMaskViewController.storyboard */; };
 		04E08A982514615D00780C15 /* xWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E08A972514615D00780C15 /* xWebViewController.storyboard */; };
 		04E08A9B2514640900780C15 /* xCaptchaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E08A9A2514640900780C15 /* xCaptchaView.swift */; };
@@ -388,6 +389,7 @@
 		04CDB88025159C25005F531F /* xMutableDataPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xMutableDataPickerViewController.swift; sourceTree = "<group>"; };
 		04CDB88225159E1B005F531F /* xMutableDataPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xMutableDataPickerModel.swift; sourceTree = "<group>"; };
 		04CDB88C2515A316005F531F /* xMutableDataPickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xMutableDataPickerViewController.storyboard; sourceTree = "<group>"; };
+		04CDB8902515AFC3005F531F /* xDataPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDataPickerModel.swift; sourceTree = "<group>"; };
 		04E08A952514615400780C15 /* xMaskViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = xMaskViewController.storyboard; sourceTree = "<group>"; };
 		04E08A972514615D00780C15 /* xWebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = xWebViewController.storyboard; sourceTree = "<group>"; };
 		04E08A9A2514640900780C15 /* xCaptchaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCaptchaView.swift; sourceTree = "<group>"; };
@@ -822,9 +824,9 @@
 		04CDB87F25159C07005F531F /* 06 数据选择器_可变 */ = {
 			isa = PBXGroup;
 			children = (
-				04CDB88225159E1B005F531F /* xMutableDataPickerModel.swift */,
 				04CDB88025159C25005F531F /* xMutableDataPickerViewController.swift */,
 				04CDB88C2515A316005F531F /* xMutableDataPickerViewController.storyboard */,
+				04CDB88225159E1B005F531F /* xMutableDataPickerModel.swift */,
 			);
 			path = "06 数据选择器_可变";
 			sourceTree = "<group>";
@@ -888,6 +890,7 @@
 			children = (
 				04E08ABA2514A9BD00780C15 /* xDataPickerViewController.swift */,
 				04E08ABC2514A9C600780C15 /* xDataPickerViewController.storyboard */,
+				04CDB8902515AFC3005F531F /* xDataPickerModel.swift */,
 			);
 			path = "05 数据选择器_固定";
 			sourceTree = "<group>";
@@ -1270,12 +1273,12 @@
 		A701D0156DF9DB9C3D6AF4F8BC225159 /* Product_Controller */ = {
 			isa = PBXGroup;
 			children = (
-				04E08AB42514A8B600780C15 /* 05 数据选择器_固定 */,
-				04CDB87F25159C07005F531F /* 06 数据选择器_可变 */,
 				B31094BA181A3719E94F19DC269DFD62 /* 01 Mask遮罩 */,
 				B8B14E478B1E4D711BD14F5B5E35EAAA /* 02 Web浏览器 */,
 				0B0F3F70A0243A1C1A87FB61F444FE36 /* 03 Segment菜单 */,
 				04E08AA32514877800780C15 /* 04 日期选择器 */,
+				04E08AB42514A8B600780C15 /* 05 数据选择器_固定 */,
+				04CDB87F25159C07005F531F /* 06 数据选择器_可变 */,
 			);
 			name = Product_Controller;
 			path = xSDK/Classes/Product_Controller;
@@ -2150,6 +2153,7 @@
 				52F4AB2DC1221656AFF941B2B3F123AF /* xModel.swift in Sources */,
 				F41A66C38DA1C5FD1283CF6281046DCF /* xNavigationController.swift in Sources */,
 				B5F94364D3F4D8B0A92608F51625596C /* xNavigationView.swift in Sources */,
+				04CDB8912515AFC3005F531F /* xDataPickerModel.swift in Sources */,
 				04E08AA5251487AE00780C15 /* xDatePickerViewController.swift in Sources */,
 				7F76D1AD1F68DC976257E9FF7127B292 /* xNavigationView.xib in Sources */,
 				18F21FFADE4F4BAAFBC3E193ADE46659 /* xNibView.swift in Sources */,

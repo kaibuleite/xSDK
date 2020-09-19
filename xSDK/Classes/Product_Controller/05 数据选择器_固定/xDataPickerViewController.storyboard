@@ -21,19 +21,19 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zef-Nj-qUJ">
-                                <rect key="frame" x="0.0" y="606" width="414" height="256"/>
+                                <rect key="frame" x="0.0" y="602" width="414" height="260"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R8y-AI-tnH">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="256"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fO-hf-88k">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubW-aO-ca8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEN-8u-3ca">
-                                                                <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="60" height="44"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="3P5-1B-Gvh"/>
                                                                 </constraints>
@@ -46,19 +46,19 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9h-VO-G5N">
-                                                                <rect key="frame" x="60" y="0.0" width="294" height="40"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                                <rect key="frame" x="60" y="0.0" width="294" height="44"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlW-4Q-ecO">
-                                                                <rect key="frame" x="354" y="0.0" width="60" height="40"/>
+                                                                <rect key="frame" x="354" y="0.0" width="60" height="44"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="60" id="oZ4-jw-s0i"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <state key="normal" title="确定">
-                                                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="sureBtnClick:" destination="dKa-vx-To0" eventType="touchUpInside" id="Ze2-70-3mz"/>
@@ -67,9 +67,9 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.80784313730000001" green="0.80784313730000001" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="FfY-3z-FXS"/>
+                                                    <constraint firstAttribute="height" constant="44" id="FfY-3z-FXS"/>
                                                     <constraint firstAttribute="bottom" secondItem="ubW-aO-ca8" secondAttribute="bottom" id="XNY-0n-uMT"/>
                                                     <constraint firstAttribute="trailing" secondItem="ubW-aO-ca8" secondAttribute="trailing" id="Z7T-jH-qUf"/>
                                                     <constraint firstItem="ubW-aO-ca8" firstAttribute="top" secondItem="4fO-hf-88k" secondAttribute="top" id="h09-U2-J7V"/>
@@ -77,7 +77,7 @@
                                                 </constraints>
                                             </view>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fK1-vq-QWj">
-                                                <rect key="frame" x="0.0" y="40" width="414" height="216"/>
+                                                <rect key="frame" x="0.0" y="44" width="414" height="216"/>
                                             </pickerView>
                                         </subviews>
                                     </stackView>

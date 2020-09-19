@@ -12,39 +12,64 @@ import xSDK
 class Test06ViewController: xViewController {
     
     @IBOutlet weak var resultLbl: UILabel!
+    var dataArray = [xMutableDataPickerModel]()
     
-    let alertDataPicker = xDataPickerViewController.quickInstancetype()
+    let alertDataPicker = xMutableDataPickerViewController.quickInstancetype()
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 初始化数据源
+        let obj1 = xMutableDataPickerModel.init(name: "水果")
+        obj1.childList = xMutableDataPickerModel.newList(array: ["苹果", "梨", "其他"])
+        obj1.childList[0].childList = xMutableDataPickerModel.newList(array: ["🍏", "🍎"])
+        obj1.childList[1].childList = xMutableDataPickerModel.newList(array: ["🍐", "🍍"])
+        obj1.childList[2].childList = xMutableDataPickerModel.newList(array: ["🍒", "🍇", "🍓", "🥝"])
+        
+        let obj2 = xMutableDataPickerModel.init(name: "蔬菜")
+        obj2.childList = xMutableDataPickerModel.newList(array: ["绿叶菜类", "根菜类", "瓜类", "茄果类"])
+        obj2.childList[0].childList = xMutableDataPickerModel.newList(array: ["🥬", "🥦", "🌽"])
+        obj2.childList[1].childList = xMutableDataPickerModel.newList(array: ["🥕", "🍠", "🥜"])
+        obj2.childList[2].childList = xMutableDataPickerModel.newList(array: ["🍉", "🥒"])
+        obj2.childList[3].childList = xMutableDataPickerModel.newList(array: ["🍆"])
+        
+        let obj3 = xMutableDataPickerModel.init(name: "美食")
+        obj3.childList = xMutableDataPickerModel.newList(array: ["中餐", "日料", "西餐"])
+        obj3.childList[0].childList = xMutableDataPickerModel.newList(array: ["🍗", "🍖", "🍤", "🍳"])
+        obj3.childList[1].childList = xMutableDataPickerModel.newList(array: ["🍙", "🍥", "🍣", "🍡"])
+        obj3.childList[2].childList = xMutableDataPickerModel.newList(array: ["🍔", "🍟", "🥗", "🍰", "🌮"])
+        
+        self.dataArray = [obj1, obj2, obj3]
     }
     override func addChildren() {
         self.addChild(self.alertDataPicker, in: self.view)
+        self.alertDataPicker.reload(dataArray: self.dataArray)
     }
     
-    // MARK: - 普通样式
-    @IBAction func normalBtnClick() {
-    }
-    
-    // MARK: - 弹动可扩展
-    @IBAction func springBtnClick() {
-        let obj1 = xMutableDataPickerModel.init(name: "数据0")
-        obj1.childList = self.randomArray(count: 3, prefix: "甜点")
-        let obj2 = xMutableDataPickerModel.init(name: "数据1")
-        obj2.childList = self.randomArray(count: 4, prefix: "水果")
-        let obj3 = xMutableDataPickerModel.init(name: "数据2")
-        obj3.childList = self.randomArray(count: 6, prefix: "蔬菜")
-    }
-    
-    /// 创建随机数组
-    public func randomArray(count : Int, prefix : String) -> [xMutableDataPickerModel]
-    {
-        var ret = [xMutableDataPickerModel]()
-        for i in 0 ..< count {
-            let str = "\(prefix):\(i)"
-            let model = xMutableDataPickerModel.init(name: str)
-            ret.append(model)
+    // MARK: - 不保存状态
+    @IBAction func nosaveBtnClick() {
+        self.alertDataPicker.reload(dataArray: self.dataArray)
+        self.alertDataPicker.display(title: "选择商品") {
+            [unowned self] (list) in
+            var name = ""
+            list.forEach {
+                (model) in
+                name += model.name
+            }
+            self.resultLbl.text = name
         }
-        return ret
     }
+    
+    // MARK: - 保存状态
+    @IBAction func saveBtnClick() {
+        self.alertDataPicker.display(title: "选择商品") {
+            [unowned self] (list) in
+            var name = ""
+            list.forEach {
+                (model) in
+                name += model.name
+            }
+            self.resultLbl.text = name
+        }
+    }
+     
 
 }

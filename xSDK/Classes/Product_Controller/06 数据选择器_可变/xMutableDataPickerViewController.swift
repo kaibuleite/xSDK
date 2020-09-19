@@ -11,7 +11,7 @@ public class xMutableDataPickerViewController: xPushAlertViewController, UIPicke
     
     // MARK: - Handler
     /// 选择数据回调
-    public typealias xHandlerChooseMutableData = (xMutableDataPickerModel) -> Void
+    public typealias xHandlerChooseMutableData = ([xMutableDataPickerModel]) -> Void
     
     // MARK: - IBOutlet Property
     /// 标题标签
@@ -21,13 +21,15 @@ public class xMutableDataPickerViewController: xPushAlertViewController, UIPicke
     
     // MARK: - Private Property
     /// 数据源
-    private var dataArray = [xMutableDataPickerModel]()
+    private var dataArray = [[xMutableDataPickerModel]]()
+    /// 所有数据源
+    private var totalDataArray = [xMutableDataPickerModel]()
     /// 每一列选中的行
     private var columnChooseRowArray = [Int]()
-    /// 当前选中的数据
-    var currentChooseDataModel = xMutableDataPickerModel()
-    /// 列数
-    private var column = 0
+    /// 最短数据长度
+    private var minDataLength = Int.max
+    /// 最长数据长度
+    private var maxDataLength = Int.zero
     /// 回调
     private var handler : xHandlerChooseMutableData?
     
@@ -40,7 +42,7 @@ public class xMutableDataPickerViewController: xPushAlertViewController, UIPicke
     
     // MARK: - Public Override Func
     public override class func quickInstancetype() -> Self {
-        let vc = xDataPickerViewController.new(storyboard: "xDataPickerViewController")
+        let vc = xMutableDataPickerViewController.new(storyboard: "xMutableDataPickerViewController")
         return vc as! Self
     }
     
@@ -49,23 +51,17 @@ public class xMutableDataPickerViewController: xPushAlertViewController, UIPicke
         self.dismiss()
     }
     @IBAction func sureBtnClick(_ sender: UIButton) {
-        
+        var arr = [xMutableDataPickerModel]()
+        for (i, list) in self.dataArray.enumerated() {
+            let row = self.columnChooseRowArray[i]
+            let model = list[row]
+            arr.append(model)
+        }
+        self.handler?(arr)
         self.dismiss()
     }
 
     // MARK: - Public Func
-    /// 重新加载数据
-    public func reload(dataArray : [xMutableDataPickerModel])
-    {
-        self.dataArray = dataArray
-        self.column = Int.max
-        self.resetMinColumn(dataArray: dataArray)
-        self.columnChooseRowArray = [Int].init(repeating: 0, count: self.column)
-        self.picker.dataSource = self
-        self.picker.delegate = self
-        self.picker.reloadAllComponents()
-    }
-    
     /// 显示选择器
     /// - Parameters:
     ///   - title: 标题
@@ -82,59 +78,101 @@ public class xMutableDataPickerViewController: xPushAlertViewController, UIPicke
         // 执行动画
         super.display(isSpring: isSpring)
     }
-
-    // MARK: - Private Func
-    /// 获取最短列
-    private func resetMinColumn(dataArray : [xMutableDataPickerModel])
+    /// 重新加载数据
+    public func reload(dataArray : [xMutableDataPickerModel])
     {
-        for data in dataArray {
-            // 子集不为空，继续遍历
-            if data.childList.count > 0 {
-                self.resetMinColumn(dataArray: data.childList)
-                continue
-            }
-            // 子集为空，计算层级
-            let column = data.layer + 1  // 层级从0开始算
-            guard column < self.column else { continue }
-            self.column = column
-            x_log(data.layer, data.name)
-            x_log("当前最少\(self.column)列")
+        guard dataArray.count > 0 else {
+            x_warning("没有数据，不加载")
+            return
+        }
+        self.picker.dataSource = self
+        self.picker.delegate = self
+        // 清空数据
+        self.minDataLength = Int.max
+        self.maxDataLength = Int.zero
+        self.totalDataArray.removeAll()
+        // 数据预处理
+        for (i, model) in dataArray.enumerated() {
+            model.column = 0
+            model.row = i
+        }
+        // 重新加载
+        self.forEach(dataArray: dataArray)
+        if self.minDataLength != self.maxDataLength {
+            x_warning("数据长度不一致，[\(self.minDataLength), \(self.maxDataLength)]")
+        }
+        /*
+        self.totalDataArray.forEach {
+            (model) in
+            x_log("\(model.rowNumber) \(model.name)")
+        }*/
+        self.columnChooseRowArray = .init(repeating: 0, count: self.minDataLength)
+        self.updateDataArray()
+        self.picker.reloadAllComponents()
+        // 重置状态
+        for i in 0 ..< self.minDataLength {
+            self.picker.selectRow(0, inComponent: i, animated: false)
         }
     }
-    /// 获取该列的数据
-    private func getDataArray(with column : Int) -> [xMutableDataPickerModel]
+
+    // MARK: - Private Func
+    /// 遍历数据
+    private func forEach(dataArray : [xMutableDataPickerModel])
     {
-        var ret = [xMutableDataPickerModel]()
-        guard column < self.column else { return ret }
-        if column == 0 {
-            return self.dataArray
-        }
-        // 根据每列选中的Row来获取Data
-        var chooseModel : xMutableDataPickerModel!
-        for (i, row) in self.columnChooseRowArray.enumerated() {
-            guard i < column else { break }
-            if i == 0 {
-                chooseModel = self.dataArray[row]
-            } else {
-                // 抽取子级内的数据
-                chooseModel = chooseModel.childList[row]
+        for model in dataArray {
+            self.totalDataArray.append(model)
+            // 子集不为空，继续遍历
+            if model.childList.count > 0 {
+                self.forEach(dataArray: model.childList)
+                continue
             }
-            ret = chooseModel.childList
+            // 子集为空，计算数据长度
+            let column = model.column + 1  // 技术从0开始算
+            if column > self.maxDataLength {
+                self.maxDataLength = column
+                x_log("数据最长列更新为\(column) - \(model.name)")
+            }
+            if column < self.minDataLength {
+                self.minDataLength = column
+                x_log("数据最短列更新为\(column) - \(model.name)")
+            }
         }
-        return ret
+    }
+    /// 更新数据源
+    public func updateDataArray()
+    {
+        var ret = [[xMutableDataPickerModel]].init(repeating: .init(),
+                                                   count: self.minDataLength)
+        for column in 0 ..< self.minDataLength {
+            // 获取行编号
+            var rowNumber = ""
+            for (i, row) in self.columnChooseRowArray.enumerated() {
+                guard i < column else { continue }
+                rowNumber += "\(row)"
+            }
+            // 筛选数据
+            for model in self.totalDataArray {
+                // 同列的数据
+                guard column == model.column else { continue }
+                if model.rowNumber.hasPrefix(rowNumber) {
+                    ret[column].append(model)
+                }
+            }
+        }
+        self.dataArray = ret
     }
     
     // MARK: - UIPickerViewDataSource
     /// 几列
     public func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
-        return self.column
+        return self.dataArray.count
     }
     /// 每列有几行
     public func pickerView(_ pickerView: UIPickerView,
                            numberOfRowsInComponent component: Int) -> Int
     {
-        let list = self.getDataArray(with: component)
+        let list = self.dataArray[component]
         return list.count
     }
     /// 为指定的列和行赋值
@@ -142,10 +180,9 @@ public class xMutableDataPickerViewController: xPushAlertViewController, UIPicke
                            titleForRow row: Int,
                            forComponent component: Int) -> String?
     {
-        let list = self.getDataArray(with: component)
+        let list = self.dataArray[component]
         let model = list[row]
-        let title = model.name
-        return title
+        return model.name
     }
     
     // MARK: - UIPickerViewDelegate
@@ -156,28 +193,15 @@ public class xMutableDataPickerViewController: xPushAlertViewController, UIPicke
     {
         // 重新加载数据
         self.columnChooseRowArray[component] = row
-        for column in 0 ..< self.column {
-            if column < component {
-                // 左边的列，保持原样
-            }
-            else
-            if column == component {
-                // 选中的列，更新数据
-                pickerView.reloadComponent(column)
-            }
-            else {
-                // 右边的列，恢复到选中第一个数据
-                self.columnChooseRowArray[column] = 0
-                pickerView.selectRow(0, inComponent: column, animated: false)
-                if column == self.column - 1 {
-                    // 最后一列，获取选中的数据
-                    let list = self.getDataArray(with: column)
-                    let model = list[row]
-                    let title = model.name
-                    self.currentChooseDataModel = model
-                    x_log(title)
-                }
-            }
+        // 重置状态
+        for i in component + 1 ..< self.minDataLength {
+            self.columnChooseRowArray[i] = 0
+            self.picker.selectRow(0, inComponent: i, animated: false)
+        }
+        // 加载数据
+        self.updateDataArray()
+        for i in component + 1 ..< self.minDataLength {
+            self.picker.reloadComponent(i)
         }
     }
     

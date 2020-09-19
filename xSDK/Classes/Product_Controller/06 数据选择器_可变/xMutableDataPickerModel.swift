@@ -19,8 +19,10 @@ public class xMutableDataPickerModel: NSObject {
     /// 子级
     public var childList = [xMutableDataPickerModel]() {
         didSet {
-            for model in self.childList {
+            for (i, model) in self.childList.enumerated() {
                 model.parent = self
+                model.row = i
+                model.column = self.column + 1
             }
         }
     }
@@ -28,10 +30,16 @@ public class xMutableDataPickerModel: NSObject {
     // MARK: - Private Property
     /// 父级
     weak var parent : xMutableDataPickerModel?
-    /// 层级
-    var layer : Int {
-        guard let parent = self.parent else { return 0 }
-        return parent.layer + 1
+    /// 行
+    var row = 0
+    /// 列
+    var column = 0
+    /// 行编号
+    var rowNumber : String {
+        if let parent = self.parent {
+            return parent.rowNumber + "\(self.row)"
+        }
+        return "\(self.row)"
     }
     
     // MARK: - Public Func
@@ -40,10 +48,35 @@ public class xMutableDataPickerModel: NSObject {
                 name : String,
                 info : Any? = nil)
     {
-        self.id = name
+        self.id = id
         self.name = name
+        self.info = info
     }
     public override init() {
         
+    }
+    
+    /// 创建数据列表
+    public static func newList(array : [String]) -> [xMutableDataPickerModel]
+    {
+        var ret = [xMutableDataPickerModel]()
+        array.forEach {
+            (name) in
+            let model = xMutableDataPickerModel.init(name: name)
+            ret.append(model)
+        }
+        return ret
+    }
+    /// 创建数据列表
+    public static func newList(count : Int,
+                               prefix : String) -> [xMutableDataPickerModel]
+    {
+        var ret = [xMutableDataPickerModel]()
+        for i in 0 ..< count {
+            let name = prefix + "\(i)"
+            let model = xMutableDataPickerModel.init(name: name)
+            ret.append(model)
+        }
+        return ret
     }
 }

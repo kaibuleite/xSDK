@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Test06ViewController" customModule="xSDK_Example" customModuleProvider="target">
             <connections>
+                <outlet property="resultLbl" destination="thF-0g-olr" id="ST3-GN-198"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,13 +32,13 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpN-xw-a7R" customClass="xButton" customModule="xSDK">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocH-ni-I5x" customClass="xButton" customModule="xSDK">
                             <rect key="frame" x="0.0" y="53" width="354" height="40"/>
                             <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="fGl-3D-Nrw"/>
+                                <constraint firstAttribute="height" constant="40" id="3PH-W9-5Oe"/>
                             </constraints>
-                            <state key="normal" title="每次都初始化数据源">
+                            <state key="normal" title="保存上一次状态">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -45,14 +46,17 @@
                                     <real key="value" value="4"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="nosaveBtnClick" destination="-1" eventType="touchUpInside" id="zWR-4W-vNr"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAQ-7l-5ho" customClass="xButton" customModule="xSDK">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDE-Us-pBd" customClass="xButton" customModule="xSDK">
                             <rect key="frame" x="0.0" y="101" width="354" height="40"/>
                             <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="abR-er-9sc"/>
+                                <constraint firstAttribute="height" constant="40" id="56Y-LU-GGk"/>
                             </constraints>
-                            <state key="normal" title="只初始化一次数据源">
+                            <state key="normal" title="不保存上一次状态">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -60,6 +64,9 @@
                                     <real key="value" value="4"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="saveBtnClick" destination="-1" eventType="touchUpInside" id="vq9-na-bXq"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

@@ -47,7 +47,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="normalBtnClick" destination="-1" eventType="touchUpInside" id="Lyt-nN-2pB"/>
+                                <action selector="nosaveBtnClick" destination="-1" eventType="touchUpInside" id="WGz-Lw-Jwi"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5d-I7-EBO" customClass="xButton" customModule="xSDK">
@@ -65,7 +65,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="springBtnClick" destination="-1" eventType="touchUpInside" id="OQE-Hf-pPO"/>
+                                <action selector="saveBtnClick" destination="-1" eventType="touchUpInside" id="vWv-EP-Wim"/>
                             </connections>
                         </button>
                     </subviews>
