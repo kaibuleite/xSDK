@@ -1,5 +1,5 @@
 //
-//  xScanQRCodeViewController.swift
+//  xScanCodeViewController.swift
 //  xSDK
 //
 //  Created by Mac on 2020/9/19.
@@ -8,7 +8,7 @@
 import UIKit
 import AVKit
 
-public class xScanQRCodeViewController: xViewController, AVCaptureMetadataOutputObjectsDelegate {
+public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     // MARK: - Handler
     /// 扫描完成回调
@@ -72,7 +72,7 @@ public class xScanQRCodeViewController: xViewController, AVCaptureMetadataOutput
 
     // MARK: - Public Override Func
     public override class func quickInstancetype() -> Self {
-        let vc = xScanQRCodeViewController.new(storyboard: "xScanQRCodeViewController")
+        let vc = xScanCodeViewController.new(storyboard: "xScanCodeViewController")
         return vc as! Self
     }
     public override func viewDidLoad() {
@@ -137,7 +137,7 @@ public class xScanQRCodeViewController: xViewController, AVCaptureMetadataOutput
                               animated : Bool = true,
                               handler : @escaping xHandlerScanCode)
     {
-        let vc = xScanQRCodeViewController.quickInstancetype()
+        let vc = xScanCodeViewController.quickInstancetype()
         // 设置回调
         vc.handler = handler
         viewController.present(vc, animated: true, completion: nil)
@@ -171,7 +171,9 @@ public class xScanQRCodeViewController: xViewController, AVCaptureMetadataOutput
         self.session.addInput(self.input!)
         self.session.addOutput(self.output)
         // 4.设置输出能够解析的数据类型
-        self.output.metadataObjectTypes = self.output.availableMetadataObjectTypes
+        self.output.metadataObjectTypes = [.ean8, .ean13,   // 条形码
+                                           .code39, .code93, .code128,  // 条形码
+                                           .qr] // 二维码
         // 5.设置监听监听解析到的数据类型,并设置代理
         self.output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
         // 6.添加预览图层

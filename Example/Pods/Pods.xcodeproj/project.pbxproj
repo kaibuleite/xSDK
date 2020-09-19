@@ -17,7 +17,7 @@
 		04CDB88425159E1E005F531F /* xMutableDataPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB88225159E1B005F531F /* xMutableDataPickerModel.swift */; };
 		04CDB88D2515A316005F531F /* xMutableDataPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB88C2515A316005F531F /* xMutableDataPickerViewController.storyboard */; };
 		04CDB8912515AFC3005F531F /* xDataPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8902515AFC3005F531F /* xDataPickerModel.swift */; };
-		04CDB8942515D2E2005F531F /* xScanQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8932515D2E2005F531F /* xScanQRCodeViewController.swift */; };
+		04CDB8942515D2E2005F531F /* xScanCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8932515D2E2005F531F /* xScanCodeViewController.swift */; };
 		04CDB8962515D2F4005F531F /* xScanCodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8952515D2F4005F531F /* xScanCodeViewController.storyboard */; };
 		04CDB89E2515E8EE005F531F /* light_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB89C2515E8ED005F531F /* light_off@2x.png */; };
 		04CDB89F2515E8EE005F531F /* light_off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB89D2515E8EE005F531F /* light_off@3x.png */; };
@@ -399,7 +399,7 @@
 		04CDB88225159E1B005F531F /* xMutableDataPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xMutableDataPickerModel.swift; sourceTree = "<group>"; };
 		04CDB88C2515A316005F531F /* xMutableDataPickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xMutableDataPickerViewController.storyboard; sourceTree = "<group>"; };
 		04CDB8902515AFC3005F531F /* xDataPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDataPickerModel.swift; sourceTree = "<group>"; };
-		04CDB8932515D2E2005F531F /* xScanQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xScanQRCodeViewController.swift; sourceTree = "<group>"; };
+		04CDB8932515D2E2005F531F /* xScanCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xScanCodeViewController.swift; sourceTree = "<group>"; };
 		04CDB8952515D2F4005F531F /* xScanCodeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xScanCodeViewController.storyboard; sourceTree = "<group>"; };
 		04CDB89C2515E8ED005F531F /* light_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light_off@2x.png"; sourceTree = "<group>"; };
 		04CDB89D2515E8EE005F531F /* light_off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light_off@3x.png"; sourceTree = "<group>"; };
@@ -859,7 +859,7 @@
 		04CDB8922515D2B0005F531F /* 07 扫码 */ = {
 			isa = PBXGroup;
 			children = (
-				04CDB8932515D2E2005F531F /* xScanQRCodeViewController.swift */,
+				04CDB8932515D2E2005F531F /* xScanCodeViewController.swift */,
 				04CDB8952515D2F4005F531F /* xScanCodeViewController.storyboard */,
 			);
 			path = "07 扫码";
@@ -2208,7 +2208,7 @@
 				9E2B68C51D32367C38EA2C45E968B538 /* xSegmentViewController.swift in Sources */,
 				04E08A9B2514640900780C15 /* xCaptchaView.swift in Sources */,
 				AF06FBD87AE7072D750B5C9D7F564F8D /* xTabBarController.swift in Sources */,
-				04CDB8942515D2E2005F531F /* xScanQRCodeViewController.swift in Sources */,
+				04CDB8942515D2E2005F531F /* xScanCodeViewController.swift in Sources */,
 				6AB06A17AC66FD20A7D5785F913AC08E /* xTableViewCell.swift in Sources */,
 				B45232B0CDD20807AB1D17B693C62A39 /* xTableViewController.swift in Sources */,
 				0C80D5BDD523B54909F12379A4C8667C /* xTextField.swift in Sources */,

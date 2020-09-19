@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ScanQR Code View Controller-->
+        <!--Scan Code View Controller-->
         <scene sceneID="dGH-2i-3Ue">
             <objects>
-                <viewController id="YIt-x9-d4G" customClass="xScanQRCodeViewController" customModule="xSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YIt-x9-d4G" customClass="xScanCodeViewController" customModule="xSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QhP-Bz-ojI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

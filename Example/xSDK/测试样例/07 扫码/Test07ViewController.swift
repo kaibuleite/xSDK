@@ -17,7 +17,7 @@ class Test07ViewController: UIViewController {
     }
 
     @IBAction func scanBtnClick() {
-        xScanQRCodeViewController.display(from: self) {
+        xScanCodeViewController.display(from: self) {
             [unowned self] (code) in
             self.resultLbl.text = code
         }

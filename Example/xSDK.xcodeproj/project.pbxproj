@@ -145,13 +145,13 @@
 			path = "06 可变数据选择器";
 			sourceTree = "<group>";
 		};
-		04CDB8972515E048005F531F /* 07 扫描二维码 */ = {
+		04CDB8972515E048005F531F /* 07 扫码 */ = {
 			isa = PBXGroup;
 			children = (
 				04CDB8982515E059005F531F /* Test07ViewController.swift */,
 				04CDB8992515E059005F531F /* Test07ViewController.xib */,
 			);
-			path = "07 扫描二维码";
+			path = "07 扫码";
 			sourceTree = "<group>";
 		};
 		04D8D72A2513079600F0B14B /* 03 菜单 */ = {
@@ -213,7 +213,7 @@
 				04E08AAD25149BCC00780C15 /* 04 日期选择器 */,
 				04E08AB52514A8E000780C15 /* 05 数据选择器 */,
 				04CDB8852515A213005F531F /* 06 可变数据选择器 */,
-				04CDB8972515E048005F531F /* 07 扫描二维码 */,
+				04CDB8972515E048005F531F /* 07 扫码 */,
 			);
 			path = "测试样例";
 			sourceTree = "<group>";
