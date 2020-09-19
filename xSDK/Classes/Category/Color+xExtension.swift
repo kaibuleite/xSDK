@@ -78,9 +78,10 @@ extension UIColor
         let view = UIView.init(frame: frame)
         view.backgroundColor = self
         // 绘画板
-        UIGraphicsBeginImageContext(size)
-        let ctx = UIGraphicsGetCurrentContext()
-        view.layer.render(in: ctx!)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
+        ctx.interpolationQuality = .none   // 高质量
+        view.layer.render(in: ctx)
         let ret = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return ret

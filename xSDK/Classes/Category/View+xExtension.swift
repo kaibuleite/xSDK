@@ -31,11 +31,11 @@ extension UIView {
     public func x_toImage() -> UIImage?
     {
         let frame = self.bounds
-        let scale = UIScreen.main.scale
         // 绘画板
-        UIGraphicsBeginImageContextWithOptions(frame.size, false, scale)
-        let context = UIGraphicsGetCurrentContext()
-        self.layer.render(in: context!)
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, 0)
+        guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
+        ctx.interpolationQuality = .none   // 高质量
+        self.layer.render(in: ctx)
         let ret = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return ret

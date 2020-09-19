@@ -19,11 +19,11 @@ extension UIImage
     public func x_draw(rect : CGRect,
                        path : UIBezierPath) -> UIImage?
     {
-        UIGraphicsBeginImageContextWithOptions(rect.size, false,
-                                               self.scale)
-        let context = UIGraphicsGetCurrentContext()
-        context?.addPath(path.cgPath)
-        context?.clip()
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+        guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
+        ctx.interpolationQuality = .none   // 高质量
+        ctx.addPath(path.cgPath)
+        ctx.clip()
         self.draw(in: rect)
         let ret = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -77,8 +77,8 @@ extension UIImage
         let factor_h = size.height / self.size.height
         let factor = fmin(factor_w, factor_h)
         // 计算等比数据
-        let w = self.size.width * factor * self.scale
-        let h = self.size.height * factor * self.scale
+        let w = self.size.width * factor
+        let h = self.size.height * factor
         let rect = CGRect.init(x: 0,
                                y: 0,
                                width: w,
@@ -136,7 +136,9 @@ extension UIImage
         let w = self.size.width + image.size.width + CGFloat(spacing)
         let h = fmax(self.size.height, image.size.height)
         // 自身图片
-        UIGraphicsBeginImageContextWithOptions(CGSize.init(width: w, height: h), false, self.scale)
+        UIGraphicsBeginImageContextWithOptions(CGSize.init(width: w, height: h), false, 0)
+        guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
+        ctx.interpolationQuality = .none   // 高质量
         var rect = CGRect.init()
         rect.origin.y = (h - self.size.height) / 2.0
         rect.size = self.size
@@ -160,7 +162,9 @@ extension UIImage
                       rect : CGRect) -> UIImage?
     {
         // 自身图片
-        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        UIGraphicsBeginImageContextWithOptions(self.size, false, 0)
+        guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
+        ctx.interpolationQuality = .none   // 高质量
         self.draw(in: CGRect.init(origin: CGPoint.zero, size: self.size))
         image.draw(in: rect)
         // 要覆盖的图片

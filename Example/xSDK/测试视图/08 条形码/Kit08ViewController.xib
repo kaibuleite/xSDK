@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Kit08ViewController" customModule="xSDK_Example" customModuleProvider="target">
+            <connections>
+                <outlet property="code1View" destination="fCt-Xb-JQe" id="4h0-xU-Ai9"/>
+                <outlet property="code2View" destination="NxA-fh-jcS" id="Fkd-uO-Nyb"/>
+                <outlet property="code3View" destination="b8n-15-ocO" id="S0V-pv-2vC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HiA-Cr-0af">
+                    <rect key="frame" x="30" y="310" width="354" height="276"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJh-rK-EgD" customClass="xClearView" customModule="xSDK">
+                            <rect key="frame" x="0.0" y="0.0" width="354" height="80"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fCt-Xb-JQe" customClass="xEANCodeImageView" customModule="xSDK">
+                                    <rect key="frame" x="77" y="0.0" width="200" height="80"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="80" id="BUd-XI-B1u"/>
+                                        <constraint firstAttribute="width" constant="200" id="f1A-8R-ed4"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="fCt-Xb-JQe" firstAttribute="centerX" secondItem="IJh-rK-EgD" secondAttribute="centerX" id="jJN-th-Zw1"/>
+                                <constraint firstItem="fCt-Xb-JQe" firstAttribute="top" secondItem="IJh-rK-EgD" secondAttribute="top" id="kL6-za-67p"/>
+                                <constraint firstAttribute="bottom" secondItem="fCt-Xb-JQe" secondAttribute="bottom" id="kdI-UJ-LdQ"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BDW-XU-8C3" customClass="xClearView" customModule="xSDK">
+                            <rect key="frame" x="0.0" y="88" width="354" height="80"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NxA-fh-jcS" customClass="xEANCodeImageView" customModule="xSDK">
+                                    <rect key="frame" x="52" y="0.0" width="250" height="80"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="80" id="WRp-CZ-h8v"/>
+                                        <constraint firstAttribute="width" constant="250" id="wAW-pz-B4r"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="NxA-fh-jcS" firstAttribute="centerX" secondItem="BDW-XU-8C3" secondAttribute="centerX" id="M5n-NA-o7b"/>
+                                <constraint firstAttribute="bottom" secondItem="NxA-fh-jcS" secondAttribute="bottom" id="MiR-fN-XLx"/>
+                                <constraint firstItem="NxA-fh-jcS" firstAttribute="top" secondItem="BDW-XU-8C3" secondAttribute="top" id="fj3-1m-GeB"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88d-2a-8nE" customClass="xClearView" customModule="xSDK">
+                            <rect key="frame" x="0.0" y="176" width="354" height="100"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b8n-15-ocO" customClass="xEANCodeImageView" customModule="xSDK">
+                                    <rect key="frame" x="27" y="0.0" width="300" height="100"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="80H-2O-iVQ"/>
+                                        <constraint firstAttribute="width" constant="300" id="TfK-m7-b2B"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="b8n-15-ocO" firstAttribute="centerX" secondItem="88d-2a-8nE" secondAttribute="centerX" id="Os2-Vz-du9"/>
+                                <constraint firstItem="b8n-15-ocO" firstAttribute="top" secondItem="88d-2a-8nE" secondAttribute="top" id="a5m-Lk-JtN"/>
+                                <constraint firstAttribute="bottom" secondItem="b8n-15-ocO" secondAttribute="bottom" id="kTs-o4-j9g"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="HiA-Cr-0af" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="16g-AX-kOt"/>
+                <constraint firstItem="HiA-Cr-0af" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bmT-9v-FCg"/>
+                <constraint firstItem="HiA-Cr-0af" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="hf3-2G-LSM"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="132" y="115"/>
+        </view>
+    </objects>
+</document>

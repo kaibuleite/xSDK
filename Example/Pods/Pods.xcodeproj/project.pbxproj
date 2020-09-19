@@ -26,6 +26,8 @@
 		04CDB8A62515E904005F531F /* scan_net@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8A42515E904005F531F /* scan_net@3x.png */; };
 		04CDB8A72515E904005F531F /* scan_net@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8A52515E904005F531F /* scan_net@2x.png */; };
 		04CDB8A92515E9C6005F531F /* scan_success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8A82515E9C6005F531F /* scan_success.mp3 */; };
+		04CDB8AD2515FAE3005F531F /* xEANCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8AC2515FAE3005F531F /* xEANCodeImageView.swift */; };
+		04CDB8AF2515FAEF005F531F /* xQRCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8AE2515FAEF005F531F /* xQRCodeImageView.swift */; };
 		04E08A962514615400780C15 /* xMaskViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E08A952514615400780C15 /* xMaskViewController.storyboard */; };
 		04E08A982514615D00780C15 /* xWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E08A972514615D00780C15 /* xWebViewController.storyboard */; };
 		04E08A9B2514640900780C15 /* xCaptchaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E08A9A2514640900780C15 /* xCaptchaView.swift */; };
@@ -408,6 +410,8 @@
 		04CDB8A42515E904005F531F /* scan_net@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_net@3x.png"; sourceTree = "<group>"; };
 		04CDB8A52515E904005F531F /* scan_net@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_net@2x.png"; sourceTree = "<group>"; };
 		04CDB8A82515E9C6005F531F /* scan_success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scan_success.mp3; sourceTree = "<group>"; };
+		04CDB8AC2515FAE3005F531F /* xEANCodeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xEANCodeImageView.swift; sourceTree = "<group>"; };
+		04CDB8AE2515FAEF005F531F /* xQRCodeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xQRCodeImageView.swift; sourceTree = "<group>"; };
 		04E08A952514615400780C15 /* xMaskViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = xMaskViewController.storyboard; sourceTree = "<group>"; };
 		04E08A972514615D00780C15 /* xWebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = xWebViewController.storyboard; sourceTree = "<group>"; };
 		04E08A9A2514640900780C15 /* xCaptchaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCaptchaView.swift; sourceTree = "<group>"; };
@@ -865,6 +869,22 @@
 			path = "07 扫码";
 			sourceTree = "<group>";
 		};
+		04CDB8AA2515FA8B005F531F /* 08 条形码 */ = {
+			isa = PBXGroup;
+			children = (
+				04CDB8AC2515FAE3005F531F /* xEANCodeImageView.swift */,
+			);
+			path = "08 条形码";
+			sourceTree = "<group>";
+		};
+		04CDB8AB2515FAAB005F531F /* 09 二维码 */ = {
+			isa = PBXGroup;
+			children = (
+				04CDB8AE2515FAEF005F531F /* xQRCodeImageView.swift */,
+			);
+			path = "09 二维码";
+			sourceTree = "<group>";
+		};
 		04E08A7B251440EE00780C15 /* 04 导航栏 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1189,6 +1209,8 @@
 				04E08A7D2514414400780C15 /* 05 渐变色 */,
 				04E08A7E2514417400780C15 /* 06 输入框附加视图 */,
 				04E08A992514632400780C15 /* 07 图片验证码 */,
+				04CDB8AA2515FA8B005F531F /* 08 条形码 */,
+				04CDB8AB2515FAAB005F531F /* 09 二维码 */,
 			);
 			name = Product_Kit;
 			path = xSDK/Classes/Product_Kit;
@@ -2163,6 +2185,7 @@
 				CA6455C144BAA46AC2C3306A79E51697 /* xAPIRecord.swift in Sources */,
 				7197DC1A88C3E3DBFA80D4882051885B /* xAppManager.swift in Sources */,
 				A299208625BB3E7CCC487E95ED5D4AC3 /* xButton.swift in Sources */,
+				04CDB8AD2515FAE3005F531F /* xEANCodeImageView.swift in Sources */,
 				9895B6B9611620CDF586038947923F14 /* xChoosePhotoAlert.swift in Sources */,
 				8C2F16A4120F4908A98D024A38CF5E87 /* xClearView.swift in Sources */,
 				D741C6AB953D994DEFC592554994173A /* xCollectionViewCell.swift in Sources */,
@@ -2185,6 +2208,7 @@
 				14F97CC2203B362F000067F71B4B20E0 /* xLineView.swift in Sources */,
 				42B33511B911D126F522241CACBB479E /* xListCollectionViewController.swift in Sources */,
 				04E08ABB2514A9BD00780C15 /* xDataPickerViewController.swift in Sources */,
+				04CDB8AF2515FAEF005F531F /* xQRCodeImageView.swift in Sources */,
 				287FFB993A8E3D621F4BD6C36867B092 /* xListTableViewController.swift in Sources */,
 				B2B1DA79E9A38634221F3ACD1CB4A391 /* xMask+AnimeEatBeans.swift in Sources */,
 				0034AC2C84A230FC546CBC870ACD9B8F /* xMask+AnimeLayer.swift in Sources */,
