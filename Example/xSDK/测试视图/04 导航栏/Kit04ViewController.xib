@@ -32,9 +32,23 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDX-Oc-paF" customClass="xNavigationView" customModule="xSDK">
                     <rect key="frame" x="0.0" y="138" width="414" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pE-Da-O3U">
+                            <rect key="frame" x="370" y="0.0" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="ZGD-fn-HW7"/>
+                            </constraints>
+                            <state key="normal" title="附加">
+                                <color key="titleColor" red="0.79215686269999996" green="0.28235294119999998" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="7pE-Da-O3U" secondAttribute="trailing" id="Ckf-FI-yeU"/>
                         <constraint firstAttribute="height" constant="44" id="Qbp-9e-L5W"/>
+                        <constraint firstItem="7pE-Da-O3U" firstAttribute="top" secondItem="KDX-Oc-paF" secondAttribute="top" id="nNh-9i-rde"/>
+                        <constraint firstAttribute="bottom" secondItem="7pE-Da-O3U" secondAttribute="bottom" id="wgD-ab-Mwx"/>
                     </constraints>
                     <connections>
                         <outlet property="vc" destination="-1" id="q90-zf-EMQ"/>

@@ -12,6 +12,8 @@
 		04CDB88A2515A230005F531F /* Test06ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8882515A230005F531F /* Test06ViewController.swift */; };
 		04CDB88B2515A230005F531F /* Test06ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8892515A230005F531F /* Test06ViewController.xib */; };
 		04CDB88F2515A428005F531F /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB88E2515A428005F531F /* TableViewController.swift */; };
+		04CDB89A2515E059005F531F /* Test07ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8982515E059005F531F /* Test07ViewController.swift */; };
+		04CDB89B2515E059005F531F /* Test07ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8992515E059005F531F /* Test07ViewController.xib */; };
 		04D8D72D251307EA00F0B14B /* Test03ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8D72B251307EA00F0B14B /* Test03ViewController.swift */; };
 		04D8D72E251307EA00F0B14B /* Test03ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D8D72C251307EA00F0B14B /* Test03ViewController.xib */; };
 		04D8D73A2513445100F0B14B /* Kit01ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8D7382513445100F0B14B /* Kit01ViewController.swift */; };
@@ -60,6 +62,8 @@
 		04CDB8882515A230005F531F /* Test06ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test06ViewController.swift; sourceTree = "<group>"; };
 		04CDB8892515A230005F531F /* Test06ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test06ViewController.xib; sourceTree = "<group>"; };
 		04CDB88E2515A428005F531F /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		04CDB8982515E059005F531F /* Test07ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test07ViewController.swift; sourceTree = "<group>"; };
+		04CDB8992515E059005F531F /* Test07ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test07ViewController.xib; sourceTree = "<group>"; };
 		04D8D72B251307EA00F0B14B /* Test03ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test03ViewController.swift; sourceTree = "<group>"; };
 		04D8D72C251307EA00F0B14B /* Test03ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test03ViewController.xib; sourceTree = "<group>"; };
 		04D8D7382513445100F0B14B /* Kit01ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit01ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +145,15 @@
 			path = "06 可变数据选择器";
 			sourceTree = "<group>";
 		};
+		04CDB8972515E048005F531F /* 07 扫描二维码 */ = {
+			isa = PBXGroup;
+			children = (
+				04CDB8982515E059005F531F /* Test07ViewController.swift */,
+				04CDB8992515E059005F531F /* Test07ViewController.xib */,
+			);
+			path = "07 扫描二维码";
+			sourceTree = "<group>";
+		};
 		04D8D72A2513079600F0B14B /* 03 菜单 */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +213,7 @@
 				04E08AAD25149BCC00780C15 /* 04 日期选择器 */,
 				04E08AB52514A8E000780C15 /* 05 数据选择器 */,
 				04CDB8852515A213005F531F /* 06 可变数据选择器 */,
+				04CDB8972515E048005F531F /* 07 扫描二维码 */,
 			);
 			path = "测试样例";
 			sourceTree = "<group>";
@@ -456,6 +470,7 @@
 				04E08A852514423900780C15 /* Kit04ViewController.xib in Resources */,
 				04E08AB125149BD800780C15 /* Test04ViewController.xib in Resources */,
 				04DE84542510AF50008615B3 /* Test01ViewController.xib in Resources */,
+				04CDB89B2515E059005F531F /* Test07ViewController.xib in Resources */,
 				04E08A892514424600780C15 /* Kit05ViewController.xib in Resources */,
 				04E08AA22514676400780C15 /* Kit07ViewController.xib in Resources */,
 				04D8D72E251307EA00F0B14B /* Test03ViewController.xib in Resources */,
@@ -567,6 +582,7 @@
 				04D8D74C2513626800F0B14B /* Kit03ViewController.swift in Sources */,
 				04D8D7472513606200F0B14B /* Kit02ViewController.swift in Sources */,
 				04E08AB025149BD800780C15 /* Test04ViewController.swift in Sources */,
+				04CDB89A2515E059005F531F /* Test07ViewController.swift in Sources */,
 				04CDB88A2515A230005F531F /* Test06ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
