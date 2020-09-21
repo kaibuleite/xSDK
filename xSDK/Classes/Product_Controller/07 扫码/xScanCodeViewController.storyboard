@@ -53,7 +53,7 @@
                                             <constraint firstAttribute="width" constant="44" id="BWT-37-5yy"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="back_30.png"/>
+                                        <state key="normal" image="scan_back.png"/>
                                         <connections>
                                             <action selector="backBtnClick" destination="YIt-x9-d4G" eventType="touchUpInside" id="0zQ-vT-f4U"/>
                                         </connections>
@@ -146,8 +146,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back_30.png" width="15" height="15"/>
         <image name="light_off.png" width="41" height="41"/>
+        <image name="scan_back.png" width="24" height="24"/>
         <image name="scan_blue_line.png" width="250" height="16"/>
     </resources>
 </document>
