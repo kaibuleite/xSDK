@@ -25,11 +25,11 @@ public class xDataPickerViewController: xPushAlertViewController, UIPickerViewDa
     /// 每一列选中的行
     private var columnChooseRowArray = [Int]()
     /// 回调
-    private var handler : xHandlerChooseData?
+    private var chooseHandler : xHandlerChooseData?
     
     // MARK: - 内存释放
     deinit {
-        self.handler = nil
+        self.chooseHandler = nil
         self.picker.dataSource = nil
         self.picker.delegate = nil
     }
@@ -51,7 +51,7 @@ public class xDataPickerViewController: xPushAlertViewController, UIPickerViewDa
             let model = list[row]
             arr.append(model)
         }
-        self.handler?(arr)
+        self.chooseHandler?(arr)
         self.dismiss()
     }
 
@@ -64,11 +64,11 @@ public class xDataPickerViewController: xPushAlertViewController, UIPickerViewDa
     ///   - handler: 回调
     public func display(title : String,
                         isSpring : Bool = true,
-                        handler : @escaping xHandlerChooseData)
+                        choose handler : @escaping xHandlerChooseData)
     {
         // 保存数据
         self.titleLbl.text = title
-        self.handler = handler
+        self.chooseHandler = handler
         // 执行动画
         super.display(isSpring: isSpring)
     }

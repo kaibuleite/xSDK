@@ -11,11 +11,11 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
 
     // MARK: - Private Property
     /// 回调
-    private var handler : xChoosePhotoAlert.xHandlerChoosePhoto?
+    private var chooseHandler : xChoosePhotoAlert.xHandlerChoosePhoto?
     
     // MARK: - 内存释放
     deinit {
-        self.handler = nil
+        self.chooseHandler = nil
         self.delegate = nil
         x_log("💥 照片库")
     }
@@ -28,28 +28,28 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
     
     // MARK: - Public Func
     /// 开启相册(默认无法编辑图片)
-    public func displayPhotoLibrary(from viewController : UIViewController,
-                                    handler : @escaping xChoosePhotoAlert.xHandlerChoosePhoto)
+    public func displayAlbum(from viewController : UIViewController,
+                             choose handler : @escaping xChoosePhotoAlert.xHandlerChoosePhoto)
     {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
             x_warning("相册数据源不可用")
             return
         }
         self.sourceType = .photoLibrary
-        self.handler = handler
+        self.chooseHandler = handler
         viewController.present(self, animated: true, completion: nil)
     }
     
     /// 开启相机(默认无法编辑图片)
     public func displayCamera(from viewController : UIViewController,
-                              handler : @escaping xChoosePhotoAlert.xHandlerChoosePhoto)
+                              choose handler : @escaping xChoosePhotoAlert.xHandlerChoosePhoto)
     {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
             x_warning("相机数据源不可用")
             return
         }
         self.sourceType = .camera
-        self.handler = handler
+        self.chooseHandler = handler
         viewController.present(self, animated: true, completion: nil)
     }
 
@@ -67,7 +67,7 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
         // 图片方向
         x_log("图片原始方向 = \(img.imageOrientation.rawValue)")
         picker.dismiss(animated: true) {
-            self.handler?(img)
+            self.chooseHandler?(img)
         }
     }
     /// 取消
@@ -80,7 +80,6 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
     func failure(_ picker: UIImagePickerController) -> Void
     {
         x_log("图片获取失败")
-        self.handler = nil
         picker.dismiss(animated: true, completion: nil)
     }
 }

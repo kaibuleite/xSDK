@@ -32,7 +32,7 @@ public class xChoosePhotoAlert: NSObject {
                                cameraTitle : String = "相机",
                                cancelTitle : String = "取消",
                                allowsEditing : Bool,
-                               handler : @escaping xHandlerChoosePhoto) -> Void
+                               choose handler : @escaping xHandlerChoosePhoto) -> Void
     {
         let actionSheet = UIAlertController.init(title: nil,
                                                  message: nil,
@@ -42,8 +42,7 @@ public class xChoosePhotoAlert: NSObject {
             (sender) in
             let picker = xImagePickerController.init()
             picker.allowsEditing = allowsEditing
-            picker.displayPhotoLibrary(from: viewController,
-                                       handler: handler)
+            picker.displayAlbum(from: viewController, choose: handler)
         }
         actionSheet.addAction(album)
         // 相机
@@ -51,8 +50,7 @@ public class xChoosePhotoAlert: NSObject {
             (sender) in
             let picker = xImagePickerController.init()
             picker.allowsEditing = allowsEditing
-            picker.displayCamera(from: viewController,
-                                 handler: handler)
+            picker.displayCamera(from: viewController, choose: handler)
         }
         actionSheet.addAction(camera)
         // 取消

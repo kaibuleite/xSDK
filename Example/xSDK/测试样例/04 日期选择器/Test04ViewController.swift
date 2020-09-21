@@ -26,7 +26,7 @@ class Test04ViewController: xViewController {
         let config = xDatePickerConfig()
         config.maxDate = Date()
         config.model = .dateAndTime
-        self.alertDatePicker.update(config: config)
+        self.alertDatePicker.config = config
         self.alertDatePicker.display(title: "选择日期", isSpring: false) {
             [unowned self] (timeStamp) in
             // 返回时间戳,毫秒级,带小数
@@ -40,7 +40,7 @@ class Test04ViewController: xViewController {
         let config = xDatePickerConfig()
         config.minDate = Date()
         config.model = .dateAndTime
-        self.alertDatePicker.update(config: config)
+        self.alertDatePicker.config = config
         self.alertDatePicker.display(title: "选择日期", isSpring: true) {
             [unowned self] (timeStamp) in
             x_log(timeStamp)

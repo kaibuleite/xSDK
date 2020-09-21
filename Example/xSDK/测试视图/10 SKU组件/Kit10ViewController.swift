@@ -35,17 +35,17 @@ class Kit10ViewController: xViewController {
     }
     override func addKit() {
         let arr = ["🍏🍎🍐🍊", "🍋", "🍌🍉🍇", "🍅🥑🥝🍍", "🍑🍒🍈", "🍓🍆🥒🥕🌶🥔🌽", "🍠🥜🥞🥓", "🥚🧀🥖🍞🥐", "🍯🍗🍖🍤", "🍳🍔🍟🌭🍕", "🍣🍥🥗", "🍲🍜🌯🌮", "🍝🍱🍛🍙🍚", "🍢🍡🍧🍫🍭🍬", "🍮🎂🍰🍦🍨🍿🍩🍪🥛", "🍺🍻🍷", "🍸🍽🍴", "🍼☕️🍵🍶🍾", "🍹🥙🥘🥂🥂🥃🥄🥥", "🥦🥨🥣🥤🥧🥠", "🥟🥫🥪🥩", "🥡🥢🥭🥬🥯🦴", "🥮🧁🧂"]
-        self.skuView.reload(dataArray: arr) {
+        self.skuView.reload(dataArray: arr, column: 0, completed: {
             [unowned self] (frame) in
             x_log(frame)
             // 刷新高度
             self.skuViewHeightLayout.constant = frame.height
             self.view.layoutIfNeeded()
-        }
-        self.skuView.addChooseHandler {
+            
+        }, choose: {
             [unowned self] (idx) in
             self.resultLbl.text = arr[idx]
-        }
+        })
     }
 
 }

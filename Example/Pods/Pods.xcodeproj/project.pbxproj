@@ -41,6 +41,7 @@
 		04E08AB325149DFB00780C15 /* xDatePickerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E08AB225149DFB00780C15 /* xDatePickerConfig.swift */; };
 		04E08ABB2514A9BD00780C15 /* xDataPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E08ABA2514A9BD00780C15 /* xDataPickerViewController.swift */; };
 		04E08ABD2514A9C600780C15 /* xDataPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E08ABC2514A9C600780C15 /* xDataPickerViewController.storyboard */; };
+		04ED539B25184C3500D670F9 /* xSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED539A25184C3500D670F9 /* xSegmentView.swift */; };
 		050A189DF0B4F405E9D3389F24EDF835 /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = E608848BA535BC2129AE241EDBE1E3B6 /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06AEA7117FE98F2409D2432AAEC326A8 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C369738F3350551E606861147D0D9E42 /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C43862CF5253B4A096F6A913530FE2 /* SDImageLoadersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A44ECD4A1ECED8254C60532415D90A /* SDImageLoadersManager.m */; };
@@ -427,6 +428,7 @@
 		04E08AB225149DFB00780C15 /* xDatePickerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDatePickerConfig.swift; sourceTree = "<group>"; };
 		04E08ABA2514A9BD00780C15 /* xDataPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDataPickerViewController.swift; sourceTree = "<group>"; };
 		04E08ABC2514A9C600780C15 /* xDataPickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xDataPickerViewController.storyboard; sourceTree = "<group>"; };
+		04ED539A25184C3500D670F9 /* xSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xSegmentView.swift; sourceTree = "<group>"; };
 		05A89A4CFD05BE19239E582195B3F158 /* xAppManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xAppManager.swift; sourceTree = "<group>"; };
 		07EDE605D535B6C8F4DD8DC5BFACE205 /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -962,6 +964,14 @@
 			path = "05 数据选择器_固定";
 			sourceTree = "<group>";
 		};
+		04ED539425184BF800D670F9 /* 11 Segment组件 */ = {
+			isa = PBXGroup;
+			children = (
+				04ED539A25184C3500D670F9 /* xSegmentView.swift */,
+			);
+			path = "11 Segment组件";
+			sourceTree = "<group>";
+		};
 		0B0F3F70A0243A1C1A87FB61F444FE36 /* 03 Segment菜单 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1215,6 +1225,7 @@
 		81E2D23E08EAC52889E490B3CC772B73 /* Product_Kit */ = {
 			isa = PBXGroup;
 			children = (
+				04ED539425184BF800D670F9 /* 11 Segment组件 */,
 				1CD4E201BD80208A1E22045306522882 /* 01 圆角矩形容器 */,
 				F3373D5CAE32FF56F1CE74089709B2FE /* 02 相册 */,
 				04E08A7C2514411F00780C15 /* 03 列表空数据 */,
@@ -2178,6 +2189,7 @@
 				94A2259F0587D81A6517E4D9CF7752F5 /* no_data@2x.png in Sources */,
 				BF05B41FE764287F40AD12F147541375 /* no_data@3x.png in Sources */,
 				43A4CEFF5D31B48F3FC2641636B26516 /* ReplaceMe.swift in Sources */,
+				04ED539B25184C3500D670F9 /* xSegmentView.swift in Sources */,
 				4545F9B927051BBB1DA8631E69B99BF6 /* scan_back@2x.png in Sources */,
 				E4B2BBCB00866E3A4D721331A694B8CB /* scan_bar_normal@2x.png in Sources */,
 				DEFD24EA0E97C53E62161FAF1DB9CBC1 /* scan_bar_select@2x.png in Sources */,

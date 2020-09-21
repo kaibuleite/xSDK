@@ -10,35 +10,34 @@ import UIKit
 public class xSKUView: xView {
 
     // MARK: - Handler
-    /// 选中Sku item回调
+    /// 选中回调
     public typealias xHandlerChooseItem = (Int) -> Void
     /// 刷新数据回调，返回尺寸
-    public typealias xHandlerReloadData = (CGRect) -> Void
+    public typealias xHandlerReloadCompleted = (CGRect) -> Void
     
     // MARK: - Public Property
-    /// 参数配置
+    /// 配置
     public var config = xSKUConfig()
     
     // MARK: - Private Property
+    /// 等宽分列（0表示自适应宽度）
+    private var column = 0
     /// 子控件
     private var itemViewArray = [UIButton]()
+    /// 当期那选中item
+    private var currentChooseIdx = Int.zero
     /// 选择回调
     private var chooseHandler : xHandlerChooseItem?
     /// 刷新回调
-    private var reloadDataHandler : xHandlerReloadData?
-    /// 当期那选中item
-    private var currentChooseIdx = Int.zero
-    /// 等宽分列（0表示自适应宽度）
-    private var column = 0
+    private var reloadHandler : xHandlerReloadCompleted?
     
     // MARK: - 内存释放
     deinit {
         self.chooseHandler = nil
-        self.reloadDataHandler = nil
+        self.reloadHandler = nil
     }
     
     // MARK: - Public Override Func
-    // 更新UI
     public override func layoutSubviews() {
         super.layoutSubviews()
         // 更新UI
@@ -69,7 +68,7 @@ public class xSKUView: xView {
         var ret = CGRect.zero
         ret.size.width = self.bounds.width
         ret.size.height = frame.origin.y + frame.height
-        self.reloadDataHandler?(ret)
+        self.reloadHandler?(ret)
     }
     
     // MARK: - Public Func
@@ -80,7 +79,8 @@ public class xSKUView: xView {
     ///   - handler: 回调
     public func reload(dataArray : [String],
                        column : Int = 0,
-                       handler : @escaping xHandlerReloadData)
+                       completed handler1 : @escaping xHandlerReloadCompleted,
+                       choose handler2 : @escaping xHandlerChooseItem)
     {
         guard dataArray.count > 0 else {
             x_warning("数据不能为0")
@@ -88,7 +88,8 @@ public class xSKUView: xView {
         }
         self.clearOldSkuItem()
         self.column = column
-        self.reloadDataHandler = handler
+        self.reloadHandler = handler1
+        self.chooseHandler = handler2
         // 添加规格控件
         let cfg = self.config
         for (i, title) in dataArray.enumerated()
@@ -112,11 +113,6 @@ public class xSKUView: xView {
             self.itemViewArray.append(btn)
         }
         self.layoutIfNeeded()
-    }
-    /// 添加选择回调
-    public func addChooseHandler(_ handler : @escaping xHandlerChooseItem)
-    {
-        self.chooseHandler = handler
     }
     /// 选中
     public func choose(idx : Int)

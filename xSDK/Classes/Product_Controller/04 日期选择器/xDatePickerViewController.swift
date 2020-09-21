@@ -19,13 +19,17 @@ public class xDatePickerViewController: xPushAlertViewController {
     /// 选择器
     @IBOutlet weak var picker: UIDatePicker!
     
+    // MARK: - Public Property
+    /// 配置
+    public var config = xDatePickerConfig()
+    
     // MARK: - Private Property
     /// 回调
-    private var handler : xHandlerChooseDate?
+    private var chooseHandler : xHandlerChooseDate?
     
     // MARK: - 内存释放
     deinit {
-        self.handler = nil
+        self.chooseHandler = nil
     }
     
     // MARK: - Public Override Func
@@ -41,18 +45,11 @@ public class xDatePickerViewController: xPushAlertViewController {
     @IBAction func sureBtnClick(_ sender: UIButton) {
         let date = self.picker.date
         let timeStamp = date.timeIntervalSince1970 
-        self.handler?(timeStamp)
+        self.chooseHandler?(timeStamp)
         self.dismiss()
     }
     
     // MARK: - Public Func
-    /// 更新配置
-    public func update(config : xDatePickerConfig)
-    {
-        self.picker.maximumDate = config.maxDate
-        self.picker.minimumDate = config.minDate
-        self.picker.datePickerMode = config.model
-    }
     /// 显示选择器
     /// - Parameters:
     ///   - title: 标题
@@ -62,12 +59,15 @@ public class xDatePickerViewController: xPushAlertViewController {
     public func display(title : String,
                         date : Date = .init(),
                         isSpring : Bool = true,
-                        handler : @escaping xHandlerChooseDate)
+                        choose handler : @escaping xHandlerChooseDate)
     {
         // 保存数据
         self.titleLbl.text = title
         self.picker.date = date
-        self.handler = handler
+        self.chooseHandler = handler
+        self.picker.maximumDate = config.maxDate
+        self.picker.minimumDate = config.minDate
+        self.picker.datePickerMode = config.model
         // 执行动画
         super.display(isSpring: isSpring)
     }

@@ -24,8 +24,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     
     // MARK: - Private Property
     /// 扫描完成回调
-    private var handler : xHandlerScanCode?
-    
+    private var scanHandler : xHandlerScanCode?
     /// 会话层对象,数据交互
     private var session : AVCaptureSession = AVCaptureSession()
     /// 边框图层
@@ -62,7 +61,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     
     // MARK: - 内存释放
     deinit {
-        self.handler = nil
+        self.scanHandler = nil
         if let input = self.input {
             self.session.removeInput(input)
         }
@@ -135,11 +134,11 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     ///   - handler: 回调
     public class func display(from viewController : UIViewController,
                               animated : Bool = true,
-                              handler : @escaping xHandlerScanCode)
+                              scan handler : @escaping xHandlerScanCode)
     {
         let vc = xScanCodeViewController.quickInstancetype()
         // 设置回调
-        vc.handler = handler
+        vc.scanHandler = handler
         viewController.present(vc, animated: true, completion: nil)
     }
 
@@ -186,11 +185,11 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     private func startScanCodeAlbum() -> Void
     {
         let picker = xImagePickerController.init()
-        picker.displayPhotoLibrary(from: self) {
+        picker.displayAlbum(from: self) {
             [weak self] (image) in
             guard let ws = self else { return }
-            // 识别图片
-            guard let ciimage = image.ciImage else {
+            // 识别图片 
+            guard let ciimage = CIImage.init(image: image) else {
                 x_warning("图片转换失败")
                 ws.scanFailure()
                 return
@@ -299,7 +298,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         // 播放音效
         xAppManager.playSound(name: "scan_success", id: 50923)
         // 执行回调
-        self.handler?(code)
+        self.scanHandler?(code)
         self.backBtnClick()
     }
     /// 扫描失败
@@ -307,7 +306,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     {
         x_alert(message: "扫描失败")
         self.isScanSuccess = false
-        self.handler = nil
+        self.scanHandler = nil
         self.backBtnClick()
     }
 
