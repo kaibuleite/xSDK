@@ -30,12 +30,13 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
-
+  # 类文件
   s.source_files = 'xSDK/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'xSDK' => ['xSDK/Assets/*.png']
-  # }
+  # 资源文件
+  s.resource_bundles = {
+    #'xSDK' => ['xSDK/Assets/*.png']
+    'xSDK' => ['xSDK/Assets/*.*']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
