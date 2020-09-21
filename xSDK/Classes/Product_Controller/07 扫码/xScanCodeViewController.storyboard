@@ -99,6 +99,10 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEK-FL-I3u">
                                 <rect key="frame" x="186.5" y="801" width="41" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mEK-FL-I3u" secondAttribute="height" multiplier="1:1" id="Sbk-Sf-izU"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="lYj-h0-wZ6"/>
+                                </constraints>
                                 <state key="normal" image="light_off.png"/>
                                 <connections>
                                     <action selector="lightBtnClick:" destination="YIt-x9-d4G" eventType="touchUpInside" id="b0u-VP-eWd"/>

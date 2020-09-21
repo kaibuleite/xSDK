@@ -96,6 +96,9 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         super.viewDidDisappear(animated)
         xAppManager.closePhoneLight()
     }
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     public override func addKit() {
         self.drawBorder()
         self.startScanAnime()
@@ -113,12 +116,12 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         var name = ""
         if sender.tag == 0 {
             sender.tag = 1
-            name = "light_on"
+            name = "light_on.png"
             xAppManager.openPhoneLight()
         }
         else {
             sender.tag = 0
-            name = "light_off"
+            name = "light_off.png"
             xAppManager.closePhoneLight()
         }
         let bundle = Bundle.init(for: self.classForCoder)

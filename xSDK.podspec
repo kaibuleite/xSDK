@@ -28,19 +28,23 @@ TODO: Add long description of the pod here.
   s.author           = { 'kaibuleite' => '177955297@qq.com' }
   s.source           = { :git => 'https://github.com/kaibuleite/xSDK.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
+  # 最低版本
   s.ios.deployment_target = '9.0'
   # 类文件
   s.source_files = 'xSDK/Classes/**/*'
-  # 资源文件
-  s.resource_bundles = {
-    #'xSDK' => ['xSDK/Assets/*.png']
-    'xSDK' => ['xSDK/Assets/*.*']
+  # 资源文件（文件会直接放到目录下）
+  s.resources = {
+      'xSDK' => ['xSDK/Assets/*.png'],
+      'xSDK' => ['xSDK/Assets/*.mp3']
   }
+  # 资源文件（创建bundle）
+#  s.resource_bundles = {
+#      'xSDK' => ['xSDK/Assets/*.png'],
+#      'xSDK' => ['xSDK/Assets/*.mp3']
+#  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
   
   # 必备框架
   s.dependency 'Alamofire', '~> 4.9.1'  # API代码基于4.x，5.x后代码变动太大
