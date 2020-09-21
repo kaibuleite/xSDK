@@ -42,6 +42,7 @@
 		04E08ABB2514A9BD00780C15 /* xDataPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E08ABA2514A9BD00780C15 /* xDataPickerViewController.swift */; };
 		04E08ABD2514A9C600780C15 /* xDataPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E08ABC2514A9C600780C15 /* xDataPickerViewController.storyboard */; };
 		04ED539B25184C3500D670F9 /* xSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED539A25184C3500D670F9 /* xSegmentView.swift */; };
+		04ED539D2518550700D670F9 /* xPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED539C2518550700D670F9 /* xPageViewController.swift */; };
 		050A189DF0B4F405E9D3389F24EDF835 /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = E608848BA535BC2129AE241EDBE1E3B6 /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06AEA7117FE98F2409D2432AAEC326A8 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C369738F3350551E606861147D0D9E42 /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C43862CF5253B4A096F6A913530FE2 /* SDImageLoadersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A44ECD4A1ECED8254C60532415D90A /* SDImageLoadersManager.m */; };
@@ -216,7 +217,6 @@
 		9B2CA92DABE7B2C299F37DF6DE570E2A /* SDGraphicsImageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7D8C96A9420BA26CBF359E3328FB8A /* SDGraphicsImageRenderer.m */; };
 		9C39FA3EB2A9462B249432F655FC9AA8 /* SDWebImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C7E7725A8F8E002D46424C89F01DC96 /* SDWebImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C6F61B6DD8964A03128BB996BCCCDF5 /* NSImage+Compatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7897F33BCF300227BF3A2655A07A1ED6 /* NSImage+Compatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E2B68C51D32367C38EA2C45E968B538 /* xSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4EE2640D4F15933FFB6FFECEF5199D /* xSegmentViewController.swift */; };
 		A1B62D4B373543D743AC938090EF65F2 /* UIImage+GIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 120D1ADED6625DEBF01291610D38DF0F /* UIImage+GIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A26011648EA7CD910788DBBF08C36F32 /* SDImageCacheDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 20F712038A17C6A49EC7810BD431912F /* SDImageCacheDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A299208625BB3E7CCC487E95ED5D4AC3 /* xButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE96810C5F17B22019B0BD6309CF666 /* xButton.swift */; };
@@ -429,6 +429,7 @@
 		04E08ABA2514A9BD00780C15 /* xDataPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDataPickerViewController.swift; sourceTree = "<group>"; };
 		04E08ABC2514A9C600780C15 /* xDataPickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xDataPickerViewController.storyboard; sourceTree = "<group>"; };
 		04ED539A25184C3500D670F9 /* xSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xSegmentView.swift; sourceTree = "<group>"; };
+		04ED539C2518550700D670F9 /* xPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xPageViewController.swift; sourceTree = "<group>"; };
 		05A89A4CFD05BE19239E582195B3F158 /* xAppManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xAppManager.swift; sourceTree = "<group>"; };
 		07EDE605D535B6C8F4DD8DC5BFACE205 /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -630,7 +631,6 @@
 		9E1DF8A09043832D9E273AB47A1F4422 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		9E298BD26C01FFAADE72EABBAB2DF554 /* Double+xExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Double+xExtension.swift"; sourceTree = "<group>"; };
 		9E9904DE174F9FCDB004F291B0CED0BD /* NSBezierPath+SDRoundedCorners.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+SDRoundedCorners.h"; path = "SDWebImage/Private/NSBezierPath+SDRoundedCorners.h"; sourceTree = "<group>"; };
-		9F4EE2640D4F15933FFB6FFECEF5199D /* xSegmentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xSegmentViewController.swift; sourceTree = "<group>"; };
 		9FA21B7CBA60DB3837E1CA139B062C74 /* SDImageCoderHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCoderHelper.m; path = SDWebImage/Core/SDImageCoderHelper.m; sourceTree = "<group>"; };
 		A0C25EA13A9DB6BE833B2D4F81CC0820 /* SDWebImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImage.h; path = WebImage/SDWebImage.h; sourceTree = "<group>"; };
 		A14594EF2214982B91FDD550A9C290C0 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackFooter.h; path = MJRefresh/Base/MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -967,18 +967,18 @@
 		04ED539425184BF800D670F9 /* 11 Segment组件 */ = {
 			isa = PBXGroup;
 			children = (
+				967326D26F09552823B18821CB44BD96 /* xSegmentConfig.swift */,
 				04ED539A25184C3500D670F9 /* xSegmentView.swift */,
 			);
 			path = "11 Segment组件";
 			sourceTree = "<group>";
 		};
-		0B0F3F70A0243A1C1A87FB61F444FE36 /* 03 Segment菜单 */ = {
+		0B0F3F70A0243A1C1A87FB61F444FE36 /* 03 Page控件 */ = {
 			isa = PBXGroup;
 			children = (
-				967326D26F09552823B18821CB44BD96 /* xSegmentConfig.swift */,
-				9F4EE2640D4F15933FFB6FFECEF5199D /* xSegmentViewController.swift */,
+				04ED539C2518550700D670F9 /* xPageViewController.swift */,
 			);
-			path = "03 Segment菜单";
+			path = "03 Page控件";
 			sourceTree = "<group>";
 		};
 		0FB33B9C8F58ECA28B71997094FCCE83 /* 10 View */ = {
@@ -1225,7 +1225,6 @@
 		81E2D23E08EAC52889E490B3CC772B73 /* Product_Kit */ = {
 			isa = PBXGroup;
 			children = (
-				04ED539425184BF800D670F9 /* 11 Segment组件 */,
 				1CD4E201BD80208A1E22045306522882 /* 01 圆角矩形容器 */,
 				F3373D5CAE32FF56F1CE74089709B2FE /* 02 相册 */,
 				04E08A7C2514411F00780C15 /* 03 列表空数据 */,
@@ -1236,6 +1235,7 @@
 				04CDB8AA2515FA8B005F531F /* 08 条形码 */,
 				04CDB8AB2515FAAB005F531F /* 09 二维码 */,
 				04CDB8BA2516079B005F531F /* 10 SKU组件 */,
+				04ED539425184BF800D670F9 /* 11 Segment组件 */,
 			);
 			name = Product_Kit;
 			path = xSDK/Classes/Product_Kit;
@@ -1356,7 +1356,7 @@
 			children = (
 				B31094BA181A3719E94F19DC269DFD62 /* 01 Mask遮罩 */,
 				B8B14E478B1E4D711BD14F5B5E35EAAA /* 02 Web浏览器 */,
-				0B0F3F70A0243A1C1A87FB61F444FE36 /* 03 Segment菜单 */,
+				0B0F3F70A0243A1C1A87FB61F444FE36 /* 03 Page控件 */,
 				04E08AA32514877800780C15 /* 04 日期选择器 */,
 				04E08AB42514A8B600780C15 /* 05 数据选择器_固定 */,
 				04CDB87F25159C07005F531F /* 06 数据选择器_可变 */,
@@ -2223,6 +2223,7 @@
 				04CDB88125159C25005F531F /* xMutableDataPickerViewController.swift in Sources */,
 				FF3BC260A6892CD05EFF3BE14BEDA3B9 /* xGlobalFunction.swift in Sources */,
 				1B2DF23C3BC2EBC90EF2D21E63BC458C /* xGlobalLog.swift in Sources */,
+				04ED539D2518550700D670F9 /* xPageViewController.swift in Sources */,
 				5589B9B39B257BB3C0A857568F7AF292 /* xGlobalValue.swift in Sources */,
 				3788F69513E0987AE55F16C4894E7689 /* xGradientColorView.swift in Sources */,
 				E8D57C01CE13464A2BF1ECD6154C3209 /* xImagePickerController.swift in Sources */,
@@ -2255,7 +2256,6 @@
 				C9EB1BE64FD43E1A7A4F671226F75C00 /* xSafeView.swift in Sources */,
 				DD4403D098327029DA94BDA8FF8F7D1B /* xSDK-dummy.m in Sources */,
 				350589FD65354E0F3ABADAD9BBC09F56 /* xSegmentConfig.swift in Sources */,
-				9E2B68C51D32367C38EA2C45E968B538 /* xSegmentViewController.swift in Sources */,
 				04E08A9B2514640900780C15 /* xCaptchaView.swift in Sources */,
 				AF06FBD87AE7072D750B5C9D7F564F8D /* xTabBarController.swift in Sources */,
 				04CDB8942515D2E2005F531F /* xScanCodeViewController.swift in Sources */,
