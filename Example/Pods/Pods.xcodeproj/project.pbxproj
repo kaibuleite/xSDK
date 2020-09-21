@@ -13,7 +13,6 @@
 		02A4C8ABD5DCC501DE7A6CE19B398E14 /* SDWebImageDownloaderResponseModifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 48130E68A732BD5C90931DA056009F20 /* SDWebImageDownloaderResponseModifier.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		02B6598C52131C10E3CA344FB49B87FA /* SDWebImageTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D59871803F53A16039EC97BA290760F /* SDWebImageTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		033813F58E3D20FA511AF1B5C3D58FA7 /* UIView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 100ECE987A302113C261CC4BFD49CEF8 /* UIView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04A5AE742518728C00B6241E /* scan_success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04A5AE732518728C00B6241E /* scan_success.mp3 */; };
 		050A189DF0B4F405E9D3389F24EDF835 /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = E608848BA535BC2129AE241EDBE1E3B6 /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05E75279BC1575405DF2C8C61D2E7A10 /* Button+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7070E99E4DBC388E4CE5D429FD626A59 /* Button+xExtension.swift */; };
 		06AEA7117FE98F2409D2432AAEC326A8 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C369738F3350551E606861147D0D9E42 /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -398,7 +397,6 @@
 /* Begin PBXFileReference section */
 		0161FE50001B5B8917F2684D3579DD7E /* xRoundCornerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xRoundCornerView.swift; sourceTree = "<group>"; };
 		03D7D01F55468A19735E6A2FBFD37D55 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
-		04A5AE732518728C00B6241E /* scan_success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scan_success.mp3; sourceTree = "<group>"; };
 		04C626E8BD6FABA61C1F789626ECEAD5 /* xAppManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xAppManager.swift; sourceTree = "<group>"; };
 		04D921F7DD7776B347CAF064E8E95E2D /* xMaskViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = xMaskViewController.storyboard; sourceTree = "<group>"; };
 		04FE4DE11FD795C4ED72065717C6142B /* scan_net@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "scan_net@3x.png"; sourceTree = "<group>"; };
@@ -981,7 +979,6 @@
 		4E3A11AD290AC5515B83282D4EB3AFCE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				04A5AE732518728C00B6241E /* scan_success.mp3 */,
 				D323CF603FCE1718BC036E4CE7F170FB /* back_30@2x.png */,
 				0D765887AE5BA7224C62594456555D34 /* back_30@3x.png */,
 				ABF660C1558B1700F50166147FA74DF8 /* close_28@2x.png */,
@@ -1979,7 +1976,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04A5AE742518728C00B6241E /* scan_success.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
