@@ -24,7 +24,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taO-RZ-TiQ" customClass="xGradientColorView" customModule="xSDK" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="-56" width="414" height="100"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="t0z-vC-gVD"/>
                     </constraints>
@@ -38,7 +38,7 @@
                                 <constraint firstAttribute="width" secondItem="Egi-h4-rqm" secondAttribute="height" id="PhL-Za-PfP"/>
                             </constraints>
                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <state key="normal" image="back_30.png"/>
+                            <state key="normal" image="scan_back.png"/>
                             <connections>
                                 <action selector="backBtnClick:" destination="-1" eventType="touchUpInside" id="5WA-9C-UnD"/>
                             </connections>
@@ -92,6 +92,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back_30.png" width="15" height="15"/>
+        <image name="scan_back.png" width="24" height="24"/>
     </resources>
 </document>

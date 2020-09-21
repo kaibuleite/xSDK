@@ -18,11 +18,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     // MARK: - IBInspectable Property
     /// 是否显示关闭按钮
     @IBInspectable
-    public var isShowCloseBtn : Bool = true {
-        didSet {
-            self.closeBtn.isHidden = !self.isShowCloseBtn
-        }
-    }
+    public var isShowCloseBtn : Bool = true
     /// 是否显示加载进度条(默认显示)
     @IBInspectable
     public var isShowLoadingProgress : Bool = true
@@ -74,6 +70,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         self.progressView.trackTintColor = .groupTableViewBackground
         self.progressView.isHidden = true
         self.safeView?.addSubview(self.progressView)
+        self.safeView?.bringSubviewToFront(self.closeBtn)
         // 其他
         self.addObserver()
     }
