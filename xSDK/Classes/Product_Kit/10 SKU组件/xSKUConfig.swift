@@ -1,14 +1,14 @@
 //
-//  xSegmentConfig.swift
+//  xSKUConfig.swift
 //  xSDK
 //
-//  Created by Mac on 2020/9/16.
+//  Created by Mac on 2020/9/19.
 //
 
 import UIKit
 
-public class xSegmentConfig: NSObject {
-    
+public class xSKUConfig: NSObject {
+
     // MARK: - Public Property
     /// 普通标题颜色
     public var itemNormalTitleColor = UIColor.darkText
@@ -24,16 +24,18 @@ public class xSegmentConfig: NSObject {
     /// 选中边框颜色
     public var itemChooseBorderColor = UIColor.clear
     
+    /// 行间距
+    public var rowSpacing = CGFloat(0)
+    /// 列间距
+    public var columnSpacing = CGFloat(0)
+    /// item指定高度(默认44)
+    public var itemHeight = CGFloat(44)
+    
+    /// 圆角半径(默认0)
+    public var cornerRadius = CGFloat.zero
     /// 边框线宽
-    public var borderWidth = CGFloat(0)
-    /// 圆角
-    public var cornerRadius = CGFloat(0)
+    public var borderWidth = CGFloat.zero
     
-    /// 间隔
-    public var itemsMargin = CGFloat(0)
-    
-    /// 线高(默认2)
-    public var lineHeight = CGFloat(2)
-    /// 线条颜色
-    public var lineColor = UIColor.red
+    /// 字号(默认15.0)
+    public var fontSize = CGFloat(15)
 }

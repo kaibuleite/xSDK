@@ -174,13 +174,13 @@ public class xSegmentViewController: xViewController {
         }
         // 新选中的视图
         let item2 = self.itemViewArray[idx]
-        item2.backgroundColor = cfg.itemSelectedBackgroundColor
-        item2.layer.borderColor = cfg.itemSelectedBorderColor.cgColor
+        item2.backgroundColor = cfg.itemChooseBackgroundColor
+        item2.layer.borderColor = cfg.itemChooseBorderColor.cgColor
         if let btn = item2 as? UIButton {
-            btn.setTitleColor(cfg.itemSelectedTitleColor, for: .normal)
+            btn.setTitleColor(cfg.itemChooseTitleColor, for: .normal)
         }
         if let lbl = item2 as? UILabel {
-            lbl.textColor = cfg.itemSelectedTitleColor
+            lbl.textColor = cfg.itemChooseTitleColor
         }
         self.currentChooseIdx = idx
         // 指示线

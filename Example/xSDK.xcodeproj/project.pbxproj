@@ -18,6 +18,8 @@
 		04CDB8B52515FF35005F531F /* Kit08ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8B32515FF35005F531F /* Kit08ViewController.xib */; };
 		04CDB8B82515FF40005F531F /* Kit09ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8B62515FF40005F531F /* Kit09ViewController.swift */; };
 		04CDB8B92515FF40005F531F /* Kit09ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8B72515FF40005F531F /* Kit09ViewController.xib */; };
+		04CDB8BE251607AE005F531F /* Kit10ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8BC251607AE005F531F /* Kit10ViewController.swift */; };
+		04CDB8BF251607AE005F531F /* Kit10ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8BD251607AE005F531F /* Kit10ViewController.xib */; };
 		04D8D72D251307EA00F0B14B /* Test03ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8D72B251307EA00F0B14B /* Test03ViewController.swift */; };
 		04D8D72E251307EA00F0B14B /* Test03ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D8D72C251307EA00F0B14B /* Test03ViewController.xib */; };
 		04D8D73A2513445100F0B14B /* Kit01ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8D7382513445100F0B14B /* Kit01ViewController.swift */; };
@@ -72,6 +74,8 @@
 		04CDB8B32515FF35005F531F /* Kit08ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit08ViewController.xib; sourceTree = "<group>"; };
 		04CDB8B62515FF40005F531F /* Kit09ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit09ViewController.swift; sourceTree = "<group>"; };
 		04CDB8B72515FF40005F531F /* Kit09ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit09ViewController.xib; sourceTree = "<group>"; };
+		04CDB8BC251607AE005F531F /* Kit10ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit10ViewController.swift; sourceTree = "<group>"; };
+		04CDB8BD251607AE005F531F /* Kit10ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit10ViewController.xib; sourceTree = "<group>"; };
 		04D8D72B251307EA00F0B14B /* Test03ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test03ViewController.swift; sourceTree = "<group>"; };
 		04D8D72C251307EA00F0B14B /* Test03ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test03ViewController.xib; sourceTree = "<group>"; };
 		04D8D7382513445100F0B14B /* Kit01ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit01ViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +184,15 @@
 			path = "09 二维码";
 			sourceTree = "<group>";
 		};
+		04CDB8BB251607A5005F531F /* 10 SKU组件 */ = {
+			isa = PBXGroup;
+			children = (
+				04CDB8BC251607AE005F531F /* Kit10ViewController.swift */,
+				04CDB8BD251607AE005F531F /* Kit10ViewController.xib */,
+			);
+			path = "10 SKU组件";
+			sourceTree = "<group>";
+		};
 		04D8D72A2513079600F0B14B /* 03 菜单 */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +205,7 @@
 		04D8D7342513441400F0B14B /* 测试视图 */ = {
 			isa = PBXGroup;
 			children = (
+				04CDB8BB251607A5005F531F /* 10 SKU组件 */,
 				04D8D7352513443900F0B14B /* 01 圆角 */,
 				04D8D7442513605200F0B14B /* 02 相册 */,
 				04D8D7492513625A00F0B14B /* 03 列表空数据 */,
@@ -498,6 +512,7 @@
 				04D8D74D2513626800F0B14B /* Kit03ViewController.xib in Resources */,
 				04E08A852514423900780C15 /* Kit04ViewController.xib in Resources */,
 				04E08AB125149BD800780C15 /* Test04ViewController.xib in Resources */,
+				04CDB8BF251607AE005F531F /* Kit10ViewController.xib in Resources */,
 				04DE84542510AF50008615B3 /* Test01ViewController.xib in Resources */,
 				04CDB89B2515E059005F531F /* Test07ViewController.xib in Resources */,
 				04E08A892514424600780C15 /* Kit05ViewController.xib in Resources */,
@@ -597,6 +612,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CDB8BE251607AE005F531F /* Kit10ViewController.swift in Sources */,
 				04D8D72D251307EA00F0B14B /* Test03ViewController.swift in Sources */,
 				04E08A8E2514446900780C15 /* Kit06ViewController.swift in Sources */,
 				04E08AA12514676400780C15 /* Kit07ViewController.swift in Sources */,

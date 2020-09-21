@@ -23,7 +23,7 @@ open class xTextField: UITextField, UITextFieldDelegate {
     public var containerBoardNomalColor : UIColor = .x_hex("E5E5E5")
     /// 边框选中颜色
     @IBInspectable
-    public var containerBoardSelectedColor : UIColor = .x_hex("EB0A1E")
+    public var containerBoardChooseColor : UIColor = .x_hex("EB0A1E")
     
     // MARK: - Public Property
     /// 上一个输入框

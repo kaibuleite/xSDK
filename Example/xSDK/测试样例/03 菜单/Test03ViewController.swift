@@ -26,7 +26,7 @@ class Test03ViewController: xViewController {
     {
         let config = xSegmentConfig()
         config.itemsMargin = 5
-        config.itemSelectedTitleColor = .red
+        config.itemChooseTitleColor = .red
         let seg =  xSegmentViewController.quickInstancetype()
         seg.config = config
         let arr = ["苹果", "香蕉", "梨子", "芒果", "葡萄"]
@@ -42,10 +42,10 @@ class Test03ViewController: xViewController {
     {
         let config = xSegmentConfig()
         config.itemsMargin = 10
-        config.itemSelectedTitleColor = .blue
+        config.itemChooseTitleColor = .blue
         config.lineColor = .clear
         config.borderWidth = 1
-        config.itemSelectedBorderColor = .blue
+        config.itemChooseBorderColor = .blue
         let seg =  xSegmentViewController.quickInstancetype()
         seg.config = config
         let arr = ["马铃薯", "菠菜", "西红柿", "茄子", "辣椒",
@@ -64,7 +64,7 @@ class Test03ViewController: xViewController {
     {
         let config = xSegmentConfig()
         config.itemsMargin = 5
-        config.itemSelectedTitleColor = .green
+        config.itemChooseTitleColor = .green
         config.lineColor = .green
         let seg =  xSegmentViewController.quickInstancetype()
         seg.config = config
