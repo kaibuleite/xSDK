@@ -34,13 +34,11 @@ TODO: Add long description of the pod here.
   s.source_files = 'xSDK/Classes/**/*'
   # 资源文件（文件会直接放到目录下）
   s.resources = {
-      'xSDK' => ['xSDK/Assets/*.png'],
-      'xSDK' => ['xSDK/Assets/*.mp3']
+      'xSDK' => ['xSDK/Assets/*.*']
   }
   # 资源文件（创建bundle）
 #  s.resource_bundles = {
-#      'xSDK' => ['xSDK/Assets/*.png'],
-#      'xSDK' => ['xSDK/Assets/*.mp3']
+#      'xSDK' => ['xSDK/Assets/*.*']
 #  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
