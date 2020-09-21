@@ -73,7 +73,7 @@ public class xSegmentView: xView {
     }
 
     // MARK: - Public Func
-    /// 加载默认分段数据
+    /// 加载默认组件数据
     /// - Parameters:
     ///   - titleArray: 标题
     ///   - isEqualItemWidth: 是否等宽
@@ -100,7 +100,7 @@ public class xSegmentView: xView {
         }
         self.reload(itemViewArray: itemViewArray, chooseItem: handler)
     }
-    /// 加载自定义分段数据(view的frame自己设)
+    /// 加载自定义组件数据(view的frame自己设)
     /// - Parameters:
     ///   - itemViewArray: 视图列表
     ///   - handler: 回调
@@ -113,6 +113,8 @@ public class xSegmentView: xView {
         }
         self.lineView.backgroundColor = self.config.lineColor
         self.clearOldSegmentItem()
+        // 绑定数据
+        self.itemViewArray = itemViewArray
         self.chooseHandler = handler
         // 排列控件
         let cfg = self.config
@@ -134,8 +136,6 @@ public class xSegmentView: xView {
             view.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapItem(_:)))
             view.addGestureRecognizer(tap)
-            
-            self.itemViewArray.append(view)
             self.contentScroll.addSubview(view)
         }
         self.layoutIfNeeded()

@@ -72,7 +72,7 @@ public class xSKUView: xView {
     }
     
     // MARK: - Public Func
-    /// 加载规格数据(排版需要调用下边的方法)
+    /// 加载组件数据
     /// - Parameters:
     ///   - dataArray: 数据源
     ///   - column: 等宽分列,默认自适应

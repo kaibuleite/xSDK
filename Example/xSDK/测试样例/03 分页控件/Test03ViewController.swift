@@ -16,4 +16,10 @@ class Test03ViewController: xViewController {
 
     }
     
+    @IBAction func defaultBtnClick() {
+        
+    }
+    
+    @IBAction func customBtnClick() {
+    }
 }

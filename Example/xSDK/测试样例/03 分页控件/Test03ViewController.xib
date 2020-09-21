@@ -17,7 +17,52 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FKp-Ye-M6s">
+                    <rect key="frame" x="30" y="404" width="354" height="88"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDc-38-AbH" customClass="xButton" customModule="xSDK">
+                            <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
+                            <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="6dF-dI-i8H"/>
+                            </constraints>
+                            <state key="normal" title="默认">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="defaultBtnClick:" destination="-1" eventType="touchUpInside" id="v2A-ae-5wT"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL3-zf-Ri9" customClass="xButton" customModule="xSDK">
+                            <rect key="frame" x="0.0" y="48" width="354" height="40"/>
+                            <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="自定义">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="customBtnClick" destination="-1" eventType="touchUpInside" id="acl-jY-f60"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="FKp-Ye-M6s" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="JQR-0f-m2v"/>
+                <constraint firstItem="FKp-Ye-M6s" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VPQ-nj-ltR"/>
+                <constraint firstItem="FKp-Ye-M6s" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="eMg-h9-2pI"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="132" y="132"/>
         </view>

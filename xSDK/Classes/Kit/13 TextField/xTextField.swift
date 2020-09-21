@@ -35,20 +35,20 @@ open class xTextField: UITextField, UITextFieldDelegate {
     /// 自定义键盘扩展视图
     private var accessoryView : xInputAccessoryView?
     /// 开始编辑回调
-    private var handler_beginEdit : xHandlerTextFieldChangeStatus?
+    private var beginEditHandler : xHandlerTextFieldChangeStatus?
     /// 编辑中回调
-    private var handler_editing : xHandlerTextFieldInput?
+    private var editingHandler : xHandlerTextFieldInput?
     /// 编辑结束回调
-    private var handler_endEdit : xHandlerTextFieldChangeStatus?
+    private var endEditHandler : xHandlerTextFieldChangeStatus?
     /// return按钮回调
-    private var handler_return : xHandlerTextFieldChangeStatus?
+    private var returnHandler : xHandlerTextFieldChangeStatus?
     
     // MARK: - 内存释放
     deinit {
-        self.handler_beginEdit = nil
-        self.handler_editing = nil
-        self.handler_endEdit = nil
-        self.handler_return = nil
+        self.beginEditHandler = nil
+        self.editingHandler = nil
+        self.endEditHandler = nil
+        self.returnHandler = nil
         self.previousInput = nil
         self.nextInput = nil
     }
@@ -81,22 +81,22 @@ open class xTextField: UITextField, UITextFieldDelegate {
     /// 添加开始编辑回调
     public func addBeginEditHandler(_ handler : @escaping xHandlerTextFieldChangeStatus)
     {
-        self.handler_beginEdit = handler
+        self.beginEditHandler = handler
     }
     /// 添加编辑中回调
     public func addEditingHandler(_ handler : @escaping xHandlerTextFieldInput)
     {
-        self.handler_editing = handler
+        self.editingHandler = handler
     }
     /// 添加结束编辑回调
     public func addEndEditHandler(_ handler : @escaping xHandlerTextFieldChangeStatus)
     {
-        self.handler_endEdit = handler
+        self.endEditHandler = handler
     }
     /// 添加return回调
     public func addReturnHandler(_ handler : @escaping xHandlerTextFieldChangeStatus)
     {
-        self.handler_return = handler
+        self.returnHandler = handler
     }
     /// 设置内容
     public func reset(text : String?)
@@ -166,7 +166,7 @@ open class xTextField: UITextField, UITextFieldDelegate {
         if !self.isSecureTextEntry {
             self.accessoryView?.textLbl.text = str
         }
-        self.handler_editing?(str)
+        self.editingHandler?(str)
     }
 
     // MARK: - UITextFieldDelegate
@@ -175,7 +175,7 @@ open class xTextField: UITextField, UITextFieldDelegate {
     {
         self.accessoryView?.previousBtn.isEnabled = (self.previousInput != nil)
         self.accessoryView?.nextBtn.isEnabled = (self.nextInput != nil)
-        self.handler_beginEdit?()
+        self.beginEditHandler?()
         // 修改容器边框
         if let container = self.container {
             container.layer.borderColor = self.containerBoardNomalColor.cgColor
@@ -184,7 +184,7 @@ open class xTextField: UITextField, UITextFieldDelegate {
     /// 结束编辑
     open func textFieldDidEndEditing(_ textField: UITextField)
     {
-        self.handler_endEdit?()
+        self.endEditHandler?()
         // 修改容器边框
         if let container = self.container {
             container.layer.borderColor = self.containerBoardNomalColor.cgColor
@@ -193,7 +193,7 @@ open class xTextField: UITextField, UITextFieldDelegate {
     /// 编辑完成
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
-        self.handler_return?()
+        self.returnHandler?()
         // 修改容器边框
         if let container = self.container {
             container.layer.borderColor = self.containerBoardNomalColor.cgColor
