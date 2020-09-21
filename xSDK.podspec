@@ -33,9 +33,7 @@ TODO: Add long description of the pod here.
   # 类文件
   s.source_files = 'xSDK/Classes/**/*'
   # 资源文件（文件会直接放到目录下）
-  s.resources = {
-      'xSDK' => ['xSDK/Assets/*.*']
-  }
+  s.resources = ['xSDK/Assets/*']
   # 资源文件（创建bundle）
 #  s.resource_bundles = {
 #      'xSDK' => ['xSDK/Assets/*.*']
