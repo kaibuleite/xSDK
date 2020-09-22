@@ -12,12 +12,14 @@ open class xImageView: UIImageView {
     // MARK: - IBInspectable Property
     /// 是否为圆形图片
     @IBInspectable
-    var isCircle : Bool = false {
+    public var isCircle : Bool = false {
         didSet {
             guard self.isCircle else { return }
             self.layer.cornerRadius = self.bounds.size.width / 2.0
         }
     }
+    @IBInspectable
+    public var defaultFillColor : UIColor = .clear
     
     // MARK: - Open Override Func
     open override func awakeFromNib() {
@@ -42,7 +44,12 @@ open class xImageView: UIImageView {
         self.layer.masksToBounds = true
         self.contentMode = .scaleAspectFill // 全填充
         let size = self.bounds.size
-        self.image = UIColor.x_random(alpha: 0.3).x_toImage(size: size)
+        if self.defaultFillColor == .clear {
+            self.image = UIColor.x_random(alpha: 0.3).x_toImage(size: size)
+        }
+        else {
+            self.image = self.defaultFillColor.x_toImage(size: size)
+        }
         // self.backgroundColor = UIColor.newRandom(alpha: 0.3)
         guard self.isCircle else { return }
         self.layer.cornerRadius = self.bounds.size.width / 2.0

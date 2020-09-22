@@ -16,30 +16,16 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     public typealias xHandlerClickPage = (Int) -> Void
     
     // MARK: - Public Property
-    /// 是否是网络图片(默认false)
-    var isWebImage = false
-    /// 是否显示分页标志(默认false)
-    var isShowPageControl = false
-    /// 刷新频率(默认5s)
-    public var changeInterval = TimeInterval(5.0)
+    /// 是否显示分页标志(默认true)
+    public var isShowPageControl = true
     /// 是否开启定时器
     public var isOpenAutoChangeTimer = true
+    /// 刷新频率(默认5s)
+    public var changeInterval = TimeInterval(5)
 
     // MARK: - Private Property
     /// 当前页数编号
-    private var currentPage = 0 {
-        didSet {
-            let count = self.itemViewControllerArray.count
-            guard count > 0 else { return }
-            if self.currentPage >= count {
-                self.currentPage = 0
-            }
-            else
-            if self.currentPage <= 0 {
-                self.currentPage = count - 1
-            }
-        }
-    }
+    private var currentPage = 0
     /// 定时器
     private var timer : Timer?
     /// 单页子控制器
@@ -55,7 +41,7 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
         self.dataSource = nil
         self.closeTimer()
         guard let name = x_getClassName(withObject: self) else { return }
-        x_log("🐔🥚_PVC \(name)")
+        x_log("🐔_PVC \(name)")
     }
 
     // MARK: - Public Override Func
@@ -74,9 +60,9 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     }
     
     // MARK: - Public Func
-    public class func quickInstancetype() -> Self? {
+    public class func quickInstancetype() -> Self {
         let vc = xPageViewController.new(storyboard: "xPageViewController")
-        return vc as? Self
+        return vc as! Self
     } 
     /// 刷新数据（默认样式）
     /// - Parameters:
@@ -111,6 +97,8 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
             x_warning("视图控制器初始化失败")
             return
         }
+        self.dataSource = self
+        self.delegate = self
         // 绑定数据
         self.itemViewControllerArray = itemViewControllerArray
         self.changeHandler = handler1
@@ -121,7 +109,7 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
             vc.view.tag = i
             vc.view.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapItem(_:)))
-            view.addGestureRecognizer(tap)
+            vc.view.addGestureRecognizer(tap)
         }
         self.setViewControllers([vc], direction: .forward, animated: false) {
             (finish) in
@@ -156,7 +144,7 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
         if page < self.currentPage {
             direction = .reverse
         }
-        self.currentPage = page
+        self.currentPage = self.safe(page: page)
         let vc = self.itemViewControllerArray[self.currentPage]
         self.view.isUserInteractionEnabled = false
         self.setViewControllers([vc], direction: direction, animated: true) {
@@ -165,6 +153,19 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
             self.view.isUserInteractionEnabled = true
             self.changeHandler?(self.currentPage)
         }
+    }
+    /// 返回安全的页码
+    private func safe(page : Int) -> Int
+    {
+        let count = self.itemViewControllerArray.count
+        guard count > 0 else { return 0 }
+        if page >= count {
+            return 0
+        }
+        if page <= 0 {
+            return count - 1
+        }
+        return page
     }
     /// 手势事件
     @objc private func tapItem(_ gesture : UITapGestureRecognizer)
@@ -178,27 +179,29 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    viewControllerBefore viewController: UIViewController) -> UIViewController?
     {
-        self.currentPage -= 1
-        let vc = self.itemViewControllerArray[self.currentPage]
+        let page = self.safe(page: self.currentPage - 1)
+        let vc = self.itemViewControllerArray[page]
         return vc
     }
-    ///下一页
+    /// 下一页
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
-        self.currentPage += 1
-        let vc = self.itemViewControllerArray[self.currentPage]
+        let page = self.safe(page: self.currentPage + 1)
+        let vc = self.itemViewControllerArray[page]
         return vc
     }
     /// 配置页指示器总数
     public func presentationCount(for pageViewController: UIPageViewController) -> Int
     {
-        return self.isShowPageControl ? self.itemViewControllerArray.count : 0
+        let num = self.isShowPageControl ? self.itemViewControllerArray.count : 0
+        return num
     }
     /// 当前页指示器索引
     public func presentationIndex(for pageViewController: UIPageViewController) -> Int
     {
-        return self.isShowPageControl ? self.currentPage : 0
+        let page = self.isShowPageControl ? self.currentPage : 0
+        return page
     }
     
     // MARK: - UIPageViewControllerDelegate
@@ -210,17 +213,20 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
         guard let vc = pendingViewControllers.last else { return }  // 换页目标加载失败
         self.currentPage = vc.view.tag
     }
-    
-    // MARK: - 切换动画执行完毕
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    didFinishAnimating finished: Bool,
                                    previousViewControllers: [UIViewController],
                                    transitionCompleted completed: Bool) {
         // xLog("用户换页完成")
-        self.openTimer()
-        guard completed else { return } // 换页失败（取消操作、拖拽幅度不够。。。）
-        guard let vc = previousViewControllers.last else { return } // 原来的页数据加载失败
-        self.currentPage = vc.view.tag
+        if self.isOpenAutoChangeTimer {
+            self.openTimer()
+        }
+        if completed == false {
+            // 换页失败（取消操作、拖拽幅度不够。。。）
+            guard let vc = previousViewControllers.last else { return } // 原来的页数据加载失败
+            self.currentPage = vc.view.tag
+        } 
+        let _ = self.presentationIndex(for: pageViewController)
         self.changeHandler?(self.currentPage)
     }
 }

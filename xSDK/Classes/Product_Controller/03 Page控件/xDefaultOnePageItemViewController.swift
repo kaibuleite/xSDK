@@ -18,6 +18,12 @@ class xDefaultOnePageItemViewController: xViewController {
     /// 图片链接
     var pictureUrl = ""
     
+    // MARK: - 内存释放
+    deinit {
+        guard let name = x_getClassName(withObject: self) else { return }
+        x_log("🥚_PVC \(name)")
+    }
+    
     // MARK: - Override Func
     override class func quickInstancetype() -> Self {
         let bundle = Bundle.init(for: self.classForCoder())
@@ -29,7 +35,18 @@ class xDefaultOnePageItemViewController: xViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.imgIcon.sd_setImage(with: self.pictureUrl.x_toURL(), completed: nil)
+        if self.pictureUrl.hasPrefix("http") {
+            self.imgIcon.sd_setImage(with: self.pictureUrl.x_toURL(), completed: nil)
+        }
+        else {
+            if let img = UIImage.init(named: self.pictureUrl) {
+                self.imgIcon.image = img
+            }
+            else {
+                let bundle = Bundle.init(for: self.classForCoder)
+                self.imgIcon.image = UIImage.init(named: self.pictureUrl, in: bundle, compatibleWith: nil)
+            }
+        }
     }
 
 }

@@ -35,7 +35,8 @@
 		0444BE372518A0C80033D8A2 /* scan_success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B4F3FF6CFFCF9701809F2DFECF67A9C /* scan_success.mp3 */; };
 		0444BE4E2518ABBC0033D8A2 /* xPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16921451BFAB017F4D80752F061D05A /* xPageViewController.swift */; };
 		0444BE502518ABBC0033D8A2 /* xDefaultOnePageItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444BE3E2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.swift */; };
-		0444BE512518ABBC0033D8A2 /* xDefaultOnePageItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0444BE3F2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.xib */; };
+		0471BBB425198A90005BF3E2 /* xPageViewController.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */; };
+		0471BBB525198A95005BF3E2 /* xDefaultOnePageItemViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0444BE3F2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.xib */; };
 		050A189DF0B4F405E9D3389F24EDF835 /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = E608848BA535BC2129AE241EDBE1E3B6 /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06AEA7117FE98F2409D2432AAEC326A8 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C369738F3350551E606861147D0D9E42 /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C43862CF5253B4A096F6A913530FE2 /* SDImageLoadersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A44ECD4A1ECED8254C60532415D90A /* SDImageLoadersManager.m */; };
@@ -410,6 +411,7 @@
 		03D7D01F55468A19735E6A2FBFD37D55 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		0444BE3E2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDefaultOnePageItemViewController.swift; sourceTree = "<group>"; };
 		0444BE3F2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xDefaultOnePageItemViewController.xib; sourceTree = "<group>"; };
+		0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xPageViewController.storyboard; sourceTree = "<group>"; };
 		057239F79871861ACD968FAF8038BC0C /* xSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = xSDK.modulemap; sourceTree = "<group>"; };
 		07EDE605D535B6C8F4DD8DC5BFACE205 /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -963,6 +965,7 @@
 			isa = PBXGroup;
 			children = (
 				B16921451BFAB017F4D80752F061D05A /* xPageViewController.swift */,
+				0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */,
 				0444BE3E2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.swift */,
 				0444BE3F2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.xib */,
 			);
@@ -2041,7 +2044,6 @@
 				0444BE2F2518A0C80033D8A2 /* scan_back@2x.png in Resources */,
 				0444BE342518A0C80033D8A2 /* scan_net@3x.png in Resources */,
 				0444BE2D2518A0C80033D8A2 /* no_data@2x.png in Resources */,
-				0444BE512518ABBC0033D8A2 /* xDefaultOnePageItemViewController.xib in Resources */,
 				0444BE362518A0C80033D8A2 /* scan_qr_select@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2226,6 +2228,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0471BBB525198A95005BF3E2 /* xDefaultOnePageItemViewController.xib in Sources */,
+				0471BBB425198A90005BF3E2 /* xPageViewController.storyboard in Sources */,
 				7977F5B02FC481040A906B32B571F233 /* Button+xExtension.swift in Sources */,
 				B68E8E431D44D5499738F55F82A9C5A2 /* Color+xExtension.swift in Sources */,
 				673C661EE5F583C767A973A05F4FBD56 /* Double+xExtension.swift in Sources */,

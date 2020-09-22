@@ -26,7 +26,7 @@ open class xPushAlertViewController: xViewController {
         self.view.isHidden = true
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         // 手势点击事件
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tap(_:)))
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapBackground(_:)))
         self.view.addGestureRecognizer(tap)
     }
     
@@ -72,7 +72,7 @@ open class xPushAlertViewController: xViewController {
     
     // MARK: - Private Func
     /// 点击背景
-    @objc private func tap(_ gesture : UITapGestureRecognizer)
+    @objc private func tapBackground(_ gesture : UITapGestureRecognizer)
     {
         self.dismiss()
     }
