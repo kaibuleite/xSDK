@@ -11,15 +11,13 @@ open class xImageView: UIImageView {
     
     // MARK: - IBInspectable Property
     /// 是否为圆形图片
-    @IBInspectable
-    public var isCircle : Bool = false {
+    @IBInspectable public var isCircle : Bool = false {
         didSet {
             guard self.isCircle else { return }
             self.layer.cornerRadius = self.bounds.size.width / 2.0
         }
     }
-    @IBInspectable
-    public var defaultFillColor : UIColor = .clear
+    @IBInspectable public var defaultFillColor : UIColor = .clear
     
     // MARK: - Open Override Func
     open override func awakeFromNib() {

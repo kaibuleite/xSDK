@@ -31,8 +31,7 @@ class Test03ViewController: xViewController {
             vc.view.backgroundColor = colorArr[i]
             vcArr.append(vc)
         }
-        self.page1.isOpenAutoChangeTimer = false
-        self.page1.isShowPageControl = true
+        self.page1.isOpenAutoChangeTimer = false 
         self.page1.reload(itemViewControllerArray: vcArr, change: {
             (page) in
             x_log("Page1 Change \(page)")

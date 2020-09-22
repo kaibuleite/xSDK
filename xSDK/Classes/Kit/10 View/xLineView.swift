@@ -11,26 +11,22 @@ public class xLineView: xView {
     
     // MARK: - IBInspectable Property
     /// 线条颜色
-    @IBInspectable
-    public var lineColor : UIColor = .groupTableViewBackground {
+    @IBInspectable public var lineColor : UIColor = .groupTableViewBackground {
         didSet {
             self.backgroundColor = self.lineColor
         }
     }
     /// 是否展示虚线
-    @IBInspectable
-    public var isDashLine : Bool = false {
+    @IBInspectable public var isDashLine : Bool = false {
         didSet {
             guard self.isDashLine == true else { return }
             self.drawDashLine()
         }
     }
     /// 虚线绘制宽度
-    @IBInspectable
-    public var dashDrawWidth : Float = 5
+    @IBInspectable public var dashDrawWidth : Float = 5
     /// 虚线跳过宽度
-    @IBInspectable
-    public var dashSkipWidth : Float = 5
+    @IBInspectable public var dashSkipWidth : Float = 5
     
     // MARK: - Public Override Func
     public override func initKit() {

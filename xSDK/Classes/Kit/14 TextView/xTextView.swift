@@ -11,8 +11,7 @@ open class xTextView: UITextView {
     
     // MARK: - IBInspectable Property
     /// 占位字符串
-    @IBInspectable
-    public var placeholderString : String? = ""
+    @IBInspectable public var placeholderString : String? = ""
     
     // MARK: - Public Property
     /// 输入内容

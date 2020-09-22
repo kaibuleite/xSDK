@@ -16,14 +16,11 @@ open class xTextField: UITextField, UITextFieldDelegate {
     
     // MARK: - IBInspectable Property
     /// 容器
-    @IBInspectable
-    public var container : UIView?
+    @IBInspectable public var container : UIView?
     /// 容器边框默认颜色
-    @IBInspectable
-    public var containerBoardNomalColor : UIColor = .x_hex("E5E5E5")
+    @IBInspectable public var containerBoardNomalColor : UIColor = .x_hex("E5E5E5")
     /// 边框选中颜色
-    @IBInspectable
-    public var containerBoardChooseColor : UIColor = .x_hex("EB0A1E")
+    @IBInspectable public var containerBoardChooseColor : UIColor = .x_hex("EB0A1E")
     
     // MARK: - Public Property
     /// 上一个输入框

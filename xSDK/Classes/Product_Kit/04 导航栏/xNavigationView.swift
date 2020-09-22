@@ -21,40 +21,34 @@ public class xNavigationView: xNibView {
     
     // MARK: - IBInspectable Property
     /// 是否返回root（默认false）
-    @IBInspectable
-    public var isPopRootViewController : Bool = false
+    @IBInspectable public var isPopRootViewController : Bool = false
     /// 是否显示返回按钮
-    @IBInspectable
-    public var isShowBackBtn: Bool = true {
+    @IBInspectable public var isShowBackBtn: Bool = true {
         didSet {
             self.backBtn.isHidden = !self.isShowBackBtn
         }
     }
     /// 标题
-    @IBInspectable
-    public var title : String = "" {
+    @IBInspectable public var title : String = "" {
         didSet {
             self.titleLbl.text = self.title
         }
     }
     /// 标题颜色
-    @IBInspectable
-    public var titleColor: UIColor = .darkText {
+    @IBInspectable public var titleColor: UIColor = .darkText {
         didSet {
             self.titleLbl.textColor = self.titleColor
             self.backBtn.tintColor = self.titleColor
         }
     }
     /// 分割线颜色
-    @IBInspectable
-    public var lineColor: UIColor = xAppManager.shared.navigationBarShadowColor {
+    @IBInspectable public var lineColor: UIColor = xAppManager.shared.navigationBarShadowColor {
         didSet {
             self.lineView.lineColor = self.lineColor
         }
     }
     /// 导航栏颜色
-    @IBInspectable
-    public var barColor : UIColor = xAppManager.shared.navigationBarColor {
+    @IBInspectable public var barColor : UIColor = xAppManager.shared.navigationBarColor {
         didSet {
             self.backgroundColor = self.barColor
         }

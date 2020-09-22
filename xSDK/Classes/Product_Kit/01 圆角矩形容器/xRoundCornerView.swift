@@ -22,20 +22,15 @@ public class xRoundCornerView: xView {
     
     // MARK: - IBInspectable Property
     /// 所有角(优先级高)
-    @IBInspectable
-    public var radius : CGFloat = 0
+    @IBInspectable public var radius : CGFloat = 0
     /// 左上圆角
-    @IBInspectable
-    public var tlRadius : CGFloat = 0
+    @IBInspectable public var tlRadius : CGFloat = 0
     /// 右上圆角
-    @IBInspectable
-    public var trRadius : CGFloat = 0
+    @IBInspectable public var trRadius : CGFloat = 0
     /// 左下圆角
-    @IBInspectable
-    public var blRadius : CGFloat = 0
+    @IBInspectable public var blRadius : CGFloat = 0
     /// 右下圆角
-    @IBInspectable
-    public var brRadius : CGFloat = 0
+    @IBInspectable public var brRadius : CGFloat = 0
 
     // MARK: - Private Property
     /// 不规则圆角图层

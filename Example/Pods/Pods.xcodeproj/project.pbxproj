@@ -37,6 +37,9 @@
 		0444BE502518ABBC0033D8A2 /* xDefaultOnePageItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444BE3E2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.swift */; };
 		0471BBB425198A90005BF3E2 /* xPageViewController.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */; };
 		0471BBB525198A95005BF3E2 /* xDefaultOnePageItemViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0444BE3F2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.xib */; };
+		0471BBB8251996BE005BF3E2 /* xPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBB7251996BE005BF3E2 /* xPageControl.swift */; };
+		0471BBC225199B26005BF3E2 /* xPageControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471BBC125199B25005BF3E2 /* xPageControl.xib */; };
+		0471BBC325199B37005BF3E2 /* xPageControl.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBC125199B25005BF3E2 /* xPageControl.xib */; };
 		050A189DF0B4F405E9D3389F24EDF835 /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = E608848BA535BC2129AE241EDBE1E3B6 /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06AEA7117FE98F2409D2432AAEC326A8 /* MJRefreshGifHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = C369738F3350551E606861147D0D9E42 /* MJRefreshGifHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07C43862CF5253B4A096F6A913530FE2 /* SDImageLoadersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A44ECD4A1ECED8254C60532415D90A /* SDImageLoadersManager.m */; };
@@ -412,6 +415,8 @@
 		0444BE3E2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDefaultOnePageItemViewController.swift; sourceTree = "<group>"; };
 		0444BE3F2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xDefaultOnePageItemViewController.xib; sourceTree = "<group>"; };
 		0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xPageViewController.storyboard; sourceTree = "<group>"; };
+		0471BBB7251996BE005BF3E2 /* xPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xPageControl.swift; sourceTree = "<group>"; };
+		0471BBC125199B25005BF3E2 /* xPageControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = xPageControl.xib; sourceTree = "<group>"; };
 		057239F79871861ACD968FAF8038BC0C /* xSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = xSDK.modulemap; sourceTree = "<group>"; };
 		07EDE605D535B6C8F4DD8DC5BFACE205 /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
 		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -842,6 +847,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0471BBB6251996AA005BF3E2 /* 12 PageControl组件 */ = {
+			isa = PBXGroup;
+			children = (
+				0471BBB7251996BE005BF3E2 /* xPageControl.swift */,
+				0471BBC125199B25005BF3E2 /* xPageControl.xib */,
+			);
+			path = "12 PageControl组件";
+			sourceTree = "<group>";
+		};
 		054B2D6E11F5F9149B4166814587ADB9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1012,6 +1026,7 @@
 				15522C43B8CB52871A4FCD6CA21A6A43 /* 09 二维码 */,
 				65E02AD3754A09869339FCE7DB4BF9DF /* 10 SKU组件 */,
 				3AF482AAE31A3975893F7BEE820A50B4 /* 11 Segment组件 */,
+				0471BBB6251996AA005BF3E2 /* 12 PageControl组件 */,
 			);
 			name = Product_Kit;
 			path = xSDK/Classes/Product_Kit;
@@ -2052,6 +2067,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0471BBC225199B26005BF3E2 /* xPageControl.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2228,6 +2244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0471BBC325199B37005BF3E2 /* xPageControl.xib in Sources */,
 				0471BBB525198A95005BF3E2 /* xDefaultOnePageItemViewController.xib in Sources */,
 				0471BBB425198A90005BF3E2 /* xPageViewController.storyboard in Sources */,
 				7977F5B02FC481040A906B32B571F233 /* Button+xExtension.swift in Sources */,
@@ -2248,6 +2265,7 @@
 				F9B62218D6D832D97B70021C06645A80 /* xAPI.swift in Sources */,
 				7727563F0D5BA47F31D6117913F6AC77 /* xAPIConfig.swift in Sources */,
 				BE29D6A1C75DDEE46D989F52B929D183 /* xAPIRecord.swift in Sources */,
+				0471BBB8251996BE005BF3E2 /* xPageControl.swift in Sources */,
 				8DCB50D7A3BE2B2B774D3C13112AE900 /* xAppManager.swift in Sources */,
 				3B81A620631795A717E234DE1AF57150 /* xButton.swift in Sources */,
 				B3505E707C85205227F06709B5B06D03 /* xCaptchaConfig.swift in Sources */,

@@ -11,8 +11,7 @@ open class xButton: UIButton {
     
     // MARK: - IBInspectable Property
     /// 圆角
-    @IBInspectable
-    public var cornerRadius : CGFloat = 0
+    @IBInspectable public var cornerRadius : CGFloat = 0
     
     // MARK: - Open Override Func
     open override func awakeFromNib() {

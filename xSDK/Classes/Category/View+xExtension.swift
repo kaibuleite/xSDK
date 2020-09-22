@@ -42,7 +42,7 @@ extension UIView {
     }
     
     // TODO: 布局
-    /// 添加布局
+    /// 添加相对布局
     public func x_addLayout(attribute attr1: NSLayoutConstraint.Attribute,
                             relatedBy relation: NSLayoutConstraint.Relation,
                             toItem view2: UIView,
@@ -55,21 +55,6 @@ extension UIView {
                                              relatedBy: relation,
                                              toItem: view2,
                                              attribute: attr2,
-                                             multiplier: multiplier,
-                                             constant: constant)
-        self.addConstraint(layout)
-    }
-    /// 添加布局
-    public func x_addLayout(attribute attr1: NSLayoutConstraint.Attribute,
-                            relatedBy relation: NSLayoutConstraint.Relation,
-                            multiplier: CGFloat = 1,
-                            constant: CGFloat = 0)
-    {
-        let layout = NSLayoutConstraint.init(item: self,
-                                             attribute: attr1,
-                                             relatedBy: relation,
-                                             toItem: nil,
-                                             attribute: attr1,
                                              multiplier: multiplier,
                                              constant: constant)
         self.addConstraint(layout)
@@ -112,4 +97,37 @@ extension UIView {
         self.x_addTrailingLayout(toItem: view2)
     }
     
+    /// 添加自身布局
+    public func x_addLayout(attribute attr1: NSLayoutConstraint.Attribute,
+                            relatedBy relation: NSLayoutConstraint.Relation,
+                            multiplier: CGFloat = 1,
+                            constant: CGFloat = 0)
+    {
+        let layout = NSLayoutConstraint.init(item: self,
+                                             attribute: attr1,
+                                             relatedBy: relation,
+                                             toItem: nil,
+                                             attribute: attr1,
+                                             multiplier: multiplier,
+                                             constant: constant)
+        self.addConstraint(layout)
+    }
+    /// 添加宽度约束
+    public func x_addWidthLayout(multiplier: CGFloat = 1,
+                                 constant: CGFloat)
+    {
+        self.x_addLayout(attribute: .width,
+                         relatedBy: .equal,
+                         multiplier: multiplier,
+                         constant: constant)
+    }
+    /// 添加高度约束
+    public func x_addHeightLayout(multiplier: CGFloat = 1,
+                                  constant: CGFloat)
+    {
+        self.x_addLayout(attribute: .height,
+                         relatedBy: .equal,
+                         multiplier: multiplier,
+                         constant: constant)
+    }
 }

@@ -19,8 +19,7 @@ open class xViewController: UIViewController {
     
     // MARK: - IBInspectable Property
     /// 控制器描述
-    @IBInspectable
-    public var xTitle : String = ""
+    @IBInspectable public var xTitle : String = ""
     
     // MARK: - Public Property
     /// 是否显示中

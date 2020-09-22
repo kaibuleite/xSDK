@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		046266D82511FF7100D06EFA /* Test02ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266D62511FF7100D06EFA /* Test02ViewController.swift */; };
 		046266D92511FF7100D06EFA /* Test02ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046266D72511FF7100D06EFA /* Test02ViewController.xib */; };
+		0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */; };
+		0471BBC025199732005BF3E2 /* Kit12ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471BBBE25199732005BF3E2 /* Kit12ViewController.xib */; };
 		04CDB88A2515A230005F531F /* Test06ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8882515A230005F531F /* Test06ViewController.swift */; };
 		04CDB88B2515A230005F531F /* Test06ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8892515A230005F531F /* Test06ViewController.xib */; };
 		04CDB88F2515A428005F531F /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB88E2515A428005F531F /* TableViewController.swift */; };
@@ -67,6 +69,8 @@
 /* Begin PBXFileReference section */
 		046266D62511FF7100D06EFA /* Test02ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test02ViewController.swift; sourceTree = "<group>"; };
 		046266D72511FF7100D06EFA /* Test02ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test02ViewController.xib; sourceTree = "<group>"; };
+		0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit12ViewController.swift; sourceTree = "<group>"; };
+		0471BBBE25199732005BF3E2 /* Kit12ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit12ViewController.xib; sourceTree = "<group>"; };
 		04CDB8882515A230005F531F /* Test06ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test06ViewController.swift; sourceTree = "<group>"; };
 		04CDB8892515A230005F531F /* Test06ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test06ViewController.xib; sourceTree = "<group>"; };
 		04CDB88E2515A428005F531F /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +156,15 @@
 			path = "02 浏览器";
 			sourceTree = "<group>";
 		};
+		0471BBBC2519971F005BF3E2 /* 12 PageControl组件 */ = {
+			isa = PBXGroup;
+			children = (
+				0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */,
+				0471BBBE25199732005BF3E2 /* Kit12ViewController.xib */,
+			);
+			path = "12 PageControl组件";
+			sourceTree = "<group>";
+		};
 		04CDB8852515A213005F531F /* 06 可变数据选择器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +233,7 @@
 				04CDB8B12515FF27005F531F /* 09 二维码 */,
 				04CDB8BB251607A5005F531F /* 10 SKU组件 */,
 				04ED539525184C0700D670F9 /* 11 Segment组件 */,
+				0471BBBC2519971F005BF3E2 /* 12 PageControl组件 */,
 			);
 			path = "测试视图";
 			sourceTree = "<group>";
@@ -534,6 +548,7 @@
 				04E08AA22514676400780C15 /* Kit07ViewController.xib in Resources */,
 				04D8D72E251307EA00F0B14B /* Test03ViewController.xib in Resources */,
 				04E08A8F2514446900780C15 /* Kit06ViewController.xib in Resources */,
+				0471BBC025199732005BF3E2 /* Kit12ViewController.xib in Resources */,
 				04E08AB92514A92500780C15 /* Test05ViewController.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				04CDB88B2515A230005F531F /* Test06ViewController.xib in Resources */,
@@ -635,6 +650,7 @@
 				04DE84532510AF50008615B3 /* Test01ViewController.swift in Sources */,
 				04E08A882514424600780C15 /* Kit05ViewController.swift in Sources */,
 				04D8D73A2513445100F0B14B /* Kit01ViewController.swift in Sources */,
+				0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				046266D82511FF7100D06EFA /* Test02ViewController.swift in Sources */,
 				04ED539825184C1400D670F9 /* Kit11ViewController.swift in Sources */,

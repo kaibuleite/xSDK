@@ -11,23 +11,17 @@ open class xCountDownButton: xButton {
     
     // MARK: - IBInspectable Property
     /// 原标题
-    @IBInspectable
-    public var title : String = "获取验证码"
+    @IBInspectable public var title : String = "获取验证码"
     /// 普通时标题颜色
-    @IBInspectable
-    public var normalTitleColor : UIColor = .darkText
+    @IBInspectable public var normalTitleColor : UIColor = .darkText
     /// 普通时边框颜色
-    @IBInspectable
-    public var normalBorderColor : UIColor = .darkText
+    @IBInspectable public var normalBorderColor : UIColor = .darkText
     /// 倒计时标题颜色
-    @IBInspectable
-    public var countdownTitleColor : UIColor = .lightGray
+    @IBInspectable public var countdownTitleColor : UIColor = .lightGray
     /// 倒计时边框颜色
-    @IBInspectable
-    public var countdownBorderColor : UIColor = .lightGray
+    @IBInspectable public var countdownBorderColor : UIColor = .lightGray
     /// 边框粗细
-    @IBInspectable
-    public var borderWidth : CGFloat = 0
+    @IBInspectable public var borderWidth : CGFloat = 0
     
     // MARK: - Private Property
     /// 总时长(默认60s)

@@ -16,8 +16,6 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     public typealias xHandlerClickPage = (Int) -> Void
     
     // MARK: - Public Property
-    /// 是否显示分页标志(默认true)
-    public var isShowPageControl = true
     /// 是否开启定时器
     public var isOpenAutoChangeTimer = true
     /// 刷新频率(默认5s)
@@ -191,18 +189,6 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
         let vc = self.itemViewControllerArray[page]
         return vc
     }
-    /// 配置页指示器总数
-    public func presentationCount(for pageViewController: UIPageViewController) -> Int
-    {
-        let num = self.isShowPageControl ? self.itemViewControllerArray.count : 0
-        return num
-    }
-    /// 当前页指示器索引
-    public func presentationIndex(for pageViewController: UIPageViewController) -> Int
-    {
-        let page = self.isShowPageControl ? self.currentPage : 0
-        return page
-    }
     
     // MARK: - UIPageViewControllerDelegate
     public func pageViewController(_ pageViewController: UIPageViewController,
@@ -225,8 +211,7 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
             // 换页失败（取消操作、拖拽幅度不够。。。）
             guard let vc = previousViewControllers.last else { return } // 原来的页数据加载失败
             self.currentPage = vc.view.tag
-        } 
-        let _ = self.presentationIndex(for: pageViewController)
+        }
         self.changeHandler?(self.currentPage)
     }
 }
