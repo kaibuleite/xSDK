@@ -101,18 +101,15 @@ open class xAPI: NSObject {
         return nil
     }
     
-    // TODO: 调试信息
+    // TODO: 断点调试
+    /// 根据出错状态码判断是否中断处理
+    open class func breakCheckResponse(withErrorCode code : Int) -> Bool {
+        return false
+    }
+    
     /// 显示调试网页
     open class func showDebugWeb(html : String)
     {
-        guard let root = x_getKeyWindow()?.rootViewController else { return }
-//        if let web = shared.errorHtmlWeb {
-//            web.html = html
-//            let nvc = xNavigationController.init(rootViewController: web)
-//            nvc.navigationBar.isHidden = true   // 不使用nvc会导致视图控制器action冲突
-//            root.present(nvc, animated: true, completion: nil)
-//        }
-        
     }
     
     // MARK: - Public Func
@@ -331,15 +328,11 @@ open class xAPI: NSObject {
         // 响应失败
         if let error = response.error {
             let code = (error as NSError).code
-            let config = record.config
-            // 系统问题
-            switch code {
-            case config.failureNetworkBrokenCode:
+            // 状态码可参考 https://blog.csdn.net/lyyybz/article/details/53257270
+            if self.breakCheckResponse(withErrorCode: code) {
                 self.logNetworkBroken(of: response)
-                failure("🌐 断网了")
+                failure("❎ Response Code处理")
                 return
-            default:
-                break
             }
         }
         guard let data = response.data else {
@@ -397,7 +390,7 @@ open class xAPI: NSObject {
             self.logApiCodeError(record: record, info: info)
             failure(msg)
             // 重新登录
-            if code == config.failureUserTokenInvalidCode {
+            if code == config.failureCodeUserTokenInvalid {
                 NotificationCenter.default.post(name: x_NotificationReLogin, object: nil)
                 return
             }
@@ -441,7 +434,7 @@ open class xAPI: NSObject {
     /// 网络错误
     public static func logNetworkBroken(of response : DataResponse<Any>)
     {
-        x_warning("网络错误")
+        x_warning("网络请求错误")
         x_log("************************************")
         x_log("\(response.result)")
         x_log("************************************")
