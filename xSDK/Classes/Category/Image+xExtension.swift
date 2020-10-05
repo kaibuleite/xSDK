@@ -7,8 +7,8 @@
 
 import UIKit
 
-extension UIImage
-{
+extension UIImage {
+    
     // MARK: - Public Func
     // TODO: 绘制图片
     /// 绘制图片

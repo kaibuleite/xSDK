@@ -11,7 +11,7 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
 
     // MARK: - Private Property
     /// 回调
-    private var chooseHandler : xChoosePhotoAlert.xHandlerChoosePhoto?
+    private var chooseHandler : xChoosePhotoActionSheet.xHandlerChoosePhoto?
     
     // MARK: - 内存释放
     deinit {
@@ -29,7 +29,7 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
     // MARK: - Public Func
     /// 开启相册(默认无法编辑图片)
     public func displayAlbum(from viewController : UIViewController,
-                             choose handler : @escaping xChoosePhotoAlert.xHandlerChoosePhoto)
+                             choose handler : @escaping xChoosePhotoActionSheet.xHandlerChoosePhoto)
     {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
             x_warning("相册数据源不可用")
@@ -42,7 +42,7 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
     
     /// 开启相机(默认无法编辑图片)
     public func displayCamera(from viewController : UIViewController,
-                              choose handler : @escaping xChoosePhotoAlert.xHandlerChoosePhoto)
+                              choose handler : @escaping xChoosePhotoActionSheet.xHandlerChoosePhoto)
     {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
             x_warning("相机数据源不可用")

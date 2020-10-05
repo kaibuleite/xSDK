@@ -9,7 +9,7 @@ import UIKit
 
 public class xAnimation: CATransition {
     
-    // MARK: - Open Func
+    // MARK: - Public Func
     // TODO: 快速创建
     /// 淡入淡出
     public static func fade(duration : TimeInterval,

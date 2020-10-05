@@ -1,5 +1,5 @@
 //
-//  xChoosePhotoAlert.swift
+//  xChoosePhotoActionSheet.swift
 //  xSDK
 //
 //  Created by Mac on 2020/9/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class xChoosePhotoAlert: NSObject {
+public class xChoosePhotoActionSheet: NSObject {
 
     // MARK: - Handler
     /// 选取照片回调

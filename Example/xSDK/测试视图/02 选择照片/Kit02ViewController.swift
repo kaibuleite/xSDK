@@ -14,7 +14,7 @@ class Kit02ViewController: UIViewController {
     @IBOutlet weak var photoIcon: UIImageView!
     
     @IBAction func chooseBtnClick() {
-        xChoosePhotoAlert.display(from: self, allowsEditing: true) {
+        xChoosePhotoActionSheet.display(from: self, allowsEditing: true) {
             [weak self] (image) in
             guard let ws = self else { return }
             ws.photoIcon.image = image

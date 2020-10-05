@@ -73,7 +73,7 @@ public class xNavigationView: xNibView {
     /// 返回
     @IBAction func backBtnClick(_ sender: UIButton)
     {
-        x_getKeyWindow()?.endEditing(true)
+        x_KeyWindow?.endEditing(true)
         // 尝试模态退出
         guard let nvc = self.vc?.navigationController else {
             self.vc?.dismiss(animated: true, completion: nil)

@@ -7,33 +7,6 @@
 
 import UIKit
 
-// MARK: - 获取 KeyWindow
-/// 获取 KeyWindow
-/// - Returns: KeyWindow
-public func x_getKeyWindow() -> UIWindow?
-{
-    var keyWindow : UIWindow?
-    if #available(iOS 13.0, *) {
-        guard let scene = UIApplication.shared.connectedScenes.first else { return nil }
-        guard let winScene = scene as? UIWindowScene else { return nil }
-        keyWindow = UIWindow.init(windowScene: winScene)
-    }
-    else {
-        keyWindow = UIApplication.shared.keyWindow
-    }
-    return keyWindow
-}
-
-// MARK: - 获取时间戳（秒级）
-/// 获取时间戳（秒级，注意小数）
-/// - Returns: 时间戳
-public func x_getTimeStamp() -> TimeInterval
-{
-    let ts = Date().timeIntervalSince1970
-    // xLog(ts)
-    return ts
-}
-
 // MARK: - 获取数组中指定数据的编号
 /// 获取数组中指定数据的编号,数组需要统一数据类型,且查找类型也要正确
 /// - Parameters:
@@ -107,14 +80,14 @@ public func x_alert(message : String,
 {
     guard message.count > 0 else { return }
     // 移除旧控件
-    guard let win = x_getKeyWindow() else { return }
+    guard let win = x_KeyWindow else { return }
     let tag = 124090    // 固定tag
     win.viewWithTag(tag)?.removeFromSuperview()
     // 创建提示标签
     let lbl = UILabel.init()
     lbl.tag = tag
     lbl.numberOfLines = 0
-    lbl.preferredMaxLayoutWidth = x_width - 100
+    lbl.preferredMaxLayoutWidth = x_ScreenWidth - 100
     lbl.text = message
     lbl.textAlignment = NSTextAlignment.center
     lbl.textColor = UIColor.white
@@ -161,7 +134,7 @@ public func x_lock(_ obj: AnyObject,
 /// - Returns: 实际高度
 public func x_getRealHeight(withDesignHeight h : CGFloat) -> CGFloat
 {
-    let ret = h / 375.0 * x_width
+    let ret = h / 375.0 * x_ScreenWidth
     return ret
 }
 /// 根据设计宽度计算实际宽度
@@ -169,6 +142,6 @@ public func x_getRealHeight(withDesignHeight h : CGFloat) -> CGFloat
 /// - Returns: 实际宽度
 public func x_getRealWidth(withDesignWidth w : CGFloat) -> CGFloat
 {
-    let ret = w / 375.0 * x_width
+    let ret = w / 375.0 * x_ScreenWidth
     return ret
 }

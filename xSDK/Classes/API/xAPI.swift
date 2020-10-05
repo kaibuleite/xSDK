@@ -69,7 +69,7 @@ open class xAPI: NSObject {
     open class func formatRequest(urlStr : String) -> String
     {
         // 关掉键盘
-        x_getKeyWindow()?.endEditing(true)
+        x_KeyWindow?.endEditing(true)
         var url = urlStr
         if urlStr.hasPrefix("http") == false {
             url = shared.urlPrefix + urlStr
@@ -261,7 +261,7 @@ open class xAPI: NSObject {
                 formData.append(data, withName: k)
             }
             // 把文件塞到表单里
-            let timeStapm = "\(Int(x_getTimeStamp()))"
+            let timeStapm = "\(x_TimeStamp)"
             let fileName = name + "_iOS_" + "_" + "\(timeStapm)" + ".jpg"
             formData.append(file, withName: name, fileName: fileName, mimeType: type.rawValue)
             

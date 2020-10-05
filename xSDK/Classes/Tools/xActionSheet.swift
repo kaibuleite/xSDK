@@ -9,8 +9,8 @@ import UIKit
 
 public class xActionSheet: NSObject {
     
-    // MARK: - Open Func
-    /// 显示选择提示窗
+    // MARK: - Public Func
+    /// 显示选择菜单
     /// - Parameters:
     ///   - viewController: 父控制器
     ///   - title: 标题

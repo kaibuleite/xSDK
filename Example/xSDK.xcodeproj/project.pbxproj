@@ -11,6 +11,8 @@
 		046266D92511FF7100D06EFA /* Test02ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046266D72511FF7100D06EFA /* Test02ViewController.xib */; };
 		0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */; };
 		0471BBC025199732005BF3E2 /* Kit12ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471BBBE25199732005BF3E2 /* Kit12ViewController.xib */; };
+		048DC481252B038B0001F672 /* Kit13ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC47F252B038B0001F672 /* Kit13ViewController.swift */; };
+		048DC482252B038B0001F672 /* Kit13ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048DC480252B038B0001F672 /* Kit13ViewController.xib */; };
 		04CDB88A2515A230005F531F /* Test06ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8882515A230005F531F /* Test06ViewController.swift */; };
 		04CDB88B2515A230005F531F /* Test06ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CDB8892515A230005F531F /* Test06ViewController.xib */; };
 		04CDB88F2515A428005F531F /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB88E2515A428005F531F /* TableViewController.swift */; };
@@ -71,6 +73,8 @@
 		046266D72511FF7100D06EFA /* Test02ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test02ViewController.xib; sourceTree = "<group>"; };
 		0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit12ViewController.swift; sourceTree = "<group>"; };
 		0471BBBE25199732005BF3E2 /* Kit12ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit12ViewController.xib; sourceTree = "<group>"; };
+		048DC47F252B038B0001F672 /* Kit13ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit13ViewController.swift; sourceTree = "<group>"; };
+		048DC480252B038B0001F672 /* Kit13ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit13ViewController.xib; sourceTree = "<group>"; };
 		04CDB8882515A230005F531F /* Test06ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test06ViewController.swift; sourceTree = "<group>"; };
 		04CDB8892515A230005F531F /* Test06ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test06ViewController.xib; sourceTree = "<group>"; };
 		04CDB88E2515A428005F531F /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +169,15 @@
 			path = "12 PageControl组件";
 			sourceTree = "<group>";
 		};
+		048DC47E252B03790001F672 /* 13 选择外部导航地图 */ = {
+			isa = PBXGroup;
+			children = (
+				048DC47F252B038B0001F672 /* Kit13ViewController.swift */,
+				048DC480252B038B0001F672 /* Kit13ViewController.xib */,
+			);
+			path = "13 选择外部导航地图";
+			sourceTree = "<group>";
+		};
 		04CDB8852515A213005F531F /* 06 可变数据选择器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				04D8D7352513443900F0B14B /* 01 圆角 */,
-				04D8D7442513605200F0B14B /* 02 相册 */,
+				04D8D7442513605200F0B14B /* 02 选择照片 */,
 				04D8D7492513625A00F0B14B /* 03 列表空数据 */,
 				04E08A7F2514421300780C15 /* 04 导航栏 */,
 				04E08A802514421D00780C15 /* 05 渐变色 */,
@@ -234,6 +247,7 @@
 				04CDB8BB251607A5005F531F /* 10 SKU组件 */,
 				04ED539525184C0700D670F9 /* 11 Segment组件 */,
 				0471BBBC2519971F005BF3E2 /* 12 PageControl组件 */,
+				048DC47E252B03790001F672 /* 13 选择外部导航地图 */,
 			);
 			path = "测试视图";
 			sourceTree = "<group>";
@@ -247,13 +261,13 @@
 			path = "01 圆角";
 			sourceTree = "<group>";
 		};
-		04D8D7442513605200F0B14B /* 02 相册 */ = {
+		04D8D7442513605200F0B14B /* 02 选择照片 */ = {
 			isa = PBXGroup;
 			children = (
 				04D8D7452513606200F0B14B /* Kit02ViewController.swift */,
 				04D8D7462513606200F0B14B /* Kit02ViewController.xib */,
 			);
-			path = "02 相册";
+			path = "02 选择照片";
 			sourceTree = "<group>";
 		};
 		04D8D7492513625A00F0B14B /* 03 列表空数据 */ = {
@@ -542,6 +556,7 @@
 				04E08A852514423900780C15 /* Kit04ViewController.xib in Resources */,
 				04E08AB125149BD800780C15 /* Test04ViewController.xib in Resources */,
 				04CDB8BF251607AE005F531F /* Kit10ViewController.xib in Resources */,
+				048DC482252B038B0001F672 /* Kit13ViewController.xib in Resources */,
 				04DE84542510AF50008615B3 /* Test01ViewController.xib in Resources */,
 				04CDB89B2515E059005F531F /* Test07ViewController.xib in Resources */,
 				04E08A892514424600780C15 /* Kit05ViewController.xib in Resources */,
@@ -661,6 +676,7 @@
 				04CDB88F2515A428005F531F /* TableViewController.swift in Sources */,
 				04D8D74C2513626800F0B14B /* Kit03ViewController.swift in Sources */,
 				04D8D7472513606200F0B14B /* Kit02ViewController.swift in Sources */,
+				048DC481252B038B0001F672 /* Kit13ViewController.swift in Sources */,
 				04E08AB025149BD800780C15 /* Test04ViewController.swift in Sources */,
 				04CDB89A2515E059005F531F /* Test07ViewController.swift in Sources */,
 				04CDB88A2515A230005F531F /* Test06ViewController.swift in Sources */,

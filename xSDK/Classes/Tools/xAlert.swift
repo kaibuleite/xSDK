@@ -9,8 +9,8 @@ import UIKit
 
 public class xAlert: NSObject {
     
-    // MARK: - Open Func
-    /// 显示提示窗
+    // MARK: - Public Func
+    /// 显示弹窗
     /// - Parameters:
     ///   - viewController: 父控制器
     ///   - title: 标题
