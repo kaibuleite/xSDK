@@ -123,8 +123,39 @@ open class xModel: NSObject {
         model.xOrigin = info
         return model as? Self
     }
-    /// 创建随机数据
-    public static func newList(count : Int = 10) -> [xModel]
+     
+    /// 格式化model数组
+    /// - Parameters:
+    ///   - classType: model类型
+    ///   - dataSource: 数据源
+    public static func newList(with dataSource : Any?) -> [xModel]
+    {
+        
+        var ret = [xModel]()
+        // 数组嵌字典
+        if let infoList = dataSource as? [[String : Any]] {
+            for info in infoList {
+                if let model = self.new(dict: info) {
+                    ret.append(model)
+                }
+            }
+        }
+        // 字典嵌字典
+        else
+        if let infoList = dataSource as? [String : [String : Any]] {
+            for (_, info) in infoList {
+                if let model = self.new(dict: info) {
+                    ret.append(model)
+                }
+            }
+        }
+        return ret
+    }
+    
+    /// 创建随机数据列表
+    /// - Parameter count: 数据个数
+    /// - Returns: 数据列表
+    public static func newRandomList(count : Int = 10) -> [xModel]
     {
         var ret = [xModel]()
         for _ in 0 ..< count {

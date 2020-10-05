@@ -376,7 +376,7 @@ open class xAPI: NSObject {
         // 状态判断
         if code == config.successCode {
             if record.isAlertSuccessMsg {
-                x_alert(message: msg)
+                xMessageAlert.display(message: msg)
             }
             // 成功回调
             let result = info[config.repDataKey]
@@ -384,7 +384,7 @@ open class xAPI: NSObject {
         }
         else {
             if record.isAlertFailureMsg {
-                x_alert(message: msg)
+                xMessageAlert.display(message: msg)
             }
             // 失败回调
             self.logApiCodeError(record: record, info: info)

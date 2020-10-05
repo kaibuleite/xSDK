@@ -14,6 +14,8 @@
 		02B6598C52131C10E3CA344FB49B87FA /* SDWebImageTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D59871803F53A16039EC97BA290760F /* SDWebImageTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		033813F58E3D20FA511AF1B5C3D58FA7 /* UIView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 100ECE987A302113C261CC4BFD49CEF8 /* UIView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0376AB2D43BEBB76D7B54D681ECE6905 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3E3339A9B0B9C76D189118EEE01E49 /* Foundation.framework */; };
+		041328C5252B2003003CA86E /* Array+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041328C4252B2003003CA86E /* Array+xExtension.swift */; };
+		041328CE252B2523003CA86E /* xMessageAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041328CD252B2523003CA86E /* xMessageAlert.swift */; };
 		0444BE252518A0C80033D8A2 /* back_30@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A6D9BC1085F48877328A8A9C3B8884 /* back_30@2x.png */; };
 		0444BE262518A0C80033D8A2 /* back_30@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A598FE6AE62F900D9FA8F46B5E360D /* back_30@3x.png */; };
 		0444BE272518A0C80033D8A2 /* close_28@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2DFCAEEB61F8279E73E8BA429DEA324 /* close_28@2x.png */; };
@@ -415,6 +417,8 @@
 /* Begin PBXFileReference section */
 		03A6D9BC1085F48877328A8A9C3B8884 /* back_30@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "back_30@2x.png"; path = "xSDK/Assets/back_30@2x.png"; sourceTree = "<group>"; };
 		03D7D01F55468A19735E6A2FBFD37D55 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		041328C4252B2003003CA86E /* Array+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+xExtension.swift"; sourceTree = "<group>"; };
+		041328CD252B2523003CA86E /* xMessageAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xMessageAlert.swift; sourceTree = "<group>"; };
 		0444BE3E2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDefaultOnePageItemViewController.swift; sourceTree = "<group>"; };
 		0444BE3F2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xDefaultOnePageItemViewController.xib; sourceTree = "<group>"; };
 		0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xPageViewController.storyboard; sourceTree = "<group>"; };
@@ -942,6 +946,7 @@
 			children = (
 				EF466832C63028BB7AB139D7788775E7 /* xActionSheet.swift */,
 				42D1CD55A1E94F60411902729575E3F2 /* xAlert.swift */,
+				041328CD252B2523003CA86E /* xMessageAlert.swift */,
 				831B41732FDD9615AC7CCACF224CA7B5 /* xInputAlert.swift */,
 				41D21B6547271E02E9FB76B021F760C6 /* xAnimation.swift */,
 				048DC444252AFA910001F672 /* xImageDownloader.swift */,
@@ -1552,6 +1557,7 @@
 				5A861D4B4367798C8CAED6E4CCCE99E2 /* Timer+xExtension.swift */,
 				18052194FE5DC0DC94B0B99BAA2C0FD4 /* View+xExtension.swift */,
 				AC35E5043DE09C96415401158FB9E54C /* ViewController+xExtension.swift */,
+				041328C4252B2003003CA86E /* Array+xExtension.swift */,
 			);
 			name = Category;
 			path = xSDK/Classes/Category;
@@ -2277,6 +2283,7 @@
 				9BEF089F577958B1DA85493C4F7466A1 /* ViewController+xExtension.swift in Sources */,
 				4B8019492AA5B3A22AE8DA891F7E56E8 /* xActionSheet.swift in Sources */,
 				2FE14DB81F7A3DCCA12B402A9FDA5A75 /* xAlert.swift in Sources */,
+				041328C5252B2003003CA86E /* Array+xExtension.swift in Sources */,
 				6BE5AFA519FA9A05CB974E55C99266F9 /* xAlertViewController.swift in Sources */,
 				843E69C2343F7A47F75673E695FB448C /* xAnimation.swift in Sources */,
 				F9B62218D6D832D97B70021C06645A80 /* xAPI.swift in Sources */,
@@ -2308,6 +2315,7 @@
 				A219A0DF1A7F93680628467445DC7342 /* xGlobalValue.swift in Sources */,
 				FD53739B45DBB7F8A5E4507AE7041B93 /* xGradientColorView.swift in Sources */,
 				8778C9B0FB5753C0280B8B30DD52EBB5 /* xImagePickerController.swift in Sources */,
+				041328CE252B2523003CA86E /* xMessageAlert.swift in Sources */,
 				55A051F086B5B65AE3068F1526C5DF1B /* xImageView.swift in Sources */,
 				7F94280F621A6F180707D42268592657 /* xInputAccessoryView.swift in Sources */,
 				048DC445252AFA910001F672 /* xImageDownloader.swift in Sources */,

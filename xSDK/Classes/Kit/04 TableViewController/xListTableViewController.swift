@@ -47,7 +47,7 @@ open class xListTableViewController: xTableViewController {
     /// 刷新数据
     open func refreshDataList() {
         // 模拟数据
-        let list = xModel.newList()
+        let list = xModel.newRandomList()
         self.refreshSuccess()
         self.reloadData(list: list)
     }

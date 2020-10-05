@@ -307,7 +307,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     /// 扫描失败
     private func scanFailure() -> Void
     {
-        x_alert(message: "扫描失败")
+        xMessageAlert.display(message: "扫描失败")
         self.isScanSuccess = false
         self.scanHandler = nil
         self.backBtnClick()
