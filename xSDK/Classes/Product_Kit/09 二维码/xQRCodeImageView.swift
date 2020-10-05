@@ -22,7 +22,7 @@ public class xQRCodeImageView: xImageView {
         let data = code.data(using: String.Encoding.utf8, allowLossyConversion: false)
         // 创建图片滤镜、设置二维码的精度(L M Q H)
         guard let filter_img = CIFilter.init(name: "CIQRCodeGenerator") else {
-            x_warning("条形码过滤器初始化失败")
+            xWarning("条形码过滤器初始化失败")
             return
         }
         filter_img.setDefaults()
@@ -30,7 +30,7 @@ public class xQRCodeImageView: xImageView {
         filter_img.setValue("H", forKey: "InputCorrectionLevel")    // 容错率
         // 创建颜色滤镜,黑白色
         guard let filter_color = CIFilter(name: "CIFalseColor") else {
-            x_warning("颜色过滤器初始化失败")
+            xWarning("颜色过滤器初始化失败")
             return
         }
         filter_color.setDefaults()
@@ -39,14 +39,14 @@ public class xQRCodeImageView: xImageView {
         filter_color.setValue(CIColor(red: 1, green: 1, blue: 1), forKey: "inputColor1")
         // 数据验证
         guard let ciimage = filter_color.outputImage else {
-            x_warning("二维码生成失败")
+            xWarning("二维码生成失败")
             return
         }
         var ret : UIImage? = UIImage.init(ciImage: ciimage)
         if let centerImg = centerImage {
-            ret = ret?.x_addCenter(image: centerImg)
+            ret = ret?.xToCoverCenter(image: centerImg)
         }
-        self.image = ret?.x_scale(size: self.bounds.size)
+        self.image = ret?.xToScale(size: self.bounds.size)
     }
 
 }

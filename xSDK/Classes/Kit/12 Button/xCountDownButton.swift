@@ -65,7 +65,7 @@ open class xCountDownButton: xButton {
         self.layer.borderColor = self.countdownBorderColor.cgColor
         self.isUserInteractionEnabled = false
         
-        let timer = Timer.x_new(timeInterval: 1, repeats: true) {
+        let timer = Timer.xNew(timeInterval: 1, repeats: true) {
             [weak self] (timer) in
             guard let ws = self else { return }
             ws.tag -= 1

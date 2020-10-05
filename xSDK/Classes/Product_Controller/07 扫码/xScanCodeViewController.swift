@@ -71,7 +71,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
 
     // MARK: - Public Override Func
     public override class func quickInstancetype() -> Self {
-        let vc = xScanCodeViewController.new(storyboard: "xScanCodeViewController")
+        let vc = xScanCodeViewController.xNew(storyboard: "xScanCodeViewController")
         return vc as! Self
     }
     public override func viewDidLoad() {
@@ -85,7 +85,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         self.borderLayer.backgroundColor = UIColor.clear.cgColor
         self.borderLayer.borderColor = UIColor.clear.cgColor
         self.borderLayer.fillColor = UIColor.clear.cgColor
-        self.borderLayer.strokeColor = UIColor.x_hex("00C2FF").cgColor
+        self.borderLayer.strokeColor = UIColor.xNew(hex: "00C2FF").cgColor
         self.scanView.layer.addSublayer(self.borderLayer)
         // 定位图层
         self.locateLayer.borderWidth = 1
@@ -152,20 +152,20 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     {
         // 对懒加载的input进行赋值
         guard let device = AVCaptureDevice.default(for: .video) else {
-            x_warning("设备初始化失败")
+            xWarning("设备初始化失败")
             self.scanFailure()
             return
         }
         self.input = try? AVCaptureDeviceInput.init(device: device)
         // 1.判断是否能加入输入
         guard session.canAddInput(self.input!) else {
-            x_warning("无法加入输入")
+            xWarning("无法加入输入")
             self.scanFailure()
             return
         }
         // 2.判断是否能加入输出
         guard session.canAddOutput(self.output) else {
-            x_warning("无法加入输出")
+            xWarning("无法加入输出")
             self.scanFailure()
             return
         }
@@ -193,14 +193,14 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
             guard let ws = self else { return }
             // 识别图片 
             guard let ciimage = CIImage.init(image: image) else {
-                x_warning("图片转换失败")
+                xWarning("图片转换失败")
                 ws.scanFailure()
                 return
             }
             // 创建探测器,检测精度设高一点
             let options = [CIDetectorAccuracy : CIDetectorAccuracyHigh]
             guard let detector = CIDetector.init(ofType: CIDetectorTypeQRCode, context: nil, options: options) else {
-                x_warning("探测器创建失败")
+                xWarning("探测器创建失败")
                 ws.scanFailure()
                 return
             }
@@ -273,7 +273,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     private func drawLocate(object : AVMetadataMachineReadableCodeObject)
     {
         let array = object.corners
-        x_log("定位到二维码 \(array)")
+        xLog("定位到二维码 \(array)")
         guard array.count > 0 else { return }
         let path = UIBezierPath()
         var index = 0
@@ -296,7 +296,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     /// 扫描成功
     private func scanSuccess(code : String) -> Void
     {
-        x_log("扫描成功 : " + code)
+        xLog("扫描成功 : " + code)
         self.isScanSuccess = true
         // 播放音效
         xAppManager.playSound(name: "scan_success", id: 50923)

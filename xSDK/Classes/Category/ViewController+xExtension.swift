@@ -12,7 +12,7 @@ extension UIViewController {
     // MARK: - Public Func
     // TODO: 实例化对象
     /// 通过storyboard实例化
-    public class func new(storyboard name : String,
+    public class func xNew(storyboard name : String,
                           identifier : String = "") -> Self
     {
         let bundle = Bundle.init(for: self.classForCoder())
@@ -35,16 +35,16 @@ extension xViewController {
     // TODO: - 添加子控制器
     /// 添加子控制器
     @discardableResult
-    public func addChild(_ vc : UIViewController?,
-                         in container : UIView?,
-                         frame : CGRect = .zero) -> Bool
+    public func xAddChild(_ vc : UIViewController?,
+                          in container : UIView?,
+                          frame : CGRect = .zero) -> Bool
     {
         guard let obj = vc else {
-            x_warning("子控制器为nil")
+            xWarning("子控制器为nil")
             return false
         }
         guard let view = container else {
-            x_warning("子控制器容器为nil")
+            xWarning("子控制器容器为nil")
             return false
         }
         self.addChild(obj)

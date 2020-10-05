@@ -11,8 +11,7 @@ open class xTabBarController: UITabBarController {
     
     // MARK: - 内存释放
     deinit {
-        guard let name = x_getClassName(withObject: self) else { return }
-        x_log("💥_TBR \(name)")
+        xLog("💥_TBR \(self.xClassStruct.name)")
     }
     
     // MARK: - Open Override Func

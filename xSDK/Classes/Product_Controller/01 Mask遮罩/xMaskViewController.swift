@@ -32,7 +32,7 @@ public class xMaskViewController: xViewController {
     // MARK: - Public Override Func
     public static let shared = xMaskViewController.quickInstancetype()
     public override class func quickInstancetype() -> Self { 
-        let vc = xMaskViewController.new(storyboard: "xMaskViewController")
+        let vc = xMaskViewController.xNew(storyboard: "xMaskViewController")
         return vc as! Self
     }
     public override func viewDidLoad() {
@@ -69,7 +69,7 @@ public class xMaskViewController: xViewController {
                                delay : TimeInterval = 10)
     {
         guard shared.isShow == false else { return }    // 保证只显示1个遮罩
-        guard let window = x_KeyWindow else { return }
+        guard let window = xKeyWindow else { return }
         shared.view.tag += 1
         shared.isShow = true
         // 添加UI

@@ -38,8 +38,7 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
         self.delegate = nil
         self.dataSource = nil
         self.closeTimer()
-        guard let name = x_getClassName(withObject: self) else { return }
-        x_log("🐔_PVC \(name)")
+        xLog("🐔_PVC \(self.xClassStruct.name)")
     }
 
     // MARK: - Public Override Func
@@ -59,7 +58,7 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     
     // MARK: - Public Func
     public class func quickInstancetype() -> Self {
-        let vc = xPageViewController.new(storyboard: "xPageViewController")
+        let vc = xPageViewController.xNew(storyboard: "xPageViewController")
         return vc as! Self
     } 
     /// 刷新数据（默认样式）
@@ -88,11 +87,11 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
                        click handler2 : @escaping xHandlerClickPage)
     {
         guard itemViewControllerArray.count > 0 else {
-            x_warning("数据不能为0")
+            xWarning("数据不能为0")
             return
         }
         guard let vc = itemViewControllerArray.first else {
-            x_warning("视图控制器初始化失败")
+            xWarning("视图控制器初始化失败")
             return
         }
         self.dataSource = self
@@ -118,7 +117,7 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     /// 开启定时器
     private func openTimer()
     {
-        let timer = Timer.x_new(timeInterval: self.changeInterval, repeats: true) {
+        let timer = Timer.xNew(timeInterval: self.changeInterval, repeats: true) {
             [weak self] (sender) in
             guard let ws = self else { return }
             guard ws.itemViewControllerArray.count > 0 else { return }

@@ -32,10 +32,9 @@ open class xViewController: UIViewController {
     // MARK: - 内存释放
     deinit {
         if self.isRootParentViewController {
-            x_log("****************************")
+            xLog("****************************")
         }
-        guard let name = x_getClassName(withObject: self) else { return }
-        x_log("♻️ \(self.xTitle) \(name)")
+        xLog("♻️ \(self.xTitle) \(self.xClassStruct.name)")
     }
     
     // MARK: - Open Override Func

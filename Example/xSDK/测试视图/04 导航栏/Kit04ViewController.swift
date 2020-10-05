@@ -17,8 +17,8 @@ class Kit04ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // 设置渐变色样式
-        let colorArr = [UIColor.red.x_edit(alpha: 0.3),
-                        UIColor.blue.x_edit(alpha: 0.3)]
+        let colorArr = [UIColor.red.xEdit(alpha: 0.3),
+                        UIColor.blue.xEdit(alpha: 0.3)]
         self.nv2.barColorView.setGradient(colors: colorArr)
         self.nv2.titleColor = .white
         self.nv2.clipsToBounds = true

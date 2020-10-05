@@ -15,8 +15,7 @@ open class xNavigationController: UINavigationController {
     
     // MARK: - 内存释放
     deinit {
-        guard let name = x_getClassName(withObject: self) else { return }
-        x_log("💥_NVC \(name)")
+        xLog("💥_NVC \(self.xClassStruct.name)")
     }
     
     // MARK: - Open Override Func
@@ -69,9 +68,9 @@ open class xNavigationController: UINavigationController {
     /// - Parameter color: 指定颜色
     open func setBarShadowColor(_ color : UIColor)
     {
-        self.navigationBar.setBackgroundImage(color.x_toImage(),
+        self.navigationBar.setBackgroundImage(color.xToImage(),
                                               for: .default)
-        self.navigationBar.shadowImage = color.x_toImage()
+        self.navigationBar.shadowImage = color.xToImage()
     }
     /// 获取指定类型的子控制器
     open func getChildrenClass(_ name : AnyClass) -> [UIViewController]

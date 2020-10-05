@@ -17,7 +17,7 @@ class Kit06ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.normalInput.addBeginEditHandler {
-            x_log("开始输入")
+            xLog("开始输入")
         }
         self.normalInput.addEditingHandler {
             (txt) in
@@ -27,16 +27,16 @@ class Kit06ViewController: UIViewController {
             [weak self] in
             guard let ws = self else { return }
             ws.view.endEditing(true)
-            x_log("完成、搜索。。。按钮")
+            xLog("完成、搜索。。。按钮")
         }
         self.normalInput.addEndEditHandler {
-            x_log("结束输入")
+            xLog("结束输入")
         }
         
         self.numberInput.addEditingHandler {
             [weak self] (txt) in
             guard let ws = self else { return }
-            let str = txt.x_toInternationalNumberString()
+            let str = txt.xToInternationalNumberString()
             ws.numberInput.text = str
             // ws.numberInput.reset(text: str)
         }

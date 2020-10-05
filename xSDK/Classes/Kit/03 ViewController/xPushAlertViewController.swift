@@ -37,7 +37,7 @@ open class xPushAlertViewController: xViewController {
     ///   - isSpring: 是否开启弹性动画
     public func display(isSpring : Bool = true)
     {
-        self.alertContinerBottomLayout.constant = x_ScreenHeight
+        self.alertContinerBottomLayout.constant = xScreenHeight
         self.view.layoutIfNeeded()
         self.view.isHidden = false
         if isSpring {
@@ -61,7 +61,7 @@ open class xPushAlertViewController: xViewController {
     public func dismiss()
     {
         UIView.animate(withDuration: 0.25, animations: {
-            self.alertContinerBottomLayout.constant = x_ScreenHeight
+            self.alertContinerBottomLayout.constant = xScreenHeight
             self.view.layoutIfNeeded()
             
         }, completion: {

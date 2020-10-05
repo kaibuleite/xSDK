@@ -18,9 +18,9 @@ open class xTextField: UITextField, UITextFieldDelegate {
     /// 容器
     @IBInspectable public var container : UIView?
     /// 容器边框默认颜色
-    @IBInspectable public var containerBoardNomalColor : UIColor = .x_hex("E5E5E5")
+    @IBInspectable public var containerBoardNomalColor : UIColor = .xNew(hex: "E5E5E5")
     /// 边框选中颜色
-    @IBInspectable public var containerBoardChooseColor : UIColor = .x_hex("EB0A1E")
+    @IBInspectable public var containerBoardChooseColor : UIColor = .xNew(hex: "EB0A1E")
     
     // MARK: - Public Property
     /// 上一个输入框
@@ -140,17 +140,17 @@ open class xTextField: UITextField, UITextFieldDelegate {
         guard let view = self.loadAccessoryView() else { return }
         self.accessoryView = view
         self.inputAccessoryView = view
-        view.previousBtn.x_addClick {
+        view.previousBtn.xAddClick {
             [weak self] (sender) in
             guard let ws = self else { return }
             ws.previousInput?.becomeFirstResponder()
         }
-        view.nextBtn.x_addClick {
+        view.nextBtn.xAddClick {
             [weak self] (sender) in
             guard let ws = self else { return }
             ws.nextInput?.becomeFirstResponder()
         }
-        view.completedBtn.x_addClick {
+        view.completedBtn.xAddClick {
             [weak self] (sender) in
             guard let ws = self else { return }
             ws.endEditing(true)

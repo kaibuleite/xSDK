@@ -18,7 +18,7 @@ class Test04ViewController: xViewController {
         super.viewDidLoad()
     }
     override func addChildren() {
-        self.addChild(self.alertDatePicker, in: self.view)
+        self.xAddChild(self.alertDatePicker, in: self.view)
     }
     
     // MARK: - 普通样式
@@ -30,8 +30,8 @@ class Test04ViewController: xViewController {
         self.alertDatePicker.display(title: "选择日期", isSpring: false) {
             [unowned self] (timeStamp) in
             // 返回时间戳,毫秒级,带小数
-            x_log(timeStamp)
-            self.resultLbl.text = "\(timeStamp)".x_toDateString(format: "yyyy-MM-dd hh:mm:ss")
+            xLog(timeStamp)
+            self.resultLbl.text = "\(timeStamp)".xToDateString(format: "yyyy-MM-dd hh:mm:ss")
         }
     }
     
@@ -43,8 +43,8 @@ class Test04ViewController: xViewController {
         self.alertDatePicker.config = config
         self.alertDatePicker.display(title: "选择日期", isSpring: true) {
             [unowned self] (timeStamp) in
-            x_log(timeStamp)
-            self.resultLbl.text = "\(timeStamp)".x_toDateString(format: "yyyy年MM月dd日 hh时mm分ss秒")
+            xLog(timeStamp)
+            self.resultLbl.text = "\(timeStamp)".xToDateString(format: "yyyy年MM月dd日 hh时mm分ss秒")
         }
     }
 

@@ -43,10 +43,10 @@ open class xImageView: UIImageView {
         self.contentMode = .scaleAspectFill // 全填充
         let size = self.bounds.size
         if self.defaultFillColor == .clear {
-            self.image = UIColor.x_random(alpha: 0.3).x_toImage(size: size)
+            self.image = UIColor.xNewRandom(alpha: 0.3).xToImage(size: size)
         }
         else {
-            self.image = self.defaultFillColor.x_toImage(size: size)
+            self.image = self.defaultFillColor.xToImage(size: size)
         }
         // self.backgroundColor = UIColor.newRandom(alpha: 0.3)
         guard self.isCircle else { return }

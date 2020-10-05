@@ -92,7 +92,7 @@ public class xSegmentView: xView {
             lbl.textAlignment = .center
             lbl.frame = .zero
             if isEqualItemWidth == false {
-                let size = lbl.x_getContentSize()
+                let size = lbl.xGetContentSize()
                 lbl.frame = .init(origin: .zero, size: size)
             }
             lbl.font = .systemFont(ofSize: fontSize)
@@ -108,7 +108,7 @@ public class xSegmentView: xView {
                        chooseItem handler : @escaping xHandlerChooseItem)
     {
         guard itemViewArray.count > 0 else {
-            x_warning("数据不能为0")
+            xWarning("数据不能为0")
             return
         }
         self.lineView.backgroundColor = self.config.lineColor

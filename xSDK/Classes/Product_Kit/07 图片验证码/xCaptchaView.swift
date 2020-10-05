@@ -44,7 +44,7 @@ public class xCaptchaView: xView {
     {
         super.draw(rect)
         // 设置随机背景颜色
-        self.backgroundColor = UIColor.x_random(alpha: 0.8)
+        self.backgroundColor = UIColor.xNewRandom(alpha: 0.8)
         // 获取单个字符的大小
         let font = UIFont.systemFont(ofSize: self.config.fontSize)
         let attr = [NSAttributedString.Key.font : font]
@@ -81,7 +81,7 @@ public class xCaptchaView: xView {
         for _ in 0 ..< self.config.lineCount
         {
             // 设置线的随机颜色
-            context?.setStrokeColor(UIColor.x_random().cgColor)
+            context?.setStrokeColor(UIColor.xNewRandom().cgColor)
             // 设置线的起点
             let x1 = CGFloat(arc4random() % UInt32(rect.size.width))
             let y1 = CGFloat(arc4random() % UInt32(rect.size.height))

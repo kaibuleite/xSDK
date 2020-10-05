@@ -20,9 +20,9 @@ extension Timer {
     ///   - timeInterval: 间隔
     ///   - repeats: 是否重复
     ///   - block: 回调
-    public static func x_new(timeInterval : TimeInterval,
-                             repeats : Bool,
-                             handler : @escaping xHandlerTimerInvoke) -> Timer
+    public static func xNew(timeInterval : TimeInterval,
+                            repeats : Bool,
+                            handler : @escaping xHandlerTimerInvoke) -> Timer
     {
         let timer = Timer.scheduledTimer(timeInterval: timeInterval,
                                          target: self,
@@ -32,6 +32,7 @@ extension Timer {
         return timer
     }
     
+    // MARK: - Private Func
     /// 触发回调
     @objc private static func timerInvoke(_ timer : Timer)
     {

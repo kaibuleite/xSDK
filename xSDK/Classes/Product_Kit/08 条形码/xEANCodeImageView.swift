@@ -19,7 +19,7 @@ public class xEANCodeImageView: UIImageView {
     {
         // 创建图片滤镜
         guard let filter_img = CIFilter.init(name: "CICode128BarcodeGenerator") else {
-            x_warning("条形码过滤器初始化失败")
+            xWarning("条形码过滤器初始化失败")
             return
         }
         filter_img.setDefaults()
@@ -27,7 +27,7 @@ public class xEANCodeImageView: UIImageView {
         filter_img.setValue(data, forKey: "InputMessage")
         // 创建颜色滤镜,黑白色
         guard let filter_color = CIFilter(name: "CIFalseColor") else {
-            x_warning("颜色过滤器初始化失败")
+            xWarning("颜色过滤器初始化失败")
             return
         }
         filter_color.setDefaults()
@@ -36,11 +36,11 @@ public class xEANCodeImageView: UIImageView {
         filter_color.setValue(CIColor(red: 1, green: 1, blue: 1), forKey: "inputColor1")
         // 数据验证
         guard let ciimage = filter_color.outputImage else {
-            x_warning("条形码生成失败")
+            xWarning("条形码生成失败")
             return
         }
         let ret = UIImage.init(ciImage: ciimage)
-        self.image = ret.x_scale(size: self.bounds.size)
+        self.image = ret.xToScale(size: self.bounds.size)
     }
 
 }

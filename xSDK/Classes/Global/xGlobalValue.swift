@@ -9,23 +9,23 @@ import UIKit
 
 // MARK: - Public Property
 /// 屏幕宽度
-public let x_ScreenWidth = UIScreen.main.bounds.size.width
+public let xScreenWidth = UIScreen.main.bounds.size.width
 /// 屏幕高度
-public let x_ScreenHeight = UIScreen.main.bounds.size.height
+public let xScreenHeight = UIScreen.main.bounds.size.height
 /// 状态栏高度
-public let x_StatusHeight = UIApplication.shared.statusBarFrame.height
+public let xStatusHeight = UIApplication.shared.statusBarFrame.height
 /// 导航栏高度
-public let x_NavigationBarHeight = UINavigationController().navigationBar.frame.height
+public let xNavigationBarHeight = UINavigationController().navigationBar.frame.height
 /// 菜单栏高度
-public let x_TabbarHeight = UITabBarController().tabBar.frame.height
+public let xTabbarHeight = UITabBarController().tabBar.frame.height
 
 
 /// 重新登录提示
-public let x_NotificationReLogin = Notification.Name.init("x重新登录")
+public let xNotificationReLogin = Notification.Name.init("x重新登录")
 
 
 /// 当前窗口
-public var x_KeyWindow : UIWindow? {
+public var xKeyWindow : UIWindow? {
     var ret : UIWindow?
     if #available(iOS 13.0, *) {
         guard let scene = UIApplication.shared.connectedScenes.first else { return nil }
@@ -38,14 +38,14 @@ public var x_KeyWindow : UIWindow? {
     return ret
 }
 /// 秒级时间戳
-public var x_TimeStamp : Int
+public var xTimeStamp : Int
 {
     let ts = Date().timeIntervalSince1970
     let ret = Int(ts)
     return ret
 }
 /// 毫秒级时间戳
-public var x_MillisecondTimeStamp : Int
+public var xMillisecondTimeStamp : Int
 {
     let ts = Date().timeIntervalSince1970
     let ret = Int(ts * 1000)

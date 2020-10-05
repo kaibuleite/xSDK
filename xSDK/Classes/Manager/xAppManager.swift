@@ -22,11 +22,11 @@ public class xAppManager: NSObject {
     public var isLogModelNoPropertyTip = false
     
     /// 主题色
-    public var themeColor = UIColor.x_hex("#487FFC")
+    public var themeColor = UIColor.xNew(hex: "#487FFC")
     /// TableView背景色
     public var tableViewBackgroundColor = UIColor.groupTableViewBackground
     /// 导航栏背景色
-    public var navigationBarColor = UIColor.x_hex("F7F6F6")
+    public var navigationBarColor = UIColor.xNew(hex: "F7F6F6")
     /// 导航栏背阴影线条景色
     public var navigationBarShadowColor = UIColor.lightGray
     
@@ -35,6 +35,15 @@ public class xAppManager: NSObject {
     private let soundIDArray = [SystemSoundID]()
     
     // MARK: - Public Func
+    /// 拨打电话
+    public static func call(phone : String)
+    {
+        let str = "telprompt://" + phone
+        guard let url = str.xToURL() else { return }
+        guard UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.openURL(url)
+    }
+
     /// 播放音效
     public static func playSound(name : String,
                                  type : String = ".mp3",
@@ -51,18 +60,19 @@ public class xAppManager: NSObject {
         var sid = id
         let bundle = Bundle.init(for: self.classForCoder())
         guard let path = bundle.path(forResource: name, ofType: type) else {
-            x_warning("音效文件路径初始化失败:\(name).\(type)")
+            xWarning("音效文件路径初始化失败:\(name).\(type)")
             return
         }
         let url = URL(fileURLWithPath: path)
         AudioServicesCreateSystemSoundID(url as CFURL, &sid)
         AudioServicesPlaySystemSound(sid)
     }
+    
     /// 打开手电筒
     public static func openPhoneLight()
     {
         guard let device = AVCaptureDevice.default(for: .video) else {
-            x_warning("设备初始化失败")
+            xWarning("设备初始化失败")
             return
         }
         do {
@@ -73,11 +83,12 @@ public class xAppManager: NSObject {
             
         }
     }
+    
     /// 关闭手电筒
     public static func closePhoneLight()
     {
          guard let device = AVCaptureDevice.default(for: .video) else {
-             x_warning("设备初始化失败")
+             xWarning("设备初始化失败")
              return
          }
          do {

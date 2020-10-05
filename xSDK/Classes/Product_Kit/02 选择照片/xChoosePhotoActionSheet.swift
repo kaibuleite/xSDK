@@ -15,7 +15,7 @@ public class xChoosePhotoActionSheet: NSObject {
     
     // MARK: - 内存释放
     deinit {
-        x_log("💥 照片选择器")
+        xLog("💥 照片选择器")
     }
     
     // MARK: - 显示提示照片选择提示弹窗

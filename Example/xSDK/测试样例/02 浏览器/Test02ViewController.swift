@@ -23,7 +23,7 @@ class Test02ViewController: UIViewController {
         vc.load(url: str)
         vc.jsMgr.addReceiveWebJS {
             (name) in
-            x_log("js事件 ——— \(name)")
+            xLog("js事件 ——— \(name)")
         }
     }
 }

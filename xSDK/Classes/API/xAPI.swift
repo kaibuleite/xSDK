@@ -69,7 +69,7 @@ open class xAPI: NSObject {
     open class func formatRequest(urlStr : String) -> String
     {
         // 关掉键盘
-        x_KeyWindow?.endEditing(true)
+        xKeyWindow?.endEditing(true)
         var url = urlStr
         if urlStr.hasPrefix("http") == false {
             url = shared.urlPrefix + urlStr
@@ -261,7 +261,7 @@ open class xAPI: NSObject {
                 formData.append(data, withName: k)
             }
             // 把文件塞到表单里
-            let timeStapm = "\(x_TimeStamp)"
+            let timeStapm = "\(xTimeStamp)"
             let fileName = name + "_iOS_" + "_" + "\(timeStapm)" + ".jpg"
             formData.append(file, withName: name, fileName: fileName, mimeType: type.rawValue)
             
@@ -287,7 +287,7 @@ open class xAPI: NSObject {
                     self.check(record: record, response: response, success: success, failure: failure)
                 })
             case .failure(let error):
-                x_warning("表单拼接失败：\(error.localizedDescription)")
+                xWarning("表单拼接失败：\(error.localizedDescription)")
                 break
             }
         })
@@ -391,12 +391,12 @@ open class xAPI: NSObject {
             failure(msg)
             // 重新登录
             if code == config.failureCodeUserTokenInvalid {
-                NotificationCenter.default.post(name: x_NotificationReLogin, object: nil)
+                NotificationCenter.default.post(name: xNotificationReLogin, object: nil)
                 return
             }
             for str in config.reLoginMsgArray {
                 guard str == msg else { continue }
-                NotificationCenter.default.post(name: x_NotificationReLogin, object: nil)
+                NotificationCenter.default.post(name: xNotificationReLogin, object: nil)
                 return
             }
         }
@@ -434,40 +434,40 @@ open class xAPI: NSObject {
     /// 网络错误
     public static func logNetworkBroken(of response : DataResponse<Any>)
     {
-        x_warning("网络请求错误")
-        x_log("************************************")
-        x_log("\(response.result)")
-        x_log("************************************")
+        xWarning("网络请求错误")
+        xLog("************************************")
+        xLog("\(response.result)")
+        xLog("************************************")
     }
     /// Api逻辑错误
     public static func logApiCodeError(record : xAPIRecord?,
                                        info : [String : Any])
     {
-        x_warning("API Code 错误")
-        x_log("************************************")
-        x_log("\(info)")
+        xWarning("API Code 错误")
+        xLog("************************************")
+        xLog("\(info)")
         if let obj = record {
-            x_log("接口地址：\(obj.url)")
-            x_log("GET参数：\(self.formatGetString(of: obj.parameter))")
-            x_log("POST参数：\(self.formatPostString(of: obj.parameter))")
+            xLog("接口地址：\(obj.url)")
+            xLog("GET参数：\(self.formatGetString(of: obj.parameter))")
+            xLog("POST参数：\(self.formatPostString(of: obj.parameter))")
         }
-        x_log("************************************")
+        xLog("************************************")
     }
     /// 数据解析错误
     public static func logDataError(record : xAPIRecord?,
                                     isReqSuccess : Bool,
                                     response : DataResponse<Any>)
     {
-        x_warning("API请求\(isReqSuccess ? "成功" : "失败")，数据解析失败")
-        x_log("************************************")
+        xWarning("API请求\(isReqSuccess ? "成功" : "失败")，数据解析失败")
+        xLog("************************************")
         // NSURLErrorTimedOut
         if let obj = record {
-            x_log("接口地址：\(obj.url)")
-            x_log("GET参数：\(self.formatGetString(of: obj.parameter))")
-            x_log("POST参数：\(self.formatPostString(of: obj.parameter))")
+            xLog("接口地址：\(obj.url)")
+            xLog("GET参数：\(self.formatGetString(of: obj.parameter))")
+            xLog("POST参数：\(self.formatPostString(of: obj.parameter))")
         }
-        x_log(response.error?.localizedDescription ?? "")
-        x_log("************************************")
+        xLog(response.error?.localizedDescription ?? "")
+        xLog("************************************")
         guard let data = response.data else { return }
         guard let html = String.init(data: data, encoding: .utf8) else { return }
         self.showDebugWeb(html: html)

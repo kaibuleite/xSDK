@@ -36,7 +36,7 @@ public class xDataPickerViewController: xPushAlertViewController, UIPickerViewDa
     
     // MARK: - Public Override Func
     public override class func quickInstancetype() -> Self {
-        let vc = xDataPickerViewController.new(storyboard: "xDataPickerViewController")
+        let vc = xDataPickerViewController.xNew(storyboard: "xDataPickerViewController")
         return vc as! Self
     }
     
@@ -76,7 +76,7 @@ public class xDataPickerViewController: xPushAlertViewController, UIPickerViewDa
     public func reload(dataArray : [[xDataPickerModel]])
     {
         guard dataArray.count > 0 else {
-            x_warning("没有数据，不加载")
+            xWarning("没有数据，不加载")
             return
         }
         self.picker.dataSource = self

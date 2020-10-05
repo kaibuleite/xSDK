@@ -67,8 +67,8 @@ public class xPageControl: xNibView {
             v.tag = i
             v.layer.cornerRadius = self.pageItemSize.height / 2
             v.layer.masksToBounds = true
-            v.x_addWidthLayout(constant: self.pageItemSize.width)
-            v.x_addHeightLayout(constant: self.pageItemSize.height)
+            v.xAddWidthLayout(constant: self.pageItemSize.width)
+            v.xAddHeightLayout(constant: self.pageItemSize.height)
             if i == self.currentPage {
                 v.backgroundColor = self.currentPageColor
             }

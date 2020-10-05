@@ -13,10 +13,10 @@ extension UIView {
     // TODO: 锚点
     /// 重置锚点
     /// - Parameter anchorPoint: 新锚点
-    public func x_reset(anchorPoint : CGPoint)
+    public func xSetAnchor(point : CGPoint)
     {
         let origin_old = self.frame.origin
-        self.layer.anchorPoint = anchorPoint
+        self.layer.anchorPoint = point
         let origin_new = self.frame.origin
         
         var center = self.center
@@ -28,7 +28,7 @@ extension UIView {
     
     // TODO: 数据转换
     /// 将当前视图转为UIImage
-    public func x_toImage() -> UIImage?
+    public func xToImage() -> UIImage?
     {
         let frame = self.bounds
         // 绘画板
@@ -41,14 +41,14 @@ extension UIView {
         return ret
     }
     
-    // TODO: 布局
+    // TODO: 约束布局
     /// 添加相对布局
-    public func x_addLayout(attribute attr1: NSLayoutConstraint.Attribute,
-                            relatedBy relation: NSLayoutConstraint.Relation,
-                            toItem view2: UIView,
-                            attribute attr2: NSLayoutConstraint.Attribute,
-                            multiplier: CGFloat = 1,
-                            constant: CGFloat = 0)
+    public func xAddLayout(attribute attr1: NSLayoutConstraint.Attribute,
+                           relatedBy relation: NSLayoutConstraint.Relation,
+                           toItem view2: UIView,
+                           attribute attr2: NSLayoutConstraint.Attribute,
+                           multiplier: CGFloat = 1,
+                           constant: CGFloat = 0)
     {
         let layout = NSLayoutConstraint.init(item: self,
                                              attribute: attr1,
@@ -60,48 +60,48 @@ extension UIView {
         self.addConstraint(layout)
     }
     /// 添加顶部约束
-    public func x_addTopLayout(toItem view2: UIView,
-                               constant: CGFloat = 0)
+    public func xAddTopLayout(toItem view2: UIView,
+                              constant: CGFloat = 0)
     {
-        self.x_addLayout(attribute: .top, relatedBy: .equal, toItem: view2,
-                         attribute: .top, multiplier: 1, constant: constant)
+        self.xAddLayout(attribute: .top, relatedBy: .equal, toItem: view2,
+                        attribute: .top, multiplier: 1, constant: constant)
     }
     /// 添加底部约束
-    public func x_addBottomLayout(toItem view2: UIView,
-                                  constant: CGFloat = 0)
+    public func xAddBottomLayout(toItem view2: UIView,
+                                 constant: CGFloat = 0)
     {
-        self.x_addLayout(attribute: .bottom, relatedBy: .equal, toItem: view2,
-                         attribute: .bottom, multiplier: 1, constant: constant)
+        self.xAddLayout(attribute: .bottom, relatedBy: .equal, toItem: view2,
+                        attribute: .bottom, multiplier: 1, constant: constant)
     }
     /// 添加左部约束
-    public func x_addLeadingLayout(toItem view2: UIView,
-                                   constant: CGFloat = 0)
+    public func xAddLeadingLayout(toItem view2: UIView,
+                                  constant: CGFloat = 0)
     {
-        self.x_addLayout(attribute: .leading, relatedBy: .equal, toItem: view2,
-                         attribute: .leading, multiplier: 1, constant: constant)
+        self.xAddLayout(attribute: .leading, relatedBy: .equal, toItem: view2,
+                        attribute: .leading, multiplier: 1, constant: constant)
     }
     /// 添加右部约束
-    public func x_addTrailingLayout(toItem view2: UIView,
-                                    constant: CGFloat = 0)
+    public func xAddTrailingLayout(toItem view2: UIView,
+                                   constant: CGFloat = 0)
     {
-        self.x_addLayout(attribute: .trailing, relatedBy: .equal, toItem: view2,
-                         attribute: .trailing, multiplier: 1, constant: constant)
+        self.xAddLayout(attribute: .trailing, relatedBy: .equal, toItem: view2,
+                        attribute: .trailing, multiplier: 1, constant: constant)
     }
     /// 添加铺满约束
-    public func x_addFullLayout(toItem view2: UIView,
-                                constant: CGFloat = 0)
+    public func xAddFullLayout(toItem view2: UIView,
+                               constant: CGFloat = 0)
     {
-        self.x_addTopLayout(toItem: view2)
-        self.x_addBottomLayout(toItem: view2)
-        self.x_addLeadingLayout(toItem: view2)
-        self.x_addTrailingLayout(toItem: view2)
+        self.xAddTopLayout(toItem: view2)
+        self.xAddBottomLayout(toItem: view2)
+        self.xAddLeadingLayout(toItem: view2)
+        self.xAddTrailingLayout(toItem: view2)
     }
     
     /// 添加自身布局
-    public func x_addLayout(attribute attr1: NSLayoutConstraint.Attribute,
-                            relatedBy relation: NSLayoutConstraint.Relation,
-                            multiplier: CGFloat = 1,
-                            constant: CGFloat = 0)
+    public func xAddLayout(attribute attr1: NSLayoutConstraint.Attribute,
+                           relatedBy relation: NSLayoutConstraint.Relation,
+                           multiplier: CGFloat = 1,
+                           constant: CGFloat = 0)
     {
         let layout = NSLayoutConstraint.init(item: self,
                                              attribute: attr1,
@@ -113,21 +113,21 @@ extension UIView {
         self.addConstraint(layout)
     }
     /// 添加宽度约束
-    public func x_addWidthLayout(multiplier: CGFloat = 1,
-                                 constant: CGFloat)
+    public func xAddWidthLayout(multiplier: CGFloat = 1,
+                                constant: CGFloat)
     {
-        self.x_addLayout(attribute: .width,
-                         relatedBy: .equal,
-                         multiplier: multiplier,
-                         constant: constant)
+        self.xAddLayout(attribute: .width,
+                        relatedBy: .equal,
+                        multiplier: multiplier,
+                        constant: constant)
     }
     /// 添加高度约束
-    public func x_addHeightLayout(multiplier: CGFloat = 1,
+    public func xAddHeightLayout(multiplier: CGFloat = 1,
                                   constant: CGFloat)
     {
-        self.x_addLayout(attribute: .height,
-                         relatedBy: .equal,
-                         multiplier: multiplier,
-                         constant: constant)
+        self.xAddLayout(attribute: .height,
+                        relatedBy: .equal,
+                        multiplier: multiplier,
+                        constant: constant)
     }
 }

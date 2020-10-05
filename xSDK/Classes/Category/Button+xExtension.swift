@@ -17,7 +17,7 @@ extension UIButton
     /// 事件关联Key
     private struct xRuntimeKey {
         /// 按钮点击事件
-        static let btnClick = UnsafeRawPointer.init(bitPattern: "xButtonClickEvent".hashValue)
+        static let BtnClick = UnsafeRawPointer.init(bitPattern: "xButtonClickEvent".hashValue)
     }
     /// 按钮点击回调
     private var clickHandler : xHandlerBtnClick?
@@ -30,11 +30,11 @@ extension UIButton
              value       :被关联者，这里是一个block
              policy      :关联时采用的协议，有assign，retain，copy
              */
-            let key = UIButton.xRuntimeKey.btnClick!
+            let key = UIButton.xRuntimeKey.BtnClick!
             objc_setAssociatedObject(self, key, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
         get {
-            let key = UIButton.xRuntimeKey.btnClick!
+            let key = UIButton.xRuntimeKey.BtnClick!
             let value = objc_getAssociatedObject(self, key) as? xHandlerBtnClick
             return value
         }
@@ -43,14 +43,14 @@ extension UIButton
     // MARK: - Public Func
     /// 添加按钮事件
     /// - Parameter handler: 按钮回调
-    public func x_addClick(handler : @escaping xHandlerBtnClick) -> Void
+    public func xAddClick(handler : @escaping xHandlerBtnClick) -> Void
     {
         self.clickHandler = handler
         // 重新绑定按钮系统事件
         self.addTarget(self, action: #selector(btnClick), for: .touchUpInside)
     }
     /// 移除事件关联
-    public func x_removeClickHandler()
+    public func xRemoveClickHandler()
     {
         self.clickHandler = nil
         /*
@@ -61,7 +61,7 @@ extension UIButton
          */
     }
     /// 执行事件
-    public func x_executeClickHandler()
+    public func xExecuteClickHandler()
     {
         self.btnClick()
     }

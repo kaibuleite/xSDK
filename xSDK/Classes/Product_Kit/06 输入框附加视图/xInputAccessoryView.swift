@@ -30,7 +30,7 @@ public class xInputAccessoryView: UIView {
         let arr = bundle.loadNibNamed("xInputAccessoryView", owner: nil, options: nil)!
         let view = arr.first! as! xInputAccessoryView
         var frame = CGRect.zero
-        frame.size.width = x_ScreenWidth
+        frame.size.width = xScreenWidth
         frame.size.height = 44.0
         view.frame = frame
         return view

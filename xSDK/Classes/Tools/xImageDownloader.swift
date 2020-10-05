@@ -20,7 +20,7 @@ public class xImageDownloader: NSObject {
         let op2 = SDWebImageDownloaderOptions.scaleDownLargeImages
         let op3 = SDWebImageDownloaderOptions.avoidDecodeImage
         let options = SDWebImageDownloaderOptions.init(rawValue: op1.rawValue | op2.rawValue | op3.rawValue)
-        SDWebImageDownloader.shared.downloadImage(with: url.x_toURL(),
+        SDWebImageDownloader.shared.downloadImage(with: url.xToURL(),
                                                   options: options,
                                                   progress: handler1,
                                                   completed: handler2)

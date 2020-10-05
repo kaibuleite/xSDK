@@ -23,7 +23,7 @@ class Test03ViewController: xViewController {
     }
     override func addChildren() {
         // MARK: - 默认样式
-        self.addChild(self.page1, in: self.redContainer)
+        self.xAddChild(self.page1, in: self.redContainer)
         var vcArr = [UIViewController]()
         let colorArr : [UIColor] = [.red, .orange, .yellow, .green, .cyan, .blue, .purple]
         for i in 0 ..< colorArr.count {
@@ -34,14 +34,14 @@ class Test03ViewController: xViewController {
         self.page1.isOpenAutoChangeTimer = false 
         self.page1.reload(itemViewControllerArray: vcArr, change: {
             (page) in
-            x_log("Page1 Change \(page)")
+            xLog("Page1 Change \(page)")
         }, click: {
             (page) in
-            x_log("Page1 Click \(page)")
+            xLog("Page1 Click \(page)")
         })
         
         // MARK: - 自定义样式
-        self.addChild(self.page2, in: self.blueContainer)
+        self.xAddChild(self.page2, in: self.blueContainer)
         var arr = ["/20200326/917dc35f83b5ae640fe8ac92dcb98d91.jpg",
                    "/20200327/b1d01b92988b82c017b12e81ba304f26.jpg",
                    "/20200326/5370a4388b35e84a7c5638d0312444cc.jpg",
@@ -55,10 +55,10 @@ class Test03ViewController: xViewController {
         self.page2.isOpenAutoChangeTimer = true
         self.page2.reload(pictureArray: arr, change: {
             (page) in
-            x_log("Page2 Change \(page)")
+            xLog("Page2 Change \(page)")
         }, click: {
             (page) in
-            x_log("Page2 Click \(page)")
+            xLog("Page2 Click \(page)")
         })
     }
 }

@@ -26,7 +26,7 @@ class Test05ViewController: xViewController {
         self.dataArray = [obj1, obj2, obj3]
     }
     override func addChildren() {
-        self.addChild(self.alertDataPicker, in: self.view)
+        self.xAddChild(self.alertDataPicker, in: self.view)
         self.alertDataPicker.reload(dataArray: self.dataArray)
     }
     

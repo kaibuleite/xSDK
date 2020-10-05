@@ -20,8 +20,7 @@ class xDefaultOnePageItemViewController: xViewController {
     
     // MARK: - 内存释放
     deinit {
-        guard let name = x_getClassName(withObject: self) else { return }
-        x_log("🥚_PVC \(name)")
+        xLog("🥚_PVC \(self.xClassStruct.name)")
     }
     
     // MARK: - Override Func
@@ -36,7 +35,7 @@ class xDefaultOnePageItemViewController: xViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if self.pictureUrl.hasPrefix("http") {
-            self.imgIcon.sd_setImage(with: self.pictureUrl.x_toURL(), completed: nil)
+            self.imgIcon.sd_setImage(with: self.pictureUrl.xToURL(), completed: nil)
         }
         else {
             if let img = UIImage.init(named: self.pictureUrl) {

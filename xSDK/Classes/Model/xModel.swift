@@ -60,7 +60,7 @@ open class xModel: NSObject {
             super.setValue(dic, forKey: key)
         }
         else {
-            x_warning("成员变量的数据格式不是常用类型,请确认:\(key) = \(obj), \(type(of: obj))")
+            xWarning("成员变量的数据格式不是常用类型,请确认:\(key) = \(obj), \(type(of: obj))")
         }
     }
     /// 找不到key对应的成员属性
@@ -76,7 +76,7 @@ open class xModel: NSObject {
         else {
             str.append("nil")
         }
-        x_warning(str)
+        xWarning(str)
     }
     /// 找不到key对应的value
     open override func value(forUndefinedKey key: String) -> Any? {
@@ -102,18 +102,18 @@ open class xModel: NSObject {
     public class func new(dict : [String : Any]?) -> Self?
     {
         guard let info = dict else {
-            x_warning("初始化数据为nil")
+            xWarning("初始化数据为nil")
             return nil
         }
         guard info.keys.count != 0 else {
-            x_warning("初始化数据内容为空")
+            xWarning("初始化数据内容为空")
             return nil
         }
         // 获取类的元类型(Meta), 为 AnyClass 格式, 有 type(类型) 和 self(值) 两个参数, 可以以此调用该类下的方法(方法必须实现)
         // let test : MyModel.Type = MyModel.self
         guard let className = self.classForCoder() as? xModel.Type else {
             let classStr = NSStringFromClass(self.classForCoder())
-            x_warning("类型[\(classStr)]转换失败，不是继承于xModel")
+            xWarning("类型[\(classStr)]转换失败，不是继承于xModel")
             return nil
         }
         // 因为在 init() 前加了 required 关键词,保证了 xModel 类必定有 init() 构造方法,可以放心的调用
@@ -145,7 +145,7 @@ open class xModel: NSObject {
     {
         guard let obj = model else { return }
         guard self.isKind(of: obj.classForCoder) else {
-            x_warning("数据类型不同，无法拼接 : \(obj.classForCoder)")
+            xWarning("数据类型不同，无法拼接 : \(obj.classForCoder)")
             return
         }
         let list = self.getIvarList(obj: obj)

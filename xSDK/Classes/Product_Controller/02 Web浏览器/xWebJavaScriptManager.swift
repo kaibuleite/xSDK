@@ -24,7 +24,7 @@ public class xWebJavaScriptManager: NSObject, WKScriptMessageHandler {
     deinit {
         self.xWeb = nil
         self.handler = nil
-        x_log("🗑 xWebJavaScriptManager")
+        xLog("🗑 xWebJavaScriptManager")
     }
     
     // MARK: - Public Func

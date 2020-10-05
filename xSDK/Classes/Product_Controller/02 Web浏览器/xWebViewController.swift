@@ -49,7 +49,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     
     // MARK: - Open Override Func
     open override class func quickInstancetype() -> Self {
-        let vc = xWebViewController.new(storyboard: "xWebViewController")
+        let vc = xWebViewController.xNew(storyboard: "xWebViewController")
         return vc as! Self
     }
     open override func viewDidLoad() {
@@ -141,7 +141,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         let types = WKWebsiteDataStore.allWebsiteDataTypes()
         let timeStamp = Date.init(timeIntervalSince1970: 0)
         WKWebsiteDataStore.default().removeData(ofTypes: types, modifiedSince: timeStamp) {
-            x_log("缓存清理完成")
+            xLog("缓存清理完成")
         }
     }
     /// 添加 JS 事件
@@ -163,7 +163,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
             return
         }
         guard let root = nvc.children.first else {
-            x_warning("空的导航栏？？？？")
+            xWarning("空的导航栏？？？？")
             self.dismiss(animated: true, completion: nil)
             return
         }
@@ -200,7 +200,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     /// 准备加载页面
     public func webView(_ webView: WKWebView,
                         didStartProvisionalNavigation navigation: WKNavigation!) {
-        x_log("准备加载页面")
+        xLog("准备加载页面")
         // 判断是否显示加载进度条
         if self.isShowLoadingProgress {
             self.progressView.isHidden = false
@@ -211,14 +211,14 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     /// 内容开始加载(view的过渡动画可在此方法中加载)
     public func webView(_ webView: WKWebView,
                         didCommit navigation: WKNavigation!) {
-        x_log("内容开始加载")
+        xLog("内容开始加载")
     }
     
     /// 导航过程中发生错误时调用(跳转失败)
     public func webView(_ webView: WKWebView,
                         didFail navigation: WKNavigation!,
                         withError error: Error) {
-        x_log("导航发生错误 \(error.localizedDescription)")
+        xLog("导航发生错误 \(error.localizedDescription)")
         self.progressView.isHidden = true  // 隐藏加载进度条
     }
     
@@ -226,20 +226,20 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     public func webView(_ webView: WKWebView,
                         didFailProvisionalNavigation navigation: WKNavigation!,
                         withError error: Error) {
-        x_log("网页加载内容时发生错误时 \(error.localizedDescription)")
+        xLog("网页加载内容时发生错误时 \(error.localizedDescription)")
         self.progressView.isHidden = true  // 隐藏加载进度条
     }
     
     /// 服务器重定向，主机地址被重定向时调用
     public func webView(_ webView: WKWebView,
                         didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        x_log("网页重定向")
+        xLog("网页重定向")
     }
     
     /// 网页加载完成时
     public func webView(_ webView: WKWebView,
                         didFinish navigation: WKNavigation!) {
-        x_log("网页加载完成")
+        xLog("网页加载完成")
         self.progressView.isHidden = true  // 隐藏加载进度条
         // 可以在此处调用 JS
         self.actJavaScriptMethod()

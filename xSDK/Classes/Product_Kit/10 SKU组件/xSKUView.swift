@@ -53,7 +53,7 @@ public class xSKUView: xView {
                 frame.size.width = equalWidth // 等宽
             } else {
                 // 计算宽度
-                var size = item.titleLabel?.x_getContentSize() ?? .zero
+                var size = item.titleLabel?.xGetContentSize() ?? .zero
                 size.width += 16    // 左右留空
                 frame.size.width = size.width
             }
@@ -83,7 +83,7 @@ public class xSKUView: xView {
                        choose handler2 : @escaping xHandlerChooseItem)
     {
         guard dataArray.count > 0 else {
-            x_warning("数据不能为0")
+            xWarning("数据不能为0")
             return
         }
         self.clearOldSkuItem()
@@ -105,7 +105,7 @@ public class xSKUView: xView {
             btn.layer.borderColor = cfg.itemNormalBorderColor.cgColor
             btn.setTitleColor(cfg.itemNormalTitleColor, for: .normal)
             // 添加响应事件
-            btn.x_addClick {
+            btn.xAddClick {
                 [unowned self] (sender) in
                 self.choose(idx: sender.tag)
             }
@@ -147,7 +147,7 @@ public class xSKUView: xView {
     private func clearOldSkuItem()
     {
         for item in self.itemViewArray {
-            item.x_removeClickHandler()
+            item.xRemoveClickHandler()
             item.removeFromSuperview()
         }
         self.itemViewArray.removeAll()

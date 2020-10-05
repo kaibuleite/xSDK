@@ -61,7 +61,7 @@ open class xTextView: UITextView {
     {
         let txt = self.placeholderTextView
         txt.backgroundColor = UIColor.clear
-        txt.textColor = .x_hex("C4C4C6")
+        txt.textColor = .xNew(hex: "C4C4C6")
         txt.font = self.font
         txt.isUserInteractionEnabled = false
         self.addSubview(txt)

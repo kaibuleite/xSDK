@@ -10,50 +10,23 @@ import UIKit
 extension UIImage {
     
     // MARK: - Public Func
-    // TODO: 绘制图片
-    /// 绘制图片
-    /// - Parameters:
-    ///   - rect: 绘制范围
-    ///   - path: 绘制路径（裁剪路径）
-    /// - Returns: 新图片
-    public func x_draw(rect : CGRect,
-                       path : UIBezierPath) -> UIImage?
-    {
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
-        guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
-        ctx.interpolationQuality = .none   // 高质量
-        ctx.addPath(path.cgPath)
-        ctx.clip()
-        self.draw(in: rect)
-        let ret = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return ret
-    }
+    // TODO: 圆角图片
     /// 圆角图片
     /// - Parameter radius: 圆角半径
     /// - Returns: 新图片
-    public func x_draw(radius : CGFloat) -> UIImage?
+    public func xToCorner(radius : CGFloat) -> UIImage?
     {
         let rect = CGRect.init(origin: .zero,
                                size: self.size)
         let path = UIBezierPath.init(roundedRect: rect,
                                      cornerRadius: radius)
-        let ret = self.x_draw(rect: rect,
-                              path: path)
+        let ret = self.xDraw(rect: rect,
+                             path: path)
         return ret
     }
-    /// 裁剪图片
-    /// - Parameter rect: 剪范围裁
-    /// - Returns: 新图片
-    public func x_cut(rect : CGRect) -> UIImage?
-    {
-        let path = UIBezierPath.init(rect: rect)
-        let ret = self.x_draw(rect: rect,
-                              path: path)
-        return ret
-    }
+    
     /// 圆形图片
-    public func x_toCircleImage() -> UIImage?
+    public func xToCircle() -> UIImage?
     {
         let radius = fmin(self.size.width, self.size.height) / 2.0
         let rect = CGRect.init(x: self.size.width / 2.0 - radius,
@@ -62,8 +35,8 @@ extension UIImage {
                                height: 2.0 * radius)
         let path = UIBezierPath.init(roundedRect: rect,
                                      cornerRadius: radius)
-        let ret = self.x_draw(rect: rect,
-                              path: path)
+        let ret = self.xDraw(rect: rect,
+                             path: path)
         return ret
     }
     
@@ -71,7 +44,7 @@ extension UIImage {
     /// 缩放图片(等比例)
     /// - Parameter size: 缩放大小
     /// - Returns: 新图片
-    public func x_scale(size : CGSize) -> UIImage?
+    public func xToScale(size : CGSize) -> UIImage?
     {
         let factor_w = size.width / self.size.width
         let factor_h = size.height / self.size.height
@@ -79,59 +52,72 @@ extension UIImage {
         // 计算等比数据
         let w = self.size.width * factor
         let h = self.size.height * factor
-        let rect = CGRect.init(x: 0,
-                               y: 0,
-                               width: w,
+        let size = CGSize.init(width: w,
                                height: h)
+        let rect = CGRect.init(origin: .zero,
+                               size: size)
         let path = UIBezierPath.init(rect: rect)
-        let ret = self.x_draw(rect: rect,
-                              path: path)
-        return ret
-    }
-    /// 根据宽度等比例缩放图片
-    /// - Parameter width: 宽度
-    /// - Returns: 新图片
-    public func x_scale(width : CGFloat) -> UIImage?
-    {
-        let w = width
-        let h = w * self.size.height / self.size.width
-        // 计算等比数据
-        let rect = CGRect.init(x: 0,
-                               y: 0,
-                               width: w,
-                               height: h)
-        let path = UIBezierPath.init(rect: rect)
-        let ret = self.x_draw(rect: rect,
-                              path: path)
-        return ret
-    }
-    /// 根据高度等比例缩放图片
-    ///
-    /// - Parameter height: 高度
-    /// - Returns: 缩放后的图片
-    public func x_scale(height : CGFloat) -> UIImage?
-    {
-        let h = height
-        let w = h * self.size.width / self.size.height
-        // 计算等比数据
-        let rect = CGRect.init(x: 0,
-                               y: 0,
-                               width: w,
-                               height: h)
-        let path = UIBezierPath.init(rect: rect)
-        let ret = self.x_draw(rect: rect,
-                              path: path)
+        let ret = self.xDraw(rect: rect,
+                             path: path)
         return ret
     }
     
-    // TODO: 图片拼接
+    /// 根据宽度等比例缩放图片
+    /// - Parameter width: 宽度
+    /// - Returns: 新图片
+    public func xToScale(width : CGFloat) -> UIImage?
+    {
+        let w = width
+        // 计算等比数据
+        let h = w * self.size.height / self.size.width
+        let size = CGSize.init(width: w,
+                               height: h)
+        let rect = CGRect.init(origin: .zero,
+                               size: size)
+        let path = UIBezierPath.init(rect: rect)
+        let ret = self.xDraw(rect: rect,
+                             path: path)
+        return ret
+    }
+    
+    /// 根据高度等比例缩放图片
+    /// - Parameter height: 高度
+    /// - Returns: 新图片
+    public func xToScale(height : CGFloat) -> UIImage?
+    {
+        let h = height
+        // 计算等比数据
+        // 计算等比数据
+        let w = h * self.size.width / self.size.height
+        let size = CGSize.init(width: w,
+                               height: h)
+        let rect = CGRect.init(origin: .zero,
+                               size: size)
+        let path = UIBezierPath.init(rect: rect)
+        let ret = self.xDraw(rect: rect,
+                             path: path)
+        return ret
+    }
+    
+    // TODO: 编辑图片
+    /// 裁剪图片
+    /// - Parameter rect: 剪范围裁
+    /// - Returns: 新图片
+    public func xToCut(rect : CGRect) -> UIImage?
+    {
+        let path = UIBezierPath.init(rect: rect)
+        let ret = self.xDraw(rect: rect,
+                             path: path)
+        return ret
+    }
+    
     /// 拼接图片
     /// - Parameters:
     ///   - image: 要拼接的图片
     ///   - spacing: 是两张图片的间距,默认为0
     /// - Returns: 新图片
-    public func x_append(image : UIImage,
-                         spacing : Double = 0) -> UIImage?
+    public func xToAppend(image : UIImage,
+                          spacing : Double = 0) -> UIImage?
     {
         let w = self.size.width + image.size.width + CGFloat(spacing)
         let h = fmax(self.size.height, image.size.height)
@@ -153,13 +139,14 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return ret
     }
+    
     /// 覆盖图片
     /// - Parameters:
     ///   - image: 要覆盖的图片
     ///   - rect: 大小、位置
     /// - Returns: 新图片
-    public func x_add(image : UIImage,
-                      rect : CGRect) -> UIImage?
+    public func xToCover(image : UIImage,
+                         rect : CGRect) -> UIImage?
     {
         // 自身图片
         UIGraphicsBeginImageContextWithOptions(self.size, false, 0)
@@ -172,31 +159,25 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return ret
     }
+    
     /// 覆盖图片到自己中心
     /// - Parameter image: 要覆盖的图片
     /// - Returns: 新图片
-    public func x_addCenter(image : UIImage) -> UIImage?
+    public func xToCoverCenter(image : UIImage) -> UIImage?
     {
         let x = (self.size.width - image.size.width) / 2.0
         let y = (self.size.height - image.size.height) / 2.0
-        let rect = CGRect.init(x: x,
-                               y: y,
-                               width: image.size.width,
-                               height: image.size.height)
-        let ret = self.x_add(image: image,
-                             rect: rect)
+        let center = CGPoint.init(x: x,
+                                  y: y)
+        let rect = CGRect.init(origin: center,
+                               size: image.size)
+        let ret = self.xToCover(image: image,
+                                rect: rect)
         return ret
     }
     
-    // TODO: 数据转换
-    /// 转换成 UIColor 类型数据
-    public func x_toColor() -> UIColor
-    {
-        let ret = UIColor.init(patternImage: self)
-        return ret
-    }
     /// 转换成自适应方向图片
-    public func x_toFixOrientationImage() -> UIImage?
+    public func xToFixOrientationImage() -> UIImage?
     {
         var transform = CGAffineTransform.identity
         let w = self.size.width
@@ -256,6 +237,34 @@ extension UIImage {
         }
         guard let retCGImage = context.makeImage() else { return nil }
         let ret = UIImage(cgImage: retCGImage) 
+        return ret
+    }
+    
+    // TODO: 数据转换
+    /// 转换成 UIColor 类型数据
+    public func xToColor() -> UIColor
+    {
+        let ret = UIColor.init(patternImage: self)
+        return ret
+    }
+    
+    // MARK: - Private Property
+    /// 绘制图片
+    /// - Parameters:
+    ///   - rect: 绘制范围
+    ///   - path: 绘制路径（裁剪路径）
+    /// - Returns: 新图片
+    private func xDraw(rect : CGRect,
+                      path : UIBezierPath) -> UIImage?
+    {
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+        guard let ctx = UIGraphicsGetCurrentContext() else { return nil }
+        ctx.interpolationQuality = .none   // 高质量
+        ctx.addPath(path.cgPath)
+        ctx.clip()
+        self.draw(in: rect)
+        let ret = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
         return ret
     }
 }

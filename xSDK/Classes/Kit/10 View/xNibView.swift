@@ -37,7 +37,7 @@ open class xNibView: xView {
     }
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        x_warning("该类型视图必须搭配nib初始化")
+        xWarning("该类型视图必须搭配nib初始化")
         // self.loadNib()
     }
     
@@ -54,10 +54,9 @@ open class xNibView: xView {
         objc_sync_enter(self)
         guard self.isLoadNibStyle == false else { return }
         
-        guard let name = x_getClassName(withObject: self) else { return }
         // 加载xib
         let bundle = Bundle.init(for: self.classForCoder)
-        bundle.loadNibNamed(name, owner: self, options: nil)
+        bundle.loadNibNamed(self.xClassStruct.name, owner: self, options: nil)
         // 添加view
         self.nibView.backgroundColor = .clear
         self.nibView.clipsToBounds = false

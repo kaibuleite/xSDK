@@ -23,7 +23,7 @@ class Kit09ViewController: xViewController {
     
     override func addKit() {
         self.code1View.set(code: "测试数据测试数据")
-        let centerimage = UIColor.x_random(alpha: 0.8).x_toImage(size: .init(width: 30, height: 30))
+        let centerimage = UIColor.xNewRandom(alpha: 0.8).xToImage(size: .init(width: 30, height: 30))
         self.code2View.set(code: "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈", centerImage: centerimage)
         self.code3View.set(code: "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊")
     }

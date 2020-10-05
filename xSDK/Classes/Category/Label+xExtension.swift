@@ -11,7 +11,7 @@ extension UILabel
 {
     // MARK: - Public Func
     /// 计算内容大小
-    public func x_getContentSize() -> CGSize
+    public func xGetContentSize() -> CGSize
     {
         guard let str = self.text else { return self.bounds.size }
         let nstr = str as NSString

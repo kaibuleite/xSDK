@@ -42,7 +42,7 @@ public class xMutableDataPickerViewController: xPushAlertViewController, UIPicke
     
     // MARK: - Public Override Func
     public override class func quickInstancetype() -> Self {
-        let vc = xMutableDataPickerViewController.new(storyboard: "xMutableDataPickerViewController")
+        let vc = xMutableDataPickerViewController.xNew(storyboard: "xMutableDataPickerViewController")
         return vc as! Self
     }
     
@@ -82,7 +82,7 @@ public class xMutableDataPickerViewController: xPushAlertViewController, UIPicke
     public func reload(dataArray : [xMutableDataPickerModel])
     {
         guard dataArray.count > 0 else {
-            x_warning("没有数据，不加载")
+            xWarning("没有数据，不加载")
             return
         }
         self.picker.dataSource = self
@@ -99,12 +99,12 @@ public class xMutableDataPickerViewController: xPushAlertViewController, UIPicke
         // 重新加载
         self.forEach(dataArray: dataArray)
         if self.minDataLength != self.maxDataLength {
-            x_warning("数据长度不一致，[\(self.minDataLength), \(self.maxDataLength)]")
+            xWarning("数据长度不一致，[\(self.minDataLength), \(self.maxDataLength)]")
         }
         /*
         self.totalDataArray.forEach {
             (model) in
-            x_log("\(model.rowNumber) \(model.name)")
+            xLog("\(model.rowNumber) \(model.name)")
         }*/
         self.columnChooseRowArray = .init(repeating: 0, count: self.minDataLength)
         self.updateDataArray()
@@ -130,11 +130,11 @@ public class xMutableDataPickerViewController: xPushAlertViewController, UIPicke
             let column = model.column + 1  // 技术从0开始算
             if column > self.maxDataLength {
                 self.maxDataLength = column
-                x_log("数据最长列更新为\(column) - \(model.name)")
+                xLog("数据最长列更新为\(column) - \(model.name)")
             }
             if column < self.minDataLength {
                 self.minDataLength = column
-                x_log("数据最短列更新为\(column) - \(model.name)")
+                xLog("数据最短列更新为\(column) - \(model.name)")
             }
         }
     }

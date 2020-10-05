@@ -34,7 +34,7 @@ public class xDatePickerViewController: xPushAlertViewController {
     
     // MARK: - Public Override Func
     public override class func quickInstancetype() -> Self {
-        let vc = xDatePickerViewController.new(storyboard: "xDatePickerViewController")
+        let vc = xDatePickerViewController.xNew(storyboard: "xDatePickerViewController")
         return vc as! Self
     }
     

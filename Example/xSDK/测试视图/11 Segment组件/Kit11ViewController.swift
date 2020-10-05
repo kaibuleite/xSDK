@@ -34,7 +34,7 @@ class Kit11ViewController: xViewController {
         let arr = ["苹果", "香蕉", "梨子", "芒果", "葡萄"]
         self.seg1.reload(titleArray: arr, isEqualItemWidth: true, fontSize: 10) {
             (idx) in
-            x_log(arr[idx])
+            xLog(arr[idx])
         }
     }
     
@@ -53,7 +53,7 @@ class Kit11ViewController: xViewController {
                    "韭菜", "青菜", "萝卜", "芋头", "红薯", "青椒"]
         self.seg2.reload(titleArray: arr, isEqualItemWidth: false, fontSize: 14) {
             (idx) in
-            x_log(arr[idx])
+            xLog(arr[idx])
         }
         self.seg2.choose(idx: 0)
     }
@@ -85,7 +85,7 @@ class Kit11ViewController: xViewController {
         }
         self.seg3.reload(itemViewArray: viewArray) {
             (idx) in
-            x_log(arr[idx])
+            xLog(arr[idx])
         }
         self.seg3.choose(idx: 2)
     }

@@ -14,8 +14,8 @@ extension Double {
     /// - Parameter precision: 最多保留小数点位数(默认保留2位)
     /// - Parameter clearMoreZero: 是否清除多余的0
     /// - Returns: 结果
-    public func x_toString(precision : Int,
-                           isClearMoreZero : Bool = true) -> String
+    public func xToString(precision : Int,
+                          isClearMoreZero : Bool = true) -> String
     {
         let str = String.init(format: "%.\(precision)f", self)
         var ret = str

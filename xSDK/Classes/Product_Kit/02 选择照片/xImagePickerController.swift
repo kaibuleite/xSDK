@@ -17,7 +17,7 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
     deinit {
         self.chooseHandler = nil
         self.delegate = nil
-        x_log("💥 照片库")
+        xLog("💥 照片库")
     }
     
     // MARK: - Public Override Func
@@ -32,7 +32,7 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
                              choose handler : @escaping xChoosePhotoActionSheet.xHandlerChoosePhoto)
     {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
-            x_warning("相册数据源不可用")
+            xWarning("相册数据源不可用")
             return
         }
         self.sourceType = .photoLibrary
@@ -45,7 +45,7 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
                               choose handler : @escaping xChoosePhotoActionSheet.xHandlerChoosePhoto)
     {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-            x_warning("相机数据源不可用")
+            xWarning("相机数据源不可用")
             return
         }
         self.sourceType = .camera
@@ -60,12 +60,12 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
     {
         let type : UIImagePickerController.InfoKey = picker.allowsEditing ? .editedImage : .originalImage
         guard let img = info[type] as? UIImage else {
-            x_warning("获取图片失败")
+            xWarning("获取图片失败")
             self.failure(picker)
             return
         }
         // 图片方向
-        x_log("图片原始方向 = \(img.imageOrientation.rawValue)")
+        xLog("图片原始方向 = \(img.imageOrientation.rawValue)")
         picker.dismiss(animated: true) {
             self.chooseHandler?(img)
         }
@@ -73,13 +73,13 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
     /// 取消
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
-        x_log("用户取消选择")
+        xLog("用户取消选择")
         self.failure(picker)
     }
     /// 失败
     func failure(_ picker: UIImagePickerController) -> Void
     {
-        x_log("图片获取失败")
+        xLog("图片获取失败")
         picker.dismiss(animated: true, completion: nil)
     }
 }
