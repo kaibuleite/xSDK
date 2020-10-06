@@ -18,10 +18,46 @@ extension Array {
     {
         for (i, element) in self.enumerated() {
             let obj = element as AnyObject
-            if obj.isEqual(object) {
-                return i
-            }
+            guard obj.isEqual(object) else { continue }
+            return i
         }
         return nil
     }
+    public func xIndex(with object : Int) -> Int?
+    {
+        for (i, element) in self.enumerated() {
+            guard let obj = element as? Int else { continue }
+            guard obj == object else { continue }
+            return i
+        }
+        return nil
+    }
+    public func xIndex(with object : Float) -> Int?
+    {
+        for (i, element) in self.enumerated() {
+            guard let obj = element as? Float else { continue }
+            guard obj == object else { continue }
+            return i
+        }
+        return nil
+    }
+    public func xIndex(with object : Double) -> Int?
+    {
+        for (i, element) in self.enumerated() {
+            guard let obj = element as? Double else { continue }
+            guard obj == object else { continue }
+            return i
+        }
+        return nil
+    }
+    public func xIndex(with object : String) -> Int?
+    {
+        for (i, element) in self.enumerated() {
+            guard let obj = element as? String else { continue }
+            guard obj == object else { continue }
+            return i
+        }
+        return nil
+    }
+    
 }

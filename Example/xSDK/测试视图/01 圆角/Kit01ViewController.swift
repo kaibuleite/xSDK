@@ -13,8 +13,6 @@ class Kit01ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad() 
-//        var arr = ["1", "4", "92", "390", "123"]
-//        xLog(arr.xIndex(with: "92"))
     }
 
 }
