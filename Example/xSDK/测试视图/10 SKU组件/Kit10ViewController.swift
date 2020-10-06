@@ -28,9 +28,9 @@ class Kit10ViewController: xViewController {
         config.itemHeight = 30
         config.columnSpacing = 8
         config.rowSpacing = 5
-        config.itemNormalBackgroundColor = .white
-        config.itemChooseBackgroundColor = .orange
-        config.itemChooseBorderColor = UIColor.orange
+        config.itemBackgroundNormalColor = .white
+        config.itemBackgroundChooseColor = .orange
+        config.itemBorderChooseColor = UIColor.orange
         self.skuView.config = config
     }
     override func addKit() {

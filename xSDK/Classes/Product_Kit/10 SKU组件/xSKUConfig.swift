@@ -11,18 +11,19 @@ public class xSKUConfig: NSObject {
 
     // MARK: - Public Property
     /// 普通标题颜色
-    public var itemNormalTitleColor = UIColor.darkText
-    /// 普通背景颜色
-    public var itemNormalBackgroundColor = UIColor.clear
-    /// 普通边框颜色
-    public var itemNormalBorderColor = UIColor.clear
-    
+    public var itemTitleNormalColor = UIColor.darkText
     /// 选中标题颜色
-    public var itemChooseTitleColor = UIColor.red
+    public var itemTitleChooseColor = UIColor.red
+    
+    /// 普通背景颜色
+    public var itemBackgroundNormalColor = UIColor.clear
     /// 选中背景颜色
-    public var itemChooseBackgroundColor = UIColor.clear
+    public var itemBackgroundChooseColor = UIColor.clear
+    
+    /// 普通边框颜色
+    public var itemBorderNormalColor = UIColor.clear
     /// 选中边框颜色
-    public var itemChooseBorderColor = UIColor.clear
+    public var itemBorderChooseColor = UIColor.clear
     
     /// 行间距
     public var rowSpacing = CGFloat(0)

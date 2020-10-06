@@ -157,7 +157,12 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     }
 
     // MARK: - IBAction Private Func
-    @IBAction func closeBtnClick() {
+    @IBAction func closeBtnClick()
+    {
+        if self.view.superview == xKeyWindow {
+            self.view.removeFromSuperview()
+            return
+        }
         guard let nvc = self.navigationController else {
             self.dismiss(animated: true, completion: nil)
             return

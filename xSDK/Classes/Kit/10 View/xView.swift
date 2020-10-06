@@ -10,7 +10,7 @@ import UIKit
 open class xView: UIView {
 
     // MARK: - Private Property
-    /// 是否初始化样式
+    /// 是否加载过样式
     private var isLoadViewStyle = false
     
     // MARK: - Open Override Func
@@ -30,9 +30,9 @@ open class xView: UIView {
     }
 
     // MARK: - Open Func
-    /// 初始化控件
+    /// 初始化控件(先)
     open func initKit() { }
-    /// 添加其他控件
+    /// 添加其他控件(后)
     open func addKit() { }
     
     // MARK: - Private Func

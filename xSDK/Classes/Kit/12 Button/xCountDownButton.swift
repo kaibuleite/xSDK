@@ -13,15 +13,16 @@ open class xCountDownButton: xButton {
     /// 原标题
     @IBInspectable public var title : String = "获取验证码"
     /// 普通时标题颜色
-    @IBInspectable public var normalTitleColor : UIColor = .darkText
-    /// 普通时边框颜色
-    @IBInspectable public var normalBorderColor : UIColor = .darkText
+    @IBInspectable public var titleNormalColor : UIColor = .darkText
     /// 倒计时标题颜色
-    @IBInspectable public var countdownTitleColor : UIColor = .lightGray
-    /// 倒计时边框颜色
-    @IBInspectable public var countdownBorderColor : UIColor = .lightGray
+    @IBInspectable public var titleCountdownColor : UIColor = .lightGray
+    
     /// 边框粗细
     @IBInspectable public var borderWidth : CGFloat = 0
+    /// 普通时边框颜色
+    @IBInspectable public var borderNormalColor : UIColor = .darkText
+    /// 倒计时边框颜色
+    @IBInspectable public var borderCountdownColor : UIColor = .lightGray
     
     // MARK: - Private Property
     /// 总时长(默认60s)
@@ -39,8 +40,8 @@ open class xCountDownButton: xButton {
         super.awakeFromNib()
         self.tag = 0
         self.setTitle(" \(self.title) ", for: .normal)
-        self.setTitleColor(normalTitleColor, for: .normal)
-        self.layer.borderColor = self.normalBorderColor.cgColor
+        self.setTitleColor(titleNormalColor, for: .normal)
+        self.layer.borderColor = self.borderNormalColor.cgColor
         self.layer.borderWidth = self.borderWidth
     }
     
@@ -61,8 +62,8 @@ open class xCountDownButton: xButton {
         self.closeTimer()
         self.tag = self.duration
         self.setTitle(" \(self.tag)s ", for: .normal)
-        self.setTitleColor(self.countdownTitleColor, for: .normal)
-        self.layer.borderColor = self.countdownBorderColor.cgColor
+        self.setTitleColor(self.titleCountdownColor, for: .normal)
+        self.layer.borderColor = self.borderCountdownColor.cgColor
         self.isUserInteractionEnabled = false
         
         let timer = Timer.xNew(timeInterval: 1, repeats: true) {
@@ -73,8 +74,8 @@ open class xCountDownButton: xButton {
             if ws.tag == 0 {
                 ws.closeTimer()
                 ws.setTitle("\(ws.title) ", for: .normal)
-                ws.setTitleColor(ws.normalTitleColor, for: .normal)
-                ws.layer.borderColor = ws.normalBorderColor.cgColor
+                ws.setTitleColor(ws.titleNormalColor, for: .normal)
+                ws.layer.borderColor = ws.borderNormalColor.cgColor
                 ws.isUserInteractionEnabled = true
             }
         }

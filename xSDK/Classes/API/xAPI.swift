@@ -47,6 +47,8 @@ open class xAPI: NSObject {
     /// 单例
     public static let shared = xAPI()
     private override init() { }
+    /// 错误提示浏览器
+    let errWeb = xWebViewController.quickInstancetype()
 
     // MARK: - Private Property
     /// 请求次数
@@ -110,6 +112,11 @@ open class xAPI: NSObject {
     /// 显示调试网页
     open class func showDebugWeb(html : String)
     {
+        guard let win = xKeyWindow else { return }
+        shared.errWeb.view.removeFromSuperview()
+        shared.errWeb.view.frame = win.bounds
+        win.addSubview(shared.errWeb.view)
+        shared.errWeb.load(html: html)
     }
     
     // MARK: - Public Func

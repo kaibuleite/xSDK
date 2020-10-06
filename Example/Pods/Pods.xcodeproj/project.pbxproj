@@ -38,6 +38,11 @@
 		0444BE4E2518ABBC0033D8A2 /* xPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16921451BFAB017F4D80752F061D05A /* xPageViewController.swift */; };
 		0444BE502518ABBC0033D8A2 /* xDefaultOnePageItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444BE3E2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.swift */; };
 		0460D9EA252BFF490076D4B9 /* ImageView+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460D9E9252BFF490076D4B9 /* ImageView+xExtension.swift */; };
+		0460DA0D252C07F00076D4B9 /* xGPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA0C252C07F00076D4B9 /* xGPasswordViewController.swift */; };
+		0460DA2C252C096B0076D4B9 /* xGPasswordViewController.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA15252C07F60076D4B9 /* xGPasswordViewController.storyboard */; };
+		0460DA35252C09930076D4B9 /* xGPasswordResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA34252C09930076D4B9 /* xGPasswordResultView.swift */; };
+		0460DA3E252C09A50076D4B9 /* xGPasswordPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA3D252C09A50076D4B9 /* xGPasswordPointView.swift */; };
+		0460DA67252C3F6C0076D4B9 /* xGPasswordConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA66252C3F6C0076D4B9 /* xGPasswordConfig.swift */; };
 		0471BBB425198A90005BF3E2 /* xPageViewController.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */; };
 		0471BBB525198A95005BF3E2 /* xDefaultOnePageItemViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0444BE3F2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.xib */; };
 		0471BBB8251996BE005BF3E2 /* xPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBB7251996BE005BF3E2 /* xPageControl.swift */; };
@@ -422,6 +427,11 @@
 		0444BE3E2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDefaultOnePageItemViewController.swift; sourceTree = "<group>"; };
 		0444BE3F2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xDefaultOnePageItemViewController.xib; sourceTree = "<group>"; };
 		0460D9E9252BFF490076D4B9 /* ImageView+xExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageView+xExtension.swift"; sourceTree = "<group>"; };
+		0460DA0C252C07F00076D4B9 /* xGPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGPasswordViewController.swift; sourceTree = "<group>"; };
+		0460DA15252C07F60076D4B9 /* xGPasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xGPasswordViewController.storyboard; sourceTree = "<group>"; };
+		0460DA34252C09930076D4B9 /* xGPasswordResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGPasswordResultView.swift; sourceTree = "<group>"; };
+		0460DA3D252C09A50076D4B9 /* xGPasswordPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGPasswordPointView.swift; sourceTree = "<group>"; };
+		0460DA66252C3F6C0076D4B9 /* xGPasswordConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGPasswordConfig.swift; sourceTree = "<group>"; };
 		0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xPageViewController.storyboard; sourceTree = "<group>"; };
 		0471BBB7251996BE005BF3E2 /* xPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xPageControl.swift; sourceTree = "<group>"; };
 		0471BBC125199B25005BF3E2 /* xPageControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = xPageControl.xib; sourceTree = "<group>"; };
@@ -857,6 +867,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0460D9F2252C05D80076D4B9 /* 08 手势密码 */ = {
+			isa = PBXGroup;
+			children = (
+				0460DA0C252C07F00076D4B9 /* xGPasswordViewController.swift */,
+				0460DA15252C07F60076D4B9 /* xGPasswordViewController.storyboard */,
+				0460DA34252C09930076D4B9 /* xGPasswordResultView.swift */,
+				0460DA3D252C09A50076D4B9 /* xGPasswordPointView.swift */,
+				0460DA66252C3F6C0076D4B9 /* xGPasswordConfig.swift */,
+			);
+			path = "08 手势密码";
+			sourceTree = "<group>";
+		};
 		0471BBB6251996AA005BF3E2 /* 12 PageControl组件 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1687,6 +1709,7 @@
 		EB4E10DEE5577716F1A6AE4F8645DD23 /* Product_Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0460D9F2252C05D80076D4B9 /* 08 手势密码 */,
 				4993F6441FC50EB6FC7B9010310250D9 /* 01 Mask遮罩 */,
 				96CAD4D4CF24E3D3A5A838EBB5F5A783 /* 02 Web浏览器 */,
 				3F5A23AADC6CFB59E21426445A4F94E5 /* 03 Page控件 */,
@@ -2267,6 +2290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0460DA2C252C096B0076D4B9 /* xGPasswordViewController.storyboard in Sources */,
 				0471BBC325199B37005BF3E2 /* xPageControl.xib in Sources */,
 				0471BBB525198A95005BF3E2 /* xDefaultOnePageItemViewController.xib in Sources */,
 				0471BBB425198A90005BF3E2 /* xPageViewController.storyboard in Sources */,
@@ -2296,6 +2320,7 @@
 				EDB69044E96AA83D4C8E6DC1DF511D5F /* xCaptchaView.swift in Sources */,
 				B881D583E80061AA6B3339E2CD493377 /* xChoosePhotoActionSheet.swift in Sources */,
 				9F36FBED24B6DBE4B8CF4381F8B43277 /* xClearView.swift in Sources */,
+				0460DA35252C09930076D4B9 /* xGPasswordResultView.swift in Sources */,
 				960185F3EE6FEB774297C4C8264D5135 /* xCollectionViewCell.swift in Sources */,
 				92D20755D24FDBD84F713D1E3F502EDB /* xCollectionViewController.swift in Sources */,
 				3EB70BD54012AFE7BEE31D399E4E42DA /* xContainerView.swift in Sources */,
@@ -2308,6 +2333,7 @@
 				5EB67B97A899E7654FE8F152FC32EA88 /* xDatePickerConfig.swift in Sources */,
 				6CDEBB6097AAEE9A260EC4620F4471BB /* xDatePickerViewController.storyboard in Sources */,
 				78C8D1260D64FF05DFCA86B1750F7E78 /* xDatePickerViewController.swift in Sources */,
+				0460DA3E252C09A50076D4B9 /* xGPasswordPointView.swift in Sources */,
 				048DC48A252B047A0001F672 /* Object+xExtension.swift in Sources */,
 				FC4B2E37797D764BAC8DB0E60DAEAD26 /* xEANCodeImageView.swift in Sources */,
 				D88AAF568AE7017BA45B9802E27EF3EA /* xGlobalFunction.swift in Sources */,
@@ -2332,6 +2358,7 @@
 				132F05C3345DD5DD7C7C01139E4A5411 /* xMaskConfig.swift in Sources */,
 				048DC458252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift in Sources */,
 				09F40B4170F7CEEC2BDF63D85044EA10 /* xMaskViewController.storyboard in Sources */,
+				0460DA0D252C07F00076D4B9 /* xGPasswordViewController.swift in Sources */,
 				42BB5D7E49AB0E81F830C34D2931F528 /* xMaskViewController.swift in Sources */,
 				8DF11F0727F04B376724221388E390E0 /* xModel.swift in Sources */,
 				CA4381D7BC12FDCDC4553E3C4C50EDEF /* xMutableDataPickerModel.swift in Sources */,
@@ -2362,6 +2389,7 @@
 				CCBCB9594177EA7D26F716A7027D6AC0 /* xView.swift in Sources */,
 				CF596DBC58DDBE70DEC8A01E9172958A /* xViewController.swift in Sources */,
 				5183556ABF1473B4FD88549DC3E75280 /* xWebJavaScriptManager.swift in Sources */,
+				0460DA67252C3F6C0076D4B9 /* xGPasswordConfig.swift in Sources */,
 				5F4D551B88EFD202FA54358CCE99C160 /* xWebViewController.storyboard in Sources */,
 				79425021163975FCE90A471376AB04B3 /* xWebViewController.swift in Sources */,
 			);

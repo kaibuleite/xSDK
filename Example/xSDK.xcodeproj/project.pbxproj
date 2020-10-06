@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0460DA50252C0B470076D4B9 /* Test08ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA4E252C0B470076D4B9 /* Test08ViewController.swift */; };
+		0460DA51252C0B470076D4B9 /* Test08ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0460DA4F252C0B470076D4B9 /* Test08ViewController.xib */; };
 		046266D82511FF7100D06EFA /* Test02ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266D62511FF7100D06EFA /* Test02ViewController.swift */; };
 		046266D92511FF7100D06EFA /* Test02ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046266D72511FF7100D06EFA /* Test02ViewController.xib */; };
 		0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */; };
@@ -69,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0460DA4E252C0B470076D4B9 /* Test08ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test08ViewController.swift; sourceTree = "<group>"; };
+		0460DA4F252C0B470076D4B9 /* Test08ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test08ViewController.xib; sourceTree = "<group>"; };
 		046266D62511FF7100D06EFA /* Test02ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test02ViewController.swift; sourceTree = "<group>"; };
 		046266D72511FF7100D06EFA /* Test02ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test02ViewController.xib; sourceTree = "<group>"; };
 		0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit12ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +155,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0460DA4D252C0B350076D4B9 /* 08 手势密码 */ = {
+			isa = PBXGroup;
+			children = (
+				0460DA4E252C0B470076D4B9 /* Test08ViewController.swift */,
+				0460DA4F252C0B470076D4B9 /* Test08ViewController.xib */,
+			);
+			path = "08 手势密码";
+			sourceTree = "<group>";
+		};
 		046266D52511FF6000D06EFA /* 02 浏览器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +302,7 @@
 				04E08AB52514A8E000780C15 /* 05 数据选择器 */,
 				04CDB8852515A213005F531F /* 06 可变数据选择器 */,
 				04CDB8972515E048005F531F /* 07 扫码 */,
+				0460DA4D252C0B350076D4B9 /* 08 手势密码 */,
 			);
 			path = "测试样例";
 			sourceTree = "<group>";
@@ -562,6 +576,7 @@
 				04E08A892514424600780C15 /* Kit05ViewController.xib in Resources */,
 				04E08AA22514676400780C15 /* Kit07ViewController.xib in Resources */,
 				04D8D72E251307EA00F0B14B /* Test03ViewController.xib in Resources */,
+				0460DA51252C0B470076D4B9 /* Test08ViewController.xib in Resources */,
 				04E08A8F2514446900780C15 /* Kit06ViewController.xib in Resources */,
 				0471BBC025199732005BF3E2 /* Kit12ViewController.xib in Resources */,
 				04E08AB92514A92500780C15 /* Test05ViewController.xib in Resources */,
@@ -677,6 +692,7 @@
 				04D8D74C2513626800F0B14B /* Kit03ViewController.swift in Sources */,
 				04D8D7472513606200F0B14B /* Kit02ViewController.swift in Sources */,
 				048DC481252B038B0001F672 /* Kit13ViewController.swift in Sources */,
+				0460DA50252C0B470076D4B9 /* Test08ViewController.swift in Sources */,
 				04E08AB025149BD800780C15 /* Test04ViewController.swift in Sources */,
 				04CDB89A2515E059005F531F /* Test07ViewController.swift in Sources */,
 				04CDB88A2515A230005F531F /* Test06ViewController.swift in Sources */,

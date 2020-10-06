@@ -46,6 +46,9 @@ open class xViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
+        // 模态全屏
+        self.modalPresentationStyle = .fullScreen
+        // 主线程初始化UI
         DispatchQueue.main.async {
             self.addKit()
             self.addChildren()

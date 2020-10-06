@@ -11,18 +11,18 @@ public class xSegmentConfig: NSObject {
     
     // MARK: - Public Property
     /// 普通标题颜色
-    public var itemNormalTitleColor = UIColor.darkText
+    public var itemTitleNormalColor = UIColor.darkText
     /// 普通背景颜色
-    public var itemNormalBackgroundColor = UIColor.clear
+    public var itemBackgroundNormalColor = UIColor.clear
     /// 普通边框颜色
-    public var itemNormalBorderColor = UIColor.clear
+    public var itemBorderNormalColor = UIColor.clear
     
     /// 选中标题颜色
-    public var itemChooseTitleColor = UIColor.red
+    public var itemTitleChooseColor = UIColor.red
     /// 选中背景颜色
-    public var itemChooseBackgroundColor = UIColor.clear
+    public var itemBackgroundChooseColor = UIColor.clear
     /// 选中边框颜色
-    public var itemChooseBorderColor = UIColor.clear
+    public var itemBorderChooseColor = UIColor.clear
     
     /// 边框线宽
     public var borderWidth = CGFloat(0)

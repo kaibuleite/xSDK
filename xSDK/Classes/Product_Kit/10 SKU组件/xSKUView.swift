@@ -101,9 +101,9 @@ public class xSKUView: xView {
             btn.contentHorizontalAlignment = .center
             btn.layer.cornerRadius = cfg.cornerRadius
             btn.layer.borderWidth = cfg.borderWidth
-            btn.backgroundColor = cfg.itemNormalBackgroundColor
-            btn.layer.borderColor = cfg.itemNormalBorderColor.cgColor
-            btn.setTitleColor(cfg.itemNormalTitleColor, for: .normal)
+            btn.backgroundColor = cfg.itemBackgroundNormalColor
+            btn.layer.borderColor = cfg.itemBorderNormalColor.cgColor
+            btn.setTitleColor(cfg.itemTitleNormalColor, for: .normal)
             // 添加响应事件
             btn.xAddClick {
                 [unowned self] (sender) in
@@ -131,14 +131,14 @@ public class xSKUView: xView {
         let cfg = self.config
         // 旧的视图
         let item1 = self.itemViewArray[self.currentChooseIdx]
-        item1.backgroundColor = cfg.itemNormalBackgroundColor
-        item1.layer.borderColor = cfg.itemNormalBorderColor.cgColor
-        item1.setTitleColor(cfg.itemNormalTitleColor, for: .normal)
+        item1.backgroundColor = cfg.itemBackgroundNormalColor
+        item1.layer.borderColor = cfg.itemBorderNormalColor.cgColor
+        item1.setTitleColor(cfg.itemTitleNormalColor, for: .normal)
         // 新选中的视图
         let item2 = self.itemViewArray[idx]
-        item2.backgroundColor = cfg.itemChooseBackgroundColor
-        item2.layer.borderColor = cfg.itemChooseBorderColor.cgColor
-        item2.setTitleColor(cfg.itemChooseTitleColor, for: .normal)
+        item2.backgroundColor = cfg.itemBackgroundChooseColor
+        item2.layer.borderColor = cfg.itemBorderChooseColor.cgColor
+        item2.setTitleColor(cfg.itemTitleChooseColor, for: .normal)
         self.currentChooseIdx = idx
     }
 

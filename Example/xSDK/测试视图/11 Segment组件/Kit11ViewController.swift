@@ -29,7 +29,7 @@ class Kit11ViewController: xViewController {
     {
         let config = xSegmentConfig()
         config.itemsMargin = 5
-        config.itemChooseTitleColor = .red
+        config.itemTitleChooseColor = .red
         self.seg1.config = config
         let arr = ["苹果", "香蕉", "梨子", "芒果", "葡萄"]
         self.seg1.reload(titleArray: arr, isEqualItemWidth: true, fontSize: 10) {
@@ -43,10 +43,10 @@ class Kit11ViewController: xViewController {
     {
         let config = xSegmentConfig()
         config.itemsMargin = 10
-        config.itemChooseTitleColor = .blue
+        config.itemTitleChooseColor = .blue
         config.lineColor = .clear
         config.borderWidth = 1
-        config.itemChooseBorderColor = .blue
+        config.itemBorderChooseColor = .blue
         self.seg2.config = config
         let arr = ["马铃薯", "菠菜", "西红柿", "茄子", "辣椒",
                    "黄瓜", "南瓜", "冬瓜", "秋葵", "花菜", "玉米",
@@ -63,7 +63,7 @@ class Kit11ViewController: xViewController {
     {
         let config = xSegmentConfig()
         config.itemsMargin = 5
-        config.itemChooseTitleColor = .green
+        config.itemTitleChooseColor = .green
         config.lineColor = .green
         self.seg3.config = config
         let arr = ["🍏", "🍎", "🍐", "🍊", "🍆", "🍳",

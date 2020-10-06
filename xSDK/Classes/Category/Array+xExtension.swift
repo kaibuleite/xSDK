@@ -10,6 +10,16 @@ import UIKit
 extension Array {
 
     // MARK: - Public Func
+    
+    /// 安全获取数据
+    public func xObject(in idx : Int) -> Element?
+    {
+        guard idx >= 0 else { return nil }
+        guard idx < self.count else { return nil }
+        let obj = self[idx]
+        return obj
+    }
+    
     /// 获取数组中指定数据的编号（仅支持NSObject相关对象）
     /// - Parameters:
     ///   - object: 要查找的对象数据

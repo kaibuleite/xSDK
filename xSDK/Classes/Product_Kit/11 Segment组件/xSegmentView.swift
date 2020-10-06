@@ -123,13 +123,13 @@ public class xSegmentView: xView {
             view.layer.masksToBounds = true
             view.layer.cornerRadius = cfg.cornerRadius
             view.layer.borderWidth = cfg.borderWidth
-            view.layer.borderColor = cfg.itemNormalBorderColor.cgColor
-            view.backgroundColor = cfg.itemNormalBackgroundColor
+            view.layer.borderColor = cfg.itemBorderNormalColor.cgColor
+            view.backgroundColor = cfg.itemBackgroundNormalColor
             if let btn = view as? UIButton {
-                btn.setTitleColor(cfg.itemNormalTitleColor, for: .normal)
+                btn.setTitleColor(cfg.itemTitleNormalColor, for: .normal)
             }
             if let lbl = view as? UILabel {
-                lbl.textColor = cfg.itemNormalTitleColor
+                lbl.textColor = cfg.itemTitleNormalColor
             }
             
             view.tag = i
@@ -157,23 +157,23 @@ public class xSegmentView: xView {
         let cfg = self.config
         // 旧的视图
         let item1 = self.itemViewArray[self.currentChooseIdx]
-        item1.backgroundColor = cfg.itemNormalBackgroundColor
-        item1.layer.borderColor = cfg.itemNormalBorderColor.cgColor
+        item1.backgroundColor = cfg.itemBackgroundNormalColor
+        item1.layer.borderColor = cfg.itemBorderNormalColor.cgColor
         if let btn = item1 as? UIButton {
-            btn.setTitleColor(cfg.itemNormalTitleColor, for: .normal)
+            btn.setTitleColor(cfg.itemTitleNormalColor, for: .normal)
         }
         if let lbl = item1 as? UILabel {
-            lbl.textColor = cfg.itemNormalTitleColor
+            lbl.textColor = cfg.itemTitleNormalColor
         }
         // 新选中的视图
         let item2 = self.itemViewArray[idx]
-        item2.backgroundColor = cfg.itemChooseBackgroundColor
-        item2.layer.borderColor = cfg.itemChooseBorderColor.cgColor
+        item2.backgroundColor = cfg.itemBackgroundChooseColor
+        item2.layer.borderColor = cfg.itemBorderChooseColor.cgColor
         if let btn = item2 as? UIButton {
-            btn.setTitleColor(cfg.itemChooseTitleColor, for: .normal)
+            btn.setTitleColor(cfg.itemTitleChooseColor, for: .normal)
         }
         if let lbl = item2 as? UILabel {
-            lbl.textColor = cfg.itemChooseTitleColor
+            lbl.textColor = cfg.itemTitleChooseColor
         }
         self.currentChooseIdx = idx
         // 指示线
