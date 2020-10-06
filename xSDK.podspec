@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'xSDK'
-  s.version          = '1.1.2'  # SDK版本号
+  s.version          = '1.1.3'  # SDK版本号
   s.summary          = '自定义框架'
   s.swift_version    = '5'    # Swift版本号
 
@@ -44,6 +44,6 @@ TODO: Add long description of the pod here.
   
   # 必备框架
   s.dependency 'Alamofire', '~> 4.9.1'  # API代码基于4.x，5.x后代码变动太大
-  # s.dependency 'SDWebImage', '~> 5.8.3' # 可根据情况提高版本
-  # s.dependency 'MJRefresh', '~> 3.4.3'  # 可根据情况提高版本
+  s.dependency 'SDWebImage', '~> 5.8.3' # 可根据情况提高版本
+  s.dependency 'MJRefresh', '~> 3.4.3'  # 可根据情况提高版本
 end
