@@ -270,6 +270,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         self.borderLayer.path = path.cgPath
     }
     /// 定位到扫描的二维码，对扫描到的二维码进行描边
+    /*
     private func drawLocate(object : AVMetadataMachineReadableCodeObject)
     {
         let array = object.corners
@@ -290,7 +291,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         self.locateLayer.path = path.cgPath
         self.locateLayer.frame = self.previewLayer.bounds
         self.previewLayer.addSublayer(self.locateLayer)
-    }
+    }*/
     
     // TODO: 扫描结果
     /// 扫描成功
