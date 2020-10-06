@@ -42,7 +42,6 @@
 		0471BBB8251996BE005BF3E2 /* xPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBB7251996BE005BF3E2 /* xPageControl.swift */; };
 		0471BBC225199B26005BF3E2 /* xPageControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471BBC125199B25005BF3E2 /* xPageControl.xib */; };
 		0471BBC325199B37005BF3E2 /* xPageControl.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBC125199B25005BF3E2 /* xPageControl.xib */; };
-		048DC435252AF3E00001F672 /* ImageView+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC434252AF3E00001F672 /* ImageView+xExtension.swift */; };
 		048DC445252AFA910001F672 /* xImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC444252AFA910001F672 /* xImageDownloader.swift */; };
 		048DC458252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC457252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift */; };
 		048DC48A252B047A0001F672 /* Object+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC489252B047A0001F672 /* Object+xExtension.swift */; };
@@ -424,7 +423,6 @@
 		0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xPageViewController.storyboard; sourceTree = "<group>"; };
 		0471BBB7251996BE005BF3E2 /* xPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xPageControl.swift; sourceTree = "<group>"; };
 		0471BBC125199B25005BF3E2 /* xPageControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = xPageControl.xib; sourceTree = "<group>"; };
-		048DC434252AF3E00001F672 /* ImageView+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+xExtension.swift"; sourceTree = "<group>"; };
 		048DC444252AFA910001F672 /* xImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xImageDownloader.swift; sourceTree = "<group>"; };
 		048DC457252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xChooseNavigationMapActionSheet.swift; sourceTree = "<group>"; };
 		048DC489252B047A0001F672 /* Object+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+xExtension.swift"; sourceTree = "<group>"; };
@@ -1551,7 +1549,6 @@
 				2A182C348465C8C72B7CA1A49D9403BA /* Double+xExtension.swift */,
 				1082AF4F8FC3D520F3E43DD0633DBDC4 /* Float+xExtension.swift */,
 				5CD24F2C0D23982A4C1FA931F17FD959 /* Image+xExtension.swift */,
-				048DC434252AF3E00001F672 /* ImageView+xExtension.swift */,
 				569B055264CBCAC08FDA4F2BFA819F57 /* Label+xExtension.swift */,
 				363724245B79FCCDBCF47C59A08D824C /* String+xExtension.swift */,
 				5A861D4B4367798C8CAED6E4CCCE99E2 /* Timer+xExtension.swift */,
@@ -2294,7 +2291,6 @@
 				3B81A620631795A717E234DE1AF57150 /* xButton.swift in Sources */,
 				B3505E707C85205227F06709B5B06D03 /* xCaptchaConfig.swift in Sources */,
 				EDB69044E96AA83D4C8E6DC1DF511D5F /* xCaptchaView.swift in Sources */,
-				048DC435252AF3E00001F672 /* ImageView+xExtension.swift in Sources */,
 				B881D583E80061AA6B3339E2CD493377 /* xChoosePhotoActionSheet.swift in Sources */,
 				9F36FBED24B6DBE4B8CF4381F8B43277 /* xClearView.swift in Sources */,
 				960185F3EE6FEB774297C4C8264D5135 /* xCollectionViewCell.swift in Sources */,
@@ -2458,7 +2454,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Alamofire/Alamofire-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				PRODUCT_MODULE_NAME = Alamofire;
@@ -2555,7 +2551,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Alamofire/Alamofire-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				PRODUCT_MODULE_NAME = Alamofire;
@@ -2586,7 +2582,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MJRefresh/MJRefresh-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MJRefresh/MJRefresh-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MJRefresh/MJRefresh.modulemap";
 				PRODUCT_MODULE_NAME = MJRefresh;
@@ -2651,7 +2647,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SDWebImage/SDWebImage-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SDWebImage/SDWebImage.modulemap";
 				PRODUCT_MODULE_NAME = SDWebImage;
@@ -2683,7 +2679,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SDWebImage/SDWebImage-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SDWebImage/SDWebImage.modulemap";
 				PRODUCT_MODULE_NAME = SDWebImage;
@@ -2919,7 +2915,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MJRefresh/MJRefresh-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MJRefresh/MJRefresh-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MJRefresh/MJRefresh.modulemap";
 				PRODUCT_MODULE_NAME = MJRefresh;
