@@ -83,15 +83,15 @@ open class xCollectionViewController: UICollectionViewController {
     
     // MARK: - Open Func
     /// 注册Headers
-    open func registerHeaders() { }
+    @objc open func registerHeaders() { }
     /// 注册Cells
-    open func registerCells() { }
+    @objc open func registerCells() { }
     /// 注册Footers
-    open func registerFooters() { }
+    @objc open func registerFooters() { }
     /// 初始化UI
-    open func addKit() { }
+    @objc open func addKit() { }
     /// 初始化子控制器
-    open func addChildren() { }
+    @objc open func addChildren() { }
     /// 快速实例化对象(storyboard比类名少指定后缀)
     open class func quickInstancetype() -> Self
     {

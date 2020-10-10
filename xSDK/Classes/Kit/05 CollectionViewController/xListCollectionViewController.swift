@@ -28,6 +28,8 @@ open class xListCollectionViewController: xCollectionViewController {
     }
     
     // MARK: - Open Func
+    /// 添加刷新
+    @objc open func addMJRefresh() { }
     /// 添加头部刷新
     open func addHeaderRefresh() {
         let header = MJRefreshNormalHeader.init(refreshingTarget: self,
@@ -40,17 +42,15 @@ open class xListCollectionViewController: xCollectionViewController {
                                                     refreshingAction: #selector(refreshFooter))
         self.collectionView.mj_footer = footer
     }
-    /// 添加刷新
-    open func addMJRefresh() { }
     /// 刷新数据
-    open func refreshDataList() {
+    @objc open func refreshDataList() {
         // 模拟数据
         let list = xModel.newRandomList()
         self.refreshSuccess()
         self.reloadData(list: list)
     }
     /// 空数据展示图
-    open func loadEmptyView() -> UIView? {
+    @objc open func loadEmptyView() -> UIView? {
         var frame = self.collectionView.bounds
         frame.origin.y = self.headerSize.height
         frame.size.width -= self.headerSize.height

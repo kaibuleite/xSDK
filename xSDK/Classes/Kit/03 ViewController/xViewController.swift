@@ -76,9 +76,9 @@ open class xViewController: UIViewController {
     
     // MARK: - Open Func
     /// 初始化UI
-    open func addKit() { }
+    @objc open func addKit() { }
     /// 初始化子控制器
-    open func addChildren() { }
+    @objc open func addChildren() { }
     /// 快速实例化对象(storyboard比类名少指定后缀)
     open class func quickInstancetype() -> Self
     {

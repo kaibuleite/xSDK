@@ -72,7 +72,6 @@ open class xAlertViewController: xViewController {
         }
     }
     
-    // MARK: - 隐藏选择器
     /// 隐藏选择器
     /// - Parameters:
     ///   - animeType: 动画类型

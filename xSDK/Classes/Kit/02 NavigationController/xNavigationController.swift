@@ -54,26 +54,28 @@ open class xNavigationController: UINavigationController {
     
     // MARK: - Open Func
     /// 初始化UI
-    open func addKit() { }
+    @objc open func addKit() { }
     /// 初始化子控制器
-    open func addChildren() { }
+    @objc open func addChildren() { }
+    
+    // MARK: - Public Func
     /// 设置导航栏颜色
     /// - Parameter color: 指定颜色
-    open func setBarBackgroupColor(_ color : UIColor)
+    public func setBarBackgroupColor(_ color : UIColor)
     {
         self.navigationBar.barTintColor = color
         self.navigationBar.isTranslucent = false
     }
     /// 设置下边缘线颜色
     /// - Parameter color: 指定颜色
-    open func setBarShadowColor(_ color : UIColor)
+    public func setBarShadowColor(_ color : UIColor)
     {
         self.navigationBar.setBackgroundImage(color.xToImage(),
                                               for: .default)
         self.navigationBar.shadowImage = color.xToImage()
     }
     /// 获取指定类型的子控制器
-    open func getChildrenClass(_ name : AnyClass) -> [UIViewController]
+    public func getChildrenClass(_ name : AnyClass) -> [UIViewController]
     {
         var ret = [UIViewController]()
         self.children.forEach {
@@ -85,7 +87,7 @@ open class xNavigationController: UINavigationController {
         return ret
     }
     /// 释放掉指定类型的子控制器
-    open func releaseChildrenClass(list : [AnyClass],
+    public func releaseChildrenClass(list : [AnyClass],
                                      animated : Bool = false)
     {
         var childArray = self.children

@@ -31,8 +31,8 @@ open class xTabBarController: UITabBarController {
     
     // MARK: - Open Func
     /// 初始化UI
-    open func addKit() { }
+    @objc open func addKit() { }
     /// 初始化子控制器
-    open func addChildren() { }
+    @objc open func addChildren() { }
 
 }
