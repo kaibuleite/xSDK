@@ -8,9 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'xSDK'
-  s.version          = '1.2.0'  # SDK版本号
+  s.version          = '1.2.1'  # SDK版本号
   s.summary          = '自定义框架'
-  s.swift_version    = '5'    # Swift版本号
+  s.swift_version    = '5'      # Swift版本号
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
