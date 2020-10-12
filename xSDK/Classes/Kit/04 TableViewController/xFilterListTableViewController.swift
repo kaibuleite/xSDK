@@ -7,7 +7,7 @@
 
 import UIKit
 
-class xFilterListTableViewController: xListTableViewController {
+open class xFilterListTableViewController: xListTableViewController {
     
     // MARK: - Enum
     /// 数据源枚举
