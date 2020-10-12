@@ -43,6 +43,8 @@
 		0460DA35252C09930076D4B9 /* xGPasswordResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA34252C09930076D4B9 /* xGPasswordResultView.swift */; };
 		0460DA3E252C09A50076D4B9 /* xGPasswordPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA3D252C09A50076D4B9 /* xGPasswordPointView.swift */; };
 		0460DA67252C3F6C0076D4B9 /* xGPasswordConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA66252C3F6C0076D4B9 /* xGPasswordConfig.swift */; };
+		046228662534546F009B464F /* xFilterListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046228652534546F009B464F /* xFilterListTableViewController.swift */; };
+		0462286F253454FC009B464F /* xFilterListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0462286E253454FC009B464F /* xFilterListCollectionViewController.swift */; };
 		0471BBB425198A90005BF3E2 /* xPageViewController.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */; };
 		0471BBB525198A95005BF3E2 /* xDefaultOnePageItemViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0444BE3F2518A9ED0033D8A2 /* xDefaultOnePageItemViewController.xib */; };
 		0471BBB8251996BE005BF3E2 /* xPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBB7251996BE005BF3E2 /* xPageControl.swift */; };
@@ -432,6 +434,8 @@
 		0460DA34252C09930076D4B9 /* xGPasswordResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGPasswordResultView.swift; sourceTree = "<group>"; };
 		0460DA3D252C09A50076D4B9 /* xGPasswordPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGPasswordPointView.swift; sourceTree = "<group>"; };
 		0460DA66252C3F6C0076D4B9 /* xGPasswordConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGPasswordConfig.swift; sourceTree = "<group>"; };
+		046228652534546F009B464F /* xFilterListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = xFilterListTableViewController.swift; sourceTree = "<group>"; };
+		0462286E253454FC009B464F /* xFilterListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xFilterListCollectionViewController.swift; sourceTree = "<group>"; };
 		0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xPageViewController.storyboard; sourceTree = "<group>"; };
 		0471BBB7251996BE005BF3E2 /* xPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xPageControl.swift; sourceTree = "<group>"; };
 		0471BBC125199B25005BF3E2 /* xPageControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = xPageControl.xib; sourceTree = "<group>"; };
@@ -879,6 +883,22 @@
 			path = "08 手势密码";
 			sourceTree = "<group>";
 		};
+		0462287725345541009B464F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DE0CF29B1511C2B5768829BE56A971AB /* xTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		046228782534554A009B464F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A48F16C18F70061C0CA208B477C47683 /* xCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		0471BBB6251996AA005BF3E2 /* 12 PageControl组件 */ = {
 			isa = PBXGroup;
 			children = (
@@ -980,9 +1000,10 @@
 		30566A571E0905A6D8C054DBAA27C703 /* 05 CollectionViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A48F16C18F70061C0CA208B477C47683 /* xCollectionViewCell.swift */,
 				861A816AEB0B01AD57961B5348140473 /* xCollectionViewController.swift */,
 				3E4DB9AB70F1B61433F48E7B6165C971 /* xListCollectionViewController.swift */,
+				0462286E253454FC009B464F /* xFilterListCollectionViewController.swift */,
+				046228782534554A009B464F /* Cells */,
 			);
 			path = "05 CollectionViewController";
 			sourceTree = "<group>";
@@ -1010,9 +1031,10 @@
 		3CB66D0CC4C9309FEE2D7A4F1437844A /* 04 TableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				94384F0A1666A15EFA661FA9A1F05D2C /* xListTableViewController.swift */,
-				DE0CF29B1511C2B5768829BE56A971AB /* xTableViewCell.swift */,
 				A4EA534E2390869E2AB44965BAC9A0CE /* xTableViewController.swift */,
+				94384F0A1666A15EFA661FA9A1F05D2C /* xListTableViewController.swift */,
+				046228652534546F009B464F /* xFilterListTableViewController.swift */,
+				0462287725345541009B464F /* Cells */,
 			);
 			path = "04 TableViewController";
 			sourceTree = "<group>";
@@ -2363,6 +2385,8 @@
 				8DF11F0727F04B376724221388E390E0 /* xModel.swift in Sources */,
 				CA4381D7BC12FDCDC4553E3C4C50EDEF /* xMutableDataPickerModel.swift in Sources */,
 				57361F9527624344D09E5F07BC07FF28 /* xMutableDataPickerViewController.storyboard in Sources */,
+				0462286F253454FC009B464F /* xFilterListCollectionViewController.swift in Sources */,
+				046228662534546F009B464F /* xFilterListTableViewController.swift in Sources */,
 				0444BE502518ABBC0033D8A2 /* xDefaultOnePageItemViewController.swift in Sources */,
 				D58D209E427BDE12B440C2C8B79746F8 /* xMutableDataPickerViewController.swift in Sources */,
 				C5D3E2E3EDFAD2CC72621431CABC38B6 /* xNavigationController.swift in Sources */,

@@ -9,15 +9,6 @@ import UIKit
 
 open class xCollectionViewController: UICollectionViewController {
     
-    // MARK: - Enum
-    /// 数据源枚举
-    public enum xDataTypeEnum {
-        /// 普通、默认
-        case normal
-        /// 筛选
-        case filter
-    }
-    
     // MARK: - IBInspectable Property
     /// 控制器描述
     @IBInspectable public var xTitle : String = ""
@@ -29,8 +20,6 @@ open class xCollectionViewController: UICollectionViewController {
     public var isLoadRequestDataCompleted = true
     /// 是否是父控制器
     public var isRootParentViewController = false
-    /// 数据源
-    public var dataType = xDataTypeEnum.normal
     /// 是否关闭顶部下拉回弹
     public var isCloseTopBounces = false
     /// 是否关闭底部上拉回弹

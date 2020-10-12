@@ -34,6 +34,13 @@ open class xAlertViewController: xViewController {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
     }
     
+    // MARK: - IBOutlet Func
+    /// 背景关闭
+    @IBAction func closeBtnClick()
+    {
+        self.dismiss()
+    }
+    
     // MARK: - Public Func
     /// 显示选择器
     /// - Parameters:
