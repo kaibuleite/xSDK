@@ -57,10 +57,13 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     }
     
     // MARK: - Public Func
-    public class func quickInstancetype() -> Self {
+    /// 快速实例化对象(storyboard比类名少指定后缀)
+    public override class func quickInstancetype() -> Self
+    {
         let vc = xPageViewController.xNew(storyboard: "xPageViewController")
         return vc as! Self
-    } 
+    }
+    
     /// 刷新数据（默认样式）
     /// - Parameters:
     ///   - pictureArray: 图片链接

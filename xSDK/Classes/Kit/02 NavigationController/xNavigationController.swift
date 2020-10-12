@@ -52,12 +52,6 @@ open class xNavigationController: UINavigationController {
         return super.popViewController(animated: animated)
     }
     
-    // MARK: - Open Func
-    /// 初始化UI
-    @objc open func addKit() { }
-    /// 初始化子控制器
-    @objc open func addChildren() { }
-    
     // MARK: - Public Func
     /// 设置导航栏颜色
     /// - Parameter color: 指定颜色

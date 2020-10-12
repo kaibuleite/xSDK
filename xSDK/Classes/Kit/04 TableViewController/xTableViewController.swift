@@ -75,22 +75,10 @@ open class xTableViewController: UITableViewController {
         super.viewDidDisappear(animated)
         self.isAppear = false
     }
-    
-    // MARK: - Open Func
-    /// 注册Headers
-    @objc open func registerHeaders() { }
-    /// 注册Cells
-    @objc open func registerCells() { }
-    /// 注册Footers
-    @objc open func registerFooters() { }
-    /// 初始化UI
-    @objc open func addKit() { }
-    /// 初始化子控制器
-    @objc open func addChildren() { }
     /// 快速实例化对象(storyboard比类名少指定后缀)
-    open class func quickInstancetype() -> Self
+    open override class func quickInstancetype() -> Self
     {
-        let tvc = self.init(style: UITableView.Style.grouped)
+        let tvc = self.init(style: .grouped)
         return tvc
     }
     required public override init(style: UITableView.Style) {
@@ -163,4 +151,17 @@ open class xTableViewController: UITableViewController {
             scrollView.contentOffset = offset
         }
     }
+}
+
+// MARK: - Extension
+extension xTableViewController {
+    
+    
+    // MARK: - Open Func
+    /// 注册Headers
+    @objc open func registerHeaders() { }
+    /// 注册Cells
+    @objc open func registerCells() { }
+    /// 注册Footers
+    @objc open func registerFooters() { }
 }

@@ -27,38 +27,6 @@ open class xListCollectionViewController: xCollectionViewController {
         }
     }
     
-    // MARK: - Open Func
-    /// 添加刷新
-    @objc open func addMJRefresh() { }
-    /// 添加头部刷新
-    open func addHeaderRefresh() {
-        let header = MJRefreshNormalHeader.init(refreshingTarget: self,
-                                                refreshingAction: #selector(refreshHeader))
-        self.collectionView.mj_header = header
-    }
-    /// 添加尾部刷新
-    open func addFooterRefresh() {
-        let footer = MJRefreshBackNormalFooter.init(refreshingTarget: self,
-                                                    refreshingAction: #selector(refreshFooter))
-        self.collectionView.mj_footer = footer
-    }
-    /// 刷新数据
-    @objc open func refreshDataList() {
-        // 模拟数据
-        let list = xModel.newRandomList()
-        self.refreshSuccess()
-        self.reloadData(list: list)
-    }
-    /// 空数据展示图
-    @objc open func loadEmptyView() -> UIView? {
-        var frame = self.collectionView.bounds
-        frame.origin.y = self.headerSize.height
-        frame.size.width -= self.headerSize.height
-        let view = xDataEmptyView.loadNib()
-        view.frame = frame
-        return view
-    }
-    
     // MARK: - Public Func
     /// 刷新头部
     @objc public func refreshHeader() {
@@ -101,8 +69,45 @@ open class xListCollectionViewController: xCollectionViewController {
         // 显示空数据提示视图
         self.dataEmptyView?.removeFromSuperview()
         guard self.dataArray.count == 0 else { return }
-        guard let emptyView = self.loadEmptyView() else { return }
+        guard let emptyView = self.getEmptyView() else { return }
         self.dataEmptyView = emptyView
         self.collectionView.addSubview(emptyView)
+    }
+}
+
+// MARK: - Extension
+extension xListCollectionViewController {
+    
+    
+    // MARK: - Open Func
+    /// 添加刷新
+    @objc open func addMJRefresh() { }
+    /// 添加头部刷新
+    @objc open func addHeaderRefresh() {
+        let header = MJRefreshNormalHeader.init(refreshingTarget: self,
+                                                refreshingAction: #selector(refreshHeader))
+        self.collectionView.mj_header = header
+    }
+    /// 添加尾部刷新
+    @objc open func addFooterRefresh() {
+        let footer = MJRefreshBackNormalFooter.init(refreshingTarget: self,
+                                                    refreshingAction: #selector(refreshFooter))
+        self.collectionView.mj_footer = footer
+    }
+    /// 刷新数据
+    @objc open func refreshDataList() {
+        // 模拟数据
+        let list = xModel.newRandomList()
+        self.refreshSuccess()
+        self.reloadData(list: list)
+    }
+    /// 空数据展示图
+    @objc open func getEmptyView() -> UIView? {
+        var frame = self.collectionView.bounds
+        frame.origin.y = self.headerSize.height
+        frame.size.width -= self.headerSize.height
+        let view = xDataEmptyView.loadNib()
+        view.frame = frame
+        return view
     }
 }

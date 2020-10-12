@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0460DA50252C0B470076D4B9 /* Test08ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA4E252C0B470076D4B9 /* Test08ViewController.swift */; };
 		0460DA51252C0B470076D4B9 /* Test08ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0460DA4F252C0B470076D4B9 /* Test08ViewController.xib */; };
+		046227392533D72E009B464F /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046227382533D72E009B464F /* ListTableViewController.swift */; };
 		046266D82511FF7100D06EFA /* Test02ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266D62511FF7100D06EFA /* Test02ViewController.swift */; };
 		046266D92511FF7100D06EFA /* Test02ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046266D72511FF7100D06EFA /* Test02ViewController.xib */; };
 		0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */; };
@@ -73,6 +74,7 @@
 /* Begin PBXFileReference section */
 		0460DA4E252C0B470076D4B9 /* Test08ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test08ViewController.swift; sourceTree = "<group>"; };
 		0460DA4F252C0B470076D4B9 /* Test08ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test08ViewController.xib; sourceTree = "<group>"; };
+		046227382533D72E009B464F /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		046266D62511FF7100D06EFA /* Test02ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test02ViewController.swift; sourceTree = "<group>"; };
 		046266D72511FF7100D06EFA /* Test02ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test02ViewController.xib; sourceTree = "<group>"; };
 		0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit12ViewController.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				04CDB88E2515A428005F531F /* TableViewController.swift */,
+				046227382533D72E009B464F /* ListTableViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				04D8D7342513441400F0B14B /* 测试视图 */,
 				04DE844D2510AF25008615B3 /* 测试样例 */,
@@ -680,6 +683,7 @@
 				04DE84532510AF50008615B3 /* Test01ViewController.swift in Sources */,
 				04E08A882514424600780C15 /* Kit05ViewController.swift in Sources */,
 				04D8D73A2513445100F0B14B /* Kit01ViewController.swift in Sources */,
+				046227392533D72E009B464F /* ListTableViewController.swift in Sources */,
 				0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				046266D82511FF7100D06EFA /* Test02ViewController.swift in Sources */,

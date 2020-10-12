@@ -80,20 +80,8 @@ open class xCollectionViewController: UICollectionViewController {
         super.viewDidDisappear(animated)
         self.isAppear = false
     }
-    
-    // MARK: - Open Func
-    /// 注册Headers
-    @objc open func registerHeaders() { }
-    /// 注册Cells
-    @objc open func registerCells() { }
-    /// 注册Footers
-    @objc open func registerFooters() { }
-    /// 初始化UI
-    @objc open func addKit() { }
-    /// 初始化子控制器
-    @objc open func addChildren() { }
     /// 快速实例化对象(storyboard比类名少指定后缀)
-    open class func quickInstancetype() -> Self
+    open override class func quickInstancetype() -> Self
     {
         let layout = UICollectionViewFlowLayout()
         let cvc = self.init(collectionViewLayout: layout)
@@ -181,4 +169,17 @@ open class xCollectionViewController: UICollectionViewController {
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return self.itemSize
     }
+}
+
+// MARK: - Extension
+extension xCollectionViewController {
+    
+    
+    // MARK: - Open Func
+    /// 注册Headers
+    @objc open func registerHeaders() { }
+    /// 注册Cells
+    @objc open func registerCells() { }
+    /// 注册Footers
+    @objc open func registerFooters() { }
 }

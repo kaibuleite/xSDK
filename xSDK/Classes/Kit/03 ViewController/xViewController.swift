@@ -74,15 +74,4 @@ open class xViewController: UIViewController {
         }
     }
     
-    // MARK: - Open Func
-    /// 初始化UI
-    @objc open func addKit() { }
-    /// 初始化子控制器
-    @objc open func addChildren() { }
-    /// 快速实例化对象(storyboard比类名少指定后缀)
-    open class func quickInstancetype() -> Self
-    {
-        let vc = self.init()
-        return vc
-    }
 }
