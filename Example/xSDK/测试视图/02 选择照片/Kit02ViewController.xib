@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,6 +31,12 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="150" id="Gi9-PT-p05"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,7 +47,7 @@
                                 <constraint firstAttribute="bottom" secondItem="jRC-pp-lsg" secondAttribute="bottom" id="tlo-ma-Jlg"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuY-hB-Ape" customClass="xButton" customModule="xSDK">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuY-hB-Ape" customClass="xButton" customModule="xSDK">
                             <rect key="frame" x="0.0" y="158" width="150" height="40"/>
                             <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -62,13 +69,18 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="uLY-sI-7dR" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="7MD-2J-Ihm"/>
                 <constraint firstItem="uLY-sI-7dR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xLD-Et-83S"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-71" y="151"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -37,23 +37,22 @@ public class xRoundCornerView: xView {
     private let roundLayer = CAShapeLayer()
     
     // MARK: - Public Override Func
-    public override func initKit() {
+    public override func initKit()
+    {
         self.backgroundColor = .white
-        self.clipsToBounds = true
-        self.layer.masksToBounds = true
         self.roundLayer.backgroundColor = UIColor.clear.cgColor
-        //self.roundLayer.fillColor = UIColor.red.cgColor
-        //self.roundLayer.strokeColor = UIColor.blue.cgColor
+        self.roundLayer.fillColor = UIColor.red.cgColor
         self.roundLayer.lineWidth = 1
         self.roundLayer.lineCap = .round
         self.roundLayer.lineJoin = .round
     }
-    public override func addKit() {
+    public override func addKit()
+    {
         guard self.radius == 0 else {
-            self.draw(cornerRadius: self.radius)
+            self.clip(cornerRadius: self.radius)
             return
         }
-        self.draw(tlRadius: self.tlRadius,
+        self.clip(tlRadius: self.tlRadius,
                   trRadius: self.trRadius,
                   blRadius: self.blRadius,
                   brRadius: self.brRadius)
@@ -61,21 +60,22 @@ public class xRoundCornerView: xView {
     
     // MARK: - Public Func
     /// 规则圆角
-    public func draw(cornerRadius : CGFloat)
+    public func clip(cornerRadius : CGFloat)
     {
-        self.layer.cornerRadius = cornerRadius
         self.layer.mask = nil
+        let path = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: cornerRadius)
+        self.roundLayer.frame = self.bounds
+        self.roundLayer.path = path.cgPath
+        self.layer.mask = self.roundLayer
     }
     /// 不规则圆角
-    public func draw(tlRadius : CGFloat,
+    public func clip(tlRadius : CGFloat,
                      trRadius : CGFloat,
                      blRadius : CGFloat,
                      brRadius : CGFloat)
     {
         guard tlRadius >= 0, trRadius >= 0, blRadius >= 0, brRadius >= 0 else { return }
-        self.layer.cornerRadius = 0
         
-        self.layer.mask?.removeFromSuperlayer()
         self.layer.mask = nil
         // 声明计算参数
         self.layoutIfNeeded()
