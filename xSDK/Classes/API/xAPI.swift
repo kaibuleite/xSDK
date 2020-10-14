@@ -41,7 +41,9 @@ open class xAPI: NSObject {
     
     // MARK: - Open Property
     /// URL前缀
-    open var urlPrefix = ""
+    open var urlPrefix : String {
+        return "API前缀"
+    }
     
     // MARK: - Public Property
     /// 单例
