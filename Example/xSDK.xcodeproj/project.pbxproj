@@ -13,6 +13,8 @@
 		046266D92511FF7100D06EFA /* Test02ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046266D72511FF7100D06EFA /* Test02ViewController.xib */; };
 		0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */; };
 		0471BBC025199732005BF3E2 /* Kit12ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471BBBE25199732005BF3E2 /* Kit12ViewController.xib */; };
+		04737DC82536A6C300711976 /* Kit14ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04737DC62536A6C300711976 /* Kit14ViewController.swift */; };
+		04737DC92536A6C300711976 /* Kit14ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04737DC72536A6C300711976 /* Kit14ViewController.xib */; };
 		048DC481252B038B0001F672 /* Kit13ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC47F252B038B0001F672 /* Kit13ViewController.swift */; };
 		048DC482252B038B0001F672 /* Kit13ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048DC480252B038B0001F672 /* Kit13ViewController.xib */; };
 		04CDB88A2515A230005F531F /* Test06ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDB8882515A230005F531F /* Test06ViewController.swift */; };
@@ -77,6 +79,8 @@
 		046266D72511FF7100D06EFA /* Test02ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test02ViewController.xib; sourceTree = "<group>"; };
 		0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit12ViewController.swift; sourceTree = "<group>"; };
 		0471BBBE25199732005BF3E2 /* Kit12ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit12ViewController.xib; sourceTree = "<group>"; };
+		04737DC62536A6C300711976 /* Kit14ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit14ViewController.swift; sourceTree = "<group>"; };
+		04737DC72536A6C300711976 /* Kit14ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit14ViewController.xib; sourceTree = "<group>"; };
 		048DC47F252B038B0001F672 /* Kit13ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit13ViewController.swift; sourceTree = "<group>"; };
 		048DC480252B038B0001F672 /* Kit13ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit13ViewController.xib; sourceTree = "<group>"; };
 		04CDB8882515A230005F531F /* Test06ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test06ViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +186,15 @@
 			path = "12 PageControl组件";
 			sourceTree = "<group>";
 		};
+		04737DC52536A6B700711976 /* 14 过渡动画 */ = {
+			isa = PBXGroup;
+			children = (
+				04737DC62536A6C300711976 /* Kit14ViewController.swift */,
+				04737DC72536A6C300711976 /* Kit14ViewController.xib */,
+			);
+			path = "14 过渡动画";
+			sourceTree = "<group>";
+		};
 		048DC47E252B03790001F672 /* 13 选择外部导航地图 */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +274,7 @@
 				04ED539525184C0700D670F9 /* 11 Segment组件 */,
 				0471BBBC2519971F005BF3E2 /* 12 PageControl组件 */,
 				048DC47E252B03790001F672 /* 13 选择外部导航地图 */,
+				04737DC52536A6B700711976 /* 14 过渡动画 */,
 			);
 			path = "测试视图";
 			sourceTree = "<group>";
@@ -564,6 +578,7 @@
 				04D8D7482513606200F0B14B /* Kit02ViewController.xib in Resources */,
 				04CDB8B92515FF40005F531F /* Kit09ViewController.xib in Resources */,
 				04ED539925184C1400D670F9 /* Kit11ViewController.xib in Resources */,
+				04737DC92536A6C300711976 /* Kit14ViewController.xib in Resources */,
 				04D8D73B2513445100F0B14B /* Kit01ViewController.xib in Resources */,
 				046266D92511FF7100D06EFA /* Test02ViewController.xib in Resources */,
 				04D8D74D2513626800F0B14B /* Kit03ViewController.xib in Resources */,
@@ -676,6 +691,7 @@
 				04D8D72D251307EA00F0B14B /* Test03ViewController.swift in Sources */,
 				04E08A8E2514446900780C15 /* Kit06ViewController.swift in Sources */,
 				04E08AA12514676400780C15 /* Kit07ViewController.swift in Sources */,
+				04737DC82536A6C300711976 /* Kit14ViewController.swift in Sources */,
 				04E08AB82514A92500780C15 /* Test05ViewController.swift in Sources */,
 				04DE84532510AF50008615B3 /* Test01ViewController.swift in Sources */,
 				04E08A882514424600780C15 /* Kit05ViewController.swift in Sources */,

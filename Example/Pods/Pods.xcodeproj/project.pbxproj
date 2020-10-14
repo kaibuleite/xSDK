@@ -50,7 +50,10 @@
 		0471BBB8251996BE005BF3E2 /* xPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBB7251996BE005BF3E2 /* xPageControl.swift */; };
 		0471BBC225199B26005BF3E2 /* xPageControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471BBC125199B25005BF3E2 /* xPageControl.xib */; };
 		0471BBC325199B37005BF3E2 /* xPageControl.xib in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBC125199B25005BF3E2 /* xPageControl.xib */; };
-		048DC445252AFA910001F672 /* xImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC444252AFA910001F672 /* xImageDownloader.swift */; };
+		04737D9A2536A4D800711976 /* xAppManager+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04737D992536A4D800711976 /* xAppManager+Audio.swift */; };
+		04737DA32536A4ED00711976 /* xAppManager+FlashLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04737DA22536A4ED00711976 /* xAppManager+FlashLight.swift */; };
+		04737DAC2536A50100711976 /* xAppManager+Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04737DAB2536A50100711976 /* xAppManager+Downloader.swift */; };
+		04737DB52536A51C00711976 /* xAppManager+OpenURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04737DB42536A51C00711976 /* xAppManager+OpenURL.swift */; };
 		048DC458252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC457252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift */; };
 		048DC48A252B047A0001F672 /* Object+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC489252B047A0001F672 /* Object+xExtension.swift */; };
 		050A189DF0B4F405E9D3389F24EDF835 /* MJRefreshAutoFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = E608848BA535BC2129AE241EDBE1E3B6 /* MJRefreshAutoFooter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -439,7 +442,10 @@
 		0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xPageViewController.storyboard; sourceTree = "<group>"; };
 		0471BBB7251996BE005BF3E2 /* xPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xPageControl.swift; sourceTree = "<group>"; };
 		0471BBC125199B25005BF3E2 /* xPageControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = xPageControl.xib; sourceTree = "<group>"; };
-		048DC444252AFA910001F672 /* xImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xImageDownloader.swift; sourceTree = "<group>"; };
+		04737D992536A4D800711976 /* xAppManager+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xAppManager+Audio.swift"; sourceTree = "<group>"; };
+		04737DA22536A4ED00711976 /* xAppManager+FlashLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xAppManager+FlashLight.swift"; sourceTree = "<group>"; };
+		04737DAB2536A50100711976 /* xAppManager+Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xAppManager+Downloader.swift"; sourceTree = "<group>"; };
+		04737DB42536A51C00711976 /* xAppManager+OpenURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xAppManager+OpenURL.swift"; sourceTree = "<group>"; };
 		048DC457252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xChooseNavigationMapActionSheet.swift; sourceTree = "<group>"; };
 		048DC489252B047A0001F672 /* Object+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+xExtension.swift"; sourceTree = "<group>"; };
 		057239F79871861ACD968FAF8038BC0C /* xSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = xSDK.modulemap; sourceTree = "<group>"; };
@@ -908,6 +914,25 @@
 			path = "12 PageControl组件";
 			sourceTree = "<group>";
 		};
+		04737D8A2536A3E300711976 /* 15 AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				EF466832C63028BB7AB139D7788775E7 /* xActionSheet.swift */,
+				42D1CD55A1E94F60411902729575E3F2 /* xAlert.swift */,
+				041328CD252B2523003CA86E /* xMessageAlert.swift */,
+				831B41732FDD9615AC7CCACF224CA7B5 /* xInputAlert.swift */,
+			);
+			path = "15 AlertController";
+			sourceTree = "<group>";
+		};
+		04737DC42536A6A800711976 /* 14 过渡动画 */ = {
+			isa = PBXGroup;
+			children = (
+				41D21B6547271E02E9FB76B021F760C6 /* xAnimation.swift */,
+			);
+			path = "14 过渡动画";
+			sourceTree = "<group>";
+		};
 		048DC456252AFD830001F672 /* 13 选择外部导航地图 */ = {
 			isa = PBXGroup;
 			children = (
@@ -981,20 +1006,6 @@
 				24C002BA19EFC56391FAD89ADE3BA3D1 /* xImageView.swift */,
 			);
 			path = "11 ImageView";
-			sourceTree = "<group>";
-		};
-		26EEE05ADB8AD5A493230080334F7E79 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				EF466832C63028BB7AB139D7788775E7 /* xActionSheet.swift */,
-				42D1CD55A1E94F60411902729575E3F2 /* xAlert.swift */,
-				041328CD252B2523003CA86E /* xMessageAlert.swift */,
-				831B41732FDD9615AC7CCACF224CA7B5 /* xInputAlert.swift */,
-				41D21B6547271E02E9FB76B021F760C6 /* xAnimation.swift */,
-				048DC444252AFA910001F672 /* xImageDownloader.swift */,
-			);
-			name = Tools;
-			path = xSDK/Classes/Tools;
 			sourceTree = "<group>";
 		};
 		30566A571E0905A6D8C054DBAA27C703 /* 05 CollectionViewController */ = {
@@ -1092,6 +1103,7 @@
 				3AF482AAE31A3975893F7BEE820A50B4 /* 11 Segment组件 */,
 				0471BBB6251996AA005BF3E2 /* 12 PageControl组件 */,
 				048DC456252AFD830001F672 /* 13 选择外部导航地图 */,
+				04737DC42536A6A800711976 /* 14 过渡动画 */,
 			);
 			name = Product_Kit;
 			path = xSDK/Classes/Product_Kit;
@@ -1138,7 +1150,6 @@
 				4C14FADDADFB8780F4766C55FC4DE9D9 /* Product_Kit */,
 				E12A7722738566EE302127FF1694B6C7 /* Resources */,
 				E6C3BE9E2BCA5E716AB8E913B1241B18 /* Support Files */,
-				26EEE05ADB8AD5A493230080334F7E79 /* Tools */,
 			);
 			name = xSDK;
 			path = ../..;
@@ -1191,6 +1202,10 @@
 			isa = PBXGroup;
 			children = (
 				72DDD2CB7F32BC08B3A0734768CDCD32 /* xAppManager.swift */,
+				04737D992536A4D800711976 /* xAppManager+Audio.swift */,
+				04737DA22536A4ED00711976 /* xAppManager+FlashLight.swift */,
+				04737DAB2536A50100711976 /* xAppManager+Downloader.swift */,
+				04737DB42536A51C00711976 /* xAppManager+OpenURL.swift */,
 			);
 			name = Manager;
 			path = xSDK/Classes/Manager;
@@ -1765,6 +1780,7 @@
 				D739C1FC6338452EE92C6C005589D691 /* 12 Button */,
 				1EA08355A24E4FF11460E21934CE23C2 /* 13 TextField */,
 				9D24BED8CD2653901F7F4B64EF0CD692 /* 14 TextView */,
+				04737D8A2536A3E300711976 /* 15 AlertController */,
 			);
 			name = Kit;
 			path = xSDK/Classes/Kit;
@@ -2364,8 +2380,8 @@
 				8778C9B0FB5753C0280B8B30DD52EBB5 /* xImagePickerController.swift in Sources */,
 				041328CE252B2523003CA86E /* xMessageAlert.swift in Sources */,
 				55A051F086B5B65AE3068F1526C5DF1B /* xImageView.swift in Sources */,
+				04737DB52536A51C00711976 /* xAppManager+OpenURL.swift in Sources */,
 				7F94280F621A6F180707D42268592657 /* xInputAccessoryView.swift in Sources */,
-				048DC445252AFA910001F672 /* xImageDownloader.swift in Sources */,
 				1667E2F1C0EBC84476C49C8F90A0D58C /* xInputAccessoryView.xib in Sources */,
 				0460D9EA252BFF490076D4B9 /* ImageView+xExtension.swift in Sources */,
 				A1EA6284A96AC45BFDB9C75F942FC2DE /* xInputAlert.swift in Sources */,
@@ -2373,12 +2389,14 @@
 				D13EF578ACF046347551CD6BA92D159E /* xListCollectionViewController.swift in Sources */,
 				D02363BE3022464CF6F8A78D6C301EEC /* xListTableViewController.swift in Sources */,
 				6A659EC8B340DA8107C87E081C218DCF /* xMask+AnimeEatBeans.swift in Sources */,
+				04737D9A2536A4D800711976 /* xAppManager+Audio.swift in Sources */,
 				0444BE4E2518ABBC0033D8A2 /* xPageViewController.swift in Sources */,
 				883D7CCC7E13A7FE0470A38500C7C9A8 /* xMask+AnimeLayer.swift in Sources */,
 				7CB1228B6F3B792562D85C3C2CE27EE9 /* xMask+AnimeLineJump.swift in Sources */,
 				30F181857112D8EE018ACD455E4A9449 /* xMask+AnimeMagic1.swift in Sources */,
 				132F05C3345DD5DD7C7C01139E4A5411 /* xMaskConfig.swift in Sources */,
 				048DC458252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift in Sources */,
+				04737DAC2536A50100711976 /* xAppManager+Downloader.swift in Sources */,
 				09F40B4170F7CEEC2BDF63D85044EA10 /* xMaskViewController.storyboard in Sources */,
 				0460DA0D252C07F00076D4B9 /* xGPasswordViewController.swift in Sources */,
 				42BB5D7E49AB0E81F830C34D2931F528 /* xMaskViewController.swift in Sources */,
@@ -2409,6 +2427,7 @@
 				A6DCEF11BE6F636111E38C51296EC0AC /* xTableViewCell.swift in Sources */,
 				24EFCD8BC10C3EB7370F9BDE1575D4FF /* xTableViewController.swift in Sources */,
 				D7FACA433741FF26809E0A74E9E7E26A /* xTextField.swift in Sources */,
+				04737DA32536A4ED00711976 /* xAppManager+FlashLight.swift in Sources */,
 				33DD48D92CF2EA10012581B6F10DF6DC /* xTextView.swift in Sources */,
 				CCBCB9594177EA7D26F716A7027D6AC0 /* xView.swift in Sources */,
 				CF596DBC58DDBE70DEC8A01E9172958A /* xViewController.swift in Sources */,

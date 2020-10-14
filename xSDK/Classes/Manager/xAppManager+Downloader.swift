@@ -1,14 +1,14 @@
 //
-//  xImageDownloader.swift
+//  xAppManager+Downloader.swift
 //  xSDK
 //
-//  Created by Mac on 2020/10/5.
+//  Created by Mac on 2020/10/14.
 //
 
 import UIKit
 import SDWebImage
 
-public class xImageDownloader: NSObject {
+extension xAppManager {
     
     // MARK: - Public Func
     /// 下载图片

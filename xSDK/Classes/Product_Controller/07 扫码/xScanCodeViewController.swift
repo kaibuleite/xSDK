@@ -94,7 +94,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     }
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        xAppManager.closePhoneLight()
+        xAppManager.closeFlashLight()
     }
     public override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -117,12 +117,12 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         if sender.tag == 0 {
             sender.tag = 1
             name = "light_on.png"
-            xAppManager.openPhoneLight()
+            xAppManager.openFlashLight()
         }
         else {
             sender.tag = 0
             name = "light_off.png"
-            xAppManager.closePhoneLight()
+            xAppManager.closeFlashLight()
         }
         let bundle = Bundle.init(for: self.classForCoder)
         let img = UIImage.init(named: name, in: bundle, compatibleWith: nil) 
