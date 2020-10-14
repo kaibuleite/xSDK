@@ -7,13 +7,27 @@
 //
 
 import UIKit
+import xSDK
 
-class TableViewController: UITableViewController {
+class TableViewController: xListTableViewController {
     
     /// 是否是测试视图
     @IBInspectable var isKit : Bool = false
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //
+        self.addEndScrollHandler {
+            (ofset) in
+            xLog("滚动结束，当前偏移量为\(ofset)")
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath)
+    {
         tableView.deselectRow(at: indexPath, animated: true)
         // 获取类名
         let row = indexPath.row

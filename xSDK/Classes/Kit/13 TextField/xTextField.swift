@@ -12,6 +12,7 @@ open class xTextField: UITextField, UITextFieldDelegate {
     // MARK: - Handler
     /// 输入框内容回调
     public typealias xHandlerTextFieldInput = (String) -> Void
+    /// 输入框状态回调
     public typealias xHandlerTextFieldChangeStatus = () -> Void
     
     // MARK: - IBInspectable Property

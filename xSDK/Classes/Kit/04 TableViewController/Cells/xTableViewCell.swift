@@ -29,4 +29,9 @@ open class xTableViewCell: UITableViewCell {
     {
         
     }
+    /// 设置内容图片
+    open func setContentImage(with model : xModel)
+    {
+        
+    }
 }
