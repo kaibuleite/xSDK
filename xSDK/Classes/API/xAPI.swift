@@ -39,12 +39,6 @@ open class xAPI: NSObject {
     /// 上传过程回调
     public typealias xHandlerApiUploadProgress = (Progress) -> Void
     
-    // MARK: - Open Property
-    /// URL前缀
-    open var urlPrefix : String {
-        return "API前缀"
-    }
-    
     // MARK: - Public Property
     /// 单例
     public static let shared = xAPI()
@@ -69,6 +63,11 @@ open class xAPI: NSObject {
     {
         return xAPIConfig()
     }
+    /// URL前缀
+    open class func urlPrefix() -> String
+    {
+        return "API前缀"
+    }
     /// 格式化Api请求URL
     open class func formatRequest(urlStr : String) -> String
     {
@@ -76,7 +75,7 @@ open class xAPI: NSObject {
         xKeyWindow?.endEditing(true)
         var url = urlStr
         if urlStr.hasPrefix("http") == false {
-            url = shared.urlPrefix + urlStr
+            url = self.urlPrefix() + urlStr
         }
         // 转码
         let chaset = CharacterSet.urlQueryAllowed
@@ -114,6 +113,10 @@ open class xAPI: NSObject {
     /// 显示调试网页
     open class func showDebugWeb(html : String)
     {
+        guard html.xContains(subStr: "<html") else {
+            xWarning("不是HTML文本")
+            return
+        }
         guard let win = xKeyWindow else { return }
         shared.errWeb.view.removeFromSuperview()
         shared.errWeb.view.frame = win.bounds
