@@ -7,6 +7,8 @@
 
 import UIKit
 
+@objcMembers // 使用kvc必须添加(或者在变量前添加 @objc 标识符)
+
 open class xModel: NSObject {
     
     // MARK: - Public Property
