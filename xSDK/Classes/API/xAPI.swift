@@ -172,8 +172,6 @@ open class xAPI: NSObject {
                                         headers: fm_head)
         // 校验请求信息
         request.validate()
-        // 显示遮罩
-        xMaskViewController.display()
         // 进行请求
         request.responseJSON {
             (response) in
@@ -221,8 +219,6 @@ open class xAPI: NSObject {
                                         headers: fm_head)
         // 校验请求信息
         request.validate()
-        // 显示遮罩
-        xMaskViewController.display()
         // 进行请求
         request.responseJSON {
             (response) in
@@ -290,8 +286,6 @@ open class xAPI: NSObject {
                 })
                 // 校验请求信息
                 request.validate()
-                // 显示遮罩
-                xMaskViewController.display()
                 // 进行请求
                 request.responseJSON(completionHandler: {
                     (response) in
@@ -313,8 +307,6 @@ open class xAPI: NSObject {
                              failure : @escaping xHandlerApiRequestFailure)
     {
         defer {
-            xMaskViewController.dismiss()
-            xMaskViewController.recoverDefaultStyle()
             for (i, v) in shared.requestRecordList.enumerated() {
                 guard v.id == record.id else { continue }
                 shared.requestRecordList.remove(at: i)
