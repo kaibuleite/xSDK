@@ -11,6 +11,10 @@ import WebKit
 /// 方法详情可以参考 https://www.jianshu.com/p/747b7a1dfd06
 open class xWebViewController: xViewController, WKNavigationDelegate {
 
+    // MARK: - Handle
+    /// 点击关闭按钮回调
+    public typealias xHandlerClickCloseBtn = (UIButton) -> Void
+    
     // MARK: - IBOutlet Property
     /// 关闭按钮
     @IBOutlet weak var closeBtn: UIButton!
@@ -33,11 +37,13 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     
     // MARK: - Private Property
     /// js事件名列表
-    private var jsNameArray = [String]()
+    var jsNameArray = [String]()
     /// 进度条
-    private let progressView = UIProgressView()
+    let progressView = UIProgressView()
     /// 浏览器主体
-    private let web = WKWebView.init(frame: .zero, configuration: xWebViewController.getWebConfig())
+    let web = WKWebView.init(frame: .zero, configuration: xWebViewController.getWebConfig())
+    /// 回调
+    var clickCloseBtnHandler : xHandlerClickCloseBtn?
     
     // MARK: - 内存释放
     deinit {
@@ -45,6 +51,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         self.removeObserver()
         self.web.uiDelegate = nil
         self.web.navigationDelegate = nil
+        self.clickCloseBtnHandler = nil
     }
     
     // MARK: - Open Override Func
@@ -115,6 +122,13 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     open func actJavaScriptMethod() { }
     
     // MARK: - Public Func
+    /// 绑定按钮关闭回调（退出界面啥的）
+    /// - Parameter handler: 回调
+    public func addClickCloseBtn(handler : @escaping xHandlerClickCloseBtn)
+    {
+        self.closeBtn.isHidden = !self.isShowCloseBtn
+        self.clickCloseBtnHandler = handler
+    }
     /// 加载URL地址
     /// - Parameter str: 地址
     public func load(url str: String)
@@ -159,24 +173,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     // MARK: - IBAction Private Func
     @IBAction func closeBtnClick()
     {
-        if self.view.superview == xKeyWindow {
-            self.view.removeFromSuperview()
-            return
-        }
-        guard let nvc = self.navigationController else {
-            self.dismiss(animated: true, completion: nil)
-            return
-        }
-        guard let root = nvc.children.first else {
-            xWarning("空的导航栏？？？？")
-            self.dismiss(animated: true, completion: nil)
-            return
-        }
-        if root == self {
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            nvc.popViewController(animated: true)
-        }
+        self.clickCloseBtnHandler?(self.closeBtn)
     }
     
     // MARK: - Private Func

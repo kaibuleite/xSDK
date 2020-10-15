@@ -109,7 +109,6 @@ open class xAPI: NSObject {
     open class func breakCheckResponse(withErrorCode code : Int) -> Bool {
         return false
     }
-    
     /// 显示调试网页
     open class func showDebugWeb(html : String)
     {
@@ -122,6 +121,12 @@ open class xAPI: NSObject {
         shared.errWeb.view.frame = win.bounds
         win.addSubview(shared.errWeb.view)
         shared.errWeb.load(html: html)
+        shared.errWeb.isShowCloseBtn = true
+        shared.errWeb.addClickCloseBtn {
+            (sender) in
+            // 手动控制关闭
+            shared.errWeb.view.removeFromSuperview()
+        }
     }
     
     // MARK: - Public Func
