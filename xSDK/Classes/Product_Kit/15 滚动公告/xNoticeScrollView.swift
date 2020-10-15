@@ -29,6 +29,8 @@ public class xNoticeScrollView: xContainerView {
     public var scrollDirection = xScrollNoticeDirectionEnum.vertical
     /// 字体大小(默认15)
     public var textFontSize = CGFloat(15)
+    /// 字体颜色
+    public var textColor = UIColor.darkText
     /// 停留时间
     public var stopDuration = Double(3)
     
@@ -37,6 +39,8 @@ public class xNoticeScrollView: xContainerView {
     private var currentNoticeIndex = 0
     /// 是否中断动画
     private var isStopAnimation = false
+    /// 是否正在执行动画
+    private var isAnimate = false
     /// 子控件
     private var itemViewArray = [UIButton]()
     /// 选择回调
@@ -94,6 +98,7 @@ public class xNoticeScrollView: xContainerView {
             let btn = UIButton(type: .system)
             btn.tag = i
             btn.setTitle(title, for: .normal)
+            btn.setTitleColor(self.textColor, for: .normal)
             btn.titleLabel?.font = font
             btn.contentHorizontalAlignment = .left
             // 添加响应事件
@@ -134,6 +139,8 @@ public class xNoticeScrollView: xContainerView {
     {
         // 条件判断（防止突发情况多次调用）
         guard self.isStopAnimation == false else { return }
+        guard self.isAnimate == false else { return }
+        self.isAnimate = true
         // 获取公告控件
         guard self.itemViewArray.count > 1 else { return }
         var i = idx
@@ -172,6 +179,7 @@ public class xNoticeScrollView: xContainerView {
                     [weak self] (finish) in
                     item.isHidden = true
                     guard let ws = self else { return }
+                    ws.isAnimate = false
                     ws.startAnimation(at: item.tag + 1)
                 }
             })
