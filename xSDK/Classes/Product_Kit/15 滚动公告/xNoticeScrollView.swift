@@ -64,6 +64,11 @@ public class xNoticeScrollView: xContainerView {
             item.isHidden = true
         }
         self.reloadHandler?()
+        // 只有1个公告不需要执行动画
+        guard self.itemViewArray.count > 1 else {
+            self.itemViewArray.first?.isHidden = false
+            return
+        }
         self.startAnimation()
     }
     

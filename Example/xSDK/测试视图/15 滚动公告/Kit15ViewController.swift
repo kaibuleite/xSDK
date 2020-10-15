@@ -33,7 +33,7 @@ class Kit15ViewController: xViewController {
         }
         
         
-        let arr2 = ["111111111111111", "22222", "333333333333", "4444444444444444444444444444444444444444444", "5555555555555", "6666"]
+        let arr2 = ["111111111111111"]
         self.sn2.scrollDirection = .horizontal
         self.sn2.stopDuration = 1
         self.sn2.textFontSize = 18
