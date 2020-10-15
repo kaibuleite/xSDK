@@ -40,6 +40,7 @@ public class xSKUView: xView {
     // MARK: - Public Override Func
     public override func layoutSubviews() {
         super.layoutSubviews()
+        guard self.itemViewArray.count > 0 else { return }
         // 更新UI
         let cfg = self.config
         var frame = CGRect.zero
@@ -83,7 +84,7 @@ public class xSKUView: xView {
                        choose handler2 : @escaping xHandlerChooseItem)
     {
         guard dataArray.count > 0 else {
-            xWarning("数据不能为0")
+            xWarning("木有数据")
             return
         }
         self.clearOldSkuItem()
@@ -92,12 +93,13 @@ public class xSKUView: xView {
         self.chooseHandler = handler2
         // 添加规格控件
         let cfg = self.config
+        let font = UIFont.systemFont(ofSize: cfg.fontSize)
         for (i, title) in dataArray.enumerated()
         {
             let btn = UIButton(type: .system)
             btn.tag = i
             btn.setTitle(title, for: .normal)
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: cfg.fontSize)
+            btn.titleLabel?.font = font
             btn.contentHorizontalAlignment = .center
             btn.layer.cornerRadius = cfg.cornerRadius
             btn.layer.borderWidth = cfg.borderWidth

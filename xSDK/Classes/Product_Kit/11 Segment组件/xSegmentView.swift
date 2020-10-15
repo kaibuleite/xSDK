@@ -48,6 +48,7 @@ public class xSegmentView: xView {
     }
     public override func layoutSubviews() {
         super.layoutSubviews()
+        guard self.itemViewArray.count > 0 else { return }
         // 更新UI
         var frame = self.bounds
         self.contentScroll.frame = frame

@@ -43,6 +43,7 @@
 		0460DA35252C09930076D4B9 /* xGPasswordResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA34252C09930076D4B9 /* xGPasswordResultView.swift */; };
 		0460DA3E252C09A50076D4B9 /* xGPasswordPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA3D252C09A50076D4B9 /* xGPasswordPointView.swift */; };
 		0460DA67252C3F6C0076D4B9 /* xGPasswordConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA66252C3F6C0076D4B9 /* xGPasswordConfig.swift */; };
+		0461ACFF2537ED4600397D95 /* xNoticeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0461ACE62537ECFD00397D95 /* xNoticeScrollView.swift */; };
 		046228662534546F009B464F /* xFilterListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046228652534546F009B464F /* xFilterListTableViewController.swift */; };
 		0462286F253454FC009B464F /* xFilterListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0462286E253454FC009B464F /* xFilterListCollectionViewController.swift */; };
 		0471BBB425198A90005BF3E2 /* xPageViewController.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */; };
@@ -437,6 +438,7 @@
 		0460DA34252C09930076D4B9 /* xGPasswordResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGPasswordResultView.swift; sourceTree = "<group>"; };
 		0460DA3D252C09A50076D4B9 /* xGPasswordPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGPasswordPointView.swift; sourceTree = "<group>"; };
 		0460DA66252C3F6C0076D4B9 /* xGPasswordConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGPasswordConfig.swift; sourceTree = "<group>"; };
+		0461ACE62537ECFD00397D95 /* xNoticeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xNoticeScrollView.swift; sourceTree = "<group>"; };
 		046228652534546F009B464F /* xFilterListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = xFilterListTableViewController.swift; sourceTree = "<group>"; };
 		0462286E253454FC009B464F /* xFilterListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xFilterListCollectionViewController.swift; sourceTree = "<group>"; };
 		0471BBB025198A36005BF3E2 /* xPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xPageViewController.storyboard; sourceTree = "<group>"; };
@@ -889,6 +891,14 @@
 			path = "08 手势密码";
 			sourceTree = "<group>";
 		};
+		0461ACE52537ECE700397D95 /* 15 滚动公告 */ = {
+			isa = PBXGroup;
+			children = (
+				0461ACE62537ECFD00397D95 /* xNoticeScrollView.swift */,
+			);
+			path = "15 滚动公告";
+			sourceTree = "<group>";
+		};
 		0462287725345541009B464F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1104,6 +1114,7 @@
 				0471BBB6251996AA005BF3E2 /* 12 PageControl组件 */,
 				048DC456252AFD830001F672 /* 13 选择外部导航地图 */,
 				04737DC42536A6A800711976 /* 14 过渡动画 */,
+				0461ACE52537ECE700397D95 /* 15 滚动公告 */,
 			);
 			name = Product_Kit;
 			path = xSDK/Classes/Product_Kit;
@@ -2366,6 +2377,7 @@
 				3AF23CC4B77C4719B9832FEEB80192D2 /* xDataEmptyView.swift in Sources */,
 				9FB04613C349566BE01F95C9CE9B70FE /* xDataEmptyView.xib in Sources */,
 				3775669F1E7C0E0C28F30F2DB591D027 /* xDataPickerModel.swift in Sources */,
+				0461ACFF2537ED4600397D95 /* xNoticeScrollView.swift in Sources */,
 				593CFF63F0070C8D6F9C7A62BCBD4602 /* xDataPickerViewController.storyboard in Sources */,
 				CC26852DCA868FDBB3CAA3FE1FAD1890 /* xDataPickerViewController.swift in Sources */,
 				5EB67B97A899E7654FE8F152FC32EA88 /* xDatePickerConfig.swift in Sources */,

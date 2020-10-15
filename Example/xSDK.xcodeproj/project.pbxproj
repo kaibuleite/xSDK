@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0460DA50252C0B470076D4B9 /* Test08ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA4E252C0B470076D4B9 /* Test08ViewController.swift */; };
 		0460DA51252C0B470076D4B9 /* Test08ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0460DA4F252C0B470076D4B9 /* Test08ViewController.xib */; };
+		0461AD282537ED9700397D95 /* Kit15ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0461AD262537ED9700397D95 /* Kit15ViewController.swift */; };
+		0461AD292537ED9700397D95 /* Kit15ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0461AD272537ED9700397D95 /* Kit15ViewController.xib */; };
 		046266D82511FF7100D06EFA /* Test02ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266D62511FF7100D06EFA /* Test02ViewController.swift */; };
 		046266D92511FF7100D06EFA /* Test02ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046266D72511FF7100D06EFA /* Test02ViewController.xib */; };
 		0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */; };
@@ -75,6 +77,8 @@
 /* Begin PBXFileReference section */
 		0460DA4E252C0B470076D4B9 /* Test08ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test08ViewController.swift; sourceTree = "<group>"; };
 		0460DA4F252C0B470076D4B9 /* Test08ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test08ViewController.xib; sourceTree = "<group>"; };
+		0461AD262537ED9700397D95 /* Kit15ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit15ViewController.swift; sourceTree = "<group>"; };
+		0461AD272537ED9700397D95 /* Kit15ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit15ViewController.xib; sourceTree = "<group>"; };
 		046266D62511FF7100D06EFA /* Test02ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test02ViewController.swift; sourceTree = "<group>"; };
 		046266D72511FF7100D06EFA /* Test02ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test02ViewController.xib; sourceTree = "<group>"; };
 		0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit12ViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +170,15 @@
 				0460DA4F252C0B470076D4B9 /* Test08ViewController.xib */,
 			);
 			path = "08 手势密码";
+			sourceTree = "<group>";
+		};
+		0461AD252537ED8900397D95 /* 15 滚动公告 */ = {
+			isa = PBXGroup;
+			children = (
+				0461AD262537ED9700397D95 /* Kit15ViewController.swift */,
+				0461AD272537ED9700397D95 /* Kit15ViewController.xib */,
+			);
+			path = "15 滚动公告";
 			sourceTree = "<group>";
 		};
 		046266D52511FF6000D06EFA /* 02 浏览器 */ = {
@@ -275,6 +288,7 @@
 				0471BBBC2519971F005BF3E2 /* 12 PageControl组件 */,
 				048DC47E252B03790001F672 /* 13 选择外部导航地图 */,
 				04737DC52536A6B700711976 /* 14 过渡动画 */,
+				0461AD252537ED8900397D95 /* 15 滚动公告 */,
 			);
 			path = "测试视图";
 			sourceTree = "<group>";
@@ -591,6 +605,7 @@
 				04E08A892514424600780C15 /* Kit05ViewController.xib in Resources */,
 				04E08AA22514676400780C15 /* Kit07ViewController.xib in Resources */,
 				04D8D72E251307EA00F0B14B /* Test03ViewController.xib in Resources */,
+				0461AD292537ED9700397D95 /* Kit15ViewController.xib in Resources */,
 				0460DA51252C0B470076D4B9 /* Test08ViewController.xib in Resources */,
 				04E08A8F2514446900780C15 /* Kit06ViewController.xib in Resources */,
 				0471BBC025199732005BF3E2 /* Kit12ViewController.xib in Resources */,
@@ -704,6 +719,7 @@
 				04CDB8B82515FF40005F531F /* Kit09ViewController.swift in Sources */,
 				04E08A842514423900780C15 /* Kit04ViewController.swift in Sources */,
 				04CDB8B42515FF35005F531F /* Kit08ViewController.swift in Sources */,
+				0461AD282537ED9700397D95 /* Kit15ViewController.swift in Sources */,
 				04CDB88F2515A428005F531F /* TableViewController.swift in Sources */,
 				04D8D74C2513626800F0B14B /* Kit03ViewController.swift in Sources */,
 				04D8D7472513606200F0B14B /* Kit02ViewController.swift in Sources */,
