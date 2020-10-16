@@ -23,4 +23,15 @@ extension UILabel
                                       context: nil)
         return frame.size
     }
+    /// 设置为占位模式
+    public func xSetPlaceholderMode()
+    {
+        self.text = nil
+        self.backgroundColor = .groupTableViewBackground
+    }
+    /// 设置为普通模式
+    public func xSetNormalMode()
+    {
+        self.backgroundColor = .clear
+    }
 }

@@ -133,18 +133,21 @@ open class xTableViewController: UITableViewController {
     {
         self.endScrollHandler = handler
     }
-    
     // MARK: - Private Func
     /// 滚动结束
     private func scrollEnd(_ scrollView: UIScrollView)
     {
         self.isScrolling = false
-        // 设置显示的Cell的图片(一般在滚动结束后再设置，降低图片渲染的开销)
+        // 设置显示的Cell的数据(一般在滚动结束后再设置，降低图片渲染的开销)
         for cell in self.tableView.visibleCells {
             guard let xCell = cell as? xTableViewCell else { continue }
             guard let idp = self.tableView.indexPath(for: cell) else { continue }
-            let model = self.getDataModel(at: idp)
-            xCell.setContentImage(with: model)
+            // 数据填充
+            if let model = self.getCellDataModel(at: idp) {
+                xCell.setContentData(with: model)
+            }
+            // 事件响应
+            xCell.addBtnClickHandler(in: self)
         }
         // 执行回调
         self.endScrollHandler?(scrollView.contentOffset)
@@ -198,19 +201,53 @@ open class xTableViewController: UITableViewController {
     }
     /* 停止拖拽*/
     open override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        // 拖动直接停止，没有滚动效果
+        // 停止后有减速惯性，继续滚动
         guard !decelerate else { return }
-        // xLog("滚动结束1")
+        xLog("\n***** 1.没有减速惯性，直接停止滚动")
         self.scrollEnd(scrollView)
     }
     /* 滚动完毕就会调用（人为拖拽scrollView导致滚动完毕，才会调用这个方法） */
     open override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard self.isScrolling else { return }
-        // xLog("滚动结束2")
+        // MJRefresh刷新时不调用
+        if let header = self.tableView.mj_header {
+            guard header.isRefreshing == false else { return }
+        }
+        if let footer = self.tableView.mj_footer {
+            guard footer.isRefreshing == false else { return }
+        }
+        let ofy = scrollView.contentOffset.y
+        if self.isCloseTopBounces == false {
+            // 开启下拉回弹
+            guard ofy >= -1 else { return }
+        }
+        if self.isCloseBottomBounces == false {
+            // 关闭上拉回弹
+            guard ofy <= scrollView.contentSize.height - scrollView.bounds.height + 1 else { return }
+        }
+        xLog("\n***** 2.减速惯性消失，停止滚动")
         self.scrollEnd(scrollView)
     }
     /* 滚动完毕就会调用（不是人为拖拽scrollView导致滚动完毕，才会调用这个方法）*/
     open override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        xLog("\n***** 3.代码动画结束，停止滚动滚动3")
+        self.scrollEnd(scrollView)
+    }
+    /* 调整内容插页，配合MJ_Header使用 */
+    open override func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
+        var isAddMJKit = false // 是否添加了MFRefresh控件
+        if let header = self.tableView.mj_header {
+            isAddMJKit = true
+            guard header.isRefreshing == false else { return }
+        }
+        if let footer = self.tableView.mj_footer {
+            isAddMJKit = true
+            guard footer.isRefreshing == false else { return }
+        }
+        // 没有搭载MFRefresh控件无需处理
+        guard isAddMJKit == true else { return }
+        // 停止滚动
+        xLog("\n***** 4.MJRefresh动画结束，停止滚动")
         self.scrollEnd(scrollView)
     }
 }
@@ -224,9 +261,12 @@ extension xTableViewController {
     @objc open func registerCells() { }
     /// 注册Footers
     @objc open func registerFooters() { }
-    /// 获取数据对象
-    @objc open func getDataModel(at idp : IndexPath) -> xModel
+    /// 获取指定idp的数据model（如果不需要设置数据可以返回nil）
+    /// - Parameter idp: IndexPath
+    /// - Returns: 数据对象
+    @objc open func getCellDataModel(at idp : IndexPath) -> xModel?
     {
-        return xModel()
+        return nil
     }
+    
 }

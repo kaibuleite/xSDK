@@ -9,29 +9,36 @@ import UIKit
 
 open class xTableViewCell: UITableViewCell {
     
-    // MARK: - Public Property
-    /// 绑定的视图控制器
-    public weak var tvc : xTableViewController?
-    
-    // MARK: - 内存释放
-    deinit {
-        self.tvc = nil
-    }
-    
     // MARK: - Open Override Func
     open override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     // MARK: - Open Func
+    /// 设置内容占位数据
+    open func setContentPlaceholderData()
+    {
+        /*
+        UIImageView.init().xSetPlaceholderMode()
+        UILabel.init().xSetPlaceholderMode()()
+         */
+    }
     /// 设置内容数据
     open func setContentData(with model : xModel)
     {
-        
+        /*
+        UIImageView.init().xSetNormalMode()()
+        UILabel.init().xSetNormalMode()
+        */
     }
-    /// 设置内容图片
-    open func setContentImage(with model : xModel)
+    /// 添加按钮事件
+    open func addBtnClickHandler(in xtvc : xTableViewController)
     {
-        
+        /*
+        guard let tvc = xtvc as? <#xTableViewController#> else { return }
+        UIButton.init().xAddClick {
+            (sender) in
+            
+        }*/
     }
 }
