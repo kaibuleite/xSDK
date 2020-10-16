@@ -22,6 +22,8 @@ open class xModel: NSObject {
     // MARK: - Private Property
     /// 计数器
     private static var xModelCount = 0
+    /// 成员变量列表
+    private var ivarList = [String]()
     
     // MARK: - Open Override Func
     /// 配对成员属性
@@ -56,13 +58,14 @@ open class xModel: NSObject {
         if let arr = obj as? Array<Any> {
             super.setValue(arr, forKey: key)
         }
-        // 字典匹配
+        // 字典类型
         else
         if let dic = obj as? Dictionary<String, Any> {
             super.setValue(dic, forKey: key)
         }
         else {
             xWarning("成员变量的数据格式不是常用类型,请确认:\(key) = \(obj), \(type(of: obj))")
+            super.setValue(value, forKey: key)
         }
     }
     /// 找不到key对应的成员属性
@@ -177,6 +180,7 @@ open class xModel: NSObject {
                           isReplaceEmpty : Bool = false) -> Void
     {
         guard let obj = model else { return }
+        // obj必须于self同级或是self父级
         guard self.isKind(of: obj.classForCoder) else {
             xWarning("数据类型不同，无法拼接 : \(obj.classForCoder)")
             return
@@ -220,24 +224,26 @@ open class xModel: NSObject {
     /// - Returns: 成员属性列表
     private func getIvarList(obj : xModel) -> [String]
     {
-        var result : [String] = []
-        if self.isMember(of: NSObject.classForCoder()) { return result }
-        if self.isMember(of: xModel.classForCoder()) { return result }
-        // 读取父类的成员变量
-        guard var spClass = obj.superclass else { return result }
+        // 如果有缓存则直接返回
+        guard self.ivarList.count == 0 else { return self.ivarList }
+        var ret : [String] = []
+        if self.isMember(of: NSObject.classForCoder()) { return ret }
+        if self.isMember(of: xModel.classForCoder()) { return ret }
+        // 读取对象父类的成员变量
+        guard var spClass = obj.superclass else { return ret }
         while spClass != NSObject.classForCoder() {
-            let spList = self.getIvarList(objClass: spClass)
-            result += spList
+            let spIvarList = self.getIvarList(objClass: spClass)
+            ret += spIvarList
             if let sspClass = spClass.superclass() {
+                // 父级的父级
                 spClass = sspClass
             }
             else {
                break
             }
         }
-        // 读取自身的成员变量
-        let objList = self.getIvarList(objClass: obj.classForCoder)
-        result += objList
+        // 读取对象自身的成员变量
+        ret += self.getIvarList(objClass: obj.classForCoder)
         /* 映射
          let morror = Mirror.init(reflecting: obj)
          for (key, value) in (morror.children) {
@@ -248,25 +254,26 @@ open class xModel: NSObject {
          }
          */
         // 排个序
-        result.sort()
-        return result
+        ret.sort()
+        self.ivarList = ret
+        return ret
     }
     /// 获取指定类的成员属性列表
     /// - Parameter objClass: 指定的类
     /// - Returns: 成员属性列表
     private func getIvarList(objClass : AnyClass) -> [String]
     {
-        var result : [String] = []
+        var ret : [String] = []
         var count : UInt32 = 0
         let list = class_copyIvarList(objClass, &count)
         for i in 0 ..< count {
             let ivar = list![Int(i)]
             let ivarName = ivar_getName(ivar)
             let nName = String(cString: ivarName!)
-            result.append(nName)
+            ret.append(nName)
         }
         free(list)
-        return result
+        return ret
     }
     
     // TODO: 获取成员属性键值表
