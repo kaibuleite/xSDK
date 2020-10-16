@@ -183,6 +183,7 @@ open class xTextField: UITextField, UITextFieldDelegate {
     open func textFieldDidEndEditing(_ textField: UITextField)
     {
         self.endEditHandler?()
+        self.accessoryView?.textLbl.text = nil
         // 修改容器边框
         if let container = self.container {
             container.layer.borderColor = self.containerBoardNomalColor.cgColor
@@ -192,6 +193,7 @@ open class xTextField: UITextField, UITextFieldDelegate {
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         self.returnHandler?()
+        self.accessoryView?.textLbl.text = nil
         // 修改容器边框
         if let container = self.container {
             container.layer.borderColor = self.containerBoardNomalColor.cgColor
