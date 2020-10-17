@@ -13,6 +13,7 @@
 		0461AD292537ED9700397D95 /* Kit15ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0461AD272537ED9700397D95 /* Kit15ViewController.xib */; };
 		046266D82511FF7100D06EFA /* Test02ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046266D62511FF7100D06EFA /* Test02ViewController.swift */; };
 		046266D92511FF7100D06EFA /* Test02ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046266D72511FF7100D06EFA /* Test02ViewController.xib */; };
+		04680EE0253ADD910011DDC3 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04680EDF253ADD910011DDC3 /* Protocol.swift */; };
 		0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */; };
 		0471BBC025199732005BF3E2 /* Kit12ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471BBBE25199732005BF3E2 /* Kit12ViewController.xib */; };
 		04737DC82536A6C300711976 /* Kit14ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04737DC62536A6C300711976 /* Kit14ViewController.swift */; };
@@ -81,6 +82,7 @@
 		0461AD272537ED9700397D95 /* Kit15ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit15ViewController.xib; sourceTree = "<group>"; };
 		046266D62511FF7100D06EFA /* Test02ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test02ViewController.swift; sourceTree = "<group>"; };
 		046266D72511FF7100D06EFA /* Test02ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test02ViewController.xib; sourceTree = "<group>"; };
+		04680EDF253ADD910011DDC3 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit12ViewController.swift; sourceTree = "<group>"; };
 		0471BBBE25199732005BF3E2 /* Kit12ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit12ViewController.xib; sourceTree = "<group>"; };
 		04737DC62536A6C300711976 /* Kit14ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit14ViewController.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				04CDB88E2515A428005F531F /* TableViewController.swift */,
+				04680EDF253ADD910011DDC3 /* Protocol.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				04D8D7342513441400F0B14B /* 测试视图 */,
 				04DE844D2510AF25008615B3 /* 测试样例 */,
@@ -707,6 +710,7 @@
 				04E08A8E2514446900780C15 /* Kit06ViewController.swift in Sources */,
 				04E08AA12514676400780C15 /* Kit07ViewController.swift in Sources */,
 				04737DC82536A6C300711976 /* Kit14ViewController.swift in Sources */,
+				04680EE0253ADD910011DDC3 /* Protocol.swift in Sources */,
 				04E08AB82514A92500780C15 /* Test05ViewController.swift in Sources */,
 				04DE84532510AF50008615B3 /* Test01ViewController.swift in Sources */,
 				04E08A882514424600780C15 /* Kit05ViewController.swift in Sources */,
