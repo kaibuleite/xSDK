@@ -68,6 +68,8 @@ open class xListTableViewController: xTableViewController {
             self.dataArray.append(contentsOf: list)
         }
         self.tableView.reloadData()
+        self.reloadDragScrollinEndVisibleCells()
+        xLog("***** 停止类型4: MJRefresh数据加载完成\n")
         // 显示空数据提示视图
         self.dataEmptyView?.removeFromSuperview()
         guard self.dataArray.count == 0 else { return }
@@ -77,7 +79,7 @@ open class xListTableViewController: xTableViewController {
     }
 }
 
-// MARK: - Extension
+// MARK: - Extension Objc Open Func
 extension xListTableViewController {
     
     /// 添加刷新

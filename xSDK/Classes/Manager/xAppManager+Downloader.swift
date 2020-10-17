@@ -12,6 +12,10 @@ extension xAppManager {
     
     // MARK: - Public Func
     /// 下载图片
+    /// - Parameters:
+    ///   - url: 图片url
+    ///   - handler1: 下载中回调
+    ///   - handler2: 下载完成回调
     public static func download(url : String,
                                 progress handler1 : @escaping SDWebImageDownloaderProgressBlock,
                                 completed handler2 : @escaping SDWebImageDownloaderCompletedBlock)
@@ -25,5 +29,17 @@ extension xAppManager {
                                                   progress: handler1,
                                                   completed: handler2)
         
+    }
+    
+    /// 从缓存中获取图片
+    /// - Parameter key: 图片url
+    /// - Returns: 图片
+    public static func getSDCacheImage(forKey key: String) -> UIImage?
+    {
+        let mgr = SDImageCache.shared
+        if let img = mgr.imageFromCache(forKey: key) { return img}
+        if let img = mgr.imageFromMemoryCache(forKey: key) { return img }
+        if let img = mgr.imageFromDiskCache(forKey: key) { return img }
+        return nil
     }
 }

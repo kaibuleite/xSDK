@@ -300,7 +300,8 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         xLog("扫描成功 : " + code)
         self.isScanSuccess = true
         // 播放音效
-        xAppManager.playSound(name: "scan_success", id: 50923)
+        let bundle = Bundle.init(for: self.classForCoder)
+        xAppManager.playSound(name: "scan_success", bundle: bundle, id: 50923)
         // 执行回调
         self.scanHandler?(code)
         self.backBtnClick()

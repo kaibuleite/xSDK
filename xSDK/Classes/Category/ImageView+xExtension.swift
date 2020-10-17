@@ -28,15 +28,4 @@ extension UIImageView {
             handler(img)
         })
     }
-    /// 设置为占位模式
-    public func xSetPlaceholderMode()
-    {
-        self.image = nil
-        self.backgroundColor = .groupTableViewBackground
-    }
-    /// 设置为普通模式
-    public func xSetNormalMode()
-    {
-        self.backgroundColor = .clear
-    }
 }

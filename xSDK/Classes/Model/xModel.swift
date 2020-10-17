@@ -170,14 +170,14 @@ open class xModel: NSObject {
         return ret
     }
     
-    // TODO: 拼接指定对象的数据
-    /// 拼接指定对象的数据
+    // TODO: 从指定对象中拷贝成员变量
+    /// 从指定对象中拷贝成员变量
     /// - Parameters:
     ///   - model: 要拼接的对象
-    ///   - isReplaceEmpty: 是否将空数据也替换进去
+    ///   - isCopyEmpty: 是否将空数据也拷进去
     /// - Returns: 拼接后的结果
-    public func appending(model : xModel?,
-                          isReplaceEmpty : Bool = false) -> Void
+    public func copyIvarData(from model : xModel?,
+                             isCopyEmpty : Bool = false) -> Void
     {
         guard let obj = model else { return }
         // obj必须于self同级或是self父级
@@ -186,18 +186,16 @@ open class xModel: NSObject {
             return
         }
         let list = self.getIvarList(obj: obj)
-        for i in 0 ..< list.count {
-            let key = list[i]
-            guard let value = obj.value(forKey: key) else { continue }
-            if let str = value as? String {
-                if str.isEmpty {
-                    if isReplaceEmpty {
-                        self.setValue("", forKey: key)
-                    }
-                    continue
+        for k in list {
+            let v = obj.value(forKey: k)
+            // 空数据判断
+            if isCopyEmpty == false {
+                if v == nil { continue }
+                if let str = v as? String {
+                    if str.isEmpty { continue }
                 }
             }
-            self.setValue(value, forKey: key)
+            self.setValue(v, forKey: k)
         }
     }
     

@@ -7,8 +7,8 @@
 
 import UIKit
 
-extension UILabel
-{
+extension UILabel {
+    
     // MARK: - Public Func
     /// 计算内容大小
     public func xGetContentSize() -> CGSize
@@ -24,10 +24,10 @@ extension UILabel
         return frame.size
     }
     /// 设置为占位模式
-    public func xSetPlaceholderMode()
+    public func xSetPlaceholderMode(string : String = "     ")
     {
-        self.text = nil
-        self.backgroundColor = .groupTableViewBackground
+        self.text = string
+        self.backgroundColor = xAppManager.shared.placeholderBackgroundColor
     }
     /// 设置为普通模式
     public func xSetNormalMode()

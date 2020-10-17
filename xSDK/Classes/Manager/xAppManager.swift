@@ -30,8 +30,17 @@ public class xAppManager: NSObject {
     /// 导航栏背阴影线条景色
     public var navigationBarShadowColor = UIColor.lightGray
     
+    /// 占位背景色
+    public var placeholderBackgroundColor = UIColor.xNew(hex: "F5F5F5")
+    /// 占位图
+    public var placeholderImage = UIColor.xNew(hex: "F5F5F5").xToImage(size: .init(width: 5, height: 5))
+    /// 横幅占位图
+    public var placeholderImage_avatar = UIColor.xNew(hex: "F5F5F5").xToImage(size: .init(width: 5, height: 5))
+    /// 横幅占位图
+    public var placeholderImage_banner : UIImage?
+    
     // MARK: - Private Property
     /// 音效id
-    let soundIDArray = [SystemSoundID]()
+    var soundIDArray = [SystemSoundID]()
     
 }

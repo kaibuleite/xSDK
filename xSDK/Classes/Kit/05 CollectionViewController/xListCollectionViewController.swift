@@ -66,6 +66,8 @@ open class xListCollectionViewController: xCollectionViewController {
             self.dataArray.append(contentsOf: list)
         }
         self.collectionView.reloadData()
+        self.reloadDragScrollinEndVisibleCells()
+        xLog("***** 停止类型4: MJRefresh数据加载完成\n")
         // 显示空数据提示视图
         self.dataEmptyView?.removeFromSuperview()
         guard self.dataArray.count == 0 else { return }
@@ -75,11 +77,9 @@ open class xListCollectionViewController: xCollectionViewController {
     }
 }
 
-// MARK: - Extension
+// MARK: - Extension Objc Open Func
 extension xListCollectionViewController {
     
-    
-    // MARK: - Open Func
     /// 添加刷新
     @objc open func addMJRefresh() { }
     /// 添加头部刷新
