@@ -9,6 +9,7 @@ import UIKit
 
 extension xAppManager {
     
+    // MARK: - Public Func
     /// 拨打电话
     public static func open(phone : String)
     {

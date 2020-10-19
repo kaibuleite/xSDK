@@ -5,12 +5,11 @@
 //  Created by Mac on 2020/10/5.
 //
 
-import UIKit
+import Foundation
 
 extension Array {
 
     // MARK: - Public Func
-    
     /// 安全获取数据
     public func xObject(in idx : Int) -> Element?
     {

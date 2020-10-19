@@ -5,7 +5,7 @@
 //  Created by Mac on 2020/9/14.
 //
 
-import UIKit
+import Foundation
 
 extension Float {
     

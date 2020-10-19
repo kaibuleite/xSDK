@@ -7,8 +7,8 @@
 
 import UIKit
 
-extension UIColor
-{
+extension UIColor {
+    
     // MARK: - Public Func
     // TODO: 实例化新颜色
     /// 创建16进制色
