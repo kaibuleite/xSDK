@@ -39,13 +39,21 @@ extension UIView {
             obj.removeFromSuperview()
         }
     }
-    /// 所在的ViewController
-    public func xContainerViewController() -> UIViewController?
+    /// 获取所在的ViewController
+    public func xGetContainerViewController() -> UIViewController?
     {
+        var view : UIView? = self
+        while view != nil {
+            let resp = view?.next
+            if let vc = resp as? UIViewController {
+                return vc
+            }
+            view = view?.superview
+        }
         return nil
     }
     
-    // TODO: 锚点
+    // TODO: 锚点坐标
     /// 重置锚点
     /// - Parameter anchorPoint: 新锚点
     public func xSetAnchor(point : CGPoint)

@@ -61,6 +61,8 @@
 		048DC458252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC457252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift */; };
 		048DC48A252B047A0001F672 /* Object+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC489252B047A0001F672 /* Object+xExtension.swift */; };
 		04CD498D253D74F000EBD84A /* CALayer+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD498C253D74F000EBD84A /* CALayer+xExtension.swift */; };
+		04CD4996253D80B700EBD84A /* Device+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD4995253D80B700EBD84A /* Device+xExtension.swift */; };
+		04CD499F253D860800EBD84A /* xAppManager+InfoDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD499E253D860800EBD84A /* xAppManager+InfoDictionary.swift */; };
 		04D33E73253D41BC0080BCEE /* xAppManager+Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D33E72253D41BC0080BCEE /* xAppManager+Device.swift */; };
 		04D33E7C253D45550080BCEE /* Date+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D33E7B253D45550080BCEE /* Date+xExtension.swift */; };
 		04D33E85253D65E50080BCEE /* Data+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D33E84253D65E50080BCEE /* Data+xExtension.swift */; };
@@ -461,6 +463,8 @@
 		048DC457252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xChooseNavigationMapActionSheet.swift; sourceTree = "<group>"; };
 		048DC489252B047A0001F672 /* Object+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+xExtension.swift"; sourceTree = "<group>"; };
 		04CD498C253D74F000EBD84A /* CALayer+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+xExtension.swift"; sourceTree = "<group>"; };
+		04CD4995253D80B700EBD84A /* Device+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+xExtension.swift"; sourceTree = "<group>"; };
+		04CD499E253D860800EBD84A /* xAppManager+InfoDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xAppManager+InfoDictionary.swift"; sourceTree = "<group>"; };
 		04D33E72253D41BC0080BCEE /* xAppManager+Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xAppManager+Device.swift"; sourceTree = "<group>"; };
 		04D33E7B253D45550080BCEE /* Date+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+xExtension.swift"; sourceTree = "<group>"; };
 		04D33E84253D65E50080BCEE /* Data+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+xExtension.swift"; sourceTree = "<group>"; };
@@ -956,6 +960,7 @@
 				18052194FE5DC0DC94B0B99BAA2C0FD4 /* View+xExtension.swift */,
 				AC35E5043DE09C96415401158FB9E54C /* ViewController+xExtension.swift */,
 				04CD498C253D74F000EBD84A /* CALayer+xExtension.swift */,
+				04CD4995253D80B700EBD84A /* Device+xExtension.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -1258,6 +1263,7 @@
 			isa = PBXGroup;
 			children = (
 				72DDD2CB7F32BC08B3A0734768CDCD32 /* xAppManager.swift */,
+				04CD499E253D860800EBD84A /* xAppManager+InfoDictionary.swift */,
 				04737D992536A4D800711976 /* xAppManager+Audio.swift */,
 				04737DA22536A4ED00711976 /* xAppManager+FlashLight.swift */,
 				04737DAB2536A50100711976 /* xAppManager+Downloader.swift */,
@@ -2438,6 +2444,7 @@
 				0460D9EA252BFF490076D4B9 /* ImageView+xExtension.swift in Sources */,
 				A1EA6284A96AC45BFDB9C75F942FC2DE /* xInputAlert.swift in Sources */,
 				5B344D042CA43A7C7295A9F4F2C5D6F2 /* xLineView.swift in Sources */,
+				04CD4996253D80B700EBD84A /* Device+xExtension.swift in Sources */,
 				D13EF578ACF046347551CD6BA92D159E /* xListCollectionViewController.swift in Sources */,
 				D02363BE3022464CF6F8A78D6C301EEC /* xListTableViewController.swift in Sources */,
 				6A659EC8B340DA8107C87E081C218DCF /* xMask+AnimeEatBeans.swift in Sources */,
@@ -2480,6 +2487,7 @@
 				235008C1FE67628E9A425C585782A8A7 /* xTabBarController.swift in Sources */,
 				A6DCEF11BE6F636111E38C51296EC0AC /* xTableViewCell.swift in Sources */,
 				24EFCD8BC10C3EB7370F9BDE1575D4FF /* xTableViewController.swift in Sources */,
+				04CD499F253D860800EBD84A /* xAppManager+InfoDictionary.swift in Sources */,
 				D7FACA433741FF26809E0A74E9E7E26A /* xTextField.swift in Sources */,
 				04737DA32536A4ED00711976 /* xAppManager+FlashLight.swift in Sources */,
 				33DD48D92CF2EA10012581B6F10DF6DC /* xTextView.swift in Sources */,

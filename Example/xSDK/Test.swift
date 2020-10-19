@@ -14,6 +14,8 @@ class Test: NSObject {
     /// 运行测试代码
     public static func run()
     {
+        xLog(xAppManager.isCrack()) 
+        
         let a = "Hello Apple"
         xLog("MD51 = " + a.xToMD5String())
         xLog("MD52 = " + a.xToMD5String(salt: "bc"))
