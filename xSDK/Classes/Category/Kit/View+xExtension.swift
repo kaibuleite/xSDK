@@ -10,6 +10,41 @@ import UIKit
 extension UIView {
     
     // MARK: - Public Func
+    // TODO: 截图
+    /// 截图
+    public func xSnapshotImage() -> UIImage?
+    {
+        let ret = self.layer.xSnapshotImage()
+        return ret
+    }
+    /// 截图并创建PDF
+    public func xSnapshotPDF() -> Data?
+    {
+        let ret = self.layer.xSnapshotPDF()
+        return ret
+    }
+    /// 设置阴影
+    public func xSetShadow(color : UIColor,
+                           offset : CGSize,
+                           radius : CGFloat)
+    {
+        self.layer.xSetShadow(color: color, offset: offset, radius: radius)
+    }
+    
+    // TODO: 控件
+    /// 移除所有子控件
+    public func xRemoveAllSubViews()
+    {
+        for obj in self.subviews {
+            obj.removeFromSuperview()
+        }
+    }
+    /// 所在的ViewController
+    public func xContainerViewController() -> UIViewController?
+    {
+        return nil
+    }
+    
     // TODO: 锚点
     /// 重置锚点
     /// - Parameter anchorPoint: 新锚点

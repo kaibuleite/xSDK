@@ -25,8 +25,5 @@ class Test: NSObject {
         let base64De = base64En.xToBase64DecodingString() ?? ""
         xLog("Base64 DE = " + base64De)
    
-        
-//        if let aesDe = aesEn.xToAESString(method: .decrypt, key: "abc", iv: "") ?? ""
-//        xLog("AES DE = " + aesDe)
     }
 }

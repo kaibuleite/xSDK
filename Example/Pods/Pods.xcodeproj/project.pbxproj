@@ -60,6 +60,7 @@
 		04737DB52536A51C00711976 /* xAppManager+OpenURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04737DB42536A51C00711976 /* xAppManager+OpenURL.swift */; };
 		048DC458252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC457252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift */; };
 		048DC48A252B047A0001F672 /* Object+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DC489252B047A0001F672 /* Object+xExtension.swift */; };
+		04CD498D253D74F000EBD84A /* CALayer+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD498C253D74F000EBD84A /* CALayer+xExtension.swift */; };
 		04D33E73253D41BC0080BCEE /* xAppManager+Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D33E72253D41BC0080BCEE /* xAppManager+Device.swift */; };
 		04D33E7C253D45550080BCEE /* Date+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D33E7B253D45550080BCEE /* Date+xExtension.swift */; };
 		04D33E85253D65E50080BCEE /* Data+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D33E84253D65E50080BCEE /* Data+xExtension.swift */; };
@@ -459,6 +460,7 @@
 		04737DB42536A51C00711976 /* xAppManager+OpenURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xAppManager+OpenURL.swift"; sourceTree = "<group>"; };
 		048DC457252AFDE10001F672 /* xChooseNavigationMapActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xChooseNavigationMapActionSheet.swift; sourceTree = "<group>"; };
 		048DC489252B047A0001F672 /* Object+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+xExtension.swift"; sourceTree = "<group>"; };
+		04CD498C253D74F000EBD84A /* CALayer+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+xExtension.swift"; sourceTree = "<group>"; };
 		04D33E72253D41BC0080BCEE /* xAppManager+Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xAppManager+Device.swift"; sourceTree = "<group>"; };
 		04D33E7B253D45550080BCEE /* Date+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+xExtension.swift"; sourceTree = "<group>"; };
 		04D33E84253D65E50080BCEE /* Data+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+xExtension.swift"; sourceTree = "<group>"; };
@@ -953,6 +955,7 @@
 				569B055264CBCAC08FDA4F2BFA819F57 /* Label+xExtension.swift */,
 				18052194FE5DC0DC94B0B99BAA2C0FD4 /* View+xExtension.swift */,
 				AC35E5043DE09C96415401158FB9E54C /* ViewController+xExtension.swift */,
+				04CD498C253D74F000EBD84A /* CALayer+xExtension.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -2383,6 +2386,7 @@
 				50C0F19E05E4D1F93180087F73A79E8A /* Float+xExtension.swift in Sources */,
 				9E378AF753503D573552AFF3E802830C /* Image+xExtension.swift in Sources */,
 				1D98AE46DF6AD517EC33C8617CACCF02 /* Label+xExtension.swift in Sources */,
+				04CD498D253D74F000EBD84A /* CALayer+xExtension.swift in Sources */,
 				2FFD2B795B8D49F50ECB86B83292E449 /* ReplaceMe.swift in Sources */,
 				B1E9593E459A45779502A08194FB8B16 /* String+xExtension.swift in Sources */,
 				59F97D8E60ACBCA06B82483C4CF8F675 /* Timer+xExtension.swift in Sources */,
