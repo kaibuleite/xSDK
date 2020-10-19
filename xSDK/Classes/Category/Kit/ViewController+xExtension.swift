@@ -25,7 +25,7 @@ extension UIViewController {
     // TODO: 实例化对象
     /// 通过storyboard实例化
     public class func xNew(storyboard name : String,
-                          identifier : String = "") -> Self
+                           identifier : String = "") -> Self
     {
         let bundle = Bundle.init(for: self.classForCoder())
         let sb = UIStoryboard.init(name: name, bundle: bundle)
