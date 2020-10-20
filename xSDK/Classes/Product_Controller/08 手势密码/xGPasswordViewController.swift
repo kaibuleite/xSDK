@@ -11,9 +11,10 @@ public class xGPasswordViewController: xViewController {
 
     // MARK: - Handler
     /// 输入手势密码完成回调
-    public typealias xHandlerInputGPassword = (String) -> Void
+    public typealias xHandlerInputGPassword = (xGPasswordViewController, String) -> Void
     
     // MARK: - IBOutlet Property
+    @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var resultView: xGPasswordResultView!
     @IBOutlet weak var p1View: xGPasswordPointView!
     @IBOutlet weak var p2View: xGPasswordPointView!
@@ -25,25 +26,23 @@ public class xGPasswordViewController: xViewController {
     @IBOutlet weak var p8View: xGPasswordPointView!
     @IBOutlet weak var p9View: xGPasswordPointView!
     
+    // MARK: - IBInspectable Property
+    /// 是否显示关闭按钮
+    @IBInspectable public var isShowCloseBtn = true
+    
     // MARK: - Public Property
-    /// 密码最小长度
-    public var passwordMinLength = 4
-    /// 线配置
-    public var lineConfig = xGPasswordLineConfig()
-    /// 结果配置
-    public var resultConfig = xGPasswordResultConfig()
     /// 点配置
-    public var pointConfig = xGPasswordPointConfig()
+    public var config = xGPasswordConfig()
     
     // MARK: - Private Property
-    /// 输入完成回调
-    private var inputHandler : xHandlerInputGPassword?
     /// 点视图数组
     private var pointViewArray = [xGPasswordPointView]()
     /// 选中的点视图数组
     private var choosePointViewArray = [xGPasswordPointView]()
     /// 线
     private let lineLayer = CAShapeLayer()
+    /// 输入完成回调
+    private var inputHandler : xHandlerInputGPassword?
     
     // MARK: - Public Override Func
     public override class func quickInstancetype() -> Self {
@@ -54,6 +53,7 @@ public class xGPasswordViewController: xViewController {
         super.viewDidLoad()
         // 基本配置
         self.isRootParentViewController = true
+        self.closeBtn.isHidden = !self.isShowCloseBtn
         self.pointViewArray = [self.p1View, self.p2View, self.p3View,
                                self.p4View, self.p5View, self.p6View,
                                self.p7View, self.p8View, self.p9View]
@@ -110,14 +110,31 @@ public class xGPasswordViewController: xViewController {
     // MARK: - IBOutlet Func
     @IBAction func closeBtnClick()
     {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss()
     }
     
     // MARK: - Public Func
-    /// 添加输入回调
-    public func addInputCompleted(_ handler : @escaping xHandlerInputGPassword)
+    /// 显示扫码界面
+    /// - Parameters:
+    ///   - parent: 父视图控制器
+    ///   - animated: 是否执行动画
+    ///   - handler: 回调
+    public class func display(from viewController : UIViewController,
+                              isShowCloseBtn : Bool = true,
+                              config : xGPasswordConfig = .init(),
+                              animated : Bool = true,
+                              inputGPassword handler : @escaping xHandlerInputGPassword)
     {
-        self.inputHandler = handler
+        let vc = xGPasswordViewController.quickInstancetype()
+        vc.isShowCloseBtn = isShowCloseBtn
+        vc.config = config
+        vc.inputHandler = handler
+        viewController.present(vc, animated: true, completion: nil)
+    }
+    /// 关闭界面
+    public func dismiss()
+    {
+        self.dismiss(animated: true, completion: nil)
     }
     /// 清空状态
     public func clearAll()
@@ -135,12 +152,12 @@ public class xGPasswordViewController: xViewController {
     /// 刷新配置
     private func refreshConfig()
     {
-        self.lineLayer.lineWidth = self.lineConfig.lineWidth
-        self.lineLayer.strokeColor = self.lineConfig.lineColor.cgColor
-        self.resultView.config = self.resultConfig
+        self.lineLayer.lineWidth = self.config.lineConfig.lineWidth
+        self.lineLayer.strokeColor = self.config.lineConfig.lineColor.cgColor
+        self.resultView.config = self.config.resultConfig
         self.pointViewArray.forEach {
             [unowned self] (view) in
-            view.config = self.pointConfig
+            view.config = self.config.pointConfig
         }
     }
     
@@ -166,16 +183,20 @@ public class xGPasswordViewController: xViewController {
             gp += "\(view.tag)"
         }
         // 判断密码是否合法
-        guard gp.count >= self.passwordMinLength else {
-            xMessageAlert.display(message: "密码长度必须>=\(passwordMinLength)位")
+        let maxLength = self.config.passwordMinLength
+        guard gp.count >= maxLength else {
+            xMessageAlert.display(message: "密码长度必须>=\(maxLength)位")
             path.removeAllPoints()
             self.lineLayer.path = path.cgPath
             self.clearAll()
             return
         }
         // 回调
+        if self.config.isAutoClearLine {
+            self.clearAll()
+        }
         self.resultView.setLine(with: gp)
-        self.inputHandler?(gp)
+        self.inputHandler?(self, gp)
     }
     
     /// 点视图上的线路径

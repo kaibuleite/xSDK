@@ -18,24 +18,19 @@ class Test08ViewController: UIViewController {
     
     // MARK: - 默认样式
     @IBAction func defaultBtnClick() {
-        let vc = xGPasswordViewController.quickInstancetype() 
-        vc.addInputCompleted {
-            [unowned self] (gp) in
-            if gp.isEmpty == false {
-                if gp == self.gp {
-                    vc.dismiss(animated: true, completion: nil)
-                    xMessageAlert.display(message: "密码相同")
-                }
+        xGPasswordViewController.display(from: self) {
+            [unowned self] (sender, gp) in
+            if gp == self.gp {
+                xMessageAlert.display(message: "密码相同")
+                sender.dismiss()
             }
-            self.gp = gp
             xLog("手势密码：\(gp)")
+            self.gp = gp
         }
-        self.present(vc, animated: true, completion: nil)
     }
     
     // MARK: - 自定义样式
     @IBAction func freeBtnClick() {
-        let vc = xGPasswordViewController.quickInstancetype()
         // 自定义样式
         let lineConfig = xGPasswordLineConfig()
         lineConfig.lineColor = .xNewRandom()
@@ -55,23 +50,21 @@ class Test08ViewController: UIViewController {
         pointConfig.outerStrokeChooseColor = .xNewRandom()
         pointConfig.arrowColor = .xNewRandom()
         
-        vc.lineConfig = lineConfig
-        vc.resultConfig = resultConfig
-        vc.pointConfig = pointConfig
-        vc.passwordMinLength = 3
+        let config = xGPasswordConfig()
+        config.lineConfig = lineConfig
+        config.resultConfig = resultConfig
+        config.pointConfig = pointConfig
+        config.passwordMinLength = 3
+        config.isAutoClearLine = true
         
-        vc.addInputCompleted {
-            [unowned self] (gp) in
-            if gp.isEmpty == false {
-                if gp == self.gp {
-                    xMessageAlert.display(message: "密码相同")
-                    vc.dismiss(animated: true, completion: nil)
-                }
+        xGPasswordViewController.display(from: self, isShowCloseBtn: false, config: config) {
+            [unowned self] (sender, gp) in
+            if gp == self.gp {
+                xMessageAlert.display(message: "密码相同")
+                sender.dismiss()
             }
-            self.gp = gp
-            vc.clearAll()
             xLog("手势密码：\(gp)")
+            self.gp = gp
         }
-        self.present(vc, animated: true, completion: nil)
     }
 }

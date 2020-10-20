@@ -34,6 +34,10 @@ open class xImageView: UIImageView {
         super.init(frame: frame)
         self.setContentKit()
     }
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        self.roundLayer.frame = self.bounds
+    }
     
     // MARK: - Open Func
     /// 初始化控件(先)

@@ -37,6 +37,10 @@ public class xRoundCornerView: xView {
     private let roundLayer = CAShapeLayer()
     
     // MARK: - Public Override Func
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.roundLayer.frame = self.bounds
+    }
     public override func initKit()
     {
         self.backgroundColor = .white

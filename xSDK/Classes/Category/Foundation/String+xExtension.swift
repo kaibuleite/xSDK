@@ -241,12 +241,8 @@ extension String {
                 return url
             }
         }
-        if let data = self.data(using: String.Encoding.utf8) {
-            let url = URL.init(dataRepresentation: data,
-                               relativeTo: nil)
-            return url
-        }
-        return nil
+        let url = URL.init(string: self)
+        return url
     }
     
     // TODO: 格式转换

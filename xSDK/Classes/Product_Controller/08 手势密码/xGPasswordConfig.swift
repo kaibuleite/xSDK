@@ -8,6 +8,21 @@
 import UIKit
 
 // MARK: - 手势密码配置
+public class xGPasswordConfig: NSObject {
+    
+    /// 是否自动清理线
+    public var isAutoClearLine = true
+    /// 密码最小长度
+    public var passwordMinLength = 4
+    /// 点配置
+    public var pointConfig = xGPasswordPointConfig()
+    /// 线配置
+    public var lineConfig = xGPasswordLineConfig()
+    /// 结果配置
+    public var resultConfig = xGPasswordResultConfig()
+}
+
+// MARK: - 手势密码线配置
 public class xGPasswordLineConfig: NSObject {
     
     /// 线宽
