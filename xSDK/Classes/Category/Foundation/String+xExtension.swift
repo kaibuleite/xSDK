@@ -230,12 +230,16 @@ extension String {
     }
     
     /// 转换成URL
-    public func xToURL() -> URL?
+    /// - Parameter isUsingUrlEncode: 是否使用URL编码
+    /// - Returns: URL
+    public func xToURL(isUsingUrlEncode: Bool = false) -> URL?
     {
         // 做url编码
-        if let str = self.xToUrlEncodeString() {
-            let url = URL.init(string: str)
-            return url
+        if isUsingUrlEncode {
+            if let str = self.xToUrlEncodeString() {
+                let url = URL.init(string: str)
+                return url
+            }
         }
         if let data = self.data(using: String.Encoding.utf8) {
             let url = URL.init(dataRepresentation: data,
