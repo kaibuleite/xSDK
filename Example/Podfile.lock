@@ -5,8 +5,8 @@ PODS:
     - SDWebImage/Core (= 5.9.3)
   - SDWebImage/Core (5.9.3)
   - TZImagePickerController (3.4.8)
-  - xSDK (1.3.5):
-    - Alamofire
+  - xSDK (1.3.6):
+    - Alamofire (~> 4.9.1)
     - MJRefresh
     - SDWebImage
     - TZImagePickerController
@@ -30,7 +30,7 @@ SPEC CHECKSUMS:
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
   TZImagePickerController: 6685e6d81b8fd5453e80ba369dd4ebd6e97276ee
-  xSDK: d7476528542a075af1e03ab14248463b6a55dadb
+  xSDK: f7f651a9ac3c57a41dc8bd0a938d54a3a1774f9c
 
 PODFILE CHECKSUM: deef289b751b57ae7592493195e43644adc13065
 

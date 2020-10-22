@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4D5-7L-REt">
-                    <rect key="frame" x="30" y="409" width="354" height="88"/>
+                    <rect key="frame" x="30" y="385" width="354" height="136"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbT-yq-VYF" customClass="xButton" customModule="xSDK">
                             <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
@@ -28,7 +28,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="GdN-Oa-3M4"/>
                             </constraints>
-                            <state key="normal" title="预览图片">
+                            <state key="normal" title="预览本地图片">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -46,7 +46,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="Rpp-7H-uw5"/>
                             </constraints>
-                            <state key="normal" title="预览GIF">
+                            <state key="normal" title="预览本地GIF">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -56,6 +56,24 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="gifBtnClick" destination="-1" eventType="touchUpInside" id="Mav-at-zTV"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bE-Vm-DQ8" customClass="xButton" customModule="xSDK">
+                            <rect key="frame" x="0.0" y="96" width="354" height="40"/>
+                            <color key="backgroundColor" red="0.0" green="0.33725490200000002" blue="0.83921568629999999" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="V4v-dr-oSR"/>
+                            </constraints>
+                            <state key="normal" title="预览网络图片">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="netBtnClick" destination="-1" eventType="touchUpInside" id="gZ5-a3-wyJ"/>
                             </connections>
                         </button>
                     </subviews>

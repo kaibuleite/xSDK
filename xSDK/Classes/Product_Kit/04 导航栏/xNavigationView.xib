@@ -39,7 +39,7 @@
                                 <constraint firstAttribute="width" secondItem="Egi-h4-rqm" secondAttribute="height" id="PhL-Za-PfP"/>
                             </constraints>
                             <color key="tintColor" systemColor="darkTextColor"/>
-                            <state key="normal" image="back_30.png"/>
+                            <state key="normal" image="xnavi_back.png"/>
                             <connections>
                                 <action selector="backBtnClick:" destination="-1" eventType="touchUpInside" id="5WA-9C-UnD"/>
                             </connections>
@@ -93,7 +93,7 @@
         </view>
     </objects>
     <resources>
-        <image name="back_30.png" width="15" height="15"/>
+        <image name="xnavi_back.png" width="10.5" height="18"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

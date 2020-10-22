@@ -50,9 +50,10 @@
  AES加密框架
  */
 
-// TODO:
+// TODO: FLAnimatedImage
 /*
- 
+ https://github.com/Flipboard/FLAnimatedImage
+ GIF动图处理框架
  */
 
 // TODO:
