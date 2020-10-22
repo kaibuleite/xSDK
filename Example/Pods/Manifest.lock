@@ -1,13 +1,15 @@
 PODS:
   - Alamofire (4.9.1)
-  - MJRefresh (3.4.3)
-  - SDWebImage (5.8.3):
-    - SDWebImage/Core (= 5.8.3)
-  - SDWebImage/Core (5.8.3)
-  - xSDK (1.0.7):
-    - Alamofire (~> 4.9.1)
-    - MJRefresh (~> 3.4.3)
-    - SDWebImage (~> 5.8.3)
+  - MJRefresh (3.5.0)
+  - SDWebImage (5.9.3):
+    - SDWebImage/Core (= 5.9.3)
+  - SDWebImage/Core (5.9.3)
+  - TZImagePickerController (3.4.8)
+  - xSDK (1.3.5):
+    - Alamofire
+    - MJRefresh
+    - SDWebImage
+    - TZImagePickerController
 
 DEPENDENCIES:
   - xSDK (from `../`)
@@ -17,6 +19,7 @@ SPEC REPOS:
     - Alamofire
     - MJRefresh
     - SDWebImage
+    - TZImagePickerController
 
 EXTERNAL SOURCES:
   xSDK:
@@ -24,9 +27,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
-  SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
-  xSDK: aa6a6b078703c3c3b67006967260c38f8942f54a
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
+  SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
+  TZImagePickerController: 6685e6d81b8fd5453e80ba369dd4ebd6e97276ee
+  xSDK: d7476528542a075af1e03ab14248463b6a55dadb
 
 PODFILE CHECKSUM: deef289b751b57ae7592493195e43644adc13065
 
