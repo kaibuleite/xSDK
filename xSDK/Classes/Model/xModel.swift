@@ -135,7 +135,6 @@ open class xModel: NSObject {
     ///   - dataSource: 数据源
     public static func newList(with dataSource : Any?) -> [xModel]
     {
-        
         var ret = [xModel]()
         // 数组嵌字典
         if let infoList = dataSource as? [[String : Any]] {

@@ -34,10 +34,10 @@ open class xImageView: UIImageView {
         super.init(frame: frame)
         self.setContentKit()
     }
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        self.roundLayer.frame = self.bounds
-    }
+//    open override func layoutSubviews() {
+//        super.layoutSubviews()
+//        self.roundLayer.frame = self.bounds
+//    }
     
     // MARK: - Open Func
     /// 初始化控件(先)
@@ -69,11 +69,14 @@ open class xImageView: UIImageView {
     /// 削减圆角
     public func clip(cornerRadius : CGFloat)
     {
-        self.layer.mask = nil
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = cornerRadius
+        /* 性能不是太好
         let path = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: cornerRadius)
         self.roundLayer.frame = self.bounds
         self.roundLayer.path = path.cgPath
         self.layer.mask = self.roundLayer
+         */
     }
     
     // MARK: - Private Func

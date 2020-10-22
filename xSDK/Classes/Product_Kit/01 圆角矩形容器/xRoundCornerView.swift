@@ -52,25 +52,23 @@ public class xRoundCornerView: xView {
     }
     public override func addKit()
     {
-        guard self.radius == 0 else {
+        if self.radius >= 0 {
             self.clip(cornerRadius: self.radius)
-            return
         }
-        self.clip(tlRadius: self.tlRadius,
-                  trRadius: self.trRadius,
-                  blRadius: self.blRadius,
-                  brRadius: self.brRadius)
+        else {
+            self.clip(tlRadius: self.tlRadius,
+                      trRadius: self.trRadius,
+                      blRadius: self.blRadius,
+                      brRadius: self.brRadius)
+        }
     }
     
     // MARK: - Public Func
     /// 规则圆角
     public func clip(cornerRadius : CGFloat)
     {
+        self.layer.cornerRadius = cornerRadius
         self.layer.mask = nil
-        let path = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: cornerRadius)
-        self.roundLayer.frame = self.bounds
-        self.roundLayer.path = path.cgPath
-        self.layer.mask = self.roundLayer
     }
     /// 不规则圆角
     public func clip(tlRadius : CGFloat,
@@ -78,9 +76,9 @@ public class xRoundCornerView: xView {
                      blRadius : CGFloat,
                      brRadius : CGFloat)
     {
-        guard tlRadius >= 0, trRadius >= 0, blRadius >= 0, brRadius >= 0 else { return }
-        
+        self.layer.cornerRadius = 0
         self.layer.mask = nil
+        guard tlRadius >= 0, trRadius >= 0, blRadius >= 0, brRadius >= 0 else { return }
         // 声明计算参数
         self.layoutIfNeeded()
         let frame = self.bounds
