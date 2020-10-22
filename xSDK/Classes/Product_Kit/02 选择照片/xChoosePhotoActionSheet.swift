@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import TZImagePickerController
 
 public class xChoosePhotoActionSheet: NSObject {
 
@@ -27,14 +26,12 @@ public class xChoosePhotoActionSheet: NSObject {
     ///   - cameraTitle: 相机标题
     ///   - cancelTitle: 取消标题
     ///   - allowsEditing: 是否开启编辑模式（裁剪成方形）
-    ///   - isUseTZImagePickerController: 是否使用第三方框架
     ///   - handler: 选择照片回调
     public static func display(from viewController : UIViewController,
                                albumTitle : String = "相册",
                                cameraTitle : String = "相机",
                                cancelTitle : String = "取消",
                                allowsEditing : Bool,
-                               isUseTZImagePickerController : Bool = true,
                                choose handler : @escaping xHandlerChoosePhoto)
     {
         let actionSheet = UIAlertController.init(title: nil,
@@ -43,11 +40,9 @@ public class xChoosePhotoActionSheet: NSObject {
         // 相册
         let album = UIAlertAction.init(title: albumTitle, style: .default) {
             (sender) in
-            /* 简易版 */
             let picker = xImagePickerController.init()
             picker.allowsEditing = allowsEditing
             picker.displayAlbum(from: viewController, choose: handler)
-            /* 框架版 */
         }
         actionSheet.addAction(album)
         // 相机

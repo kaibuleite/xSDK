@@ -52,7 +52,7 @@ public class xRoundCornerView: xView {
     }
     public override func addKit()
     {
-        if self.radius >= 0 {
+        if self.radius > 0 {
             self.clip(cornerRadius: self.radius)
         }
         else {
@@ -68,6 +68,7 @@ public class xRoundCornerView: xView {
     public func clip(cornerRadius : CGFloat)
     {
         self.layer.cornerRadius = cornerRadius
+        self.layer.masksToBounds = true
         self.layer.mask = nil
     }
     /// 不规则圆角

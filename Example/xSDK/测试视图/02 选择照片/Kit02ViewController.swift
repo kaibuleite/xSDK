@@ -8,6 +8,7 @@
 
 import UIKit
 import xSDK
+import TZImagePickerController
 
 class Kit02ViewController: UIViewController {
 
@@ -18,6 +19,7 @@ class Kit02ViewController: UIViewController {
             [weak self] (image) in
             guard let ws = self else { return }
             ws.photoIcon.image = image
+            
         }
     }
 }

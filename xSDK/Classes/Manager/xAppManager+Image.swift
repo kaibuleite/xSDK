@@ -1,8 +1,8 @@
 //
-//  xAppManager+Downloader.swift
+//  xAppManager+Image.swift
 //  xSDK
 //
-//  Created by Mac on 2020/10/14.
+//  Created by Mac on 2020/10/22.
 //
 
 import UIKit
@@ -16,9 +16,9 @@ extension xAppManager {
     ///   - url: 图片url
     ///   - handler1: 下载中回调
     ///   - handler2: 下载完成回调
-    public static func download(url : String,
-                                progress handler1 : @escaping SDWebImageDownloaderProgressBlock,
-                                completed handler2 : @escaping SDWebImageDownloaderCompletedBlock)
+    public static func downloadImage(url : String,
+                                     progress handler1 : @escaping SDWebImageDownloaderProgressBlock,
+                                     completed handler2 : @escaping SDWebImageDownloaderCompletedBlock)
     {
         let op1 = SDWebImageDownloaderOptions.highPriority
         let op2 = SDWebImageDownloaderOptions.scaleDownLargeImages
@@ -34,7 +34,6 @@ extension xAppManager {
                                                   options: options,
                                                   progress: handler1,
                                                   completed: handler2)
-        
     }
     
     /// 从缓存中获取图片
@@ -43,9 +42,14 @@ extension xAppManager {
     public static func getSDCacheImage(forKey key: String) -> UIImage?
     {
         let mgr = SDImageCache.shared
+        // 从缓存里找
         if let img = mgr.imageFromCache(forKey: key) { return img}
+        // 从内存里找
         if let img = mgr.imageFromMemoryCache(forKey: key) { return img }
+        // 从磁盘里找
         if let img = mgr.imageFromDiskCache(forKey: key) { return img }
+        // 找不到
         return nil
     }
+    
 }
