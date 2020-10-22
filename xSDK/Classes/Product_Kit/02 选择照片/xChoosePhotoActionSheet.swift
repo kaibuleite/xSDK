@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TZImagePickerController
 
 public class xChoosePhotoActionSheet: NSObject {
 
@@ -20,19 +21,21 @@ public class xChoosePhotoActionSheet: NSObject {
     
     // MARK: - 显示提示照片选择提示弹窗
     /// 开启照片选择提示栏
-    ///
-    /// handler必须实现,所以类型为 non-optional,此时需要使用 @escaping 逃逸
     /// - Parameters:
-    ///   - parent: 父视图控制器
-    ///   - allowsEditing: 是否允许系统编辑图片
-    ///   - handler: 回调
-    
+    ///   - viewController: 要显示的视图控制器
+    ///   - albumTitle: 相册标题
+    ///   - cameraTitle: 相机标题
+    ///   - cancelTitle: 取消标题
+    ///   - allowsEditing: 是否开启编辑模式（裁剪成方形）
+    ///   - isUseTZImagePickerController: 是否使用第三方框架
+    ///   - handler: 选择照片回调
     public static func display(from viewController : UIViewController,
                                albumTitle : String = "相册",
                                cameraTitle : String = "相机",
                                cancelTitle : String = "取消",
                                allowsEditing : Bool,
-                               choose handler : @escaping xHandlerChoosePhoto) -> Void
+                               isUseTZImagePickerController : Bool = true,
+                               choose handler : @escaping xHandlerChoosePhoto)
     {
         let actionSheet = UIAlertController.init(title: nil,
                                                  message: nil,
@@ -40,9 +43,11 @@ public class xChoosePhotoActionSheet: NSObject {
         // 相册
         let album = UIAlertAction.init(title: albumTitle, style: .default) {
             (sender) in
+            /* 简易版 */
             let picker = xImagePickerController.init()
             picker.allowsEditing = allowsEditing
             picker.displayAlbum(from: viewController, choose: handler)
+            /* 框架版 */
         }
         actionSheet.addAction(album)
         // 相机

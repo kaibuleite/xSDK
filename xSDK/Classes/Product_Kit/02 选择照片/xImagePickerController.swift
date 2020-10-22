@@ -77,7 +77,7 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
         self.failure(picker)
     }
     /// 失败
-    func failure(_ picker: UIImagePickerController) -> Void
+    func failure(_ picker: UIImagePickerController)
     {
         xLog("图片获取失败")
         picker.dismiss(animated: true, completion: nil)

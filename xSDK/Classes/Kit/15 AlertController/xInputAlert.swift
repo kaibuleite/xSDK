@@ -27,7 +27,7 @@ public class xInputAlert: NSObject {
                                sureTitle : String? = "确定",
                                cancelTitle : String? = "取消",
                                sureHandler : @escaping (String) -> Void,
-                               cancelHandler : @escaping () -> Void) -> Void
+                               cancelHandler : @escaping () -> Void)
     {
         let alert = UIAlertController.init(title: title,
                                            message: nil,

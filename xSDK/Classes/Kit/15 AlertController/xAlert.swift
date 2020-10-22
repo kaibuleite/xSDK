@@ -25,7 +25,7 @@ public class xAlert: NSObject {
                                sureTitle : String? = "确定",
                                cancelTitle : String? = "取消",
                                sureHandler : @escaping () -> Void,
-                               cancelHandler : @escaping () -> Void) -> Void
+                               cancelHandler : @escaping () -> Void)
     {
         let alert = UIAlertController.init(title: title,
                                            message: message,

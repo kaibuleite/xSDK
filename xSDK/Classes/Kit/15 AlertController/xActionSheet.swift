@@ -24,7 +24,7 @@ public class xActionSheet: NSObject {
                                dataArray : [String],
                                cancelTitle : String? = "取消",
                                itemHandler : @escaping (Int, String) -> Void,
-                               cancelHandler : @escaping () -> Void) -> Void
+                               cancelHandler : @escaping () -> Void)
     {
         let actionSheet = UIAlertController.init(title: title,
                                                  message: nil,

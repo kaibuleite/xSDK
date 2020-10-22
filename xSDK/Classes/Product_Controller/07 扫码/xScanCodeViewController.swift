@@ -148,7 +148,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     // MARK: - Private Func
     // TODO: 扫码操作
     /// 摄像头扫描二维码
-    private func startScanCodeCamera() -> Void
+    private func startScanCodeCamera()
     {
         // 对懒加载的input进行赋值
         guard let device = AVCaptureDevice.default(for: .video) else {
@@ -185,7 +185,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         self.session.startRunning()
     }
     /// 二维码扫描(本地相册)
-    private func startScanCodeAlbum() -> Void
+    private func startScanCodeAlbum()
     {
         let picker = xImagePickerController.init()
         picker.displayAlbum(from: self) {
@@ -235,7 +235,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         })
     }
     /// 绘制扫描边框
-    private func drawBorder() -> Void
+    private func drawBorder()
     {
         // 绘制边框
         self.view.layoutIfNeeded()
@@ -295,7 +295,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     
     // TODO: 扫描结果
     /// 扫描成功
-    private func scanSuccess(code : String) -> Void
+    private func scanSuccess(code : String)
     {
         xLog("扫描成功 : " + code)
         self.isScanSuccess = true
@@ -307,7 +307,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         self.backBtnClick()
     }
     /// 扫描失败
-    private func scanFailure() -> Void
+    private func scanFailure()
     {
         xMessageAlert.display(message: "扫描失败")
         self.isScanSuccess = false

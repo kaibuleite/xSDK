@@ -176,7 +176,7 @@ open class xModel: NSObject {
     ///   - isCopyEmpty: 是否将空数据也拷进去
     /// - Returns: 拼接后的结果
     public func copyIvarData(from model : xModel?,
-                             isCopyEmpty : Bool = false) -> Void
+                             isCopyEmpty : Bool = false)
     {
         guard let obj = model else { return }
         // obj必须于self同级或是self父级

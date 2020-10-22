@@ -43,7 +43,7 @@ extension UIButton
     // MARK: - Public Func
     /// 添加按钮事件
     /// - Parameter handler: 按钮回调
-    public func xAddClick(handler : @escaping xHandlerBtnClick) -> Void
+    public func xAddClick(handler : @escaping xHandlerBtnClick)
     {
         self.clickHandler = handler
         // 重新绑定按钮系统事件
