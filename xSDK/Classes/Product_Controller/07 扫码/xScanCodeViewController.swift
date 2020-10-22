@@ -132,7 +132,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     // MARK: - Public Func
     /// 显示扫码界面
     /// - Parameters:
-    ///   - parent: 父视图控制器
+    ///   - viewController: 上一级
     ///   - animated: 是否执行动画
     ///   - handler: 回调
     public class func display(from viewController : UIViewController,

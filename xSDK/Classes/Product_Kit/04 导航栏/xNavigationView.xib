@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,7 +25,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taO-RZ-TiQ" customClass="xGradientColorView" customModule="xSDK" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="-56" width="414" height="100"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="t0z-vC-gVD"/>
                     </constraints>
@@ -32,13 +33,13 @@
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ElF-F4-WqK">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="255" horizontalCompressionResistancePriority="755" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egi-h4-rqm">
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="255" horizontalCompressionResistancePriority="755" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egi-h4-rqm">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Egi-h4-rqm" secondAttribute="height" id="PhL-Za-PfP"/>
                             </constraints>
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <state key="normal" image="scan_back.png"/>
+                            <color key="tintColor" systemColor="darkTextColor"/>
+                            <state key="normal" image="back_30.png"/>
                             <connections>
                                 <action selector="backBtnClick:" destination="-1" eventType="touchUpInside" id="5WA-9C-UnD"/>
                             </connections>
@@ -67,12 +68,13 @@
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgC-Q3-OVE" customClass="xLineView" customModule="xSDK" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="43.5" width="414" height="0.5"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="k9Z-W5-kgK"/>
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="kOB-Cw-90a"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="dgC-Q3-OVE" secondAttribute="trailing" id="4Ln-eH-dVZ"/>
                 <constraint firstAttribute="trailing" secondItem="taO-RZ-TiQ" secondAttribute="trailing" id="4Lw-2X-tQD"/>
@@ -87,11 +89,19 @@
                 <constraint firstAttribute="bottom" secondItem="dgC-Q3-OVE" secondAttribute="bottom" id="kRB-WF-M7O"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="kOB-Cw-90a"/>
             <point key="canvasLocation" x="-71.014492753623188" y="17.410714285714285"/>
         </view>
     </objects>
     <resources>
-        <image name="scan_back.png" width="24" height="24"/>
+        <image name="back_30.png" width="15" height="15"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

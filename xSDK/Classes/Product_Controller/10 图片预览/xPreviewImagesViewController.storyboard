@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jte-Sl-m27">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Preview Images View Controller-->
+        <scene sceneID="qYC-eN-fcE">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="Jte-Sl-m27" customClass="xPreviewImagesViewController" customModule="xSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cH4-jL-8C5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CuG-av-XcN" customClass="xSafeView" customModule="xSDK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoZ-Ot-BZ2">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                    </scrollView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SqN-TB-zzY" customClass="xNavigationView" customModule="xSDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <color key="backgroundColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="vpg-7X-J0Q"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="vc" destination="Jte-Sl-m27" id="xe2-wv-cWx"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="SqN-TB-zzY" secondAttribute="trailing" id="3Hz-FN-Bht"/>
+                                    <constraint firstAttribute="trailing" secondItem="IoZ-Ot-BZ2" secondAttribute="trailing" id="9RJ-hW-j3M"/>
+                                    <constraint firstItem="IoZ-Ot-BZ2" firstAttribute="top" secondItem="CuG-av-XcN" secondAttribute="top" id="NwU-aQ-bdu"/>
+                                    <constraint firstItem="SqN-TB-zzY" firstAttribute="leading" secondItem="CuG-av-XcN" secondAttribute="leading" id="Wvg-l6-4VW"/>
+                                    <constraint firstAttribute="bottom" secondItem="IoZ-Ot-BZ2" secondAttribute="bottom" id="Y8H-jV-htg"/>
+                                    <constraint firstItem="IoZ-Ot-BZ2" firstAttribute="leading" secondItem="CuG-av-XcN" secondAttribute="leading" id="qjU-5H-xjt"/>
+                                    <constraint firstItem="SqN-TB-zzY" firstAttribute="top" secondItem="CuG-av-XcN" secondAttribute="top" id="rYT-UY-xb6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4YL-yo-DCo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CuG-av-XcN" firstAttribute="leading" secondItem="4YL-yo-DCo" secondAttribute="leading" id="dPD-03-rrb"/>
+                            <constraint firstItem="4YL-yo-DCo" firstAttribute="trailing" secondItem="CuG-av-XcN" secondAttribute="trailing" id="dv6-gx-6ap"/>
+                            <constraint firstItem="4YL-yo-DCo" firstAttribute="bottom" secondItem="CuG-av-XcN" secondAttribute="bottom" id="eAr-m6-XEm"/>
+                            <constraint firstItem="CuG-av-XcN" firstAttribute="top" secondItem="4YL-yo-DCo" secondAttribute="top" id="yUn-ko-ebR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerScroll" destination="IoZ-Ot-BZ2" id="YNF-FL-H9F"/>
+                        <outlet property="safeView" destination="CuG-av-XcN" id="hqZ-EC-l1u"/>
+                        <outlet property="topNaviBar" destination="SqN-TB-zzY" id="1PL-L2-xO6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2bf-ra-53b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-404.34782608695656" y="10.714285714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

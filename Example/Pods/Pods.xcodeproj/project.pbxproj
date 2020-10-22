@@ -15,6 +15,8 @@
 		032A65EE57DEDDE2F1A1DDA4C7B63704 /* MJRefreshTrailer.h in Headers */ = {isa = PBXBuildFile; fileRef = 81611A1E0317B60D3402916BB0E417A9 /* MJRefreshTrailer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0468FE3125412D6F005510EE /* xAppManager+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468FE3025412D6F005510EE /* xAppManager+Image.swift */; };
 		0468FE5225413055005510EE /* xChooseAlbumPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468FE5125413055005510EE /* xChooseAlbumPhotosViewController.swift */; };
+		0468FE652541395A005510EE /* xPreviewImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468FE642541395A005510EE /* xPreviewImagesViewController.swift */; };
+		0468FE8A25416EB1005510EE /* xPreviewImagesViewController.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 0468FE6D25416753005510EE /* xPreviewImagesViewController.storyboard */; };
 		04762E2F6696F6B57AC647288F800D2D /* SDWebImageCacheKeyFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 87D8D0461ADB21F78C625C0B0ED94F5A /* SDWebImageCacheKeyFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		056DB216FCD8640A51B540C46A4FAAE5 /* TZPhotoPreviewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A121F5DF1D049FCC84865150A217B304 /* TZPhotoPreviewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		064E3B3A6A411886A3648C2ADBE64F9B /* SDImageAPNGCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E693CD9A6AD45976C615B45C4FDE96 /* SDImageAPNGCoder.m */; };
@@ -494,6 +496,8 @@
 		045844969159BEEB230E7FF16018F70E /* xView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xView.swift; sourceTree = "<group>"; };
 		0468FE3025412D6F005510EE /* xAppManager+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xAppManager+Image.swift"; sourceTree = "<group>"; };
 		0468FE5125413055005510EE /* xChooseAlbumPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xChooseAlbumPhotosViewController.swift; sourceTree = "<group>"; };
+		0468FE642541395A005510EE /* xPreviewImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xPreviewImagesViewController.swift; sourceTree = "<group>"; };
+		0468FE6D25416753005510EE /* xPreviewImagesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xPreviewImagesViewController.storyboard; sourceTree = "<group>"; };
 		047741C372691B4C07F68FA24ABC9C7F /* SDImageCodersManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCodersManager.h; path = SDWebImage/Core/SDImageCodersManager.h; sourceTree = "<group>"; };
 		047EACD78A95A19865065B48BC6E01CD /* MJRefreshStateTrailer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateTrailer.h; path = MJRefresh/Custom/Trailer/MJRefreshStateTrailer.h; sourceTree = "<group>"; };
 		04BBA6F431BD1ECD1AB1FA9F47111877 /* SDImageCacheConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCacheConfig.h; path = SDWebImage/Core/SDImageCacheConfig.h; sourceTree = "<group>"; };
@@ -1004,6 +1008,15 @@
 			path = "09 多图选择器";
 			sourceTree = "<group>";
 		};
+		0468FE6325413931005510EE /* 10 图片预览 */ = {
+			isa = PBXGroup;
+			children = (
+				0468FE642541395A005510EE /* xPreviewImagesViewController.swift */,
+				0468FE6D25416753005510EE /* xPreviewImagesViewController.storyboard */,
+			);
+			path = "10 图片预览";
+			sourceTree = "<group>";
+		};
 		05B7E053A67FAE910BDBD34489D1BD93 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1056,6 +1069,7 @@
 		203295CEF1A5E014C708AE192B9664C6 /* Product_Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0468FE6325413931005510EE /* 10 图片预览 */,
 				6877FEF5640FFBF5713FF5A9CA30FFD2 /* 01 Mask遮罩 */,
 				DD9B8714A9D0678BC725BF1A2D87DEED /* 02 Web浏览器 */,
 				1BCDA5284F14CDF52917877D4991B47E /* 03 Page控件 */,
@@ -2623,6 +2637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0468FE8A25416EB1005510EE /* xPreviewImagesViewController.storyboard in Sources */,
 				9A55C52A2BBAE899695E157B94BF01CD /* Application+xExtension.swift in Sources */,
 				184B781CD7D9550CFE86AE0714447A02 /* Array+xExtension.swift in Sources */,
 				111D3ED164AB7AEC5C052F500D11D715 /* Button+xExtension.swift in Sources */,
@@ -2633,6 +2648,7 @@
 				932C5BDB38BA579B9E14A8ADAB1BABF8 /* Date+xExtension.swift in Sources */,
 				69F0B041792DF182E568BF71860FA759 /* Device+xExtension.swift in Sources */,
 				AC3D041E2A62C9A61F0E268A197FEB0D /* Double+xExtension.swift in Sources */,
+				0468FE652541395A005510EE /* xPreviewImagesViewController.swift in Sources */,
 				BE7C00496F88C39B36DE566D619F55C7 /* Float+xExtension.swift in Sources */,
 				69B14A40673018699C424D4FC2E1EA91 /* Image+xExtension.swift in Sources */,
 				D50472A94F3CE84AE42C82C3C8C94CD5 /* ImageView+xExtension.swift in Sources */,

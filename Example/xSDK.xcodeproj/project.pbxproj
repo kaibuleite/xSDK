@@ -17,6 +17,13 @@
 		04680F08253AF0DA0011DDC3 /* 备注.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04680F07253AF0DA0011DDC3 /* 备注.swift */; };
 		0468FE4425413017005510EE /* Test09ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468FE4225413017005510EE /* Test09ViewController.swift */; };
 		0468FE4525413017005510EE /* Test09ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0468FE4325413017005510EE /* Test09ViewController.xib */; };
+		0468FE7925416C4D005510EE /* Test10ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468FE7725416C4D005510EE /* Test10ViewController.swift */; };
+		0468FE7A25416C4D005510EE /* Test10ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0468FE7825416C4D005510EE /* Test10ViewController.xib */; };
+		0468FE8025416E22005510EE /* PIC_1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0468FE7F25416E22005510EE /* PIC_1.gif */; };
+		0468FE962541749A005510EE /* PIC_5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0468FE9225417499005510EE /* PIC_5.gif */; };
+		0468FE972541749A005510EE /* PIC_3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0468FE9325417499005510EE /* PIC_3.gif */; };
+		0468FE982541749A005510EE /* PIC_2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0468FE942541749A005510EE /* PIC_2.gif */; };
+		0468FE992541749A005510EE /* PIC_4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0468FE952541749A005510EE /* PIC_4.gif */; };
 		0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */; };
 		0471BBC025199732005BF3E2 /* Kit12ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0471BBBE25199732005BF3E2 /* Kit12ViewController.xib */; };
 		04737DC82536A6C300711976 /* Kit14ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04737DC62536A6C300711976 /* Kit14ViewController.swift */; };
@@ -90,6 +97,13 @@
 		04680F07253AF0DA0011DDC3 /* 备注.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "备注.swift"; sourceTree = "<group>"; };
 		0468FE4225413017005510EE /* Test09ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test09ViewController.swift; sourceTree = "<group>"; };
 		0468FE4325413017005510EE /* Test09ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test09ViewController.xib; sourceTree = "<group>"; };
+		0468FE7725416C4D005510EE /* Test10ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test10ViewController.swift; sourceTree = "<group>"; };
+		0468FE7825416C4D005510EE /* Test10ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test10ViewController.xib; sourceTree = "<group>"; };
+		0468FE7F25416E22005510EE /* PIC_1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PIC_1.gif; sourceTree = "<group>"; };
+		0468FE9225417499005510EE /* PIC_5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PIC_5.gif; sourceTree = "<group>"; };
+		0468FE9325417499005510EE /* PIC_3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PIC_3.gif; sourceTree = "<group>"; };
+		0468FE942541749A005510EE /* PIC_2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PIC_2.gif; sourceTree = "<group>"; };
+		0468FE952541749A005510EE /* PIC_4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PIC_4.gif; sourceTree = "<group>"; };
 		0471BBBD25199732005BF3E2 /* Kit12ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit12ViewController.swift; sourceTree = "<group>"; };
 		0471BBBE25199732005BF3E2 /* Kit12ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Kit12ViewController.xib; sourceTree = "<group>"; };
 		04737DC62536A6C300711976 /* Kit14ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit14ViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +221,20 @@
 				0468FE4325413017005510EE /* Test09ViewController.xib */,
 			);
 			path = "09 多图选择器";
+			sourceTree = "<group>";
+		};
+		0468FE7625416C37005510EE /* 10 图片预览 */ = {
+			isa = PBXGroup;
+			children = (
+				0468FE7725416C4D005510EE /* Test10ViewController.swift */,
+				0468FE7825416C4D005510EE /* Test10ViewController.xib */,
+				0468FE7F25416E22005510EE /* PIC_1.gif */,
+				0468FE942541749A005510EE /* PIC_2.gif */,
+				0468FE9325417499005510EE /* PIC_3.gif */,
+				0468FE952541749A005510EE /* PIC_4.gif */,
+				0468FE9225417499005510EE /* PIC_5.gif */,
+			);
+			path = "10 图片预览";
 			sourceTree = "<group>";
 		};
 		0471BBBC2519971F005BF3E2 /* 12 PageControl组件 */ = {
@@ -342,6 +370,7 @@
 		04DE844D2510AF25008615B3 /* 测试样例 */ = {
 			isa = PBXGroup;
 			children = (
+				0468FE7625416C37005510EE /* 10 图片预览 */,
 				04DE844E2510AF31008615B3 /* 01 遮罩 */,
 				046266D52511FF6000D06EFA /* 02 浏览器 */,
 				04D8D72A2513079600F0B14B /* 03 分页控件 */,
@@ -612,13 +641,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				0468FE7A25416C4D005510EE /* Test10ViewController.xib in Resources */,
 				04D8D7482513606200F0B14B /* Kit02ViewController.xib in Resources */,
 				04CDB8B92515FF40005F531F /* Kit09ViewController.xib in Resources */,
 				04ED539925184C1400D670F9 /* Kit11ViewController.xib in Resources */,
 				0468FE4525413017005510EE /* Test09ViewController.xib in Resources */,
 				04737DC92536A6C300711976 /* Kit14ViewController.xib in Resources */,
+				0468FE8025416E22005510EE /* PIC_1.gif in Resources */,
 				04D8D73B2513445100F0B14B /* Kit01ViewController.xib in Resources */,
 				046266D92511FF7100D06EFA /* Test02ViewController.xib in Resources */,
+				0468FE992541749A005510EE /* PIC_4.gif in Resources */,
 				04D8D74D2513626800F0B14B /* Kit03ViewController.xib in Resources */,
 				04E08A852514423900780C15 /* Kit04ViewController.xib in Resources */,
 				04E08AB125149BD800780C15 /* Test04ViewController.xib in Resources */,
@@ -634,6 +666,9 @@
 				04E08A8F2514446900780C15 /* Kit06ViewController.xib in Resources */,
 				0471BBC025199732005BF3E2 /* Kit12ViewController.xib in Resources */,
 				04E08AB92514A92500780C15 /* Test05ViewController.xib in Resources */,
+				0468FE972541749A005510EE /* PIC_3.gif in Resources */,
+				0468FE982541749A005510EE /* PIC_2.gif in Resources */,
+				0468FE962541749A005510EE /* PIC_5.gif in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				04CDB88B2515A230005F531F /* Test06ViewController.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -739,6 +774,7 @@
 				04D33E8E253D6CA00080BCEE /* Test.swift in Sources */,
 				04E08A882514424600780C15 /* Kit05ViewController.swift in Sources */,
 				04D8D73A2513445100F0B14B /* Kit01ViewController.swift in Sources */,
+				0468FE7925416C4D005510EE /* Test10ViewController.swift in Sources */,
 				0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				0468FE4425413017005510EE /* Test09ViewController.swift in Sources */,

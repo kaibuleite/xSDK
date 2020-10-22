@@ -12,7 +12,7 @@ public class xChooseAlbumPhotosViewController: TZImagePickerController {
     
     // MARK: - 内存释放
     deinit {
-        xLog("♻️ \(self.xClassStruct.name)")
+        xLog("📸 \(self.xClassStruct.name)")
     }
     
     // MARK: - Public Override Func
