@@ -29,4 +29,8 @@ import xSDK
 // 组件化：https://www.jianshu.com/p/b075c34e2349
 class ViewController: xViewController {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
 }

@@ -50,7 +50,7 @@ extension xAppManager {
             xWarning("存在越狱文件夹:\(path)")
             return true
         } catch {
-            xLog("")
+            xLog(error.localizedDescription)
         }
         
         let bundlePath = Bundle.main.bundlePath
