@@ -31,6 +31,5 @@ class ViewController: xViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 }

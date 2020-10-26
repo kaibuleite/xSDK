@@ -52,7 +52,7 @@ extension xAppManager {
         } catch {
             xLog(error.localizedDescription)
         }
-        
+        /*
         let bundlePath = Bundle.main.bundlePath
         let path1 = "\(bundlePath)/_CodeSignature"
         if mgr.fileExists(atPath: path1) {
@@ -64,6 +64,7 @@ extension xAppManager {
             xWarning("存在越狱文件夹:\(path2)")
             return true
         }
+         */
         xLog("没有越狱")
         return false
     }

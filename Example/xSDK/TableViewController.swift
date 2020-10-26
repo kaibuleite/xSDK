@@ -14,7 +14,9 @@ class xSDK_KitTableViewController: xTableViewController
 {
     override func viewDidLoad() {
         super.viewDidLoad()
-        Test.run()
+        DispatchQueue.global().async {
+            Test.run()
+        }
         self.addEndScrollHandler {
             (ofset) in
             xLog("滚动结束，当前偏移量为\(ofset)")

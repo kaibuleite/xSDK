@@ -35,15 +35,4 @@ extension NSObject {
         }
         return (spaceName, className)
     }
-    
-    // MARK: - Public Func
-    /// 对象同步锁，用于修改对象内的敏感数据
-    /// - Parameters:
-    ///   - handler: 回调事件
-    public func xLockSync(handler: () -> ())
-    {
-        objc_sync_enter(self)
-        handler()
-        objc_sync_exit(self)
-    }
 }
