@@ -1,17 +1,56 @@
 //
-//  xAppManager+Crack.swift
+//  xDeviceManager.swift
 //  xSDK
 //
-//  Created by Mac on 2020/10/19.
+//  Created by Mac on 2020/10/26.
 //
 
 import UIKit
+import AdSupport
+import AVKit
 
-extension xAppManager {
-    
+public class xDeviceManager: NSObject {
+
     // MARK: - Public Func
-    /// 越狱检测（简单）
-    public static func isCrack() -> Bool
+    // TODO: 身份标识
+    /// 系统版本
+    public static func systemVersion() -> String
+    {
+        let ret = UIDevice.current.systemVersion
+        return ret
+    }
+    
+    /// UUID
+    public static func UUID() -> String
+    {
+        let ret = NSUUID.init().uuidString
+        return ret
+    }
+    
+    /// IDFA
+    public static func IDFA() -> String
+    {
+        let ret = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        return ret
+    }
+    
+    // TODO: 状态判断
+    /// 是否是iPAd
+    public static func isPad() -> Bool
+    {
+        let ret = UI_USER_INTERFACE_IDIOM() == .pad
+        return ret
+    }
+    
+    /// 是否是模拟器
+    public static func isSimulator() -> Bool
+    {
+        let ret = UIDevice.current.model.xContains(subStr: "Simulator")
+        return ret
+    }
+    
+    /// 是否越狱
+    public static func isRoot() -> Bool
     {
         if self.isSimulator() {
             xLog("模拟器环境下不用检测")
@@ -67,5 +106,23 @@ extension xAppManager {
          */
         xLog("没有越狱")
         return false
+    }
+    
+    // TODO: 硬件相关
+    /// 设置手电筒状态
+    /// - Parameter isOn: 是否打开
+    public static func setFlashLight(_ torchMode: AVCaptureDevice.TorchMode)
+    {
+        guard let device = AVCaptureDevice.default(for: .video) else {
+            xWarning("设备初始化失败")
+            return
+        }
+        do {
+            try device.lockForConfiguration()
+            device.torchMode = torchMode
+            device.unlockForConfiguration()
+        } catch {
+            xWarning(error.localizedDescription)
+        }
     }
 }

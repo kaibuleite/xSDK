@@ -1,17 +1,31 @@
 //
-//  xAppManager+Audio.swift
+//  xVoiceManager.swift
 //  xSDK
 //
-//  Created by Mac on 2020/10/14.
+//  Created by Mac on 2020/10/26.
 //
 
 import UIKit
 import AVKit
 
-extension xAppManager {
+public class xVoiceManager: NSObject {
+    
+    // MARK: - Public Property
+    /// 单例
+    public static let shared = xVoiceManager()
+    private override init() { }
+    
+    // MARK: - Private Property
+    /// 音效id
+    var soundIDArray = [SystemSoundID]()
     
     // MARK: - Public Func
     /// 播放音效
+    /// - Parameters:
+    ///   - name: 文件名
+    ///   - bundle: 所在的包
+    ///   - type: 文件类型
+    ///   - id: 文件编号
     public static func playSound(name : String,
                                  bundle: Bundle,
                                  type : String = "mp3",

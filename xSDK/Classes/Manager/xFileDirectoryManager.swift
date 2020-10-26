@@ -1,13 +1,13 @@
 //
-//  xAppManager+FileDirectory.swift
+//  xFileDirectoryManager.swift
 //  xSDK
 //
-//  Created by Mac on 2020/10/19.
+//  Created by Mac on 2020/10/26.
 //
 
 import UIKit
 
-extension xAppManager {
+public class xFileDirectoryManager: NSObject {
     
     // MARK: - Public Func
     /// App Documents 文件夹目录

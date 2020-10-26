@@ -14,7 +14,7 @@ class Test: NSObject {
     /// 运行测试代码
     public static func run()
     {
-        xLog(xAppManager.isCrack())
+        xLog(xDeviceManager.isRoot())
         // 哈希值
         self.testHash()
         // 多任务处理

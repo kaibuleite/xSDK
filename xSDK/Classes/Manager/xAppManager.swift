@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import AVKit
 
 public class xAppManager: NSObject {
 
@@ -39,8 +38,39 @@ public class xAppManager: NSObject {
     /// 横幅占位图
     public var placeholderImage_banner : UIImage?
     
-    // MARK: - Private Property
-    /// 音效id
-    var soundIDArray = [SystemSoundID]()
+    /// 名称
+    public var appBundleName : String {
+        let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleName")
+        let ret = name as? String ?? ""
+        return ret
+    }
+    /// ID
+    public var appBundleID : String {
+        let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier")
+        let ret = name as? String ?? ""
+        return ret
+    }
+    /// 版本号
+    public var appVersion : String {
+        let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
+        let ret = name as? String ?? ""
+        return ret
+    }
+    /// 编译信息
+    public var appBuildVersion : String {
+        let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")
+        let ret = name as? String ?? ""
+        return ret
+    }
     
+    // MARK: - Public Func
+    /// 拨打电话
+    /// - Parameter phone: 电话
+    public static func call(phone : String)
+    {
+        let str = "tel://" + phone
+        guard let url = str.xToURL() else { return }
+        guard UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.openURL(url)
+    }
 }

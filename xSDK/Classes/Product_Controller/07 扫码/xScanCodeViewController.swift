@@ -94,7 +94,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     }
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        xAppManager.closeFlashLight()
+        xDeviceManager.setFlashLight(.off)
     }
     public override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -117,12 +117,12 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         if sender.tag == 0 {
             sender.tag = 1
             name = "light_on.png"
-            xAppManager.openFlashLight()
+            xDeviceManager.setFlashLight(.on)
         }
         else {
             sender.tag = 0
             name = "light_off.png"
-            xAppManager.closeFlashLight()
+            xDeviceManager.setFlashLight(.off)
         }
         let bundle = Bundle.init(for: self.classForCoder)
         let img = UIImage.init(named: name, in: bundle, compatibleWith: nil) 
@@ -301,7 +301,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         self.isScanSuccess = true
         // 播放音效
         let bundle = Bundle.init(for: self.classForCoder)
-        xAppManager.playSound(name: "scan_success", bundle: bundle, id: 50923)
+        xVoiceManager.playSound(name: "scan_success", bundle: bundle, id: 50923)
         // 执行回调
         self.scanHandler?(code)
         self.backBtnClick()

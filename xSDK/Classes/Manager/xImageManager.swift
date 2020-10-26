@@ -1,17 +1,23 @@
 //
-//  xAppManager+Image.swift
+//  xImageManager.swift
 //  xSDK
 //
-//  Created by Mac on 2020/10/22.
+//  Created by Mac on 2020/10/26.
 //
 
 import UIKit
 import Photos
 import SDWebImage
 
-extension xAppManager {
+public class xImageManager: NSObject {
+    
+    // MARK: - Public Property
+    /// 单例
+    public static let shared = xImageManager()
+    private override init() { }
     
     // MARK: - Public Func
+    // TODO: SD框架缓存
     /// SD框架图片缓存大小
     /// - Returns: 缓存大小
     public static func getSDWebImageCacheSize() -> CGFloat
@@ -32,6 +38,7 @@ extension xAppManager {
         }
     }
     
+    // TODO: SD框架图片加载
     /// 下载图片
     /// - Parameters:
     ///   - url: 图片url
@@ -73,6 +80,7 @@ extension xAppManager {
         return nil
     }
     
+    // TODO: 保存图片到相册
     /// 保存图片到相册(支持gif，apng)
     /// - Parameter img: 图片
     public static func saveImageToPHPhotoLibraryAlbum(_ img: UIImage,
