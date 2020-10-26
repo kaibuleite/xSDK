@@ -6,11 +6,32 @@
 //
 
 import UIKit
+import Photos
 import SDWebImage
 
 extension xAppManager {
     
     // MARK: - Public Func
+    /// SD框架图片缓存大小
+    /// - Returns: 缓存大小
+    public static func getSDWebImageCacheSize() -> CGFloat
+    {
+        let size = SDImageCache.shared.totalDiskSize()
+        // 换算成 MB (注意iOS中的字节之间的换算是1000不是1024)
+        let mb : CGFloat = CGFloat(size) / 1000 / 1000
+        return mb
+    }
+    
+    /// 清理SD框架图片缓存
+    /// - Parameter handler: 清理完成回调
+    public static func clearSDWebImageCache(completed handler : @escaping () -> Void)
+    {
+        SDImageCache.shared.clear(with: .all) {
+            xLog("清理完成")
+            handler()
+        }
+    }
+    
     /// 下载图片
     /// - Parameters:
     ///   - url: 图片url
@@ -52,4 +73,73 @@ extension xAppManager {
         return nil
     }
     
+    /// 保存图片到相册(支持gif，apng)
+    /// - Parameter img: 图片
+    public static func saveImageToPHPhotoLibraryAlbum(_ img: UIImage,
+                                                      completed handler: @escaping (Bool, Error?) -> Void)
+    {
+        guard self.isAuthorized() else {
+            xMessageAlert.display(message: "请到设置中开放相册权限")
+            return
+        }
+        let library = PHPhotoLibrary.shared()
+        library.performChanges {
+            let req = PHAssetChangeRequest.creationRequestForAsset(from: img)
+            if let asset = req.placeholderForCreatedAsset {
+                xLog("唯一标识 = \(asset.localIdentifier)")
+            }
+            
+        } completionHandler: {
+            (finish, error) in
+            if let err = error {
+                xMessageAlert.display(message: "保存失败")
+                xWarning(err.localizedDescription)
+            }
+            else {
+                xMessageAlert.display(message: "保存成功")
+            }
+            handler(finish, error)
+        }
+    }
+    
+    /// 保存图片到相册
+    /// - Parameter img: 图片
+    public static func saveImageToPhotosAlbum(_ img: UIImage)
+    {
+        guard self.isAuthorized() else {
+            xMessageAlert.display(message: "请到设置中开放相册权限")
+            return
+        }
+        UIImageWriteToSavedPhotosAlbum(img, shared, #selector(saveImage(image:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    // MARK: - Private Func
+    /// 保存图片到相册回调
+    /// - Parameters:
+    ///   - image: 图片
+    ///   - error: 错误
+    ///   - contextInfo: 上下文信息
+    @objc private func saveImage(image: UIImage,
+                                 didFinishSavingWithError error: NSError?,
+                                 contextInfo: AnyObject)
+    {
+        if let err = error {
+            xMessageAlert.display(message: "保存失败")
+            xWarning(err.localizedDescription)
+        }
+        else {
+            xMessageAlert.display(message: "保存成功")
+        }
+    }
+    
+    //判断是否授权
+    private static func isAuthorized() -> Bool {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized, .notDetermined:
+            return true
+        default:
+            return false
+        }
+    }
 }
