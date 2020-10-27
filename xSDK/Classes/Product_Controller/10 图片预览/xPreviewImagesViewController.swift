@@ -66,7 +66,7 @@ public class xPreviewImagesViewController: xViewController {
             if let str = obj as? String {
                 let url = URL.init(string: str)
                 icon.sd_setImage(with: url) {
-                    [weak self] (img, err, _, _) in
+                    [weak self] (img, err, CacheType, url) in
                     guard let ws = self else { return }
                     if icon.tag == ws.currentIndex {
                         icon.startAnimating()

@@ -7,6 +7,7 @@
 
 import UIKit
 import Photos
+import AssetsLibrary
 import SDWebImage
 
 public class xImageManager: NSObject {
@@ -17,6 +18,17 @@ public class xImageManager: NSObject {
     private override init() { }
     
     // MARK: - Public Func
+    //判断是否授权
+    public static func isAuthorized() -> Bool {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized, .notDetermined:
+            return true
+        default:
+            xMessageAlert.display(message: "未获得相册权限")
+            return false
+        }
+    }
     // TODO: SD框架缓存
     /// SD框架图片缓存大小
     /// - Returns: 缓存大小
@@ -81,24 +93,64 @@ public class xImageManager: NSObject {
     }
     
     // TODO: 保存图片到相册
-    /// 保存图片到相册(支持gif，apng)
-    /// - Parameter img: 图片
-    public static func saveImageToPHPhotoLibraryAlbum(_ img: UIImage,
-                                                      completed handler: @escaping (Bool, Error?) -> Void)
+    public static func saveImageToAlbum(_ img: UIImage?,
+                                        completed handler: ((Bool) -> Void)?)
     {
+        let data = img?.sd_imageData()
+        self.saveImageToAlbum(data, completed: handler)
+    }
+    public static func saveImageToAlbum(_ imgData: Data?,
+                                        completed handler: ((Bool) -> Void)?)
+    {
+        xLog(">>>>>>>>>> 开始保存图片")
         guard self.isAuthorized() else {
-            xMessageAlert.display(message: "请到设置中开放相册权限")
+            xLog(">>>>>>>>>> ❌未取得相册权限")
             return
         }
-        let library = PHPhotoLibrary.shared()
-        library.performChanges {
-            let req = PHAssetChangeRequest.creationRequestForAsset(from: img)
-            if let asset = req.placeholderForCreatedAsset {
-                xLog("唯一标识 = \(asset.localIdentifier)")
+        guard let data = imgData else {
+            xLog(">>>>>>>>>> ❌图片数据为nil")
+            return
+        }
+        xLog(">>>>>>>>>> 获取图片类型")
+        let format = NSData.sd_imageFormat(forImageData: data)
+        guard format != .undefined else {
+            xMessageAlert.display(message: "图片格式不正确")
+            xLog(">>>>>>>>>> ❌图片类型未知")
+            return
+        }
+        xLog(">>>>>>>>>> 图片类型 = " + format.xGetImageTypeName())
+        PHPhotoLibrary.shared().performChanges {
+            xLog(">>>>>>>>>> 开始保存图片")
+            // let req = PHAssetChangeRequest.creationRequestForAsset(from: ret) // 无法保存gif，用子类来
+            let req = PHAssetCreationRequest.forAsset()
+            req.addResource(with: .photo, data: data, options: nil)
+            if let ident = req.placeholderForCreatedAsset?.localIdentifier {
+                xLog(">>>>>>>>>> 图片保存成功，唯一标识 = " + ident)
             }
             
         } completionHandler: {
-            (finish, error) in
+            (isSuccess, error) in
+            if let err = error {
+                xWarning(err.localizedDescription)
+            }
+            xMessageAlert.display(message: isSuccess ? "保存成功" : "保存失败")
+            handler?(isSuccess)
+        }
+    }
+    
+    /*
+     方法过时，用上面的替换
+    /// 保存GIF图片到相册
+    /// - Parameter data: GIF图片数据
+    public static func saveGifDataToPhotosAlbum(_ data : NSData,
+                                                completed handler: @escaping (Bool) -> Void)
+    {
+        guard self.isAuthorized() else { return }
+        let metadata = ["UTI": kCMMetadataBaseDataType_GIF]
+        // 开始写数据
+        let library = ALAssetsLibrary.init()
+        library.writeImageData(toSavedPhotosAlbum: data as Data, metadata: metadata) {
+            (assetURL, error) in
             if let err = error {
                 xMessageAlert.display(message: "保存失败")
                 xWarning(err.localizedDescription)
@@ -106,18 +158,18 @@ public class xImageManager: NSObject {
             else {
                 xMessageAlert.display(message: "保存成功")
             }
-            handler(finish, error)
         }
     }
+     */
     
+    /*
+     旧方法，不推荐
     /// 保存图片到相册
     /// - Parameter img: 图片
-    public static func saveImageToPhotosAlbum(_ img: UIImage)
+    public static func saveImageToPhotosAlbum(_ img: UIImage,
+                                              completed handler: @escaping (Bool) -> Void)
     {
-        guard self.isAuthorized() else {
-            xMessageAlert.display(message: "请到设置中开放相册权限")
-            return
-        }
+        guard self.isAuthorized() else { return }
         UIImageWriteToSavedPhotosAlbum(img, shared, #selector(saveImage(image:didFinishSavingWithError:contextInfo:)), nil)
     }
     
@@ -139,15 +191,28 @@ public class xImageManager: NSObject {
             xMessageAlert.display(message: "保存成功")
         }
     }
+     
+     */
+}
+
+// MARK: - Ex SDImageFormat
+extension SDImageFormat {
     
-    //判断是否授权
-    private static func isAuthorized() -> Bool {
-        let status = PHPhotoLibrary.authorizationStatus()
-        switch status {
-        case .authorized, .notDetermined:
-            return true
-        default:
-            return false
+    /// 获取图片类型名称
+    /// - Returns: 获取图片类型名称
+    public func xGetImageTypeName() -> String
+    {
+        switch self {
+        case .JPEG:     return "jpg" // jpeg
+        case .PNG:      return "png"
+        case .GIF:      return "gif"
+        case .TIFF:     return "tiff" // tif
+        case .webP:     return "webp"
+        case .HEIC:     return "heic"
+        case .HEIF:     return "heif"
+        case .PDF:      return "pdf"
+        case .SVG:      return "svg"
+        default:        return "unknown"
         }
     }
 }
