@@ -19,7 +19,7 @@ class Test10ViewController: UIViewController {
     
     @IBAction func normalBtnClick() {
         var arr = [UIImage]()
-        for i in 1 ... 9 {
+        for i in 1 ... 2 {
             let name = "IMG_\(i)"
             guard let img = UIImage.init(named: name) else { continue }
             arr.append(img)
@@ -30,8 +30,8 @@ class Test10ViewController: UIViewController {
     
     @IBAction func gifBtnClick() {
         var arr = [Data]()
-        for i in 1 ... 5 {
-            let name = "PIC_\(i)"
+        for i in 1 ... 2 {
+            let name = "GIF_\(i)"
             let path = Bundle.main.path(forResource: name, ofType: "gif")!
             let data = NSData.init(contentsOfFile: path)!
             arr.append(data as Data)
