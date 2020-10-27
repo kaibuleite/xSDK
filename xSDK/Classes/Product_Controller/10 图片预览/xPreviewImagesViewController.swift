@@ -60,7 +60,8 @@ public class xPreviewImagesViewController: xViewController {
             }
             else
             if let data = obj as? Data {
-                icon.image = UIImage.sd_image(withGIFData: data)
+                let img = SDAnimatedImage.init(data: data)
+                icon.image = img
             }
             else
             if let str = obj as? String {
