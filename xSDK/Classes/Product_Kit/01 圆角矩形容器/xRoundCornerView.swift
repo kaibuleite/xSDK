@@ -43,7 +43,6 @@ public class xRoundCornerView: xView {
     }
     public override func initKit()
     {
-        self.backgroundColor = .white
         self.roundLayer.backgroundColor = UIColor.clear.cgColor
         self.roundLayer.fillColor = UIColor.red.cgColor
         self.roundLayer.lineWidth = 1
@@ -108,8 +107,8 @@ public class xRoundCornerView: xView {
                     clockwise: true)
         toPos = CGPoint.init(x: w, y: h - blRadius)
         path.addLine(to: toPos)
-        // 左下
-        radius = blRadius
+        // 右下
+        radius = brRadius
         center = CGPoint.init(x: w - radius, y: h - radius)
         path.addArc(withCenter: center, radius: radius,
                     startAngle: CGFloat.pi * 0 / 180,
@@ -117,8 +116,8 @@ public class xRoundCornerView: xView {
                     clockwise: true)
         toPos = CGPoint.init(x: brRadius, y: h)
         path.addLine(to: toPos)
-        // 右下
-        radius = brRadius
+        // 左下
+        radius = blRadius
         center = CGPoint.init(x: radius, y: h - radius)
         path.addArc(withCenter: center, radius: radius,
                     startAngle: CGFloat.pi * 90 / 180,

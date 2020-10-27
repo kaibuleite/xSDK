@@ -14,6 +14,8 @@
 		02630CF9E3967768C1A8EB31DBE9BB72 /* SDImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFC9C9D11926D1E308A69129FF94ACC /* SDImageCoder.m */; };
 		030F2AC677591D7B138D81E2CB94071D /* MJRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = F521CB485E726F0888EC18B5B6166262 /* MJRefreshAutoNormalFooter.m */; };
 		032A65EE57DEDDE2F1A1DDA4C7B63704 /* MJRefreshTrailer.h in Headers */ = {isa = PBXBuildFile; fileRef = 81611A1E0317B60D3402916BB0E417A9 /* MJRefreshTrailer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04649ED225480214005328CF /* xVersionDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04649ED125480214005328CF /* xVersionDebugView.swift */; };
+		04649EE925480224005328CF /* xVersionDebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04649EE825480224005328CF /* xVersionDebugView.xib */; };
 		046D24FB2546682B00D581D2 /* xGlobalLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D24FA2546682B00D581D2 /* xGlobalLock.swift */; };
 		046D254F2546C5E400D581D2 /* xDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D254E2546C5E400D581D2 /* xDeviceManager.swift */; };
 		046D256D2546C72F00D581D2 /* xImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D256C2546C72F00D581D2 /* xImageManager.swift */; };
@@ -492,6 +494,8 @@
 		02F902BC2CB870608320D4327CEE92A3 /* xTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xTextView.swift; sourceTree = "<group>"; };
 		0396E76855ED13936A676C6CDFFE5975 /* SDAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageView.m; path = SDWebImage/Core/SDAnimatedImageView.m; sourceTree = "<group>"; };
 		04113914B11CD2A21701B5090074E6A4 /* SDFileAttributeHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDFileAttributeHelper.h; path = SDWebImage/Private/SDFileAttributeHelper.h; sourceTree = "<group>"; };
+		04649ED125480214005328CF /* xVersionDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xVersionDebugView.swift; sourceTree = "<group>"; };
+		04649EE825480224005328CF /* xVersionDebugView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xVersionDebugView.xib; sourceTree = "<group>"; };
 		046D24FA2546682B00D581D2 /* xGlobalLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGlobalLock.swift; sourceTree = "<group>"; };
 		046D254E2546C5E400D581D2 /* xDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDeviceManager.swift; sourceTree = "<group>"; };
 		046D256C2546C72F00D581D2 /* xImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xImageManager.swift; sourceTree = "<group>"; };
@@ -1029,6 +1033,15 @@
 			path = xSDK/Classes/Kit;
 			sourceTree = "<group>";
 		};
+		04649ED0254801A5005328CF /* 16 版本提示悬浮窗 */ = {
+			isa = PBXGroup;
+			children = (
+				04649ED125480214005328CF /* xVersionDebugView.swift */,
+				04649EE825480224005328CF /* xVersionDebugView.xib */,
+			);
+			path = "16 版本提示悬浮窗";
+			sourceTree = "<group>";
+		};
 		05B7E053A67FAE910BDBD34489D1BD93 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1138,6 +1151,7 @@
 		27C75C8F5EA8FB00B03F18203436650A /* Product_Kit */ = {
 			isa = PBXGroup;
 			children = (
+				04649ED0254801A5005328CF /* 16 版本提示悬浮窗 */,
 				64C9124B2820F4B3D875CC6FFACEC6BB /* 01 圆角矩形容器 */,
 				6BD76CC2293E4E05FCCBE01CE1AD8134 /* 02 选择照片 */,
 				983D8CB524340425A398E874A69BBF42 /* 03 列表空数据 */,
@@ -2416,6 +2430,7 @@
 				31D8465FDA6B331B5C541698982FEC90 /* scan_back@2x.png in Resources */,
 				494BA9AB48DCBB7F043DACA0AE533586 /* scan_bar_normal@2x.png in Resources */,
 				10008B7D09EE87A3B6686234C0F3FD67 /* scan_bar_select@2x.png in Resources */,
+				04649EE925480224005328CF /* xVersionDebugView.xib in Resources */,
 				9AAD5BB87594F74D0605474E304705EB /* scan_blue_line@2x.png in Resources */,
 				641BF81DC10515CBF4722BD1E674FFC9 /* scan_net@2x.png in Resources */,
 				D0D99D979A56C980E8009A388A66DF83 /* scan_net@3x.png in Resources */,
@@ -2645,6 +2660,7 @@
 				8A143DC2E9F752E35A7024FE285A15A0 /* Device+xExtension.swift in Sources */,
 				B217EDAB74E722DB88DB982D202CE700 /* Double+xExtension.swift in Sources */,
 				1DBC6D8C8947E8C8C4D9217342CEC0C3 /* Float+xExtension.swift in Sources */,
+				04649ED225480214005328CF /* xVersionDebugView.swift in Sources */,
 				10CB446CA2C16EA8783A1D40234E5992 /* Image+xExtension.swift in Sources */,
 				E925263952288329A7856A6543C036AB /* ImageView+xExtension.swift in Sources */,
 				DFF39290E2B77911D8CB426F7E67896A /* Label+xExtension.swift in Sources */,

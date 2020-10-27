@@ -16,12 +16,11 @@ class Test: NSObject {
     {
         xLog(xDeviceManager.isRoot())
         // 哈希值
-        self.testHash()
+//        self.testHash()
         // 多任务处理
-        self.testGroupQueue()
+//        self.testGroupQueue()
         // 锁
-        self.testLock()
-        sleep(3)
+//        self.testLock()
     }
     
     // MARK: - 哈希值

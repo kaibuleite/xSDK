@@ -39,29 +39,29 @@ public class xAppManager: NSObject {
     public var placeholderImage_banner : UIImage?
     
     /// 名称
-    public var appBundleName : String {
+    public lazy var appBundleName : String = {
         let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleName")
         let ret = name as? String ?? ""
         return ret
-    }
+    }()
     /// ID
-    public var appBundleID : String {
+    public lazy var appBundleID : String = {
         let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier")
         let ret = name as? String ?? ""
         return ret
-    }
+    }()
     /// 版本号
-    public var appVersion : String {
+    public lazy var appVersion : String = {
         let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
         let ret = name as? String ?? ""
         return ret
-    }
+    }()
     /// 编译信息
-    public var appBuildVersion : String {
+    public lazy var appBuildVersion : String = {
         let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")
         let ret = name as? String ?? ""
         return ret
-    }
+    }()
     
     // MARK: - Public Func
     /// 拨打电话

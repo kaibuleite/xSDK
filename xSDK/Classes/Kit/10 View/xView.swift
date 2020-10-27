@@ -43,7 +43,6 @@ open class xView: UIView {
         objc_sync_enter(self)
         guard self.isLoadViewStyle == false else { return }
         
-        self.backgroundColor = .clear
         DispatchQueue.main.async {
             self.initKit()
             self.addKit()
