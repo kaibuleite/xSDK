@@ -7,11 +7,13 @@
 
 import UIKit
 
-public class xPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+public class xPageViewController: UIPageViewController {
 
     // MARK: - Handler
     /// 切换页数
     public typealias xHandlerChangePage = (Int) -> Void
+    /// 滚动中
+    public typealias xHandlerScrolling = (CGPoint) -> Void
     /// 点击分页
     public typealias xHandlerClickPage = (Int) -> Void
     
@@ -26,8 +28,12 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     private var currentPage = 0
     /// 定时器
     private var timer : Timer?
+    /// 滚动容器
+    private var contentScrollView : UIScrollView?
     /// 单页子控制器
     private var itemViewControllerArray = [UIViewController]()
+    /// 滚动回调
+    private var scrollingHandler : xHandlerScrolling?
     /// 切换回调
     private var changeHandler : xHandlerChangePage?
     /// 点击回调
@@ -37,19 +43,38 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     deinit {
         self.delegate = nil
         self.dataSource = nil
+        self.contentScrollView?.delegate = nil
+        
+        self.scrollingHandler = nil
+        self.changeHandler = nil
+        self.clickHandler = nil
+        
         self.closeTimer()
+        
         xLog("🐔_PVC \(self.xClassStruct.name)")
     }
 
     // MARK: - Public Override Func
     public override func viewDidLoad() {
         super.viewDidLoad()
+        // 基本配置
         self.view.backgroundColor = .clear
+        // 绑定滚动容器
+        for obj in self.view.subviews {
+            guard let scrol = obj as? UIScrollView else { continue }
+            self.contentScrollView = scrol
+            break
+        }
+        // 关联代理
+        self.dataSource = self
+        self.delegate = self
+        self.contentScrollView?.delegate = self
     }
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard self.isOpenAutoChangeTimer else { return }
-        self.openTimer()
+        if self.isOpenAutoChangeTimer {
+            self.openTimer()
+        }
     }
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -84,34 +109,41 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     /// 加载自定义组件数据
     /// - Parameters:
     ///   - itemViewControllerArray: 视图控制器列表
-    ///   - handler: 回调
+    ///   - isAddTapEvent: 是否添加单击触摸事件
+    ///   - handler1: 滚动回调
+    ///   - handler2: 切换page回调
+    ///   - handler3: 单击触摸事件回调
     public func reload(itemViewControllerArray : [UIViewController],
-                       change handler1 : @escaping xHandlerChangePage,
-                       click handler2 : @escaping xHandlerClickPage)
+                       isAddTapEvent: Bool = true,
+                       scrolling handler1 : xHandlerScrolling? = nil,
+                       change handler2 : @escaping xHandlerChangePage,
+                       click handler3 : @escaping xHandlerClickPage)
     {
         guard itemViewControllerArray.count > 0 else {
             xWarning("数据不能为0")
             return
         }
-        guard let vc = itemViewControllerArray.first else {
+        guard let first = itemViewControllerArray.first else {
             xWarning("视图控制器初始化失败")
             return
         }
-        self.dataSource = self
-        self.delegate = self
         // 绑定数据
         self.itemViewControllerArray = itemViewControllerArray
-        self.changeHandler = handler1
-        self.clickHandler = handler2
+        self.scrollingHandler = handler1
+        self.changeHandler = handler2
+        self.clickHandler = handler3
+        self.currentPage = 0
         // 设置子控制器样式
         for (i, vc) in itemViewControllerArray.enumerated()
         {
             vc.view.tag = i
+            // 根据条件添加单击触摸事件
+            guard isAddTapEvent else { continue }
             vc.view.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapItem(_:)))
             vc.view.addGestureRecognizer(tap)
         }
-        self.setViewControllers([vc], direction: .forward, animated: false) {
+        self.setViewControllers([first], direction: .forward, animated: false) {
             (finish) in
         }
     }
@@ -120,6 +152,7 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     /// 开启定时器
     private func openTimer()
     {
+        self.closeTimer()   // 防止定时器多开
         let timer = Timer.xNew(timeInterval: self.changeInterval, repeats: true) {
             [weak self] (sender) in
             guard let ws = self else { return }
@@ -140,12 +173,13 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
     {
         // xLog("系统换页")
         guard page != self.currentPage else { return }
+        // 获取滚动方向
         var direction = UIPageViewController.NavigationDirection.forward
         if page < self.currentPage {
             direction = .reverse
         }
-        self.currentPage = self.safe(page: page)
-        let vc = self.itemViewControllerArray[self.currentPage]
+        let safePage = self.safe(page: page)
+        let vc = self.itemViewControllerArray[safePage]
         self.view.isUserInteractionEnabled = false
         self.setViewControllers([vc], direction: direction, animated: true) {
             [unowned self] (finish) in
@@ -162,7 +196,7 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
         if page >= count {
             return 0
         }
-        if page <= 0 {
+        if page < 0 {
             return count - 1
         }
         return page
@@ -174,46 +208,74 @@ public class xPageViewController: UIPageViewController, UIPageViewControllerData
         self.clickHandler?(page)
     }
     
-    // MARK: - UIPageViewControllerDataSource
-    /// 上一页
+}
+
+// MARK: - UIPageViewControllerDataSource
+extension xPageViewController: UIPageViewControllerDataSource {
+    
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    viewControllerBefore viewController: UIViewController) -> UIViewController?
     {
+        // xLog("上一页")
         let page = self.safe(page: self.currentPage - 1)
         let vc = self.itemViewControllerArray[page]
         return vc
     }
-    /// 下一页
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
+        // xLog("下一页")
         let page = self.safe(page: self.currentPage + 1)
         let vc = self.itemViewControllerArray[page]
         return vc
     }
+}
+
+// MARK: - UIPageViewControllerDelegate
+extension xPageViewController: UIPageViewControllerDelegate {
     
-    // MARK: - UIPageViewControllerDelegate
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    willTransitionTo pendingViewControllers: [UIViewController])
     {
         // xLog("用户开始换页")
         self.closeTimer()
-        guard let vc = pendingViewControllers.last else { return }  // 换页目标加载失败
-        self.currentPage = vc.view.tag
     }
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    didFinishAnimating finished: Bool,
                                    previousViewControllers: [UIViewController],
-                                   transitionCompleted completed: Bool) {
+                                   transitionCompleted completed: Bool)
+    {
         // xLog("用户换页完成")
         if self.isOpenAutoChangeTimer {
             self.openTimer()
         }
-        if completed == false {
-            // 换页失败（取消操作、拖拽幅度不够。。。）
-            guard let vc = previousViewControllers.last else { return } // 原来的页数据加载失败
-            self.currentPage = vc.view.tag
-        }
         self.changeHandler?(self.currentPage)
+    }
+}
+
+
+// MARK: - UIScrollViewDelegate
+extension xPageViewController: UIScrollViewDelegate {
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView)
+    {
+        // 计算当前页的偏移量
+        let vc = self.itemViewControllerArray[self.currentPage]
+        let p = vc.view.convert(CGPoint(), to: self.view)
+        var offset = CGPoint.zero
+        var page = Int.zero
+        switch self.navigationOrientation {
+        case .horizontal:
+            let w = self.view.frame.width
+            offset.x = CGFloat(self.currentPage) * w + -p.x
+            page = Int(offset.x / w)
+        default:
+            let h = self.view.frame.height
+            offset.y = CGFloat(self.currentPage) * h + -p.y
+            page = Int(offset.x / h)
+        }
+        xLog(offset, page)
+        self.currentPage = self.safe(page: page)
+        self.scrollingHandler?(offset)
     }
 }
