@@ -54,8 +54,7 @@ public class xSKUView: xView {
                 frame.size.width = equalWidth // 等宽
             } else {
                 // 计算宽度
-                var size = item.titleLabel?.xGetContentSize() ?? .zero
-                size.width += 16    // 左右留空
+                let size = item.titleLabel?.xGetContentSize(margin: .init(top: 0, left: 8, bottom: 0, right: 8)) ?? .zero
                 frame.size.width = size.width
             }
             if frame.origin.x + frame.width > self.bounds.width {
@@ -132,15 +131,15 @@ public class xSKUView: xView {
         self.layoutIfNeeded()
         let cfg = self.config
         // 旧的视图
-        let item1 = self.itemViewArray[self.currentChooseIdx]
-        item1.backgroundColor = cfg.itemBackgroundNormalColor
-        item1.layer.borderColor = cfg.itemBorderNormalColor.cgColor
-        item1.setTitleColor(cfg.itemTitleNormalColor, for: .normal)
+        let oldItem = self.itemViewArray[self.currentChooseIdx]
+        oldItem.backgroundColor = cfg.itemBackgroundNormalColor
+        oldItem.layer.borderColor = cfg.itemBorderNormalColor.cgColor
+        oldItem.setTitleColor(cfg.itemTitleNormalColor, for: .normal)
         // 新选中的视图
-        let item2 = self.itemViewArray[idx]
-        item2.backgroundColor = cfg.itemBackgroundChooseColor
-        item2.layer.borderColor = cfg.itemBorderChooseColor.cgColor
-        item2.setTitleColor(cfg.itemTitleChooseColor, for: .normal)
+        let newItem = self.itemViewArray[idx]
+        newItem.backgroundColor = cfg.itemBackgroundChooseColor
+        newItem.layer.borderColor = cfg.itemBorderChooseColor.cgColor
+        newItem.setTitleColor(cfg.itemTitleChooseColor, for: .normal)
         self.currentChooseIdx = idx
     }
 

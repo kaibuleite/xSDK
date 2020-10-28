@@ -9,37 +9,16 @@ import UIKit
 
 public class xSegmentConfig: NSObject {
     
-    // MARK: - Public Property
-    /// 普通标题颜色
-    public var itemTitleNormalColor = UIColor.darkText
-    /// 普通背景颜色
-    public var itemBackgroundNormalColor = UIColor.clear
-    /// 普通边框颜色
-    public var itemBorderNormalColor = UIColor.clear
+    // MARK: - Enum
+    /// 填充样式
+    public enum xSegmentItemFillMode {
+        /// 自适应
+        case auto
+        /// 均等铺满（等宽）
+        case fillEqually
+    }
     
-    /// 选中标题颜色
-    public var itemTitleChooseColor = UIColor.red
-    /// 选中背景颜色
-    public var itemBackgroundChooseColor = UIColor.clear
-    /// 选中边框颜色
-    public var itemBorderChooseColor = UIColor.clear
-    
-    /// 边框线宽
-    public var borderWidth = CGFloat(0)
-    /// 圆角
-    public var cornerRadius = CGFloat(0)
-    
-    /// 间隔
-    public var itemsMargin = CGFloat(0)
-    
-    /// 线高(默认2)
-    public var lineHeight = CGFloat(2)
-    /// 线条颜色
-    public var lineColor = UIColor.red
-}
-
-public class xSegmentConfigNew: NSObject {
-    
+    // MARK: - Struct
     /// 颜色数据结构
     public struct xSegmentItemColor {
         /// 普通
@@ -52,19 +31,32 @@ public class xSegmentConfigNew: NSObject {
         /// 边框颜色
         public var color = xSegmentItemColor.init(normal: .clear, choose: .clear)
         /// 线宽
-        public var lineWidth = CGFloat.zero
+        public var width = CGFloat.zero
         /// 圆角
         public var cornerRadius = CGFloat(0)
     }
-
+    /// 指示线数据结构
+    public struct xSegmentLine {
+        /// 颜色
+        public var color = UIColor.red
+        /// 高度
+        public var height = CGFloat(1.5)
+        /// 相对于Item的宽度（默认相等）
+        public var widthOfItemPercent = CGFloat(1)
+    }
+    
+    // MARK: - Public Property
     /// 标题颜色
     public var titleColor = xSegmentItemColor.init(normal: .lightGray, choose: .darkText)
     /// 背景颜色
     public var backgroundColor = xSegmentItemColor.init(normal: .clear, choose: .clear)
     /// 边框样式
     public var border = xSegmentItemBorder.init()
+    /// 指示线样式
+    public var line = xSegmentLine()
     /// 间距
     public var spacing = CGFloat.zero
-    /// 分布类型
-    public var distribution = UIStackView.Distribution.fillEqually
+    /// 填充样式
+    public var fillMode = xSegmentItemFillMode.auto
 }
+

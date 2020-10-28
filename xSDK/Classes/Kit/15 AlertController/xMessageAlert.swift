@@ -32,9 +32,7 @@ public class xMessageAlert: NSObject {
             lbl.layer.cornerRadius = 5
             lbl.layer.masksToBounds = true
             // 修改坐标
-            var size = lbl.xGetContentSize()
-            size.width += 16
-            size.height += 10
+            let size = lbl.xGetContentSize(margin: .init(top: 5, left: 8, bottom: 5, right: 8))
             let frame = CGRect.init(origin: .zero,
                                     size: size)
             lbl.frame = frame

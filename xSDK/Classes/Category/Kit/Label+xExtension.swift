@@ -11,17 +11,22 @@ extension UILabel {
     
     // MARK: - Public Func
     /// 计算内容大小
-    public func xGetContentSize() -> CGSize
+    /// - Parameters:
+    ///   - margin: 边缘留空
+    /// - Returns: 内容大小
+    public func xGetContentSize(margin : UIEdgeInsets = .zero) -> CGSize
     {
         guard let str = self.text else { return self.bounds.size }
-        let nstr = str as NSString
-        let maxWidth = self.bounds.width
-        let size = CGSize.init(width: maxWidth, height: 0)
-        let frame = nstr.boundingRect(with: size,
-                                      options: .usesLineFragmentOrigin,
-                                      attributes: [.font : self.font!],
-                                      context: nil)
-        return frame.size
+        guard str.count > 0 else { return self.bounds.size }
+        var w = self.bounds.width
+        var h = self.bounds.height
+        if w <= 0 { w = xScreenWidth }
+        if h <= 0 { h = xScreenHeight }
+        var size = str.xGetSize(for: self.font,
+                                size: .init(width: w, height: h))
+        size.width += (margin.left + margin.right)
+        size.height += (margin.top + margin.bottom)
+        return size
     }
     /// 设置为占位模式
     public func xSetPlaceholderMode(string : String = "     ")

@@ -51,25 +51,30 @@ public class xSegmentView: xView {
         super.layoutSubviews()
         guard self.itemViewArray.count > 0 else { return }
         // 更新UI
-        var frame = self.bounds
-        self.contentScroll.frame = frame
+        self.contentScroll.frame = self.bounds
         var totalWidth = CGFloat.zero
         let scrolWdith = frame.width
         let count = CGFloat(self.itemViewArray.count)
-        let margin = self.config.itemsMargin
-        let equalWidth = (scrolWdith - margin * (count - 1)) / count
+        let spacing = self.config.spacing   // 间距
+        let equalWidth = (scrolWdith - spacing * (count - 1)) / count
+        var frame = CGRect.zero
         self.itemViewArray.forEach {
             (view) in
-            if self.isEqualItemWidth {
-                frame.size.width = equalWidth // 等宽
-            } else {
+            // 设置frame
+            switch self.config.fillMode {
+            case .auto:
                 frame.size.width = view.bounds.width
+            case .fillEqually:
+                frame.size.width = equalWidth
             }
+            frame.size.height = view.bounds.height
+            frame.origin.y = (self.bounds.height - frame.height) / 2
             view.frame = frame
-            totalWidth += (frame.width + margin)
+            // 更新frame
+            totalWidth += (frame.width + spacing)
             frame.origin.x = totalWidth
         }
-        totalWidth -= self.config.itemsMargin
+        totalWidth -= spacing
         self.contentScroll.contentSize = .init(width: totalWidth, height: 0)
         self.contentScroll.isScrollEnabled = totalWidth > scrolWdith
     }
@@ -82,21 +87,18 @@ public class xSegmentView: xView {
     ///   - fontSize: 字号
     ///   - handler: 回调
     public func reload(titleArray : [String],
-                       isEqualItemWidth : Bool,
+                       fillMode : xSegmentConfig.xSegmentItemFillMode,
                        fontSize : CGFloat = 15,
                        chooseItem handler : @escaping xHandlerChooseItem)
     {
-        self.isEqualItemWidth = isEqualItemWidth
+        self.config.fillMode = fillMode
         var itemViewArray = [UIView]()
         for title in titleArray {
             let lbl = UILabel()
             lbl.text = title // 填充
             lbl.textAlignment = .center
-            lbl.frame = .zero
-            if isEqualItemWidth == false {
-                let size = lbl.xGetContentSize()
-                lbl.frame = .init(origin: .zero, size: size)
-            }
+            let size = lbl.xGetContentSize(margin: .init(top: 0, left: 8, bottom: 0, right: 8))
+            lbl.frame = .init(origin: .zero, size: size)
             lbl.font = .systemFont(ofSize: fontSize)
             itemViewArray.append(lbl)
         }
@@ -113,7 +115,6 @@ public class xSegmentView: xView {
             xWarning("数据不能为0")
             return
         }
-        self.lineView.backgroundColor = self.config.lineColor
         self.clearOldSegmentItem()
         // 绑定数据
         self.itemViewArray = itemViewArray
@@ -122,25 +123,29 @@ public class xSegmentView: xView {
         let cfg = self.config
         for (i, view) in itemViewArray.enumerated()
         {
+            view.tag = i
+            // 设置初始样式
             view.layer.masksToBounds = true
-            view.layer.cornerRadius = cfg.cornerRadius
-            view.layer.borderWidth = cfg.borderWidth
-            view.layer.borderColor = cfg.itemBorderNormalColor.cgColor
-            view.backgroundColor = cfg.itemBackgroundNormalColor
+            view.layer.cornerRadius = cfg.border.cornerRadius
+            view.layer.borderWidth = cfg.border.width
+            view.layer.borderColor = cfg.border.color.normal.cgColor
+            view.backgroundColor = cfg.backgroundColor.normal
             if let btn = view as? UIButton {
-                btn.setTitleColor(cfg.itemTitleNormalColor, for: .normal)
+                btn.setTitleColor(cfg.titleColor.normal, for: .normal)
             }
             if let lbl = view as? UILabel {
-                lbl.textColor = cfg.itemTitleNormalColor
+                lbl.textColor = cfg.titleColor.normal
             }
-            
-            view.tag = i
+            // 添加响应手势
             view.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapItem(_:)))
             view.addGestureRecognizer(tap)
             self.contentScroll.addSubview(view)
         }
-        self.layoutIfNeeded()
+        self.lineView.frame = .zero
+        self.lineView.backgroundColor = cfg.line.color
+        self.contentScroll.bringSubviewToFront(self.lineView)
+        self.setNeedsLayout()
     }
     /// 选中
     public func choose(idx : Int)
@@ -158,38 +163,39 @@ public class xSegmentView: xView {
         self.layoutIfNeeded()
         let cfg = self.config
         // 旧的视图
-        let item1 = self.itemViewArray[self.currentChooseIdx]
-        item1.backgroundColor = cfg.itemBackgroundNormalColor
-        item1.layer.borderColor = cfg.itemBorderNormalColor.cgColor
-        if let btn = item1 as? UIButton {
-            btn.setTitleColor(cfg.itemTitleNormalColor, for: .normal)
+        let oldItem = self.itemViewArray[self.currentChooseIdx]
+        oldItem.backgroundColor = cfg.backgroundColor.normal
+        oldItem.layer.borderColor = cfg.border.color.normal.cgColor
+        if let btn = oldItem as? UIButton {
+            btn.setTitleColor(cfg.titleColor.normal, for: .normal)
         }
-        if let lbl = item1 as? UILabel {
-            lbl.textColor = cfg.itemTitleNormalColor
+        if let lbl = oldItem as? UILabel {
+            lbl.textColor = cfg.titleColor.normal
         }
         // 新选中的视图
-        let item2 = self.itemViewArray[idx]
-        item2.backgroundColor = cfg.itemBackgroundChooseColor
-        item2.layer.borderColor = cfg.itemBorderChooseColor.cgColor
-        if let btn = item2 as? UIButton {
-            btn.setTitleColor(cfg.itemTitleChooseColor, for: .normal)
+        let newItem = self.itemViewArray[idx]
+        newItem.backgroundColor = cfg.backgroundColor.choose
+        newItem.layer.borderColor = cfg.border.color.choose.cgColor
+        if let btn = newItem as? UIButton {
+            btn.setTitleColor(cfg.titleColor.choose, for: .normal)
         }
-        if let lbl = item2 as? UILabel {
-            lbl.textColor = cfg.itemTitleChooseColor
+        if let lbl = newItem as? UILabel {
+            lbl.textColor = cfg.titleColor.choose
         }
         self.currentChooseIdx = idx
         // 指示线
-        var lineFrame1 = item2.frame
-        lineFrame1.origin.y = lineFrame1.height - cfg.lineHeight
-        lineFrame1.size.height = cfg.lineHeight
-        if self.lineView.frame == .zero {
-            var lineFrame2 = lineFrame1
-            lineFrame2.size.width = 0
-            self.lineView.frame = lineFrame2
+        var lineFrame = self.lineView.frame
+        if lineFrame == .zero {
+            lineFrame = self.bounds
+            lineFrame.origin.y = frame.height - cfg.line.height
+            lineFrame.size.width = 0
+            lineFrame.size.height = cfg.line.height
+            self.lineView.frame = lineFrame
         }
+        lineFrame.size.width = cfg.line.widthOfItemPercent * newItem.bounds.width
+        lineFrame.origin.x = newItem.frame.origin.x + (newItem.bounds.width - lineFrame.size.width) / 2
         UIView.animate(withDuration: 0.25, animations: {
-            [unowned self] in
-            self.lineView.frame = lineFrame1
+            self.lineView.frame = lineFrame
         })
         // 最终位置
         let totalWidth = self.contentScroll.contentSize.width
@@ -206,17 +212,17 @@ public class xSegmentView: xView {
             return
         }
         let scrolOfx = self.contentScroll.contentOffset.x
-        let newOfx = item2.frame.origin.x
-        let newWidth = item2.frame.width
+        let newOfx = newItem.frame.origin.x
+        let newWidth = newItem.frame.width
         if newOfx < scrolOfx {
             // 左侧超出
-            offset.x = newOfx - cfg.itemsMargin - newWidth
+            offset.x = newOfx - cfg.spacing - newWidth
             self.contentScroll.setContentOffset(offset, animated: true)
         }
         else
-        if newOfx + newWidth >= scrolOfx + scrolWidth - cfg.itemsMargin - 1 {
+        if newOfx + newWidth >= scrolOfx + scrolWidth - cfg.spacing - 1 {
             // 右侧超出
-            offset.x = newOfx + newWidth + cfg.itemsMargin + newWidth - scrolWidth
+            offset.x = newOfx + newWidth + cfg.spacing + newWidth - scrolWidth
             self.contentScroll.setContentOffset(offset, animated: true)
         }
     }
