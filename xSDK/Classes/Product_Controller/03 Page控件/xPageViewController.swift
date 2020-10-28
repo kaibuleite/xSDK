@@ -307,7 +307,7 @@ extension xPageViewController: UIScrollViewDelegate {
                 offset.y -= maxY
             }
         }
-        xLog(offset)
+        // xLog(offset)
         self.scrollingHandler?(offset)
     }
 }

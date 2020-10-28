@@ -14,6 +14,7 @@
 		02630CF9E3967768C1A8EB31DBE9BB72 /* SDImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFC9C9D11926D1E308A69129FF94ACC /* SDImageCoder.m */; };
 		030F2AC677591D7B138D81E2CB94071D /* MJRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = F521CB485E726F0888EC18B5B6166262 /* MJRefreshAutoNormalFooter.m */; };
 		032A65EE57DEDDE2F1A1DDA4C7B63704 /* MJRefreshTrailer.h in Headers */ = {isa = PBXBuildFile; fileRef = 81611A1E0317B60D3402916BB0E417A9 /* MJRefreshTrailer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0419161B25494EFF00366B9D /* UIBezierPath+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */; };
 		04649ED225480214005328CF /* xVersionDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04649ED125480214005328CF /* xVersionDebugView.swift */; };
 		04649EE925480224005328CF /* xVersionDebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04649EE825480224005328CF /* xVersionDebugView.xib */; };
 		046D24FB2546682B00D581D2 /* xGlobalLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D24FA2546682B00D581D2 /* xGlobalLock.swift */; };
@@ -494,6 +495,7 @@
 		02F902BC2CB870608320D4327CEE92A3 /* xTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xTextView.swift; sourceTree = "<group>"; };
 		0396E76855ED13936A676C6CDFFE5975 /* SDAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageView.m; path = SDWebImage/Core/SDAnimatedImageView.m; sourceTree = "<group>"; };
 		04113914B11CD2A21701B5090074E6A4 /* SDFileAttributeHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDFileAttributeHelper.h; path = SDWebImage/Private/SDFileAttributeHelper.h; sourceTree = "<group>"; };
+		0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+xExtension.swift"; sourceTree = "<group>"; };
 		04649ED125480214005328CF /* xVersionDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xVersionDebugView.swift; sourceTree = "<group>"; };
 		04649EE825480224005328CF /* xVersionDebugView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xVersionDebugView.xib; sourceTree = "<group>"; };
 		046D24FA2546682B00D581D2 /* xGlobalLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGlobalLock.swift; sourceTree = "<group>"; };
@@ -1109,6 +1111,7 @@
 				4F6DB2E4D5B5FB65B2D9C5DEF66FB794 /* Label+xExtension.swift */,
 				15BD66A9DB89AB12F97341D5B9582FC2 /* View+xExtension.swift */,
 				68A7C19AF147AE7054EF5D843369EB62 /* ViewController+xExtension.swift */,
+				0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */,
 			);
 			path = Kit;
 			sourceTree = "<group>";
@@ -2662,6 +2665,7 @@
 				1DBC6D8C8947E8C8C4D9217342CEC0C3 /* Float+xExtension.swift in Sources */,
 				04649ED225480214005328CF /* xVersionDebugView.swift in Sources */,
 				10CB446CA2C16EA8783A1D40234E5992 /* Image+xExtension.swift in Sources */,
+				0419161B25494EFF00366B9D /* UIBezierPath+xExtension.swift in Sources */,
 				E925263952288329A7856A6543C036AB /* ImageView+xExtension.swift in Sources */,
 				DFF39290E2B77911D8CB426F7E67896A /* Label+xExtension.swift in Sources */,
 				DF1E29F04E864393C2D0A0ECB22E1BFE /* Object+xExtension.swift in Sources */,

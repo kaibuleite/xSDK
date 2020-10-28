@@ -34,20 +34,20 @@ public class xRoundCornerView: xView {
 
     // MARK: - Private Property
     /// 不规则圆角图层
-    private let roundLayer = CAShapeLayer()
+    private let maskLayer = CAShapeLayer()
     
     // MARK: - Public Override Func
     public override func layoutSubviews() {
         super.layoutSubviews()
-        self.roundLayer.frame = self.bounds
+        self.maskLayer.frame = self.bounds
     }
     public override func initKit()
     {
-        self.roundLayer.backgroundColor = UIColor.clear.cgColor
-        self.roundLayer.fillColor = UIColor.red.cgColor
-        self.roundLayer.lineWidth = 1
-        self.roundLayer.lineCap = .round
-        self.roundLayer.lineJoin = .round
+        self.maskLayer.backgroundColor = UIColor.clear.cgColor
+        self.maskLayer.fillColor = UIColor.red.cgColor
+        self.maskLayer.lineWidth = 1
+        self.maskLayer.lineCap = .round
+        self.maskLayer.lineJoin = .round
     }
     public override func addKit()
     {
@@ -82,53 +82,16 @@ public class xRoundCornerView: xView {
         // 声明计算参数
         self.layoutIfNeeded()
         let frame = self.bounds
-        let w = frame.width
-        let h = frame.height
-        var radius = CGFloat.zero
-        var center = CGPoint.zero
-        var toPos = CGPoint.zero
         // 开始绘制
-        let path = UIBezierPath.init()
-        // 左上
-        radius = tlRadius
-        center = CGPoint.init(x: radius, y: radius)
-        path.addArc(withCenter: center, radius: radius,
-                    startAngle: CGFloat.pi * 180 / 180,
-                    endAngle:   CGFloat.pi * 270 / 180,
-                    clockwise: true)
-        toPos = CGPoint.init(x: w - trRadius, y: 0)
-        path.addLine(to: toPos)
-        // 右上
-        radius = trRadius
-        center = CGPoint.init(x: w - radius, y: radius)
-        path.addArc(withCenter: center, radius: radius,
-                    startAngle: CGFloat.pi * 270 / 180,
-                    endAngle:   CGFloat.pi * 360 / 180,
-                    clockwise: true)
-        toPos = CGPoint.init(x: w, y: h - blRadius)
-        path.addLine(to: toPos)
-        // 右下
-        radius = brRadius
-        center = CGPoint.init(x: w - radius, y: h - radius)
-        path.addArc(withCenter: center, radius: radius,
-                    startAngle: CGFloat.pi * 0 / 180,
-                    endAngle:   CGFloat.pi * 90 / 180,
-                    clockwise: true)
-        toPos = CGPoint.init(x: brRadius, y: h)
-        path.addLine(to: toPos)
-        // 左下
-        radius = blRadius
-        center = CGPoint.init(x: radius, y: h - radius)
-        path.addArc(withCenter: center, radius: radius,
-                    startAngle: CGFloat.pi * 90 / 180,
-                    endAngle:   CGFloat.pi * 180 / 180,
-                    clockwise: true)
-        toPos = CGPoint.init(x: 0, y: tlRadius)
-        path.addLine(to: toPos)
+        let path = UIBezierPath.xNew(rect: frame,
+                                     tlRadius: tlRadius,
+                                     trRadius: trRadius,
+                                     blRadius: blRadius,
+                                     brRadius: brRadius)
         // 添加遮罩(限制显示区域)
-        self.roundLayer.frame = frame
-        self.roundLayer.path = path.cgPath
-        self.layer.mask = self.roundLayer
+        self.maskLayer.frame = frame
+        self.maskLayer.path = path.cgPath
+        self.layer.mask = self.maskLayer
     }
     
 }
