@@ -158,21 +158,21 @@ extension UIView {
     }
     
     /// 添加宽度约束
-    public func xAddWidthLayout(multiplier: CGFloat = 1,
-                                constant: CGFloat)
+    public func xAddWidthLayout(constant: CGFloat,
+                                relatedBy relation: NSLayoutConstraint.Relation = .equal)
     {
         self.xAddLayout(attribute: .width,
-                        relatedBy: .equal,
-                        multiplier: multiplier,
+                        relatedBy: relation,
+                        multiplier: 1,
                         constant: constant)
     }
     /// 添加高度约束
-    public func xAddHeightLayout(multiplier: CGFloat = 1,
-                                  constant: CGFloat)
+    public func xAddHeightLayout(constant: CGFloat,
+                                 relatedBy relation: NSLayoutConstraint.Relation = .equal)
     {
         self.xAddLayout(attribute: .height,
-                        relatedBy: .equal,
-                        multiplier: multiplier,
+                        relatedBy: relation,
+                        multiplier: 1,
                         constant: constant)
     }
      

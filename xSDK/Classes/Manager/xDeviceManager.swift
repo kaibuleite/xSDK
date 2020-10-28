@@ -50,6 +50,7 @@ public class xDeviceManager: NSObject {
     }
     
     /// 是否越狱
+    @discardableResult
     public static func isRoot() -> Bool
     {
         if self.isSimulator() {

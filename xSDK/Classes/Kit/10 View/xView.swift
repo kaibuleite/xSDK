@@ -11,44 +11,44 @@ open class xView: UIView {
 
     // MARK: - Private Property
     /// 是否加载过样式
-    private var isLoadViewStyle = false
+    private var isInitCompleted = false
     
     // MARK: - Open Override Func
     open override func awakeFromNib() {
         super.awakeFromNib()
-        self.loadViewStyle()
+        self.initCompleted()
     }
     required public init?(coder aDecoder: NSCoder) {
         // 没有指定构造器时，需要实现NSCoding的指定构造器
         super.init(coder: aDecoder)
         // 如果没有实现awakeFromNib，则会调用该方法
-        self.loadViewStyle()  
+        self.initCompleted()
     }
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.loadViewStyle()
+        self.initCompleted()
     }
 
     // MARK: - Open Func
-    /// 初始化控件(先)
-    open func initKit() { }
-    /// 添加其他控件(后)
-    open func addKit() { }
+    /// 视图已加载
+    open func viewDidLoad() { }
+    /// 视图已显示（GCD调用）
+    open func viewDidDisappear() { }
     
     // MARK: - Private Func
-    /// 加载视图样式
-    private func loadViewStyle()
+    /// 初始化完成
+    private func initCompleted()
     {
         // 添加锁,防止重复加载
         objc_sync_enter(self)
-        guard self.isLoadViewStyle == false else { return }
+        guard self.isInitCompleted == false else { return }
         
+        self.viewDidLoad()
         DispatchQueue.main.async {
-            self.initKit()
-            self.addKit()
+            self.viewDidDisappear()
         }
         
-        self.isLoadViewStyle = true
+        self.isInitCompleted = true
         objc_sync_exit(self)
     }
 }

@@ -30,6 +30,8 @@ open class xTextField: UITextField, UITextFieldDelegate {
     public weak var nextInput : xTextField?
     
     // MARK: - Private Property
+    /// 是否加载过样式
+    private var isInitCompleted = false
     /// 自定义键盘扩展视图
     private var accessoryView : xInputAccessoryView?
     /// 开始编辑回调
@@ -54,20 +56,53 @@ open class xTextField: UITextField, UITextFieldDelegate {
     // MARK: - Open Override Func
     open override func awakeFromNib() {
         super.awakeFromNib()
-        // 或者在 init(coder:) 里实现
-        self.setContentKit()
+        self.initCompleted()
     }
     required public init?(coder aDecoder: NSCoder) {
+        // 没有指定构造器时，需要实现NSCoding的指定构造器
         super.init(coder: aDecoder)
+        // 如果没有实现awakeFromNib，则会调用该方法
+        self.initCompleted()
     }
-    
-    // MARK: - Public Override Func
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setContentKit()
+        self.initCompleted()
     }
     
     // MARK: - Open Func
+    /// 视图已加载
+    open func viewDidLoad() { 
+        // 最小缩放系数(对单行的label才有效果)
+        self.minimumFontSize = 0.5
+        self.adjustsFontSizeToFitWidth = true
+        self.delegate = self
+        // 编辑事件
+        self.addTarget(self, action: #selector(textChanged),
+                       for: .editingChanged)
+        // 附加菜单事件
+        guard let view = self.loadAccessoryView() else { return }
+        self.accessoryView = view
+        self.inputAccessoryView = view
+        view.previousBtn.xAddClick {
+            [weak self] (sender) in
+            guard let ws = self else { return }
+            ws.previousInput?.becomeFirstResponder()
+        }
+        view.nextBtn.xAddClick {
+            [weak self] (sender) in
+            guard let ws = self else { return }
+            ws.nextInput?.becomeFirstResponder()
+        }
+        view.completedBtn.xAddClick {
+            [weak self] (sender) in
+            guard let ws = self else { return }
+            ws.endEditing(true)
+        }
+    }
+    /// 视图已显示（GCD调用）
+    open func viewDidDisappear() {
+        
+    }
     /// 自定义键盘扩展视图
     open func loadAccessoryView() -> xInputAccessoryView?
     {
@@ -128,34 +163,19 @@ open class xTextField: UITextField, UITextFieldDelegate {
     
     // MARK: - Private Func
     /// 设置内容UI
-    private func setContentKit()
+    private func initCompleted()
     {
-        // 最小缩放系数(对单行的label才有效果)
-        self.minimumFontSize = 0.5
-        self.adjustsFontSizeToFitWidth = true
-        self.delegate = self
-        // 编辑事件
-        self.addTarget(self, action: #selector(textChanged),
-                       for: .editingChanged)
-        // 附加菜单事件
-        guard let view = self.loadAccessoryView() else { return }
-        self.accessoryView = view
-        self.inputAccessoryView = view
-        view.previousBtn.xAddClick {
-            [weak self] (sender) in
-            guard let ws = self else { return }
-            ws.previousInput?.becomeFirstResponder()
+        // 添加锁,防止重复加载
+        objc_sync_enter(self)
+        guard self.isInitCompleted == false else { return }
+        
+        self.viewDidLoad()
+        DispatchQueue.main.async {
+            self.viewDidDisappear()
         }
-        view.nextBtn.xAddClick {
-            [weak self] (sender) in
-            guard let ws = self else { return }
-            ws.nextInput?.becomeFirstResponder()
-        }
-        view.completedBtn.xAddClick {
-            [weak self] (sender) in
-            guard let ws = self else { return }
-            ws.endEditing(true)
-        }
+        
+        self.isInitCompleted = true
+        objc_sync_exit(self)
     }
     /// 内容变动
     @objc private func textChanged()

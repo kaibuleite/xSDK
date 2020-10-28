@@ -37,7 +37,8 @@ public class xSegmentView: xView {
     }
 
     // MARK: - Public Override Func
-    public override func addKit() {
+    public override func viewDidLoad() {
+        super.viewDidLoad()
         // 基本配置
         self.backgroundColor = .white
         self.addSubview(self.contentScroll)

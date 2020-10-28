@@ -37,20 +37,16 @@ public class xRoundCornerView: xView {
     private let maskLayer = CAShapeLayer()
     
     // MARK: - Public Override Func
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        self.maskLayer.frame = self.bounds
-    }
-    public override func initKit()
-    {
+    public override func viewDidLoad() {
+        super.viewDidLoad()
         self.maskLayer.backgroundColor = UIColor.clear.cgColor
         self.maskLayer.fillColor = UIColor.red.cgColor
         self.maskLayer.lineWidth = 1
         self.maskLayer.lineCap = .round
         self.maskLayer.lineJoin = .round
     }
-    public override func addKit()
-    {
+    public override func viewDidDisappear() {
+        super.viewDidDisappear()
         if self.radius > 0 {
             self.clip(cornerRadius: self.radius)
         }
@@ -60,6 +56,10 @@ public class xRoundCornerView: xView {
                       blRadius: self.blRadius,
                       brRadius: self.brRadius)
         }
+    }
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.maskLayer.frame = self.bounds
     }
     
     // MARK: - Public Func

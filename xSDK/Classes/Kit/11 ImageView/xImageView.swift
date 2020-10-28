@@ -18,21 +18,25 @@ open class xImageView: UIImageView {
     @IBInspectable public var defaultFillColor : UIColor = .clear
     
     // MARK: - Private Property
+    /// 是否加载过样式
+    private var isInitCompleted = false
     /// 遮罩(考虑到性能问题，这边使用遮罩来实现圆角
     private let maskLayer = CAShapeLayer()
     
     // MARK: - Open Override Func
     open override func awakeFromNib() {
         super.awakeFromNib()
-        // 或者在 init(coder:) 里实现
-        self.setContentKit()
+        self.initCompleted()
     }
     required public init?(coder aDecoder: NSCoder) {
+        // 没有指定构造器时，需要实现NSCoding的指定构造器
         super.init(coder: aDecoder)
+        // 如果没有实现awakeFromNib，则会调用该方法
+        self.initCompleted()
     }
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setContentKit()
+        self.initCompleted()
     }
     open override func layoutSubviews() {
         super.layoutSubviews()
@@ -40,15 +44,13 @@ open class xImageView: UIImageView {
     }
     
     // MARK: - Open Func
-    /// 初始化控件(先)
-    open func initKit()
-    {
+    /// 视图已加载
+    open func viewDidLoad() {
         self.maskLayer.backgroundColor = UIColor.clear.cgColor
         self.maskLayer.fillColor = UIColor.red.cgColor
         self.maskLayer.lineWidth = 1
         self.maskLayer.lineCap = .round
         self.maskLayer.lineJoin = .round
-        
         self.contentMode = .scaleAspectFill // 全填充
         let size = self.bounds.size
         if self.defaultFillColor == .clear {
@@ -58,9 +60,8 @@ open class xImageView: UIImageView {
             self.image = self.defaultFillColor.xToImage(size: size)
         }
     }
-    /// 添加其他控件(后)
-    open func addKit()
-    {
+    /// 视图已显示（GCD调用）
+    open func viewDidDisappear() {
         let radius = self.isCircle ? self.bounds.width / 2 : self.cornerRadius
         self.clip(cornerRadius: radius)
     }
@@ -99,17 +100,18 @@ open class xImageView: UIImageView {
     
     // MARK: - Private Func
     /// 设置内容UI
-    private func setContentKit()
+    private func initCompleted()
     {
         // 添加锁,防止重复加载
         objc_sync_enter(self)
+        guard self.isInitCompleted == false else { return }
         
-        self.backgroundColor = .clear
+        self.viewDidLoad()
         DispatchQueue.main.async {
-            self.initKit()
-            self.addKit()
+            self.viewDidDisappear()
         }
         
+        self.isInitCompleted = true
         objc_sync_exit(self)
     }
 }

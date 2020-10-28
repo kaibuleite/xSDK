@@ -29,7 +29,8 @@ public class xCaptchaView: xView {
          "u","v","w","x","y","z"]
     
     // MARK: - Public Override Func
-    public override func addKit() {
+    public override func viewDidLoad() {
+        super.viewDidLoad()
         self.createNewCaptchaCode()
         self.setNeedsDisplay()
     }

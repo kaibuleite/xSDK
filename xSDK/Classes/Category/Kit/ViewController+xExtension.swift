@@ -10,9 +10,9 @@ import UIKit
 extension UIViewController {
     
     // MARK: - Open Func
-    /// 初始化UI
+    /// 添加其他UI控件
     @objc open func addKit() { }
-    /// 初始化子控制器
+    /// 添加子控制器
     @objc open func addChildren() { }
     /// 快速实例化对象(storyboard比类名少指定后缀)
     @objc open class func quickInstancetype() -> Self

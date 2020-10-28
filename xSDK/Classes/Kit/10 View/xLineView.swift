@@ -29,11 +29,13 @@ public class xLineView: xView {
     @IBInspectable public var dashSkipWidth : Float = 5
     
     // MARK: - Public Override Func
-    public override func initKit() {
+    public override func viewDidLoad() {
+        super.viewDidLoad()
         self.backgroundColor = self.lineColor
         self.isUserInteractionEnabled = false
     }
-    public override func addKit() {
+    public override func viewDidDisappear() {
+        super.viewDidDisappear()
         guard self.isDashLine == true else { return }
         self.drawDashLine()
     }

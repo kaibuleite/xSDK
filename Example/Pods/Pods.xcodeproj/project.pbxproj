@@ -15,6 +15,8 @@
 		030F2AC677591D7B138D81E2CB94071D /* MJRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = F521CB485E726F0888EC18B5B6166262 /* MJRefreshAutoNormalFooter.m */; };
 		032A65EE57DEDDE2F1A1DDA4C7B63704 /* MJRefreshTrailer.h in Headers */ = {isa = PBXBuildFile; fileRef = 81611A1E0317B60D3402916BB0E417A9 /* MJRefreshTrailer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0419161B25494EFF00366B9D /* UIBezierPath+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */; };
+		041916242549523C00366B9D /* xSegmentViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041916232549523C00366B9D /* xSegmentViewNew.swift */; };
+		0419164D2549615C00366B9D /* xSegmentViewNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0419164C2549615C00366B9D /* xSegmentViewNew.xib */; };
 		04649ED225480214005328CF /* xVersionDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04649ED125480214005328CF /* xVersionDebugView.swift */; };
 		04649EE925480224005328CF /* xVersionDebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04649EE825480224005328CF /* xVersionDebugView.xib */; };
 		046D24FB2546682B00D581D2 /* xGlobalLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D24FA2546682B00D581D2 /* xGlobalLock.swift */; };
@@ -496,6 +498,8 @@
 		0396E76855ED13936A676C6CDFFE5975 /* SDAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageView.m; path = SDWebImage/Core/SDAnimatedImageView.m; sourceTree = "<group>"; };
 		04113914B11CD2A21701B5090074E6A4 /* SDFileAttributeHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDFileAttributeHelper.h; path = SDWebImage/Private/SDFileAttributeHelper.h; sourceTree = "<group>"; };
 		0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+xExtension.swift"; sourceTree = "<group>"; };
+		041916232549523C00366B9D /* xSegmentViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xSegmentViewNew.swift; sourceTree = "<group>"; };
+		0419164C2549615C00366B9D /* xSegmentViewNew.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xSegmentViewNew.xib; sourceTree = "<group>"; };
 		04649ED125480214005328CF /* xVersionDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xVersionDebugView.swift; sourceTree = "<group>"; };
 		04649EE825480224005328CF /* xVersionDebugView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xVersionDebugView.xib; sourceTree = "<group>"; };
 		046D24FA2546682B00D581D2 /* xGlobalLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGlobalLock.swift; sourceTree = "<group>"; };
@@ -1480,6 +1484,8 @@
 			children = (
 				05B284B09231DE3CABFC1201FADDF403 /* xSegmentConfig.swift */,
 				26ACBA04F81F868508F39B6621C4C339 /* xSegmentView.swift */,
+				041916232549523C00366B9D /* xSegmentViewNew.swift */,
+				0419164C2549615C00366B9D /* xSegmentViewNew.xib */,
 			);
 			path = "11 Segment组件";
 			sourceTree = "<group>";
@@ -2420,6 +2426,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0419164D2549615C00366B9D /* xSegmentViewNew.xib in Resources */,
 				7CB5EEE8AED2C441A4C955480F7A69BA /* back_30@2x.png in Resources */,
 				B1D431E4B93ED1CA31FF8223ABD27A44 /* back_30@3x.png in Resources */,
 				315A8E339D234D8588E01536865662ED /* close_28@2x.png in Resources */,
@@ -2765,6 +2772,7 @@
 				AAE3B80D60C3A1BFBACB81374A07219D /* xTabBarController.swift in Sources */,
 				961254BC688CAF61282CFE30E501BECC /* xTableViewCell.swift in Sources */,
 				7C67AD844A78AF531622F2B125FC6257 /* xTableViewController.swift in Sources */,
+				041916242549523C00366B9D /* xSegmentViewNew.swift in Sources */,
 				127187F35B31029BB32C4E5F669E815D /* xTextField.swift in Sources */,
 				EC45881D6C5165D1D26CCF1025822440 /* xTextView.swift in Sources */,
 				DA189DFC2657090F85443E0C16E1C9A4 /* xView.swift in Sources */,

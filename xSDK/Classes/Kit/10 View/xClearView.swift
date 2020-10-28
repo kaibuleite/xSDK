@@ -10,7 +10,8 @@ import UIKit
 public class xClearView: xView {
     
     // MARK: - Public Override Func
-    public override func initKit() { 
+    public override func viewDidLoad() {
+        super.viewDidLoad()
         self.backgroundColor = .clear
     }
 }
