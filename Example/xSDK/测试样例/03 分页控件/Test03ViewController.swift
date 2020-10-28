@@ -14,8 +14,8 @@ class Test03ViewController: xViewController {
     @IBOutlet weak var redContainer: xContainerView!
     @IBOutlet weak var blueContainer: xContainerView!
     
-    let page1 = xPageViewController.quickInstancetype()
-    let page2 = xPageViewController.quickInstancetype()
+    let page1 = xPageViewController.quickInstancetype(navigationOrientation: .vertical)
+    let page2 = xPageViewController.quickInstancetype(navigationOrientation: .horizontal)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,7 @@ class Test03ViewController: xViewController {
         })
         // MARK: - 自定义样式
         /*
+         */
         self.xAddChild(self.page2, in: self.blueContainer)
         var arr = ["/20200326/917dc35f83b5ae640fe8ac92dcb98d91.jpg",
                    "/20200327/b1d01b92988b82c017b12e81ba304f26.jpg",
@@ -62,6 +63,5 @@ class Test03ViewController: xViewController {
             (page) in
             xLog("Page2 Click \(page)")
         })
-         */
     }
 }

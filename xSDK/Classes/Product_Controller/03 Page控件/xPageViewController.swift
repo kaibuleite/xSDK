@@ -26,6 +26,8 @@ public class xPageViewController: UIPageViewController {
     // MARK: - Private Property
     /// 当前页数编号
     private var currentPage = 0
+    /// 目标页数编号
+    private var pendingPage = 0
     /// 定时器
     private var timer : Timer?
     /// 滚动容器
@@ -88,6 +90,11 @@ public class xPageViewController: UIPageViewController {
         let vc = xPageViewController.xNew(storyboard: "xPageViewController")
         return vc as! Self
     }
+    public class func quickInstancetype(navigationOrientation: UIPageViewController.NavigationOrientation) -> Self
+    {
+        let vc = xPageViewController.init(transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: nil)
+        return vc as! Self
+    }
     
     /// 刷新数据（默认样式）
     /// - Parameters:
@@ -133,6 +140,7 @@ public class xPageViewController: UIPageViewController {
         self.changeHandler = handler2
         self.clickHandler = handler3
         self.currentPage = 0
+        self.pendingPage = 0
         // 设置子控制器样式
         for (i, vc) in itemViewControllerArray.enumerated()
         {
@@ -217,7 +225,7 @@ extension xPageViewController: UIPageViewControllerDataSource {
                                    viewControllerBefore viewController: UIViewController) -> UIViewController?
     {
         // xLog("上一页")
-        let page = self.safe(page: self.currentPage - 1)
+        let page = self.safe(page: viewController.view.tag - 1)
         let vc = self.itemViewControllerArray[page]
         return vc
     }
@@ -225,7 +233,7 @@ extension xPageViewController: UIPageViewControllerDataSource {
                                    viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
         // xLog("下一页")
-        let page = self.safe(page: self.currentPage + 1)
+        let page = self.safe(page: viewController.view.tag + 1)
         let vc = self.itemViewControllerArray[page]
         return vc
     }
@@ -239,6 +247,9 @@ extension xPageViewController: UIPageViewControllerDelegate {
     {
         // xLog("用户开始换页")
         self.closeTimer()
+        // 框架只考虑单页，所以数组其实只有1个元素
+        guard let vc = pendingViewControllers.last else { return }
+        self.pendingPage = vc.view.tag
     }
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    didFinishAnimating finished: Bool,
@@ -248,6 +259,13 @@ extension xPageViewController: UIPageViewControllerDelegate {
         // xLog("用户换页完成")
         if self.isOpenAutoChangeTimer {
             self.openTimer()
+        }
+        if completed {
+            self.currentPage = self.pendingPage
+        }
+        else {
+            guard let vc = previousViewControllers.first else { return }
+            self.currentPage = vc.view.tag
         }
         self.changeHandler?(self.currentPage)
     }
@@ -263,19 +281,33 @@ extension xPageViewController: UIScrollViewDelegate {
         let vc = self.itemViewControllerArray[self.currentPage]
         let p = vc.view.convert(CGPoint(), to: self.view)
         var offset = CGPoint.zero
-        var page = Int.zero
         switch self.navigationOrientation {
         case .horizontal:
             let w = self.view.frame.width
             offset.x = CGFloat(self.currentPage) * w + -p.x
-            page = Int(offset.x / w)
+            // 边缘处理
+            let minX = CGFloat.zero
+            let maxX = CGFloat(self.itemViewControllerArray.count - 1) * w
+            if offset.x < minX {
+                offset.x += maxX
+            }
+            if offset.x > maxX {
+                offset.x -= maxX
+            }
         default:
             let h = self.view.frame.height
             offset.y = CGFloat(self.currentPage) * h + -p.y
-            page = Int(offset.x / h)
+            // 边缘处理
+            let minY = CGFloat.zero
+            let maxY = CGFloat(self.itemViewControllerArray.count - 1) * h
+            if offset.y < minY {
+                offset.y += maxY
+            }
+            if offset.y > maxY {
+                offset.y -= maxY
+            }
         }
-        xLog(offset, page)
-        self.currentPage = self.safe(page: page)
+        xLog(offset)
         self.scrollingHandler?(offset)
     }
 }
