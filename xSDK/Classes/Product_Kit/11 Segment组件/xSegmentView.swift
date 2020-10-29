@@ -26,8 +26,6 @@ public class xSegmentView: xView {
     private var itemViewArray = [UIView]()
     /// 当前选中的idx
     private var currentChooseIdx = 0
-    /// 子视图是否等宽
-    private var isEqualItemWidth = false
     /// 选择回调
     private var chooseHandler : xHandlerChooseItem?
     
@@ -53,7 +51,7 @@ public class xSegmentView: xView {
         // 更新UI
         self.contentScroll.frame = self.bounds
         var totalWidth = CGFloat.zero
-        let scrolWdith = frame.width
+        let scrolWdith = self.bounds.width
         let count = CGFloat(self.itemViewArray.count)
         let spacing = self.config.spacing   // 间距
         let equalWidth = (scrolWdith - spacing * (count - 1)) / count
@@ -80,10 +78,11 @@ public class xSegmentView: xView {
     }
 
     // MARK: - Public Func
+    // TODO: 数据加载
     /// 加载默认组件数据
     /// - Parameters:
     ///   - titleArray: 标题
-    ///   - isEqualItemWidth: 是否等宽
+    ///   - fillMode: 填充方式
     ///   - fontSize: 字号
     ///   - handler: 回调
     public func reload(titleArray : [String],
@@ -147,87 +146,129 @@ public class xSegmentView: xView {
         self.contentScroll.bringSubviewToFront(self.lineView)
         self.setNeedsLayout()
     }
+    // TODO: 选中样式
     /// 选中
     public func choose(idx : Int)
     {
         guard idx >= 0 else { return }
         guard idx < self.itemViewArray.count else { return }
-        self.setChooseStyleWith(idx: idx)
+        self.updateSegmentStyle(choose: idx)
         self.chooseHandler?(idx)
     }
-    /// 设置选中样式
-    public func setChooseStyleWith(idx : Int)
+    /// 更新选中样式
+    public func updateSegmentStyle(choose idx : Int)
+    {
+        self.resetItemNormalStyle(at: self.currentChooseIdx)
+        self.resetItemChooseStyle(at: idx)
+        
+        self.currentChooseIdx = idx // 保存idx
+        self.layoutIfNeeded()   // 更新控件约束
+        
+        self.resetLineFrame(at: idx)
+        self.resetScrollOffset(at: idx)
+    }
+    /// 设置普通样式
+    public func resetItemNormalStyle(at idx : Int)
     {
         guard idx >= 0 else { return }
         guard idx < self.itemViewArray.count else { return }
-        self.layoutIfNeeded()
+        
         let cfg = self.config
-        // 旧的视图
-        let oldItem = self.itemViewArray[self.currentChooseIdx]
-        oldItem.backgroundColor = cfg.backgroundColor.normal
-        oldItem.layer.borderColor = cfg.border.color.normal.cgColor
-        if let btn = oldItem as? UIButton {
+        let item = self.itemViewArray[idx]
+        item.backgroundColor = cfg.backgroundColor.normal
+        item.layer.borderColor = cfg.border.color.normal.cgColor
+        if let btn = item as? UIButton {
             btn.setTitleColor(cfg.titleColor.normal, for: .normal)
         }
-        if let lbl = oldItem as? UILabel {
+        if let lbl = item as? UILabel {
             lbl.textColor = cfg.titleColor.normal
         }
-        // 新选中的视图
-        let newItem = self.itemViewArray[idx]
-        newItem.backgroundColor = cfg.backgroundColor.choose
-        newItem.layer.borderColor = cfg.border.color.choose.cgColor
-        if let btn = newItem as? UIButton {
+    }
+    /// 设置选中样式
+    public func resetItemChooseStyle(at idx : Int)
+    {
+        guard idx >= 0 else { return }
+        guard idx < self.itemViewArray.count else { return }
+        
+        let cfg = self.config
+        let item = self.itemViewArray[idx]
+        item.backgroundColor = cfg.backgroundColor.choose
+        item.layer.borderColor = cfg.border.color.choose.cgColor
+        if let btn = item as? UIButton {
             btn.setTitleColor(cfg.titleColor.choose, for: .normal)
         }
-        if let lbl = newItem as? UILabel {
+        if let lbl = item as? UILabel {
             lbl.textColor = cfg.titleColor.choose
         }
-        self.currentChooseIdx = idx
-        // 指示线
-        var lineFrame = self.lineView.frame
-        if lineFrame == .zero {
-            lineFrame = self.bounds
-            lineFrame.origin.y = frame.height - cfg.line.height
-            lineFrame.size.width = 0
-            lineFrame.size.height = cfg.line.height
-            self.lineView.frame = lineFrame
+    }
+    /// 重置指示线位置（直接跳过去）
+    public func resetLineFrame(at idx : Int)
+    {
+        guard idx >= 0 else { return }
+        guard idx < self.itemViewArray.count else { return }
+        
+        let item = self.itemViewArray[idx]
+        let cfg = self.config
+        var frame = self.lineView.frame
+        if frame == .zero {
+            frame = self.bounds
+            frame.origin.y = xScreenHeight
+            frame.size.width = 0
+            frame.size.height = cfg.line.height
+            self.lineView.frame = frame
         }
-        lineFrame.size.width = cfg.line.widthOfItemPercent * newItem.bounds.width
-        lineFrame.origin.x = newItem.frame.origin.x + (newItem.bounds.width - lineFrame.size.width) / 2
+        frame.size.width = cfg.line.widthOfItemPercent * item.bounds.width
+        frame.origin.x = item.frame.origin.x + (item.bounds.width - frame.size.width) / 2
+        frame.origin.y = self.bounds.height - cfg.line.height
         UIView.animate(withDuration: 0.25, animations: {
-            self.lineView.frame = lineFrame
+            self.lineView.frame = frame
         })
-        // 最终位置
+    }
+    /// 重置滚动结果位置（边缘处理）
+    public func resetScrollOffset(at idx : Int)
+    {
+        guard idx >= 0 else { return }
+        guard idx < self.itemViewArray.count else { return }
+        guard self.config.fillMode == .auto else { return }
+        
         let totalWidth = self.contentScroll.contentSize.width
         let scrolWidth = self.contentScroll.bounds.width
         var offset = CGPoint.zero
-        guard totalWidth > scrolWidth else { return }
+        // 单页就能显示完，不用管
+        guard totalWidth >= scrolWidth else { return }
+        // 第1、2个数据
         if idx <= 1 {
             self.contentScroll.setContentOffset(offset, animated: true)
             return
         }
+        // 最后两个数据
         if idx >= self.itemViewArray.count - 2 {
             offset.x = totalWidth - scrolWidth
             self.contentScroll.setContentOffset(offset, animated: true)
             return
         }
-        let scrolOfx = self.contentScroll.contentOffset.x
-        let newOfx = newItem.frame.origin.x
-        let newWidth = newItem.frame.width
-        if newOfx < scrolOfx {
+        let item = self.itemViewArray[idx]
+        let spacing = self.config.spacing
+        let scrolX = self.contentScroll.contentOffset.x
+        let itemX = item.frame.origin.x
+        let itemWidth = item.frame.width
+        if itemX < scrolX {
             // 左侧超出
-            offset.x = newOfx - cfg.spacing - newWidth
+            offset.x = itemX - spacing
+            offset.x -= itemWidth   // 显示上一个item
             self.contentScroll.setContentOffset(offset, animated: true)
         }
         else
-        if newOfx + newWidth >= scrolOfx + scrolWidth - cfg.spacing - 1 {
+        if itemX + itemWidth >= scrolX + scrolWidth - spacing {
             // 右侧超出
-            offset.x = newOfx + newWidth + cfg.spacing + newWidth - scrolWidth
+            offset.x = itemX + itemWidth + spacing - scrolWidth
+            offset.x += itemWidth   // 显示下一个item
             self.contentScroll.setContentOffset(offset, animated: true)
         }
     }
     
     // MARK: - Private Func
+    // TODO: 清除控件
     /// 清空旧分段控件
     private func clearOldSegmentItem()
     {
@@ -238,6 +279,7 @@ public class xSegmentView: xView {
         self.itemViewArray.removeAll()
         self.lineView.frame = .zero
     }
+    // TODO: 手势事件
     /// 手势事件
     @objc private func tapItem(_ gesture : UITapGestureRecognizer)
     {

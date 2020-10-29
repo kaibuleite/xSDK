@@ -84,6 +84,7 @@ public class xPageViewController: UIPageViewController {
     }
     
     // MARK: - Public Func
+    // TODO: 实例化对象
     /// 快速实例化对象(storyboard比类名少指定后缀)
     public override class func quickInstancetype() -> Self
     {
@@ -96,6 +97,7 @@ public class xPageViewController: UIPageViewController {
         return vc as! Self
     }
     
+    // TODO: 数据加载
     /// 刷新数据（默认样式）
     /// - Parameters:
     ///   - pictureArray: 图片链接
@@ -156,7 +158,30 @@ public class xPageViewController: UIPageViewController {
         }
     }
     
+    // TODO: 其他
+    /// 换页
+    public func change(to page : Int)
+    {
+        // xLog("系统换页")
+        guard page != self.currentPage else { return }
+        // 获取滚动方向
+        var direction = UIPageViewController.NavigationDirection.forward
+        if page < self.currentPage {
+            direction = .reverse
+        }
+        self.currentPage = self.safe(page: page)
+        let vc = self.itemViewControllerArray[self.currentPage]
+        self.view.isUserInteractionEnabled = false
+        self.setViewControllers([vc], direction: direction, animated: true) {
+            [unowned self] (finish) in
+            // xLog("系统换页完成")
+            self.view.isUserInteractionEnabled = true
+            self.changeHandler?(self.currentPage)
+        }
+    }
+    
     // MARK: - Private Func
+    // TODO: 定时器
     /// 开启定时器
     private func openTimer()
     {
@@ -176,26 +201,8 @@ public class xPageViewController: UIPageViewController {
         self.timer?.invalidate()
         self.timer = nil
     }
-    /// 换页
-    private func change(to page : Int)
-    {
-        // xLog("系统换页")
-        guard page != self.currentPage else { return }
-        // 获取滚动方向
-        var direction = UIPageViewController.NavigationDirection.forward
-        if page < self.currentPage {
-            direction = .reverse
-        }
-        let safePage = self.safe(page: page)
-        let vc = self.itemViewControllerArray[safePage]
-        self.view.isUserInteractionEnabled = false
-        self.setViewControllers([vc], direction: direction, animated: true) {
-            [unowned self] (finish) in
-            // xLog("系统换页完成")
-            self.view.isUserInteractionEnabled = true
-            self.changeHandler?(self.currentPage)
-        }
-    }
+    
+    // TODO: 其他
     /// 返回安全的页码
     private func safe(page : Int) -> Int
     {
@@ -271,12 +278,13 @@ extension xPageViewController: UIPageViewControllerDelegate {
     }
 }
 
-
 // MARK: - UIScrollViewDelegate
 extension xPageViewController: UIScrollViewDelegate {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
+        // 没有回调就不管了，较少CPU开销
+        guard let handler = self.scrollingHandler else { return }
         // 计算当前页的偏移量
         let vc = self.itemViewControllerArray[self.currentPage]
         let p = vc.view.convert(CGPoint(), to: self.view)
@@ -308,6 +316,6 @@ extension xPageViewController: UIScrollViewDelegate {
             }
         }
         // xLog(offset)
-        self.scrollingHandler?(offset)
+        handler(offset)
     }
 }

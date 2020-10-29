@@ -16,7 +16,6 @@
 		032A65EE57DEDDE2F1A1DDA4C7B63704 /* MJRefreshTrailer.h in Headers */ = {isa = PBXBuildFile; fileRef = 81611A1E0317B60D3402916BB0E417A9 /* MJRefreshTrailer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0419161B25494EFF00366B9D /* UIBezierPath+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */; };
 		04649ED225480214005328CF /* xVersionDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04649ED125480214005328CF /* xVersionDebugView.swift */; };
-		04649EE925480224005328CF /* xVersionDebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04649EE825480224005328CF /* xVersionDebugView.xib */; };
 		0466CD38254A4BDD008FF1C0 /* xSegmentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466CD37254A4BDD008FF1C0 /* xSegmentPageViewController.swift */; };
 		046D24FB2546682B00D581D2 /* xGlobalLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D24FA2546682B00D581D2 /* xGlobalLock.swift */; };
 		046D254F2546C5E400D581D2 /* xDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D254E2546C5E400D581D2 /* xDeviceManager.swift */; };
@@ -25,7 +24,8 @@
 		046D259B2546C8F700D581D2 /* xMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D259A2546C8F700D581D2 /* xMusicManager.swift */; };
 		046D25B92546C98B00D581D2 /* xFileDirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D25B82546C98B00D581D2 /* xFileDirectoryManager.swift */; };
 		04762E2F6696F6B57AC647288F800D2D /* SDWebImageCacheKeyFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 87D8D0461ADB21F78C625C0B0ED94F5A /* SDWebImageCacheKeyFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04E99D8C254A647B00AD59A9 /* xSegmentPageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E99D8B254A647B00AD59A9 /* xSegmentPageViewController.storyboard */; };
+		04E99D9B254A69AC00AD59A9 /* xSegmentPageViewController.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 04E99D8B254A647B00AD59A9 /* xSegmentPageViewController.storyboard */; };
+		04E99D9C254A69AC00AD59A9 /* xVersionDebugView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 04649EE825480224005328CF /* xVersionDebugView.xib */; };
 		056DB216FCD8640A51B540C46A4FAAE5 /* TZPhotoPreviewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A121F5DF1D049FCC84865150A217B304 /* TZPhotoPreviewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		057E1C60305749F7D0424276AB125DE1 /* xAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568D6E90366D3A8F3E8D0A3F798680EB /* xAlertViewController.swift */; };
 		05D552BF9C2AA5894796FAFECBE491D9 /* xViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E46906D4E084D2CA3BF2A379810B98A /* xViewController.swift */; };
@@ -2441,14 +2441,12 @@
 				622DE82C11B7E1C770C13480AF72C93E /* light_off@2x.png in Resources */,
 				25F12F43B6BABCC4AC032E324B78BF47 /* light_off@3x.png in Resources */,
 				E7D45BEDA789B4317ADFC1F8D8A4C694 /* light_on@2x.png in Resources */,
-				04E99D8C254A647B00AD59A9 /* xSegmentPageViewController.storyboard in Resources */,
 				C1C2076008ECF3BD86B002AD2C88DC3F /* light_on@3x.png in Resources */,
 				48AF95CA1A853D3E474A50EADE93BF0C /* no_data@2x.png in Resources */,
 				CDFB8FDE7BF6D44AB3669EBFD9EFFD76 /* no_data@3x.png in Resources */,
 				31D8465FDA6B331B5C541698982FEC90 /* scan_back@2x.png in Resources */,
 				494BA9AB48DCBB7F043DACA0AE533586 /* scan_bar_normal@2x.png in Resources */,
 				10008B7D09EE87A3B6686234C0F3FD67 /* scan_bar_select@2x.png in Resources */,
-				04649EE925480224005328CF /* xVersionDebugView.xib in Resources */,
 				9AAD5BB87594F74D0605474E304705EB /* scan_blue_line@2x.png in Resources */,
 				641BF81DC10515CBF4722BD1E674FFC9 /* scan_net@2x.png in Resources */,
 				D0D99D979A56C980E8009A388A66DF83 /* scan_net@3x.png in Resources */,
@@ -2668,6 +2666,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E99D9B254A69AC00AD59A9 /* xSegmentPageViewController.storyboard in Sources */,
+				04E99D9C254A69AC00AD59A9 /* xVersionDebugView.xib in Sources */,
 				0C32AE5154B3B48FB5DB697535605D59 /* Application+xExtension.swift in Sources */,
 				1ABFDED1C4C637A91EEE661E159F86E8 /* Array+xExtension.swift in Sources */,
 				4CD436CF63D205031CEFFE51E0A26205 /* Button+xExtension.swift in Sources */,

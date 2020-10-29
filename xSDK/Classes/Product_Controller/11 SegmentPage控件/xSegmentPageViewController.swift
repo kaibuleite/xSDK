@@ -27,7 +27,7 @@ open class xSegmentPageViewController: xViewController {
     /// 分段
     let segment = xSegmentView.init()
     /// 分页
-    let pageViewController = xPageViewController.quickInstancetype()
+    let pageViewController = xPageViewController.quickInstancetype(navigationOrientation: .horizontal)
     /// 回调
     var showHandler : xHandlerShowPage?
     
@@ -37,8 +37,16 @@ open class xSegmentPageViewController: xViewController {
     }
     
     // MARK: - Open Override Func
+    open override class func quickInstancetype() -> Self {
+        let vc = xSegmentPageViewController.xNew(storyboard: "xSegmentPageViewController")
+        return vc as! Self
+    }
     open override func viewDidLoad() {
         super.viewDidLoad()
+        // 配置样式
+        self.pageViewController.isOpenAutoChangeTimer = false
+        // 添加分段配置
+        self.setSegmentConfig()
     }
     open override func addKit() {
         self.segment.frame = self.segmentContainer.bounds
@@ -48,24 +56,58 @@ open class xSegmentPageViewController: xViewController {
         self.xAddChild(self.pageViewController, in: self.pageContainer)
     }
     
-    // MARK: - Public Func
-    public func reload(titleArray : [String],
-                       fillMode : xSegmentConfig.xSegmentItemFillMode = .fillEqually,
-                       pageArray : [UIViewController])
+    // MARK: - Open Func
+    /// 设置分段视图配置
+    open func setSegmentConfig()
     {
-        self.segment.reload(titleArray: titleArray, fillMode: fillMode) {
-            (idx) in
-            xLog(titleArray[idx])
+        let config = xSegmentConfig.init()
+        config.line.color = .red
+        config.titleColor.choose = .red
+        self.segment.config = config
+    }
+    
+    // MARK: - Public Func
+    /// 加载数据
+    /// - Parameters:
+    ///   - segmentDataArray: 分段数据
+    ///   - segmentItemFillMode: 分段填充样式
+    ///   - pageDataArray: 分页数据
+    public func reload(segmentDataArray : [String],
+                       segmentItemFillMode : xSegmentConfig.xSegmentItemFillMode = .fillEqually,
+                       pageDataArray : [UIViewController])
+    {
+        guard segmentDataArray.count > 0 else {
+            xWarning("没数据")
+            return
         }
-        self.pageViewController.reload(itemViewControllerArray: pageArray, isAddTapEvent: true) {
-            (offset) in
-            
-        } change: {
-            (page) in
-            
-        } click: {
-            (page) in
-            
+        guard segmentDataArray.count == pageDataArray.count else {
+            xWarning("标题和分页数不一样")
+            return
+        }
+        /*
+         主线程加载数据，防止UI的frame出错
+         这里GCD内的代码会在 addKit 和 addChildren 方法后执行
+         */
+        DispatchQueue.main.async {
+            // 加载分段数据
+            self.segment.reload(titleArray: segmentDataArray, fillMode: segmentItemFillMode) {
+                [unowned self] (idx) in
+                self.pageViewController.change(to: idx)
+            }
+            self.segment.updateSegmentStyle(choose: 0)
+            // 加载分页数据
+            self.pageViewController.reload(itemViewControllerArray: pageDataArray, isAddTapEvent: true) {
+                (offset) in
+                
+            } change: {
+                [unowned self] (page) in
+                xLog(page)
+                self.segment.updateSegmentStyle(choose: page)
+                
+            } click: {
+                (page) in
+                xLog(page)
+            }
         }
     }
     
