@@ -17,6 +17,7 @@
 		0419161B25494EFF00366B9D /* UIBezierPath+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */; };
 		04649ED225480214005328CF /* xVersionDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04649ED125480214005328CF /* xVersionDebugView.swift */; };
 		04649EE925480224005328CF /* xVersionDebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04649EE825480224005328CF /* xVersionDebugView.xib */; };
+		0466CD38254A4BDD008FF1C0 /* xSegmentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466CD37254A4BDD008FF1C0 /* xSegmentPageViewController.swift */; };
 		046D24FB2546682B00D581D2 /* xGlobalLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D24FA2546682B00D581D2 /* xGlobalLock.swift */; };
 		046D254F2546C5E400D581D2 /* xDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D254E2546C5E400D581D2 /* xDeviceManager.swift */; };
 		046D256D2546C72F00D581D2 /* xImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D256C2546C72F00D581D2 /* xImageManager.swift */; };
@@ -498,6 +499,7 @@
 		0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+xExtension.swift"; sourceTree = "<group>"; };
 		04649ED125480214005328CF /* xVersionDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xVersionDebugView.swift; sourceTree = "<group>"; };
 		04649EE825480224005328CF /* xVersionDebugView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xVersionDebugView.xib; sourceTree = "<group>"; };
+		0466CD37254A4BDD008FF1C0 /* xSegmentPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xSegmentPageViewController.swift; sourceTree = "<group>"; };
 		046D24FA2546682B00D581D2 /* xGlobalLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGlobalLock.swift; sourceTree = "<group>"; };
 		046D254E2546C5E400D581D2 /* xDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDeviceManager.swift; sourceTree = "<group>"; };
 		046D256C2546C72F00D581D2 /* xImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xImageManager.swift; sourceTree = "<group>"; };
@@ -1044,6 +1046,14 @@
 			path = "16 版本提示悬浮窗";
 			sourceTree = "<group>";
 		};
+		0466CD36254A4BC1008FF1C0 /* 11 SegmentPage控件 */ = {
+			isa = PBXGroup;
+			children = (
+				0466CD37254A4BDD008FF1C0 /* xSegmentPageViewController.swift */,
+			);
+			path = "11 SegmentPage控件";
+			sourceTree = "<group>";
+		};
 		05B7E053A67FAE910BDBD34489D1BD93 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1460,6 +1470,7 @@
 		798A505D2E4DF538959BEDC6CB101F3F /* Product_Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0466CD36254A4BC1008FF1C0 /* 11 SegmentPage控件 */,
 				923D5B49DCE29B5EED174236FC6282F1 /* 01 Mask遮罩 */,
 				EEB94444F3F5AFBFBB39DBF54F5A0EB4 /* 02 Web浏览器 */,
 				B455CEA65EA5A9CF82FC145A70290715 /* 03 Page控件 */,
@@ -2667,6 +2678,7 @@
 				10CB446CA2C16EA8783A1D40234E5992 /* Image+xExtension.swift in Sources */,
 				0419161B25494EFF00366B9D /* UIBezierPath+xExtension.swift in Sources */,
 				E925263952288329A7856A6543C036AB /* ImageView+xExtension.swift in Sources */,
+				0466CD38254A4BDD008FF1C0 /* xSegmentPageViewController.swift in Sources */,
 				DFF39290E2B77911D8CB426F7E67896A /* Label+xExtension.swift in Sources */,
 				DF1E29F04E864393C2D0A0ECB22E1BFE /* Object+xExtension.swift in Sources */,
 				FD9219F98135342BBDBA7DC29124ED49 /* ReplaceMe.swift in Sources */,
