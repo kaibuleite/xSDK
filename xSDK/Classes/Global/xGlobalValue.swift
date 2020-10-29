@@ -19,18 +19,16 @@ public let xNavigationBarHeight = UINavigationController().navigationBar.frame.h
 /// 菜单栏高度
 public let xTabbarHeight = UITabBarController().tabBar.frame.height
 
-
 /// 重新登录提示
 public let xNotificationReLogin = Notification.Name.init("x重新登录")
-
 
 /// 当前窗口
 public var xKeyWindow : UIWindow? {
     var ret : UIWindow?
     if #available(iOS 13.0, *) {
         guard let scene = UIApplication.shared.connectedScenes.first else { return nil }
-        guard let winScene = scene as? UIWindowScene else { return nil }
-        ret = UIWindow.init(windowScene: winScene)
+        guard let delegate = scene.delegate as? UIWindowSceneDelegate else { return nil }
+        ret = delegate.window as? UIWindow
     }
     else {
         ret = UIApplication.shared.keyWindow

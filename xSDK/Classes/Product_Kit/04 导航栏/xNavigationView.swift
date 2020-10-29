@@ -57,6 +57,9 @@ public class xNavigationView: xNibView {
     // MARK: - Public Override Func
     public override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    public override func viewDidDisappear() {
+        super.viewDidDisappear()
         self.titleLbl.textColor = self.titleColor
         self.lineView.lineColor = self.lineColor
         self.barColorView.backgroundColor = self.barColor

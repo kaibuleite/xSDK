@@ -31,11 +31,11 @@ public class xLineView: xView {
     // MARK: - Public Override Func
     public override func viewDidLoad() {
         super.viewDidLoad()
-        self.backgroundColor = self.lineColor
         self.isUserInteractionEnabled = false
     }
     public override func viewDidDisappear() {
         super.viewDidDisappear()
+        self.backgroundColor = self.lineColor
         guard self.isDashLine == true else { return }
         self.drawDashLine()
     }
