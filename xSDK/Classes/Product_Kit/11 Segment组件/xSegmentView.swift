@@ -16,16 +16,16 @@ public class xSegmentView: xView {
     // MARK: - Public Property
     /// 配置
     public var config = xSegmentConfig()
+    /// 指示线
+    public let lineView = UIView()
+    /// 当前选中的idx
+    public var currentChooseIdx = 0
     
     // MARK: - Private Property
     /// 滚动视图
     private let contentScroll = UIScrollView()
-    /// 指示线
-    private let lineView = UIView()
     /// 排列子视图数组
     private var itemViewArray = [UIView]()
-    /// 当前选中的idx
-    private var currentChooseIdx = 0
     /// 选择回调
     private var chooseHandler : xHandlerChooseItem?
     
@@ -177,11 +177,13 @@ public class xSegmentView: xView {
         let item = self.itemViewArray[idx]
         item.backgroundColor = cfg.backgroundColor.normal
         item.layer.borderColor = cfg.border.color.normal.cgColor
-        if let btn = item as? UIButton {
-            btn.setTitleColor(cfg.titleColor.normal, for: .normal)
-        }
-        if let lbl = item as? UILabel {
-            lbl.textColor = cfg.titleColor.normal
+        UIView.animate(withDuration: 0.25) {
+            if let btn = item as? UIButton {
+                btn.setTitleColor(cfg.titleColor.normal, for: .normal)
+            }
+            if let lbl = item as? UILabel {
+                lbl.textColor = cfg.titleColor.normal
+            }
         }
     }
     /// 设置选中样式
@@ -194,11 +196,13 @@ public class xSegmentView: xView {
         let item = self.itemViewArray[idx]
         item.backgroundColor = cfg.backgroundColor.choose
         item.layer.borderColor = cfg.border.color.choose.cgColor
-        if let btn = item as? UIButton {
-            btn.setTitleColor(cfg.titleColor.choose, for: .normal)
-        }
-        if let lbl = item as? UILabel {
-            lbl.textColor = cfg.titleColor.choose
+        UIView.animate(withDuration: 0.25) {
+            if let btn = item as? UIButton {
+                btn.setTitleColor(cfg.titleColor.choose, for: .normal)
+            }
+            if let lbl = item as? UILabel {
+                lbl.textColor = cfg.titleColor.choose
+            }
         }
     }
     /// 重置指示线位置（直接跳过去）

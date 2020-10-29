@@ -9,11 +9,20 @@ import UIKit
 
 public class xPageViewController: UIPageViewController {
 
+    // MARK: - Enum
+    /// 拖拽方向
+    public enum xDraggingDirection {
+        case left
+        case right
+        case up
+        case down
+    }
+    
     // MARK: - Handler
     /// 切换页数
     public typealias xHandlerChangePage = (Int) -> Void
     /// 滚动中
-    public typealias xHandlerScrolling = (CGPoint) -> Void
+    public typealias xHandlerScrolling = (CGPoint, xDraggingDirection) -> Void
     /// 点击分页
     public typealias xHandlerClickPage = (Int) -> Void
     
@@ -22,6 +31,8 @@ public class xPageViewController: UIPageViewController {
     public var isOpenAutoChangeTimer = true
     /// 刷新频率(默认5s)
     public var changeInterval = TimeInterval(5)
+    /// 是否拖拽中
+    public var isDragging = false
 
     // MARK: - Private Property
     /// 当前页数编号
@@ -118,15 +129,13 @@ public class xPageViewController: UIPageViewController {
     /// 加载自定义组件数据
     /// - Parameters:
     ///   - itemViewControllerArray: 视图控制器列表
-    ///   - isAddTapEvent: 是否添加单击触摸事件
     ///   - handler1: 滚动回调
     ///   - handler2: 切换page回调
     ///   - handler3: 单击触摸事件回调
     public func reload(itemViewControllerArray : [UIViewController],
-                       isAddTapEvent: Bool = true,
                        scrolling handler1 : xHandlerScrolling? = nil,
                        change handler2 : @escaping xHandlerChangePage,
-                       click handler3 : @escaping xHandlerClickPage)
+                       click handler3 : xHandlerClickPage?)
     {
         guard itemViewControllerArray.count > 0 else {
             xWarning("数据不能为0")
@@ -147,8 +156,8 @@ public class xPageViewController: UIPageViewController {
         for (i, vc) in itemViewControllerArray.enumerated()
         {
             vc.view.tag = i
-            // 根据条件添加单击触摸事件
-            guard isAddTapEvent else { continue }
+            // 没有单击事件回调就不用添加手势了
+            guard let _ = self.clickHandler else { continue }
             vc.view.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapItem(_:)))
             vc.view.addGestureRecognizer(tap)
@@ -281,6 +290,12 @@ extension xPageViewController: UIPageViewControllerDelegate {
 // MARK: - UIScrollViewDelegate
 extension xPageViewController: UIScrollViewDelegate {
     
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.isDragging = true
+    }
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        self.isDragging = false
+    }
     public func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         // 没有回调就不管了，较少CPU开销
@@ -289,10 +304,12 @@ extension xPageViewController: UIScrollViewDelegate {
         let vc = self.itemViewControllerArray[self.currentPage]
         let p = vc.view.convert(CGPoint(), to: self.view)
         var offset = CGPoint.zero
+        var direction = xDraggingDirection.left
         switch self.navigationOrientation {
         case .horizontal:
             let w = self.view.frame.width
             offset.x = CGFloat(self.currentPage) * w + -p.x
+            direction = p.x > 0 ? .right : .left
             // 边缘处理
             let minX = CGFloat.zero
             let maxX = CGFloat(self.itemViewControllerArray.count - 1) * w
@@ -305,6 +322,7 @@ extension xPageViewController: UIScrollViewDelegate {
         default:
             let h = self.view.frame.height
             offset.y = CGFloat(self.currentPage) * h + -p.y
+            direction = p.y > 0 ? .down : .up
             // 边缘处理
             let minY = CGFloat.zero
             let maxY = CGFloat(self.itemViewControllerArray.count - 1) * h
@@ -316,6 +334,6 @@ extension xPageViewController: UIScrollViewDelegate {
             }
         }
         // xLog(offset)
-        handler(offset)
+        handler(offset, direction)
     }
 }

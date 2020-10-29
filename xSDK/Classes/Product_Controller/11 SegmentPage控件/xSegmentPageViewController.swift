@@ -8,8 +8,6 @@
 import UIKit
 
 open class xSegmentPageViewController: xViewController {
-
-    // MARK: - Enum
     
     // MARK: - Handle
     /// 显示分页
@@ -21,13 +19,13 @@ open class xSegmentPageViewController: xViewController {
     /// 分页容器
     @IBOutlet weak var pageContainer: xContainerView!
     
-    // MARK: - Open Property
-    // MARK: - Public Property
     // MARK: - Private Property
     /// 分段
     let segment = xSegmentView.init()
     /// 分页
     let pageViewController = xPageViewController.quickInstancetype(navigationOrientation: .horizontal)
+    /// 是否需要监听Page滚动回调
+    var isHandlerPageScrolling = true
     /// 回调
     var showHandler : xHandlerShowPage?
     
@@ -74,7 +72,8 @@ open class xSegmentPageViewController: xViewController {
     ///   - pageDataArray: 分页数据
     public func reload(segmentDataArray : [String],
                        segmentItemFillMode : xSegmentConfig.xSegmentItemFillMode = .fillEqually,
-                       pageDataArray : [UIViewController])
+                       pageDataArray : [UIViewController],
+                       change handler : @escaping xPageViewController.xHandlerChangePage)
     {
         guard segmentDataArray.count > 0 else {
             xWarning("没数据")
@@ -92,25 +91,40 @@ open class xSegmentPageViewController: xViewController {
             // 加载分段数据
             self.segment.reload(titleArray: segmentDataArray, fillMode: segmentItemFillMode) {
                 [unowned self] (idx) in
+                self.isHandlerPageScrolling = false // 该状态无需监听Page的滚动回调
                 self.pageViewController.change(to: idx)
             }
             self.segment.updateSegmentStyle(choose: 0)
             // 加载分页数据
-            self.pageViewController.reload(itemViewControllerArray: pageDataArray, isAddTapEvent: true) {
-                (offset) in
+            /* 简易设置 */
+            self.pageViewController.reload(itemViewControllerArray: pageDataArray, scrolling: nil, change: {
+                [unowned self] (page) in
+                self.isHandlerPageScrolling = true  // 恢复监听状态
+                self.segment.updateSegmentStyle(choose: page)
+                handler(page)
+                
+            }, click: nil)
+            /* 详细设置
+            self.pageViewController.reload(itemViewControllerArray: pageDataArray) {
+                [unowned self] (offset, direction) in
+                guard self.isHandlerPageScrolling else { return }
+                var frame = self.segment.lineView.frame
+                let count = CGFloat(pageDataArray.count)
+                frame.origin.x = offset.x / count
+                self.segment.lineView.frame = frame
                 
             } change: {
                 [unowned self] (page) in
-                xLog(page)
+                self.isHandlerPageScrolling = true  // 恢复监听状态
                 self.segment.updateSegmentStyle(choose: page)
+                handler(page)
                 
             } click: {
                 (page) in
                 xLog(page)
             }
+             */
         }
     }
     
-    // MARK: - Private Func
-
 }

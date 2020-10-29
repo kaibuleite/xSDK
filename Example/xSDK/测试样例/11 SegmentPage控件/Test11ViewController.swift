@@ -28,10 +28,10 @@ class Test11ViewController: xViewController {
             vc.view.backgroundColor = color
             vcArr.append(vc)
         }
-        DispatchQueue.main.async {
+        self.sp.reload(segmentDataArray: titleArr, segmentItemFillMode: .fillEqually, pageDataArray: vcArr) {
+            //[unowned self]
+            (page) in
+            xLog("切换到:\(titleArr[page])")
         }
-        self.sp.reload(segmentDataArray: titleArr,
-                       segmentItemFillMode: .fillEqually,
-                       pageDataArray: vcArr)
     }
 }
