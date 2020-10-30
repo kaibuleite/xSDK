@@ -109,8 +109,8 @@ extension xListTableViewController {
     @objc open func getEmptyView() -> UIView? {
         var frame = self.tableView.bounds
         frame.origin.y = self.tableView.sectionHeaderHeight
-        frame.size.width -= self.tableView.sectionHeaderHeight
-        frame.size.width -= self.tableView.sectionFooterHeight
+        frame.size.height -= self.tableView.sectionHeaderHeight
+        frame.size.height -= self.tableView.sectionFooterHeight
         let view = xDataEmptyView.loadNib()
         view.frame = frame
         return view

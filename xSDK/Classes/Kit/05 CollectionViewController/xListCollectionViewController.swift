@@ -105,7 +105,7 @@ extension xListCollectionViewController {
     @objc open func getEmptyView() -> UIView? {
         var frame = self.collectionView.bounds
         frame.origin.y = self.headerSize.height
-        frame.size.width -= self.headerSize.height
+        frame.size.height -= self.headerSize.height
         let view = xDataEmptyView.loadNib()
         view.frame = frame
         return view

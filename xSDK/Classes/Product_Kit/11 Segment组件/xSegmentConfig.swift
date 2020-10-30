@@ -22,9 +22,33 @@ public class xSegmentConfig: NSObject {
     /// 颜色数据结构
     public struct xSegmentItemColor {
         /// 普通
-        public var normal = UIColor.darkText
+        public var normal = UIColor.black
         /// 选中
         public var choose = UIColor.red
+        
+        /// 普通颜色混合选中颜色
+        /// - Parameters:
+        ///   - ratio: 选中颜色占比
+        ///   - alpha: 透明度
+        /// - Returns: 混合后的颜色
+        public func normalMixChoose(ratio: CGFloat,
+                                    alpha : CGFloat = 1) -> UIColor
+        {
+            let ret = self.normal.xMix(color: self.choose, ratio: ratio, alpha: alpha)
+            return ret
+        }
+        /// 选中颜色混合普通颜色
+        /// - Parameters:
+        ///   - ratio: 普通颜色占比
+        ///   - alpha: 透明度
+        /// - Returns: 混合后的颜色
+        public func chooseMixNormal(ratio: CGFloat,
+                                    alpha : CGFloat = 1) -> UIColor
+        {
+            let ret = self.choose.xMix(color: self.normal, ratio: ratio, alpha: alpha)
+            return ret
+        }
+        
     }
     /// 边框数据结构
     public struct xSegmentItemBorder {

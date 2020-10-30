@@ -12,10 +12,12 @@ public class xPageViewController: UIPageViewController {
     // MARK: - Enum
     /// 拖拽方向
     public enum xDraggingDirection {
-        case left
-        case right
-        case up
-        case down
+        /// 无
+        case none
+        /// 下一个
+        case next
+        /// 上一个
+        case previous
     }
     
     // MARK: - Handler
@@ -33,12 +35,12 @@ public class xPageViewController: UIPageViewController {
     public var changeInterval = TimeInterval(5)
     /// 是否拖拽中
     public var isDragging = false
+    /// 当前页数编号
+    public var currentPage = 0
+    /// 目标页数编号
+    public var pendingPage = 0
 
     // MARK: - Private Property
-    /// 当前页数编号
-    private var currentPage = 0
-    /// 目标页数编号
-    private var pendingPage = 0
     /// 定时器
     private var timer : Timer?
     /// 滚动容器
@@ -265,7 +267,8 @@ extension xPageViewController: UIPageViewControllerDelegate {
         self.closeTimer()
         // 框架只考虑单页，所以数组其实只有1个元素
         guard let vc = pendingViewControllers.last else { return }
-        self.pendingPage = vc.view.tag
+        let page = vc.view.tag
+        self.pendingPage = page
     }
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    didFinishAnimating finished: Bool,
@@ -304,12 +307,19 @@ extension xPageViewController: UIScrollViewDelegate {
         let vc = self.itemViewControllerArray[self.currentPage]
         let p = vc.view.convert(CGPoint(), to: self.view)
         var offset = CGPoint.zero
-        var direction = xDraggingDirection.left
+        var direction = xDraggingDirection.none
         switch self.navigationOrientation {
         case .horizontal:
             let w = self.view.frame.width
-            offset.x = CGFloat(self.currentPage) * w + -p.x
-            direction = p.x > 0 ? .right : .left
+            offset.x = CGFloat(self.currentPage) * w - p.x
+            if p.x != 0 {
+                direction = p.x > 0 ? .previous : .next
+            }
+            // 跨页处理
+            if CGFloat(abs(p.x)) >= w {
+                self.currentPage += (direction == .next) ? 1 : -1
+                self.currentPage = self.safe(page: self.currentPage)
+            }
             // 边缘处理
             let minX = CGFloat.zero
             let maxX = CGFloat(self.itemViewControllerArray.count - 1) * w
@@ -321,8 +331,15 @@ extension xPageViewController: UIScrollViewDelegate {
             }
         default:
             let h = self.view.frame.height
-            offset.y = CGFloat(self.currentPage) * h + -p.y
-            direction = p.y > 0 ? .down : .up
+            offset.y = CGFloat(self.currentPage) * h - p.y
+            if p.y != 0 {
+                direction = p.y > 0 ? .previous : .next
+            }
+            // 跨页处理
+            if CGFloat(abs(p.y)) >= h {
+                self.currentPage += (direction == .next) ? 1 : -1
+                self.currentPage = self.safe(page: self.currentPage)
+            }
             // 边缘处理
             let minY = CGFloat.zero
             let maxY = CGFloat(self.itemViewControllerArray.count - 1) * h

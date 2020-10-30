@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     
-    // MARK: - Open Func
+    // MARK: - Objc Open Func
     /// 添加其他UI控件
     @objc open func addKit() { }
     /// 添加子控制器

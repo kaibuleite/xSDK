@@ -99,7 +99,7 @@ open class xSegmentPageViewController: xViewController {
             }
             self.segment.updateSegmentStyle(choose: 0)
             // 加载分页数据
-            /* 简易设置 */
+            /* 简易设置
             self.pageViewController.reload(itemViewControllerArray: pageDataArray, scrolling: handler1, change: {
                 [unowned self] (page) in
                 self.isHandlerPageScrolling = true  // 恢复监听状态
@@ -107,26 +107,90 @@ open class xSegmentPageViewController: xViewController {
                 handler2(page)
                 
             }, click: handler3)
+             */
             /* 详细设置
+             */
             self.pageViewController.reload(itemViewControllerArray: pageDataArray) {
                 [unowned self] (offset, direction) in
                 guard self.isHandlerPageScrolling else { return }
-                var frame = self.segment.lineView.frame
-                let count = CGFloat(pageDataArray.count)
-                frame.origin.x = offset.x / count
-                self.segment.lineView.frame = frame
+                // 声明计算参数
+                let count = pageDataArray.count
+                let width = self.view.bounds.width
+                let page1 = self.pageViewController.currentPage
+                let page2 = self.pageViewController.pendingPage
+                var ratio = fmod(offset.x, width) / width   // 滚动比例
+                if direction == .previous {
+                    ratio = 1 - ratio
+                }
+                // 更新指示线位置
+                let path = UIBezierPath.init()
+                let segCfg = self.segment.config
+                let itemW = width / CGFloat(count)  // 单段宽度
+                let lineW = itemW * self.segment.config.line.widthOfItemPercent
+                let lineX = offset.x / CGFloat(count)
+                let lineY = self.segment.bounds.height - segCfg.line.height - segCfg.line.marginBottom
+                if abs(page1 - page2) == count - 1 {
+                    // 两边处理
+                    switch direction {
+                    case .next: // n >> 0 尾部到头部
+                        var pos = CGPoint.zero
+                        pos.y = lineY
+                        pos.x = (itemW - lineW) / 2 // 左侧起点
+                        path.move(to: pos)
+                        pos.x += lineX      // 左侧终点
+                        path.addLine(to: pos)
+                        pos.x = width - itemW + lineX + (itemW - lineW) / 2  // 右侧起点
+                        path.move(to: pos)
+                        pos.x = width - itemW + lineW   // 右侧终点
+                        path.addLine(to: pos)
+                        self.segment.lineLayer.path = path.cgPath
+                    case .previous:    // 0 >> n 头部到尾部
+                        var pos = CGPoint.zero
+                        pos.y = lineY
+                        pos.x = (itemW - lineW) / 2 // 左侧起点
+                        path.move(to: pos)
+                        pos.x += width - lineX      // 左侧终点
+                        path.addLine(to: pos)
+                        pos.x = width - itemW + lineX + (itemW - lineW) / 2  // 右侧起点
+                        path.move(to: pos)
+                        pos.x = width - itemW + lineW   // 右侧终点
+                        path.addLine(to: pos)
+                        self.segment.lineLayer.path = path.cgPath
+                    case .none:
+                        break
+                    }
+                }
+                else {
+                    // 中间处理
+                    var pos = CGPoint.zero
+                    pos.y = lineY
+                    pos.x = lineX + (itemW - lineW) / 2 // 起点位置
+                    path.move(to: pos)
+                    pos.x += lineW  // 终点位置
+                    path.addLine(to: pos)
+                    self.segment.lineLayer.path = path.cgPath
+                }
+                
+                // 修改Segment内容颜色
+                if page1 != page2, direction != .none {
+                    let color1 = self.segment.config.titleColor.chooseMixNormal(ratio: ratio)
+                    self.segment.setItemTitleColor(at: page1, color: color1)
+                    let color2 = self.segment.config.titleColor.normalMixChoose(ratio: ratio)
+                    self.segment.setItemTitleColor(at: page2, color: color2)
+                }
+                xLog("\(page1) >>> \(page2)", "\(offset.x) = \(lineX)")
+                handler1?(offset, direction)
                 
             } change: {
                 [unowned self] (page) in
-                self.isHandlerPageScrolling = true  // 恢复监听状态
                 self.segment.updateSegmentStyle(choose: page)
-                handler(page)
+                handler2(page)
+                self.isHandlerPageScrolling = true  // 恢复监听状态
                 
             } click: {
                 (page) in
-                xLog(page)
+                handler3?(page)
             }
-             */
         }
     }
     

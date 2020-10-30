@@ -16,12 +16,12 @@ public class xSegmentView: xView {
     // MARK: - Public Property
     /// 配置
     public var config = xSegmentConfig()
-    /// 指示线
-    public let lineView = UIView()
     /// 当前选中的idx
     public var currentChooseIdx = 0
     /// 排列子视图数组
     public var itemViewArray = [UIView]()
+    /// 指示线图层
+    let lineLayer = CAShapeLayer.init()
     
     // MARK: - Private Property
     /// 滚动视图
@@ -42,8 +42,11 @@ public class xSegmentView: xView {
         self.addSubview(self.contentScroll)
         self.contentScroll.showsVerticalScrollIndicator = false
         self.contentScroll.showsHorizontalScrollIndicator = false
-        // 其他
-        self.contentScroll.addSubview(self.lineView)
+        // 指示线
+        self.lineLayer.lineCap = .round
+        self.lineLayer.lineJoin = .round
+        self.lineLayer.fillColor = UIColor.clear.cgColor
+        self.contentScroll.layer.addSublayer(self.lineLayer)
     }
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -73,8 +76,10 @@ public class xSegmentView: xView {
             frame.origin.x = totalWidth
         }
         totalWidth -= spacing
-        self.contentScroll.contentSize = .init(width: totalWidth, height: 0)
+        let contentSize = CGSize.init(width: totalWidth, height: 0)
+        self.contentScroll.contentSize = contentSize
         self.contentScroll.isScrollEnabled = totalWidth > scrolWdith
+        self.lineLayer.frame = .init(origin: .zero, size: contentSize)
     }
 
     // MARK: - Public Func
@@ -118,7 +123,6 @@ public class xSegmentView: xView {
         // 绑定数据
         self.itemViewArray = itemViewArray
         self.chooseHandler = handler
-        self.currentChooseIdx = -1
         // 排列控件
         let cfg = self.config
         for (i, view) in itemViewArray.enumerated()
@@ -142,9 +146,9 @@ public class xSegmentView: xView {
             view.addGestureRecognizer(tap)
             self.contentScroll.addSubview(view)
         }
-        self.lineView.frame = .zero
-        self.lineView.backgroundColor = cfg.line.color
-        self.contentScroll.bringSubviewToFront(self.lineView)
+        self.lineLayer.lineWidth = cfg.line.height
+        self.lineLayer.strokeColor = cfg.line.color.cgColor
+        
         self.setNeedsLayout()
     }
     // TODO: 选中样式
@@ -153,85 +157,94 @@ public class xSegmentView: xView {
     {
         guard idx >= 0 else { return }
         guard idx < self.itemViewArray.count else { return }
+        guard idx != self.currentChooseIdx else { return }
         self.updateSegmentStyle(choose: idx)
         self.chooseHandler?(idx)
     }
     /// 更新选中样式
     public func updateSegmentStyle(choose idx : Int)
     {
-        guard idx != self.currentChooseIdx else { return }
-        self.resetItemNormalStyle(at: self.currentChooseIdx)
-        self.resetItemChooseStyle(at: idx)
+        self.setItemNormalStyle(at: self.currentChooseIdx)
+        self.setItemChooseStyle(at: idx)
         
         self.currentChooseIdx = idx // 保存idx
         self.layoutIfNeeded()   // 更新控件约束
         
-        self.resetLineFrame(at: idx)
-        self.resetScrollOffset(at: idx)
+        self.setLineMove(to: idx)
+        self.setContentScroll(to: idx)
     }
     /// 设置普通样式
-    public func resetItemNormalStyle(at idx : Int)
+    public func setItemNormalStyle(at idx : Int)
     {
         guard idx >= 0 else { return }
         guard idx < self.itemViewArray.count else { return }
         
         let cfg = self.config
         let item = self.itemViewArray[idx]
-        item.backgroundColor = cfg.backgroundColor.normal
-        item.layer.borderColor = cfg.border.color.normal.cgColor
         UIView.animate(withDuration: 0.25) {
-            if let btn = item as? UIButton {
-                btn.setTitleColor(cfg.titleColor.normal, for: .normal)
-            }
-            if let lbl = item as? UILabel {
-                lbl.textColor = cfg.titleColor.normal
-            }
+            item.backgroundColor = cfg.backgroundColor.normal
+            item.layer.borderColor = cfg.border.color.normal.cgColor
+            self.setItemTitleColor(at: idx, color: cfg.titleColor.normal)
         }
     }
     /// 设置选中样式
-    public func resetItemChooseStyle(at idx : Int)
+    public func setItemChooseStyle(at idx : Int)
     {
         guard idx >= 0 else { return }
         guard idx < self.itemViewArray.count else { return }
         
         let cfg = self.config
         let item = self.itemViewArray[idx]
-        item.backgroundColor = cfg.backgroundColor.choose
-        item.layer.borderColor = cfg.border.color.choose.cgColor
         UIView.animate(withDuration: 0.25) {
-            if let btn = item as? UIButton {
-                btn.setTitleColor(cfg.titleColor.choose, for: .normal)
-            }
-            if let lbl = item as? UILabel {
-                lbl.textColor = cfg.titleColor.choose
-            }
+            item.backgroundColor = cfg.backgroundColor.choose
+            item.layer.borderColor = cfg.border.color.choose.cgColor
+            self.setItemTitleColor(at: idx, color: cfg.titleColor.choose)
         }
     }
-    /// 重置指示线位置（直接跳过去）
-    public func resetLineFrame(at idx : Int)
+    
+    /// 设置指定编号的Item标题颜色
+    /// - Parameters:
+    ///   - idx: 编号
+    ///   - color: 颜色
+    public func setItemTitleColor(at idx : Int,
+                                  color : UIColor)
     {
         guard idx >= 0 else { return }
         guard idx < self.itemViewArray.count else { return }
         
         let item = self.itemViewArray[idx]
-        let cfg = self.config
-        var frame = self.lineView.frame
-        if frame == .zero {
-            frame = self.bounds
-            frame.origin.y = xScreenHeight
-            frame.size.width = 0
-            frame.size.height = cfg.line.height
-            self.lineView.frame = frame
+        if let btn = item as? UIButton {
+            btn.setTitleColor(color, for: .normal)
         }
-        frame.size.width = cfg.line.widthOfItemPercent * item.bounds.width
-        frame.origin.x = item.frame.origin.x + (item.bounds.width - frame.size.width) / 2
-        frame.origin.y = self.bounds.height - cfg.line.height - cfg.line.marginBottom
+        if let lbl = item as? UILabel {
+            lbl.textColor = color
+        }
+    }
+    /// 设置指示线位置（直接跳过去）
+    public func setLineMove(to idx : Int)
+    {
+        guard idx >= 0 else { return }
+        guard idx < self.itemViewArray.count else { return }
+        // 声明参数
+        let cfg = self.config
+        let item = self.itemViewArray[idx]
+        let itemX = item.frame.origin.x
+        let itemW = item.frame.width
+        let lineW = itemW * cfg.line.widthOfItemPercent
+        // 计算指示线路径
+        let path = UIBezierPath.init()
+        var pos = CGPoint.zero
+        pos.y = self.bounds.height - cfg.line.height - cfg.line.marginBottom
+        pos.x = itemX + (itemW - lineW) / 2 // 起点位置
+        path.move(to: pos)
+        pos.x += lineW      // 终点位置
+        path.addLine(to: pos)
         UIView.animate(withDuration: 0.25, animations: {
-            self.lineView.frame = frame
+            self.lineLayer.path = path.cgPath
         })
     }
-    /// 重置滚动结果位置（边缘处理）
-    public func resetScrollOffset(at idx : Int)
+    /// 设置滚动结果位置（边缘处理）
+    public func setContentScroll(to idx : Int)
     {
         guard idx >= 0 else { return }
         guard idx < self.itemViewArray.count else { return }
@@ -283,7 +296,7 @@ public class xSegmentView: xView {
             view.removeFromSuperview()
         }
         self.itemViewArray.removeAll()
-        self.lineView.frame = .zero
+        self.lineLayer.path = UIBezierPath.init().cgPath
     }
     // TODO: 手势事件
     /// 手势事件
