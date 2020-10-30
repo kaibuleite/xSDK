@@ -60,6 +60,7 @@ open class xSegmentPageViewController: xViewController {
     {
         let config = xSegmentConfig.init()
         config.line.color = .red
+        config.line.marginBottom = 2
         config.titleColor.choose = .red
         self.segment.config = config
     }
@@ -73,7 +74,9 @@ open class xSegmentPageViewController: xViewController {
     public func reload(segmentDataArray : [String],
                        segmentItemFillMode : xSegmentConfig.xSegmentItemFillMode = .fillEqually,
                        pageDataArray : [UIViewController],
-                       change handler : @escaping xPageViewController.xHandlerChangePage)
+                       scrolling handler1 : xPageViewController.xHandlerScrolling? = nil,
+                       change handler2 : @escaping xPageViewController.xHandlerChangePage,
+                       click handler3 : xPageViewController.xHandlerClickPage? = nil)
     {
         guard segmentDataArray.count > 0 else {
             xWarning("没数据")
@@ -97,13 +100,13 @@ open class xSegmentPageViewController: xViewController {
             self.segment.updateSegmentStyle(choose: 0)
             // 加载分页数据
             /* 简易设置 */
-            self.pageViewController.reload(itemViewControllerArray: pageDataArray, scrolling: nil, change: {
+            self.pageViewController.reload(itemViewControllerArray: pageDataArray, scrolling: handler1, change: {
                 [unowned self] (page) in
                 self.isHandlerPageScrolling = true  // 恢复监听状态
                 self.segment.updateSegmentStyle(choose: page)
-                handler(page)
+                handler2(page)
                 
-            }, click: nil)
+            }, click: handler3)
             /* 详细设置
             self.pageViewController.reload(itemViewControllerArray: pageDataArray) {
                 [unowned self] (offset, direction) in

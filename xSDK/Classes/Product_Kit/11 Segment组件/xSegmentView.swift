@@ -20,12 +20,12 @@ public class xSegmentView: xView {
     public let lineView = UIView()
     /// 当前选中的idx
     public var currentChooseIdx = 0
+    /// 排列子视图数组
+    public var itemViewArray = [UIView]()
     
     // MARK: - Private Property
     /// 滚动视图
     private let contentScroll = UIScrollView()
-    /// 排列子视图数组
-    private var itemViewArray = [UIView]()
     /// 选择回调
     private var chooseHandler : xHandlerChooseItem?
     
@@ -118,6 +118,7 @@ public class xSegmentView: xView {
         // 绑定数据
         self.itemViewArray = itemViewArray
         self.chooseHandler = handler
+        self.currentChooseIdx = -1
         // 排列控件
         let cfg = self.config
         for (i, view) in itemViewArray.enumerated()
@@ -158,6 +159,7 @@ public class xSegmentView: xView {
     /// 更新选中样式
     public func updateSegmentStyle(choose idx : Int)
     {
+        guard idx != self.currentChooseIdx else { return }
         self.resetItemNormalStyle(at: self.currentChooseIdx)
         self.resetItemChooseStyle(at: idx)
         
@@ -223,7 +225,7 @@ public class xSegmentView: xView {
         }
         frame.size.width = cfg.line.widthOfItemPercent * item.bounds.width
         frame.origin.x = item.frame.origin.x + (item.bounds.width - frame.size.width) / 2
-        frame.origin.y = self.bounds.height - cfg.line.height
+        frame.origin.y = self.bounds.height - cfg.line.height - cfg.line.marginBottom
         UIView.animate(withDuration: 0.25, animations: {
             self.lineView.frame = frame
         })

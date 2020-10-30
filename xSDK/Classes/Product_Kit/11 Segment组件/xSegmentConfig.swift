@@ -41,6 +41,8 @@ public class xSegmentConfig: NSObject {
         public var color = UIColor.red
         /// 高度
         public var height = CGFloat(1.5)
+        /// 底部留空
+        public var marginBottom = CGFloat(0)
         /// 相对于Item的宽度（默认相等）
         public var widthOfItemPercent = CGFloat(1)
     }

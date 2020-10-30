@@ -10,6 +10,22 @@ import Foundation
 extension Array {
 
     // MARK: - Public Func
+    /// 校验编号是否合法
+    /// - Parameter idx: 编号
+    /// - Returns: 结果
+    public func xIsSafe(idx : Int) -> Bool
+    {
+        guard idx >= 0 else {
+            xWarning("数组编号必须 >= 0")
+            return false
+        }
+        guard idx < self.count else {
+            xWarning("数组越界")
+            return false
+        }
+        return true
+    }
+    
     /// 安全获取数据
     public func xObject(in idx : Int) -> Element?
     {
