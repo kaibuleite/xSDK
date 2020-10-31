@@ -176,30 +176,20 @@ public class xSegmentView: xView {
     /// 设置普通样式
     public func setItemNormalStyle(at idx : Int)
     {
-        guard idx >= 0 else { return }
-        guard idx < self.itemViewArray.count else { return }
-        
+        guard let item = self.getItem(at: idx)  else { return }
         let cfg = self.config
-        let item = self.itemViewArray[idx]
-        UIView.animate(withDuration: 0.25) {
-            item.backgroundColor = cfg.backgroundColor.normal
-            item.layer.borderColor = cfg.border.color.normal.cgColor
-            self.setItemTitleColor(at: idx, color: cfg.titleColor.normal)
-        }
+        item.backgroundColor = cfg.backgroundColor.normal
+        item.layer.borderColor = cfg.border.color.normal.cgColor
+        self.setItemTitleColor(at: idx, color: cfg.titleColor.normal)
     }
     /// 设置选中样式
     public func setItemChooseStyle(at idx : Int)
     {
-        guard idx >= 0 else { return }
-        guard idx < self.itemViewArray.count else { return }
-        
+        guard let item = self.getItem(at: idx)  else { return }
         let cfg = self.config
-        let item = self.itemViewArray[idx]
-        UIView.animate(withDuration: 0.25) {
-            item.backgroundColor = cfg.backgroundColor.choose
-            item.layer.borderColor = cfg.border.color.choose.cgColor
-            self.setItemTitleColor(at: idx, color: cfg.titleColor.choose)
-        }
+        item.backgroundColor = cfg.backgroundColor.choose
+        item.layer.borderColor = cfg.border.color.choose.cgColor
+        self.setItemTitleColor(at: idx, color: cfg.titleColor.choose)
     }
     
     /// 设置指定编号的Item标题颜色
@@ -209,10 +199,7 @@ public class xSegmentView: xView {
     public func setItemTitleColor(at idx : Int,
                                   color : UIColor)
     {
-        guard idx >= 0 else { return }
-        guard idx < self.itemViewArray.count else { return }
-        
-        let item = self.itemViewArray[idx]
+        guard let item = self.getItem(at: idx)  else { return }
         if let btn = item as? UIButton {
             btn.setTitleColor(color, for: .normal)
         }
@@ -223,11 +210,8 @@ public class xSegmentView: xView {
     /// 设置指示线位置（直接跳过去）
     public func setLineMove(to idx : Int)
     {
-        guard idx >= 0 else { return }
-        guard idx < self.itemViewArray.count else { return }
-        // 声明参数
+        guard let item = self.getItem(at: idx)  else { return }
         let cfg = self.config
-        let item = self.itemViewArray[idx]
         let itemX = item.frame.origin.x
         let itemW = item.frame.width
         let lineW = itemW * cfg.line.widthOfItemPercent
@@ -244,10 +228,8 @@ public class xSegmentView: xView {
     /// 设置滚动结果位置（边缘处理）
     public func setContentScroll(to idx : Int)
     {
-        guard idx >= 0 else { return }
-        guard idx < self.itemViewArray.count else { return }
         guard self.config.fillMode == .auto else { return }
-        
+        guard let item = self.getItem(at: idx)  else { return } 
         let totalWidth = self.contentScroll.contentSize.width
         let scrolWidth = self.contentScroll.bounds.width
         var offset = CGPoint.zero
@@ -264,7 +246,6 @@ public class xSegmentView: xView {
             self.contentScroll.setContentOffset(offset, animated: true)
             return
         }
-        let item = self.itemViewArray[idx]
         let spacing = self.config.spacing
         let scrolX = self.contentScroll.contentOffset.x
         let itemX = item.frame.origin.x
@@ -285,6 +266,13 @@ public class xSegmentView: xView {
     }
     
     // MARK: - Private Func
+    /// 获取指定的item
+    private func getItem(at idx : Int) -> UIView?
+    {
+        guard idx >= 0 else { return nil}
+        guard idx < self.itemViewArray.count else { return nil}
+        return self.itemViewArray[idx]
+    }
     // TODO: 清除控件
     /// 清空旧分段控件
     private func clearOldSegmentItem()

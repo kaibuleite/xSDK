@@ -23,7 +23,7 @@ open class xSegmentPageViewController: xViewController {
     /// 分段
     let segment = xSegmentView.init()
     /// 分页
-    let pageViewController = xPageViewController.quickInstancetype(navigationOrientation: .horizontal)
+    let pageViewController = xPageViewController.quickInstancetype(navigationOrientation: .vertical)
     /// 是否需要监听Page滚动回调
     var isHandlerPageScrolling = true
     /// 回调
@@ -123,11 +123,10 @@ open class xSegmentPageViewController: xViewController {
                 [unowned self] (data, direction) in
                 guard self.isHandlerPageScrolling else { return }
                 // 声明计算参数
-                let count = pageDataArray.count
                 let width = self.view.bounds.width
                 let path = UIBezierPath.init()
                 let segCfg = self.segment.config
-                let itemW = width / CGFloat(count)  // 单段宽度
+                let itemW = self.segment.itemViewArray[data.toPage].bounds.width
                 let lineY = self.segment.bounds.height - segCfg.line.height - segCfg.line.marginBottom
                 var lineX = CGFloat(data.fromPage) * itemW
                 switch direction {
@@ -154,10 +153,17 @@ open class xSegmentPageViewController: xViewController {
                     path.addLine(to: pos2)
                 }
                 self.segment.lineLayer.path = path.cgPath
-                xLog("\(data.fromPage)->\(data.toPage), x=\(Double(lineX).xToString(precision: 0)), p=\(Double(data.progress).xToString(precision: 1))%")
+                xLog("\(data.fromPage)->\(data.toPage), x=\(Double(lineX).xToString(precision: 0)), p=\(Double(data.progress * 100).xToString(precision: 1))%")
                 // 修改Segment内容颜色
                 if data.fromPage != data.toPage {
-                    let ratio = data.progress
+                    // 为了防止拖动过快，设置个阈值，不然来不及清空颜色会导致部分item颜色不统一
+                    var ratio = data.progress
+                    if data.progress <= 0.1 {
+                        ratio = 0
+                    }
+                    if data.progress >= 0.9 {
+                        ratio = 1
+                    }
                     let color1 = self.segment.config.titleColor.chooseMixNormal(ratio: ratio)
                     let color2 = self.segment.config.titleColor.normalMixChoose(ratio: ratio)
                     self.segment.setItemTitleColor(at: data.fromPage, color: color1)
@@ -166,6 +172,7 @@ open class xSegmentPageViewController: xViewController {
                 
             } change: {
                 [unowned self] (page) in
+                
                 self.segment.updateSegmentStyle(choose: page)
                 handler2(page)
                 

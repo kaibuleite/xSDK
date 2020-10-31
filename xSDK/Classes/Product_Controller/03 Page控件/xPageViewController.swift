@@ -277,6 +277,7 @@ extension xPageViewController: UIPageViewControllerDelegate {
         if let vc = pendingViewControllers.last {
             self.pendingPage = vc.view.tag
         }
+        xLog("pending = \(self.pendingPage)")
     }
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    didFinishAnimating finished: Bool,
@@ -284,26 +285,20 @@ extension xPageViewController: UIPageViewControllerDelegate {
                                    transitionCompleted completed: Bool)
     {
         // xLog("用户换页完成")
-        self.contentScrollView?.delegate = nil
         if self.isOpenAutoChangeTimer {
             self.openTimer()
         }
-        var newPage = -1
-        if completed {
-            newPage = self.pendingPage
+        guard finished else {
+            xWarning("换页事件未结束")
+            return
         }
-        else {
+        guard completed else {
             // 一般情况下拖拽进度不够导致回到原来的地方会进这里
-            if let vc = previousViewControllers.first {
-                newPage = vc.view.tag
-            }
+            xWarning("页面没变动")
+            return
         }
-        if newPage != self.currentPage {
-            self.currentPage = self.safe(page: newPage)
-            self.changeHandler?(self.currentPage)
-        } else {
-            xLog("页面没变动")
-        }
+        self.currentPage = self.pendingPage
+        self.changeHandler?(self.currentPage)
     }
 }
 
