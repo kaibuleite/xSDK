@@ -72,10 +72,13 @@ open class xSegmentPageViewController: xViewController {
     ///   - segmentDataArray: 分段数据
     ///   - segmentItemFillMode: 分段填充样式
     ///   - pageDataArray: 分页数据
+    ///   - handler1: 滚动回调
+    ///   - handler2: 切换分页回调
+    ///   - handler3: 点击分页回调
     public func reload(segmentDataArray : [String],
                        segmentItemFillMode : xSegmentConfig.xSegmentItemFillMode = .fillEqually,
                        pageDataArray : [UIViewController],
-                       scrolling handler1 : xPageViewController.xHandlerScrolling? = nil,
+                       //scrolling handler1 : xPageViewController.xHandlerScrolling? = nil,
                        change handler2 : @escaping xPageViewController.xHandlerChangePage,
                        click handler3 : xPageViewController.xHandlerClickPage? = nil)
     {
@@ -117,69 +120,49 @@ open class xSegmentPageViewController: xViewController {
             /* 详细设置
              */
             self.pageViewController.reload(itemViewControllerArray: pageDataArray) {
-                [unowned self] (offset, direction) in
+                [unowned self] (data, direction) in
                 guard self.isHandlerPageScrolling else { return }
                 // 声明计算参数
                 let count = pageDataArray.count
                 let width = self.view.bounds.width
-                let page1 = self.pageViewController.currentPage
-                let page2 = self.pageViewController.pendingPage
-                var ratio = fmod(offset.x, width) / width   // 滚动比例
-                if direction == .previous {
-                    ratio = 1 - ratio
-                }
-                // 更新指示线位置
                 let path = UIBezierPath.init()
                 let segCfg = self.segment.config
                 let itemW = width / CGFloat(count)  // 单段宽度
-                let lineX = offset.x / CGFloat(count)
                 let lineY = self.segment.bounds.height - segCfg.line.height - segCfg.line.marginBottom
-                if abs(page1 - page2) == count - 1 {
-                    xLog("\(page1) >>> \(page2)", "【\(lineX)】")
-                    // 两边处理
-                    let posBegin = CGPoint.init(x: 0, y: lineY) // 固定起点
-                    let posEnd = CGPoint.init(x: width, y: lineY) // 固定终点
-                    switch direction {
-                    case .next: // n >> 0 尾部到头部
-                        path.move(to: posBegin)     // 左侧起点
-                        let pos1 = CGPoint.init(x: lineX, y: lineY)
-                        path.addLine(to: pos1)      // 左侧终点
-                        let pos2 = CGPoint.init(x: width - itemW + lineX, y: lineY)
-                        path.move(to: pos2)         // 右侧起点
-                        path.addLine(to: posEnd)    // 右侧终点
-                        self.segment.lineLayer.path = path.cgPath
-                    case .previous:    // 0 >> n 头部到尾部
-                        path.move(to: posBegin)     // 左侧起点
-                        let pos1 = CGPoint.init(x: itemW - (width - (lineX + itemW)), y: lineY)
-                        path.addLine(to: pos1)      // 左侧终点
-                        let pos2 = CGPoint.init(x: lineX + itemW, y: lineY)
-                        path.move(to: pos2)         // 右侧起点
-                        path.addLine(to: posEnd)    // 右侧终点
-                        self.segment.lineLayer.path = path.cgPath
-                    case .none:
-                        xLog("没有")
-                        break
-                    }
+                var lineX = CGFloat(data.fromPage) * itemW
+                switch direction {
+                case .next:     lineX += itemW * data.progress
+                case .previous: lineX -= itemW * data.progress
                 }
-                else {
-                    // 中间处理
-                    var pos = CGPoint.zero
-                    pos.y = lineY
-                    pos.x = lineX   // 起点位置
-                    path.move(to: pos)
-                    pos.x += itemW  // 终点位置
-                    path.addLine(to: pos)
-                    self.segment.lineLayer.path = path.cgPath
+                // 更新指示线位置
+                var pos1 = CGPoint.init(x: lineX, y: lineY)
+                path.move(to: pos1)
+                pos1.x += itemW
+                path.addLine(to: pos1)
+                if lineX < 0 {
+                    // 1 <<< n
+                    var pos2 = CGPoint.init(x: width, y: lineY)
+                    path.move(to: pos2)
+                    pos2.x = width + lineX
+                    path.addLine(to: pos2)
                 }
-                
+                if lineX + itemW > width {
+                    // n >>> 1
+                    var pos2 = CGPoint.init(x: 0, y: lineY)
+                    path.move(to: pos2)
+                    pos2.x = lineX + itemW - width
+                    path.addLine(to: pos2)
+                }
+                self.segment.lineLayer.path = path.cgPath
+                xLog("\(data.fromPage)->\(data.toPage), x=\(Double(lineX).xToString(precision: 0)), p=\(Double(data.progress).xToString(precision: 1))%")
                 // 修改Segment内容颜色
-                if page1 != page2, direction != .none {
+                if data.fromPage != data.toPage {
+                    let ratio = data.progress
                     let color1 = self.segment.config.titleColor.chooseMixNormal(ratio: ratio)
-                    self.segment.setItemTitleColor(at: page1, color: color1)
                     let color2 = self.segment.config.titleColor.normalMixChoose(ratio: ratio)
-                    self.segment.setItemTitleColor(at: page2, color: color2)
+                    self.segment.setItemTitleColor(at: data.fromPage, color: color1)
+                    self.segment.setItemTitleColor(at: data.toPage, color: color2)
                 }
-                handler1?(offset, direction)
                 
             } change: {
                 [unowned self] (page) in

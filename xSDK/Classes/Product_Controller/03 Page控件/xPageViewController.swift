@@ -12,19 +12,27 @@ public class xPageViewController: UIPageViewController {
     // MARK: - Enum
     /// 拖拽方向
     public enum xDraggingDirection {
-        /// 无
-        case none
         /// 下一个
         case next
         /// 上一个
         case previous
     }
     
+    // MARK: - Struct
+    public struct xDraggingData {
+        /// 从哪页来
+        public var fromPage = 0
+        /// 到哪页去
+        public var toPage = 0
+        /// 滚动进度
+        public var progress = CGFloat.zero
+    }
+    
     // MARK: - Handler
     /// 切换页数
     public typealias xHandlerChangePage = (Int) -> Void
     /// 滚动中
-    public typealias xHandlerScrolling = (CGPoint, xDraggingDirection) -> Void
+    public typealias xHandlerScrolling = (xDraggingData, xDraggingDirection) -> Void
     /// 点击分页
     public typealias xHandlerClickPage = (Int) -> Void
     
@@ -35,12 +43,12 @@ public class xPageViewController: UIPageViewController {
     public var changeInterval = TimeInterval(5)
     /// 是否拖拽中
     public var isDragging = false
-    /// 当前页数编号
-    public var currentPage = 0
-    /// 目标页数编号
-    public var pendingPage = 0
 
     // MARK: - Private Property
+    /// 当前页数编号
+    private var currentPage = 0
+    /// 目标页数编号
+    private var pendingPage = 0
     /// 定时器
     private var timer : Timer?
     /// 滚动容器
@@ -83,7 +91,6 @@ public class xPageViewController: UIPageViewController {
         // 关联代理
         self.dataSource = self
         self.delegate = self
-        self.contentScrollView?.delegate = self
     }
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -264,11 +271,12 @@ extension xPageViewController: UIPageViewControllerDelegate {
                                    willTransitionTo pendingViewControllers: [UIViewController])
     {
         // xLog("用户开始换页")
+        self.contentScrollView?.delegate = self
         self.closeTimer()
         // 框架只考虑单页，所以数组其实只有1个元素
-        guard let vc = pendingViewControllers.last else { return }
-        let page = vc.view.tag
-        self.pendingPage = page
+        if let vc = pendingViewControllers.last {
+            self.pendingPage = vc.view.tag
+        }
     }
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    didFinishAnimating finished: Bool,
@@ -276,17 +284,26 @@ extension xPageViewController: UIPageViewControllerDelegate {
                                    transitionCompleted completed: Bool)
     {
         // xLog("用户换页完成")
+        self.contentScrollView?.delegate = nil
         if self.isOpenAutoChangeTimer {
             self.openTimer()
         }
+        var newPage = -1
         if completed {
-            self.currentPage = self.pendingPage
+            newPage = self.pendingPage
         }
         else {
-            guard let vc = previousViewControllers.first else { return }
-            self.currentPage = vc.view.tag
+            // 一般情况下拖拽进度不够导致回到原来的地方会进这里
+            if let vc = previousViewControllers.first {
+                newPage = vc.view.tag
+            }
         }
-        self.changeHandler?(self.currentPage)
+        if newPage != self.currentPage {
+            self.currentPage = self.safe(page: newPage)
+            self.changeHandler?(self.currentPage)
+        } else {
+            xLog("页面没变动")
+        }
     }
 }
 
@@ -301,56 +318,35 @@ extension xPageViewController: UIScrollViewDelegate {
     }
     public func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
-        // 没有回调就不管了，较少CPU开销
+        // 没有回调就不管了，减少CPU开销
         guard let handler = self.scrollingHandler else { return }
         // 计算当前页的偏移量
         let vc = self.itemViewControllerArray[self.currentPage]
-        let p = vc.view.convert(CGPoint(), to: self.view)
-        var offset = CGPoint.zero
-        var direction = xDraggingDirection.none
+        let p = vc.view.convert(CGPoint(), to: self.view) 
+        var direction = xDraggingDirection.next
+        var page = self.currentPage
+        var progress = CGFloat.zero // 滚动进度
         switch self.navigationOrientation {
         case .horizontal:
             let w = self.view.frame.width
-            offset.x = CGFloat(self.currentPage) * w - p.x
-            if p.x != 0 {
-                direction = p.x > 0 ? .previous : .next
-            }
-            // 跨页处理
-            if CGFloat(abs(p.x)) >= w {
-                self.currentPage += (direction == .next) ? 1 : -1
-                self.currentPage = self.safe(page: self.currentPage)
-            }
-            // 边缘处理
-            let minX = CGFloat.zero
-            let maxX = CGFloat(self.itemViewControllerArray.count - 1) * w
-            if offset.x < minX {
-                offset.x += maxX
-            }
-            if offset.x > maxX {
-                offset.x -= maxX
-            }
+            progress = abs(p.x / w)
+            direction = p.x > 0 ? .previous : .next
         default:
             let h = self.view.frame.height
-            offset.y = CGFloat(self.currentPage) * h - p.y
-            if p.y != 0 {
-                direction = p.y > 0 ? .previous : .next
-            }
-            // 跨页处理
-            if CGFloat(abs(p.y)) >= h {
-                self.currentPage += (direction == .next) ? 1 : -1
-                self.currentPage = self.safe(page: self.currentPage)
-            }
-            // 边缘处理
-            let minY = CGFloat.zero
-            let maxY = CGFloat(self.itemViewControllerArray.count - 1) * h
-            if offset.y < minY {
-                offset.y += maxY
-            }
-            if offset.y > maxY {
-                offset.y -= maxY
-            }
+            progress = abs(p.y / h)
+            direction = p.y > 0 ? .previous : .next
+        }
+        // 跨页处理
+        if progress > 1 {
+            progress -= 1
+            page += (direction == .next) ? 1 : -1
         }
         // xLog(offset)
-        handler(offset, direction)
+        // xLog(self.currentPage, self.pendingPage, scrollPercent)
+        self.currentPage = self.safe(page: page)
+        let data = xDraggingData.init(fromPage: self.currentPage,
+                                      toPage: self.pendingPage,
+                                      progress: progress)
+        handler(data, direction)
     }
 }
