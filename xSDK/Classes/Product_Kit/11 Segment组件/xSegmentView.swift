@@ -239,9 +239,7 @@ public class xSegmentView: xView {
         path.move(to: pos)
         pos.x += lineW      // 终点位置
         path.addLine(to: pos)
-        UIView.animate(withDuration: 0.25, animations: {
-            self.lineLayer.path = path.cgPath
-        })
+        self.lineLayer.path = path.cgPath 
     }
     /// 设置滚动结果位置（边缘处理）
     public func setContentScroll(to idx : Int)

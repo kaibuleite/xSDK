@@ -61,6 +61,7 @@ open class xSegmentPageViewController: xViewController {
         let config = xSegmentConfig.init()
         config.line.color = .red
         config.line.marginBottom = 2
+        config.line.widthOfItemPercent = 1  // 该模式下最好配置为1，与Segment的Item等宽
         config.titleColor.choose = .red
         self.segment.config = config
     }
@@ -94,7 +95,12 @@ open class xSegmentPageViewController: xViewController {
             // 加载分段数据
             self.segment.reload(titleArray: segmentDataArray, fillMode: segmentItemFillMode) {
                 [unowned self] (idx) in
+                self.view.isUserInteractionEnabled = false
                 self.isHandlerPageScrolling = false // 该状态无需监听Page的滚动回调
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3, execute: {
+                    self.view.isUserInteractionEnabled = true
+                    self.isHandlerPageScrolling = true  // 恢复监听状态
+                })
                 self.pageViewController.change(to: idx)
             }
             self.segment.updateSegmentStyle(choose: 0)
@@ -126,37 +132,32 @@ open class xSegmentPageViewController: xViewController {
                 let path = UIBezierPath.init()
                 let segCfg = self.segment.config
                 let itemW = width / CGFloat(count)  // 单段宽度
-                let lineW = itemW * self.segment.config.line.widthOfItemPercent
                 let lineX = offset.x / CGFloat(count)
                 let lineY = self.segment.bounds.height - segCfg.line.height - segCfg.line.marginBottom
                 if abs(page1 - page2) == count - 1 {
+                    xLog("\(page1) >>> \(page2)", "【\(lineX)】")
                     // 两边处理
+                    let posBegin = CGPoint.init(x: 0, y: lineY) // 固定起点
+                    let posEnd = CGPoint.init(x: width, y: lineY) // 固定终点
                     switch direction {
                     case .next: // n >> 0 尾部到头部
-                        var pos = CGPoint.zero
-                        pos.y = lineY
-                        pos.x = (itemW - lineW) / 2 // 左侧起点
-                        path.move(to: pos)
-                        pos.x += lineX      // 左侧终点
-                        path.addLine(to: pos)
-                        pos.x = width - itemW + lineX + (itemW - lineW) / 2  // 右侧起点
-                        path.move(to: pos)
-                        pos.x = width - itemW + lineW   // 右侧终点
-                        path.addLine(to: pos)
+                        path.move(to: posBegin)     // 左侧起点
+                        let pos1 = CGPoint.init(x: lineX, y: lineY)
+                        path.addLine(to: pos1)      // 左侧终点
+                        let pos2 = CGPoint.init(x: width - itemW + lineX, y: lineY)
+                        path.move(to: pos2)         // 右侧起点
+                        path.addLine(to: posEnd)    // 右侧终点
                         self.segment.lineLayer.path = path.cgPath
                     case .previous:    // 0 >> n 头部到尾部
-                        var pos = CGPoint.zero
-                        pos.y = lineY
-                        pos.x = (itemW - lineW) / 2 // 左侧起点
-                        path.move(to: pos)
-                        pos.x += width - lineX      // 左侧终点
-                        path.addLine(to: pos)
-                        pos.x = width - itemW + lineX + (itemW - lineW) / 2  // 右侧起点
-                        path.move(to: pos)
-                        pos.x = width - itemW + lineW   // 右侧终点
-                        path.addLine(to: pos)
+                        path.move(to: posBegin)     // 左侧起点
+                        let pos1 = CGPoint.init(x: itemW - (width - (lineX + itemW)), y: lineY)
+                        path.addLine(to: pos1)      // 左侧终点
+                        let pos2 = CGPoint.init(x: lineX + itemW, y: lineY)
+                        path.move(to: pos2)         // 右侧起点
+                        path.addLine(to: posEnd)    // 右侧终点
                         self.segment.lineLayer.path = path.cgPath
                     case .none:
+                        xLog("没有")
                         break
                     }
                 }
@@ -164,9 +165,9 @@ open class xSegmentPageViewController: xViewController {
                     // 中间处理
                     var pos = CGPoint.zero
                     pos.y = lineY
-                    pos.x = lineX + (itemW - lineW) / 2 // 起点位置
+                    pos.x = lineX   // 起点位置
                     path.move(to: pos)
-                    pos.x += lineW  // 终点位置
+                    pos.x += itemW  // 终点位置
                     path.addLine(to: pos)
                     self.segment.lineLayer.path = path.cgPath
                 }
@@ -178,14 +179,12 @@ open class xSegmentPageViewController: xViewController {
                     let color2 = self.segment.config.titleColor.normalMixChoose(ratio: ratio)
                     self.segment.setItemTitleColor(at: page2, color: color2)
                 }
-                xLog("\(page1) >>> \(page2)", "\(offset.x) = \(lineX)")
                 handler1?(offset, direction)
                 
             } change: {
                 [unowned self] (page) in
                 self.segment.updateSegmentStyle(choose: page)
                 handler2(page)
-                self.isHandlerPageScrolling = true  // 恢复监听状态
                 
             } click: {
                 (page) in
