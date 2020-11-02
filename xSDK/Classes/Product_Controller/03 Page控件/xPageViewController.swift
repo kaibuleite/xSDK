@@ -295,10 +295,13 @@ extension xPageViewController: UIPageViewControllerDelegate {
         guard completed else {
             // 一般情况下拖拽进度不够导致回到原来的地方会进这里
             xWarning("页面没变动")
+            self.pendingPage = self.currentPage
             return
         }
-        self.currentPage = self.pendingPage
-        self.changeHandler?(self.currentPage)
+        if self.pendingPage != self.currentPage {
+            self.currentPage = self.pendingPage
+        }
+        //self.changeHandler?(self.currentPage)
     }
 }
 
@@ -343,5 +346,9 @@ extension xPageViewController: UIScrollViewDelegate {
                                       toPage: self.pendingPage,
                                       progress: progress)
         handler(data, direction)
+    }
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        xLog(self.currentPage, self.pendingPage)
+        self.changeHandler?(self.currentPage)
     }
 }

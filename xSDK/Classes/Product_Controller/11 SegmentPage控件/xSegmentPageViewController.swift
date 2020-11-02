@@ -23,7 +23,7 @@ open class xSegmentPageViewController: xViewController {
     /// 分段
     let segment = xSegmentView.init()
     /// 分页
-    let pageViewController = xPageViewController.quickInstancetype(navigationOrientation: .vertical)
+    let pageViewController = xPageViewController.quickInstancetype(navigationOrientation: .horizontal)
     /// 是否需要监听Page滚动回调
     var isHandlerPageScrolling = true
     /// 回调
@@ -155,19 +155,25 @@ open class xSegmentPageViewController: xViewController {
                 self.segment.lineLayer.path = path.cgPath
                 xLog("\(data.fromPage)->\(data.toPage), x=\(Double(lineX).xToString(precision: 0)), p=\(Double(data.progress * 100).xToString(precision: 1))%")
                 // 修改Segment内容颜色
+                // 为了防止拖动过快，设置个阈值，不然来不及清空颜色会导致部分item颜色不统一
+                var ratio = data.progress
+                if data.progress <= 0.1 {
+                    ratio = 0
+                }
+                if data.progress >= 0.9 {
+                    ratio = 1
+                }
+                let color1 = self.segment.config.titleColor.chooseMixNormal(ratio: ratio)
+                self.segment.setItemTitleColor(at: data.fromPage, color: color1)
                 if data.fromPage != data.toPage {
-                    // 为了防止拖动过快，设置个阈值，不然来不及清空颜色会导致部分item颜色不统一
-                    var ratio = data.progress
-                    if data.progress <= 0.1 {
-                        ratio = 0
-                    }
-                    if data.progress >= 0.9 {
-                        ratio = 1
-                    }
-                    let color1 = self.segment.config.titleColor.chooseMixNormal(ratio: ratio)
                     let color2 = self.segment.config.titleColor.normalMixChoose(ratio: ratio)
-                    self.segment.setItemTitleColor(at: data.fromPage, color: color1)
                     self.segment.setItemTitleColor(at: data.toPage, color: color2)
+                }
+                else {
+                    for i in 0 ..< self.segment.itemViewArray.count {
+                        guard i != data.fromPage else { continue }
+                        self.segment.setItemNormalStyle(at: i)
+                    }
                 }
                 
             } change: {
