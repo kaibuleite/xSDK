@@ -1473,7 +1473,6 @@
 		798A505D2E4DF538959BEDC6CB101F3F /* Product_Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0466CD36254A4BC1008FF1C0 /* 11 SegmentPage控件 */,
 				923D5B49DCE29B5EED174236FC6282F1 /* 01 Mask遮罩 */,
 				EEB94444F3F5AFBFBB39DBF54F5A0EB4 /* 02 Web浏览器 */,
 				B455CEA65EA5A9CF82FC145A70290715 /* 03 Page控件 */,
@@ -1484,6 +1483,7 @@
 				010FEF651A6081D087FE1E8302A6C764 /* 08 手势密码 */,
 				FB2184CCB65D9AF47E6141CF309F24F9 /* 09 多图选择器 */,
 				4432670763AD0906BEDC8F49B8325BEA /* 10 图片预览 */,
+				0466CD36254A4BC1008FF1C0 /* 11 SegmentPage控件 */,
 			);
 			name = Product_Controller;
 			path = xSDK/Classes/Product_Controller;
