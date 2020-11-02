@@ -20,7 +20,7 @@ class Test11ViewController: xViewController {
     override func addChildren() {
         self.xAddChild(self.sp, in: self.childContainer)
         // 加载数据
-        let titleArr = ["红色", "橙色", "黄色", "绿色", "青色", "蓝色", "紫色"]
+        let titleArr = ["红色🍎", "橙色🍊", "黄色🍌", "绿色🥬", "青色🍏", "蓝色🔵", "紫色🍆"]
         let colorArr : [UIColor] = [.red, .orange, .yellow, .green, .cyan, .blue, .purple]
         var vcArr = [UIViewController]()
         for color in colorArr {
@@ -28,7 +28,7 @@ class Test11ViewController: xViewController {
             vc.view.backgroundColor = color
             vcArr.append(vc)
         }
-        self.sp.reload(segmentDataArray: titleArr, segmentItemFillMode: .fillEqually, pageDataArray: vcArr) {
+        self.sp.reload(segmentDataArray: titleArr, segmentItemFillMode: .auto, pageDataArray: vcArr) {
             //[unowned self]
             (page) in
             xLog("切换到:\(titleArr[page])")

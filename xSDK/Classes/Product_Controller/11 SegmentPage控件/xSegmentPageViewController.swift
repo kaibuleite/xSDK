@@ -61,7 +61,6 @@ open class xSegmentPageViewController: xViewController {
         let config = xSegmentConfig.init()
         config.line.color = .red
         config.line.marginBottom = 2
-        config.line.widthOfItemPercent = 1  // 该模式下最好配置为1，与Segment的Item等宽
         config.titleColor.choose = .red
         self.segment.config = config
     }
@@ -90,6 +89,9 @@ open class xSegmentPageViewController: xViewController {
             xWarning("标题和分页数不一样")
             return
         }
+        // 部分配置需要限制死
+        self.segment.config.spacing = 0
+        self.segment.config.line.widthOfItemPercent = 1
         /*
          主线程加载数据，防止UI的frame出错
          这里GCD内的代码会在 addKit 和 addChildren 方法后执行
@@ -123,8 +125,7 @@ open class xSegmentPageViewController: xViewController {
                 [unowned self] (data, direction) in
                 guard self.isHandlerPageScrolling else { return }
                 // 声明计算参数
-                let width = self.view.bounds.width
-                let path = UIBezierPath.init()
+                let segW = self.segment.contentScroll.contentSize.width
                 let segCfg = self.segment.config
                 let itemW = self.segment.itemViewArray[data.toPage].bounds.width
                 let lineY = self.segment.bounds.height - segCfg.line.height - segCfg.line.marginBottom
@@ -134,26 +135,27 @@ open class xSegmentPageViewController: xViewController {
                 case .previous: lineX -= itemW * data.progress
                 }
                 // 更新指示线位置
+                let path = UIBezierPath.init()
                 var pos1 = CGPoint.init(x: lineX, y: lineY)
                 path.move(to: pos1)
                 pos1.x += itemW
                 path.addLine(to: pos1)
                 if lineX < 0 {
                     // 1 <<< n
-                    var pos2 = CGPoint.init(x: width, y: lineY)
+                    var pos2 = CGPoint.init(x: segW, y: lineY)
                     path.move(to: pos2)
-                    pos2.x = width + lineX
+                    pos2.x = segW + lineX
                     path.addLine(to: pos2)
                 }
-                if lineX + itemW > width {
+                if lineX + itemW > segW {
                     // n >>> 1
                     var pos2 = CGPoint.init(x: 0, y: lineY)
                     path.move(to: pos2)
-                    pos2.x = lineX + itemW - width
+                    pos2.x = lineX + itemW - segW
                     path.addLine(to: pos2)
                 }
                 self.segment.lineLayer.path = path.cgPath
-                xLog("\(data.fromPage)->\(data.toPage), x=\(Double(lineX).xToString(precision: 0)), p=\(Double(data.progress * 100).xToString(precision: 1))%")
+                // xLog("\(data.fromPage)->\(data.toPage), x=\(Double(lineX).xToString(precision: 0)), p=\(Double(data.progress * 100).xToString(precision: 1))%")
                 // 修改Segment内容颜色
                 // 为了防止拖动过快，设置个阈值，不然来不及清空颜色会导致部分item颜色不统一
                 var ratio = data.progress
@@ -178,7 +180,6 @@ open class xSegmentPageViewController: xViewController {
                 
             } change: {
                 [unowned self] (page) in
-                
                 self.segment.updateSegmentStyle(choose: page)
                 handler2(page)
                 

@@ -20,12 +20,12 @@ public class xSegmentView: xView {
     public var currentChooseIdx = 0
     /// 排列子视图数组
     public var itemViewArray = [UIView]()
-    /// 指示线图层
-    let lineLayer = CAShapeLayer.init()
+    /// 滚动视图
+    public let contentScroll = UIScrollView()
     
     // MARK: - Private Property
-    /// 滚动视图
-    private let contentScroll = UIScrollView()
+    /// 指示线图层
+    let lineLayer = CAShapeLayer.init()
     /// 选择回调
     private var chooseHandler : xHandlerChooseItem?
     
@@ -171,7 +171,7 @@ public class xSegmentView: xView {
         self.layoutIfNeeded()   // 更新控件约束
         
         self.setLineMove(to: idx)
-        self.setContentScroll(to: idx)
+        self.setContentSideScroll(to: idx)
     }
     /// 设置普通样式
     public func setItemNormalStyle(at idx : Int)
@@ -226,15 +226,15 @@ public class xSegmentView: xView {
         self.lineLayer.path = path.cgPath 
     }
     /// 设置滚动结果位置（边缘处理）
-    public func setContentScroll(to idx : Int)
+    public func setContentSideScroll(to idx : Int)
     {
         guard self.config.fillMode == .auto else { return }
         guard let item = self.getItem(at: idx)  else { return } 
-        let totalWidth = self.contentScroll.contentSize.width
-        let scrolWidth = self.contentScroll.bounds.width
+        let totalW = self.contentScroll.contentSize.width
+        let scrolW = self.contentScroll.bounds.width
         var offset = CGPoint.zero
         // 单页就能显示完，不用管
-        guard totalWidth >= scrolWidth else { return }
+        guard totalW >= scrolW else { return }
         // 第1、2个数据
         if idx <= 1 {
             self.contentScroll.setContentOffset(offset, animated: true)
@@ -242,25 +242,26 @@ public class xSegmentView: xView {
         }
         // 最后两个数据
         if idx >= self.itemViewArray.count - 2 {
-            offset.x = totalWidth - scrolWidth
+            offset.x = totalW - scrolW
             self.contentScroll.setContentOffset(offset, animated: true)
             return
         }
+        // 中间的数据
         let spacing = self.config.spacing
         let scrolX = self.contentScroll.contentOffset.x
         let itemX = item.frame.origin.x
-        let itemWidth = item.frame.width
-        if itemX < scrolX {
+        let itemW = item.frame.width
+        if itemX - itemW < scrolX {
             // 左侧超出
             offset.x = itemX - spacing
-            offset.x -= itemWidth   // 显示上一个item
+            offset.x -= itemW   // 显示上一个item
             self.contentScroll.setContentOffset(offset, animated: true)
         }
         else
-        if itemX + itemWidth >= scrolX + scrolWidth - spacing {
+        if itemX + itemW + itemW >= scrolX + scrolW {
             // 右侧超出
-            offset.x = itemX + itemWidth + spacing - scrolWidth
-            offset.x += itemWidth   // 显示下一个item
+            offset.x = itemX + itemW + spacing - scrolW
+            offset.x += itemW   // 显示下一个item
             self.contentScroll.setContentOffset(offset, animated: true)
         }
     }

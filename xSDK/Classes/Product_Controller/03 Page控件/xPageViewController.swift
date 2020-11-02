@@ -91,6 +91,7 @@ public class xPageViewController: UIPageViewController {
         // 关联代理
         self.dataSource = self
         self.delegate = self
+        self.contentScrollView?.delegate = self
     }
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -271,13 +272,12 @@ extension xPageViewController: UIPageViewControllerDelegate {
                                    willTransitionTo pendingViewControllers: [UIViewController])
     {
         // xLog("用户开始换页")
-        self.contentScrollView?.delegate = self
         self.closeTimer()
         // 框架只考虑单页，所以数组其实只有1个元素
         if let vc = pendingViewControllers.last {
             self.pendingPage = vc.view.tag
         }
-        xLog("pending = \(self.pendingPage)")
+        //xLog("pending = \(self.pendingPage)")
     }
     public func pageViewController(_ pageViewController: UIPageViewController,
                                    didFinishAnimating finished: Bool,
@@ -289,19 +289,15 @@ extension xPageViewController: UIPageViewControllerDelegate {
             self.openTimer()
         }
         guard finished else {
-            xWarning("换页事件未结束")
+            xWarning("换页事件未结束，中断")
             return
         }
         guard completed else {
             // 一般情况下拖拽进度不够导致回到原来的地方会进这里
-            xWarning("页面没变动")
-            self.pendingPage = self.currentPage
+            xWarning("换页未完成，继续换页操作")
             return
         }
-        if self.pendingPage != self.currentPage {
-            self.currentPage = self.pendingPage
-        }
-        //self.changeHandler?(self.currentPage)
+        // 其他部分放到ScrollDelegate里实现
     }
 }
 
@@ -334,7 +330,7 @@ extension xPageViewController: UIScrollViewDelegate {
             progress = abs(p.y / h)
             direction = p.y > 0 ? .previous : .next
         }
-        // 跨页处理
+        // 连续换页
         if progress > 1 {
             progress -= 1
             page += (direction == .next) ? 1 : -1
@@ -348,7 +344,14 @@ extension xPageViewController: UIScrollViewDelegate {
         handler(data, direction)
     }
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        xLog(self.currentPage, self.pendingPage)
-        self.changeHandler?(self.currentPage)
+        // 计算当前页码
+        for vc in self.children {
+            let p = vc.view.convert(CGPoint(), to: self.view)
+            guard p.equalTo(.zero) else { continue }
+            self.currentPage = vc.view.tag
+            self.changeHandler?(self.currentPage)
+            return
+        }
+        xWarning("找不到当前页")
     }
 }
