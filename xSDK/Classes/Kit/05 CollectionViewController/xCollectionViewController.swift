@@ -260,11 +260,4 @@ extension xCollectionViewController {
     @objc open func registerCells() { }
     /// 注册Footers
     @objc open func registerFooters() { }
-    /// 获取指定idp的数据model（如果不需要设置数据可以返回nil）
-    /// - Parameter idp: IndexPath
-    /// - Returns: 数据对象
-    @objc open func getCellDataModel(at idp : IndexPath) -> xModel?
-    {
-        return nil
-    }
 }
