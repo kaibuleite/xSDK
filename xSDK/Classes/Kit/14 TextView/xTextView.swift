@@ -11,7 +11,11 @@ open class xTextView: UITextView {
     
     // MARK: - IBInspectable Property
     /// 占位字符串
-    @IBInspectable public var placeholderString : String? = ""
+    @IBInspectable public var placeholderString : String? = "" {
+        didSet {
+            self.placeholderTextView.text = self.placeholderString
+        }
+    }
     
     // MARK: - Public Property
     /// 输入内容
@@ -53,6 +57,7 @@ open class xTextView: UITextView {
     /// 视图已加载
     open func viewDidLoad() {
         let txt = self.placeholderTextView
+        txt.text = self.placeholderString
         txt.backgroundColor = UIColor.clear
         txt.textColor = .xNew(hex: "C4C4C6")
         txt.font = self.font
