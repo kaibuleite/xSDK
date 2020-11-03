@@ -26,8 +26,8 @@ public class xInputAlert: NSObject {
                                keyboardType : UIKeyboardType = .default,
                                sureTitle : String? = "确定",
                                cancelTitle : String? = "取消",
-                               sureHandler : @escaping (String) -> Void,
-                               cancelHandler : @escaping () -> Void)
+                               sure handler1 : @escaping (String) -> Void,
+                               cancel handler2 : @escaping () -> Void)
     {
         let alert = UIAlertController.init(title: title,
                                            message: nil,
@@ -42,13 +42,13 @@ public class xInputAlert: NSObject {
         let sure = UIAlertAction.init(title: sureTitle, style: .default){
             (sender) in
             let str = alert.textFields?.first?.text ?? ""
-            sureHandler(str)
+            handler1(str)
         }
         alert.addAction(sure)
         // 取消
         let cancel = UIAlertAction.init(title: cancelTitle, style: .cancel) {
             (sender) in
-            cancelHandler()
+            handler2()
         }
         alert.addAction(cancel)
         

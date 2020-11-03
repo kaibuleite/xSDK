@@ -24,8 +24,8 @@ public class xAlert: NSObject {
                                message : String?,
                                sureTitle : String? = "确定",
                                cancelTitle : String? = "取消",
-                               sureHandler : @escaping () -> Void,
-                               cancelHandler : @escaping () -> Void)
+                               sure handler1 : @escaping () -> Void,
+                               cancel handler2 : @escaping () -> Void)
     {
         let alert = UIAlertController.init(title: title,
                                            message: message,
@@ -33,13 +33,13 @@ public class xAlert: NSObject {
         // 确定
         let sure = UIAlertAction.init(title: sureTitle, style: .default) {
             (sender) in
-            sureHandler()
+            handler1()
         }
         alert.addAction(sure)
         // 取消
         let cancel = UIAlertAction.init(title: cancelTitle, style: .cancel) {
             (sender) in
-            cancelHandler()
+            handler2()
         }
         alert.addAction(cancel)
         

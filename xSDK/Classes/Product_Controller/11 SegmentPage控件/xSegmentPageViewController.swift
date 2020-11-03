@@ -9,6 +9,15 @@ import UIKit
 
 open class xSegmentPageViewController: xViewController {
     
+    // MARK: - Enum
+    /// 分页动画
+    public enum xSegmentPageChangeAnimation {
+        /// 无
+        case none
+        /// 跟随换页进度平移
+        case followChangeProgress
+    }
+    
     // MARK: - Handle
     /// 显示分页
     public typealias xHandlerShowPage = (Int, UIViewController) -> Void
@@ -71,12 +80,13 @@ open class xSegmentPageViewController: xViewController {
     ///   - segmentDataArray: 分段数据
     ///   - segmentItemFillMode: 分段填充样式
     ///   - pageDataArray: 分页数据
-    ///   - handler1: 滚动回调
+    ///   - animation: 动画类型
     ///   - handler2: 切换分页回调
     ///   - handler3: 点击分页回调
     public func reload(segmentDataArray : [String],
                        segmentItemFillMode : xSegmentConfig.xSegmentItemFillMode = .fillEqually,
                        pageDataArray : [UIViewController],
+                       animation : xSegmentPageChangeAnimation = .followChangeProgress,
                        //scrolling handler1 : xPageViewController.xHandlerScrolling? = nil,
                        change handler2 : @escaping xPageViewController.xHandlerChangePage,
                        click handler3 : xPageViewController.xHandlerClickPage? = nil)
@@ -112,12 +122,14 @@ open class xSegmentPageViewController: xViewController {
             // 加载分页数据
             /* 简易设置
             self.pageViewController.reload(itemViewControllerArray: pageDataArray, scrolling: handler1, change: {
-                [unowned self] (page) in
-                self.isHandlerPageScrolling = true  // 恢复监听状态
-                self.segment.updateSegmentStyle(choose: page)
-                handler2(page)
-                
-            }, click: handler3)
+             [unowned self] (page) in
+             self.segment.updateSegmentStyle(choose: page)
+             handler2(page)
+             
+         } click: {
+             (page) in
+             handler3?(page)
+         }
              */
             /* 详细设置
              */

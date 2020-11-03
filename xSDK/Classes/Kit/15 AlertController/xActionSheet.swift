@@ -23,8 +23,8 @@ public class xActionSheet: NSObject {
                                title : String?,
                                dataArray : [String],
                                cancelTitle : String? = "取消",
-                               itemHandler : @escaping (Int, String) -> Void,
-                               cancelHandler : @escaping () -> Void)
+                               choose handler1 : @escaping (Int, String) -> Void,
+                               cancel handler2 : @escaping () -> Void)
     {
         let actionSheet = UIAlertController.init(title: title,
                                                  message: nil,
@@ -33,14 +33,14 @@ public class xActionSheet: NSObject {
         for (i, title) in dataArray.enumerated() {
             let item = UIAlertAction.init(title: title, style: .default) {
                 (sender) in
-                itemHandler(i, title)
+                handler1(i, title)
             }
             actionSheet.addAction(item)
         }
         // 取消
         let cancel = UIAlertAction.init(title: cancelTitle, style: .cancel) {
             (sender) in
-            cancelHandler()
+            handler2()
         }
         actionSheet.addAction(cancel)
         viewController.present(actionSheet, animated: true, completion: nil)
