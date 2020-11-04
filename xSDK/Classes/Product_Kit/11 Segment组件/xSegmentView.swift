@@ -292,8 +292,11 @@ public class xSegmentView: xView {
     {
         let pos = gesture.location(in: self.contentScroll)
         var idx = 0
+        let spacing = self.config.spacing
         for item in self.itemViewArray {
-            if item.frame.contains(pos) {
+            let minX = item.frame.origin.x - spacing / 2
+            let maxX = minX + item.frame.width + spacing / 2
+            if pos.x >= minX, pos.x <= maxX {
                 idx = item.tag
                 break
             }
