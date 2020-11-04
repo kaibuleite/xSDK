@@ -59,8 +59,8 @@ class xGPasswordPointView: xClearView {
         self.isUserInteractionEnabled = false
         self.arrowLayer.isHidden = true
     }
-    override func viewDidDisappear() {
-        super.viewDidDisappear()
+    override func viewDidAppear() {
+        super.viewDidAppear()
         // 添加Layer
         self.interLayer.lineWidth = 1
         self.interLayer.lineCap = .round

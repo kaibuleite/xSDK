@@ -34,8 +34,8 @@ public class xCaptchaView: xView {
         self.createNewCaptchaCode()
         self.setNeedsDisplay()
     }
-    public override func viewDidDisappear() {
-        super.viewDidDisappear()
+    public override func viewDidAppear() {
+        super.viewDidAppear()
     }
     /// 点击界面，切换验证码
     public override func touchesBegan(_ touches: Set<UITouch>,

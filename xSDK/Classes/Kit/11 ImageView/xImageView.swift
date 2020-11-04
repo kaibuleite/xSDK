@@ -61,7 +61,7 @@ open class xImageView: UIImageView {
         }
     }
     /// 视图已显示（GCD调用）
-    open func viewDidDisappear() {
+    open func viewDidAppear() {
         let radius = self.isCircle ? self.bounds.width / 2 : self.cornerRadius
         self.clip(cornerRadius: radius)
     }
@@ -108,7 +108,7 @@ open class xImageView: UIImageView {
         
         self.viewDidLoad()
         DispatchQueue.main.async {
-            self.viewDidDisappear()
+            self.viewDidAppear()
         }
         
         self.isInitCompleted = true

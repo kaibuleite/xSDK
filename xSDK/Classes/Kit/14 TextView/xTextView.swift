@@ -65,7 +65,7 @@ open class xTextView: UITextView {
         self.addSubview(txt)
     }
     /// 视图已显示（GCD调用）
-    open func viewDidDisappear() { }
+    open func viewDidAppear() { }
     /// 自定义键盘扩展视图
     open func loadAccessoryView() -> xInputAccessoryView?
     {
@@ -83,7 +83,7 @@ open class xTextView: UITextView {
         
         self.viewDidLoad()
         DispatchQueue.main.async {
-            self.viewDidDisappear()
+            self.viewDidAppear()
         }
         
         self.isInitCompleted = true

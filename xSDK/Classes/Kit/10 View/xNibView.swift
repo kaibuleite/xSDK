@@ -34,8 +34,8 @@ open class xNibView: xView {
         self.sendSubviewToBack(self.nibView)
         
     }
-    open override func viewDidDisappear() {
-        super.viewDidDisappear()
+    open override func viewDidAppear() {
+        super.viewDidAppear()
         
     }
     open override func layoutSubviews() {

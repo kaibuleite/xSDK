@@ -33,8 +33,8 @@ public class xLineView: xView {
         super.viewDidLoad()
         self.isUserInteractionEnabled = false
     }
-    public override func viewDidDisappear() {
-        super.viewDidDisappear()
+    public override func viewDidAppear() {
+        super.viewDidAppear()
         self.backgroundColor = self.lineColor
         guard self.isDashLine == true else { return }
         self.drawDashLine()

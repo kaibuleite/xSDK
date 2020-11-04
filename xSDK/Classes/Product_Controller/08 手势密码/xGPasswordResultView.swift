@@ -34,8 +34,8 @@ class xGPasswordResultView: xClearView {
         super.viewDidLoad()
         self.isUserInteractionEnabled = false
     }
-    override func viewDidDisappear() {
-        super.viewDidDisappear()
+    override func viewDidAppear() {
+        super.viewDidAppear()
         // 添加Layer
         self.pointLayer.lineWidth = 1
         self.lineLayer.fillColor = UIColor.clear.cgColor

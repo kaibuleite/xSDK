@@ -33,7 +33,7 @@ open class xView: UIView {
     /// 视图已加载
     open func viewDidLoad() { }
     /// 视图已显示（GCD调用）
-    open func viewDidDisappear() { }
+    open func viewDidAppear() { }
     
     // MARK: - Private Func
     /// 初始化完成
@@ -45,7 +45,7 @@ open class xView: UIView {
         
         self.viewDidLoad()
         DispatchQueue.main.async {
-            self.viewDidDisappear()
+            self.viewDidAppear()
         }
         
         self.isInitCompleted = true

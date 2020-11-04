@@ -45,8 +45,8 @@ public class xRoundCornerView: xView {
         self.maskLayer.lineCap = .round
         self.maskLayer.lineJoin = .round
     }
-    public override func viewDidDisappear() {
-        super.viewDidDisappear()
+    public override func viewDidAppear() {
+        super.viewDidAppear()
         if self.radius > 0 {
             self.clip(cornerRadius: self.radius)
         }
