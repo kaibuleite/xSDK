@@ -28,10 +28,16 @@ class Test11ViewController: xViewController {
             vc.view.backgroundColor = color
             vcArr.append(vc)
         }
-        self.sp.reload(segmentDataArray: titleArr, segmentItemFillMode: .auto, pageDataArray: vcArr) {
-            //[unowned self]
+        
+//        self.sp.setSegmentConfig(<#T##config: xSegmentConfig##xSegmentConfig#>)
+        
+        self.sp.reload(segmentDataArray: titleArr, pageDataArray: vcArr, isShowSegmentScrollAnimation: true) {
             (page) in
             xLog("切换到:\(titleArr[page])")
-        }
+            
+        } click: {
+            (page) in
+            
+        } 
     }
 }

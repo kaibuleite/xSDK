@@ -9,15 +9,6 @@ import UIKit
 
 open class xSegmentPageViewController: xViewController {
     
-    // MARK: - Enum
-    /// 分页动画
-    public enum xSegmentPageChangeAnimation {
-        /// 无
-        case none
-        /// 跟随换页进度平移
-        case followChangeProgress
-    }
-    
     // MARK: - Handle
     /// 显示分页
     public typealias xHandlerShowPage = (Int, UIViewController) -> Void
@@ -79,13 +70,12 @@ open class xSegmentPageViewController: xViewController {
     ///   - segmentDataArray: 分段数据
     ///   - segmentItemFillMode: 分段填充样式
     ///   - pageDataArray: 分页数据
-    ///   - animation: 动画类型
+    ///   - isShowSegmentScrollAnimation: 是否显示Segment滚动动画
     ///   - handler2: 切换分页回调
     ///   - handler3: 点击分页回调
     public func reload(segmentDataArray : [String],
-                       segmentItemFillMode : xSegmentConfig.xSegmentItemFillMode = .fillEqually,
                        pageDataArray : [UIViewController],
-                       animation : xSegmentPageChangeAnimation = .followChangeProgress,
+                       isShowSegmentScrollAnimation : Bool = true,
                        //scrolling handler1 : xPageViewController.xHandlerScrolling? = nil,
                        change handler2 : @escaping xPageViewController.xHandlerChangePage,
                        click handler3 : xPageViewController.xHandlerClickPage? = nil)
@@ -107,7 +97,7 @@ open class xSegmentPageViewController: xViewController {
          */
         DispatchQueue.main.async {
             // 加载分段数据
-            self.segment.reload(titleArray: segmentDataArray, fillMode: segmentItemFillMode) {
+            self.segment.reload(titleArray: segmentDataArray, fillMode: self.segment.config.fillMode) {
                 [unowned self] (idx) in
                 self.view.isUserInteractionEnabled = false
                 self.isHandlerPageScrolling = false // 该状态无需监听Page的滚动回调
@@ -119,19 +109,19 @@ open class xSegmentPageViewController: xViewController {
             }
             self.segment.updateSegmentStyle(choose: 0)
             // 加载分页数据
-            /* 简易设置
-            self.pageViewController.reload(itemViewControllerArray: pageDataArray, scrolling: handler1, change: {
-             [unowned self] (page) in
-             self.segment.updateSegmentStyle(choose: page)
-             handler2(page)
-             
-         } click: {
-             (page) in
-             handler3?(page)
-         }
-             */
-            /* 详细设置
-             */
+            if isShowSegmentScrollAnimation == false {
+                // Segment没有滚动动画
+                self.pageViewController.reload(itemViewControllerArray: pageDataArray) {
+                    [unowned self] (page) in
+                    self.segment.updateSegmentStyle(choose: page)
+                    handler2(page)
+                    
+                } click: {
+                    (page) in
+                    handler3?(page)
+                }
+                return
+            }
             self.pageViewController.reload(itemViewControllerArray: pageDataArray) {
                 [unowned self] (data, direction) in
                 guard self.isHandlerPageScrolling else { return }

@@ -316,7 +316,7 @@ extension xPageViewController: UIScrollViewDelegate {
         guard let handler = self.scrollingHandler else { return }
         // 计算当前页的偏移量
         let vc = self.itemViewControllerArray[self.currentPage]
-        let p = vc.view.convert(CGPoint(), to: self.view) 
+        let p = vc.view.convert(CGPoint(), to: self.view)
         var direction = xDraggingDirection.next
         var page = self.currentPage
         var progress = CGFloat.zero // 滚动进度
@@ -345,13 +345,15 @@ extension xPageViewController: UIScrollViewDelegate {
     }
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // 计算当前页码
+        let ofx = self.view.bounds.width / 3
+        let ofy = self.view.bounds.height / 3
         for vc in self.children {
             let p = vc.view.convert(CGPoint(), to: self.view)
-            guard p.equalTo(.zero) else { continue }
-            self.currentPage = vc.view.tag
-            self.changeHandler?(self.currentPage)
-            return
+            if abs(p.x) <= ofx, abs(p.y) <= ofy {
+                self.currentPage = vc.view.tag
+                break
+            }
         }
-        xWarning("找不到当前页")
+        self.changeHandler?(self.currentPage)
     }
 }

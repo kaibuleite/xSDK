@@ -39,9 +39,14 @@ public class xSegmentView: xView {
         super.viewDidLoad()
         // 基本配置
         self.backgroundColor = .white
+        // 滚动容器
         self.addSubview(self.contentScroll)
         self.contentScroll.showsVerticalScrollIndicator = false
         self.contentScroll.showsHorizontalScrollIndicator = false
+        // 添加响应手势
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapContentScroll(_:)))
+        self.contentScroll.addGestureRecognizer(tap)
+        self.contentScroll.isUserInteractionEnabled = true
         // 指示线
         self.lineLayer.lineCap = .round
         self.lineLayer.lineJoin = .round
@@ -140,10 +145,6 @@ public class xSegmentView: xView {
             if let lbl = view as? UILabel {
                 lbl.textColor = cfg.titleColor.normal
             }
-            // 添加响应手势
-            view.isUserInteractionEnabled = true
-            let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapItem(_:)))
-            view.addGestureRecognizer(tap)
             self.contentScroll.addSubview(view)
         }
         self.lineLayer.lineWidth = cfg.line.height
@@ -287,9 +288,16 @@ public class xSegmentView: xView {
     }
     // TODO: 手势事件
     /// 手势事件
-    @objc private func tapItem(_ gesture : UITapGestureRecognizer)
+    @objc private func tapContentScroll(_ gesture : UITapGestureRecognizer)
     {
-        let idx = gesture.view?.tag ?? 0
+        let pos = gesture.location(in: self.contentScroll)
+        var idx = 0
+        for item in self.itemViewArray {
+            if item.frame.contains(pos) {
+                idx = item.tag
+                break
+            }
+        }
         self.choose(idx: idx)
     }
 }
