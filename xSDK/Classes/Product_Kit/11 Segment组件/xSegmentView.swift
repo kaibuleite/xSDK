@@ -111,7 +111,8 @@ public class xSegmentView: xView {
             lbl.font = .systemFont(ofSize: fontSize)
             itemViewArray.append(lbl)
         }
-        self.reload(itemViewArray: itemViewArray, chooseItem: handler)
+        self.reload(itemViewArray: itemViewArray,
+                    chooseItem: handler)
     }
     /// 加载自定义组件数据(view的frame自己设)
     /// - Parameters:

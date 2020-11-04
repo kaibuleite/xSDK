@@ -73,14 +73,11 @@ open class xSegmentPageViewController: xViewController {
     ///   - segmentItemFillMode: 分段填充样式
     ///   - pageDataArray: 分页数据
     ///   - isShowSegmentScrollAnimation: 是否显示Segment滚动动画
-    ///   - handler2: 切换分页回调
-    ///   - handler3: 点击分页回调
+    ///   - handler: 切换分页回调
     public func reload(segmentDataArray : [String],
                        pageDataArray : [UIViewController],
                        isShowSegmentScrollAnimation : Bool = true,
-                       //scrolling handler1 : xPageViewController.xHandlerScrolling? = nil,
-                       change handler2 : @escaping xPageViewController.xHandlerChangePage,
-                       click handler3 : xPageViewController.xHandlerClickPage? = nil)
+                       change handler : @escaping xPageViewController.xHandlerChangePage)
     {
         guard segmentDataArray.count > 0 else {
             xWarning("没数据")
@@ -113,18 +110,14 @@ open class xSegmentPageViewController: xViewController {
             // 加载分页数据
             if isShowSegmentScrollAnimation == false {
                 // Segment没有滚动动画
-                self.pageViewController.reload(itemViewControllerArray: pageDataArray) {
+                self.pageViewController.reload(itemViewControllerArray: pageDataArray, change: {
                     [unowned self] (page) in
                     self.segment.updateSegmentStyle(choose: page)
-                    handler2(page)
+                    handler(page)
                     
-                } click: {
-                    (page) in
-                    handler3?(page)
-                }
-                return
+                }, click: nil)
             }
-            self.pageViewController.reload(itemViewControllerArray: pageDataArray) {
+            self.pageViewController.reload(itemViewControllerArray: pageDataArray, scrolling: {
                 [unowned self] (data, direction) in
                 guard self.isHandlerPageScrolling else { return }
                 // 声明计算参数
@@ -181,15 +174,12 @@ open class xSegmentPageViewController: xViewController {
                     }
                 }
                 
-            } change: {
+            }, change: {
                 [unowned self] (page) in
                 self.segment.updateSegmentStyle(choose: page)
-                handler2(page)
+                handler(page)
                 
-            } click: {
-                (page) in
-                handler3?(page)
-            }
+            }, click: nil)
         }
     }
     

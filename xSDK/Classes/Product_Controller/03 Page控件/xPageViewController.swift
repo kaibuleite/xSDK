@@ -312,8 +312,6 @@ extension xPageViewController: UIScrollViewDelegate {
     }
     public func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
-        // 没有回调就不管了，减少CPU开销
-        guard let handler = self.scrollingHandler else { return }
         // 计算当前页的偏移量
         let vc = self.itemViewControllerArray[self.currentPage]
         let p = vc.view.convert(CGPoint(), to: self.view)
@@ -331,29 +329,22 @@ extension xPageViewController: UIScrollViewDelegate {
             direction = p.y > 0 ? .previous : .next
         }
         // 连续换页
-        if progress > 1 {
+        if progress >= 1 {
             progress -= 1
             page += (direction == .next) ? 1 : -1
         }
         // xLog(offset)
-        // xLog(self.currentPage, self.pendingPage, scrollPercent)
+        // xLog(self.currentPage, self.pendingPage, progress)
         self.currentPage = self.safe(page: page)
+        guard let handler = self.scrollingHandler else { return }
         let data = xDraggingData.init(fromPage: self.currentPage,
                                       toPage: self.pendingPage,
                                       progress: progress)
         handler(data, direction)
     }
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        // 计算当前页码
-        let ofx = self.view.bounds.width / 3
-        let ofy = self.view.bounds.height / 3
-        for vc in self.children {
-            let p = vc.view.convert(CGPoint(), to: self.view)
-            if abs(p.x) <= ofx, abs(p.y) <= ofy {
-                self.currentPage = vc.view.tag
-                break
-            }
-        }
+        // 滚动结束
+        // xLog(self.currentPage)
         self.changeHandler?(self.currentPage)
     }
 }
