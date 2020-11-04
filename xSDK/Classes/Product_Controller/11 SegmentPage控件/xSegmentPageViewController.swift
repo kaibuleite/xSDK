@@ -53,7 +53,11 @@ open class xSegmentPageViewController: xViewController {
         // 配置样式
         self.pageViewController.isOpenAutoChangeTimer = false
         // 添加分段配置
-        self.setSegmentConfig()
+        let config = xSegmentConfig.init()
+        config.line.color = .red
+        config.line.marginBottom = 2
+        config.titleColor.choose = .red
+        self.setSegmentConfig(config)
     }
     open override func addKit() {
         self.segment.frame = self.segmentContainer.bounds
@@ -63,18 +67,13 @@ open class xSegmentPageViewController: xViewController {
         self.xAddChild(self.pageViewController, in: self.pageContainer)
     }
     
-    // MARK: - Open Func
+    // MARK: - Public Func
     /// 设置分段视图配置
-    open func setSegmentConfig()
+    public func setSegmentConfig(_ config : xSegmentConfig)
     {
-        let config = xSegmentConfig.init()
-        config.line.color = .red
-        config.line.marginBottom = 2
-        config.titleColor.choose = .red
         self.segment.config = config
     }
     
-    // MARK: - Public Func
     /// 加载数据
     /// - Parameters:
     ///   - segmentDataArray: 分段数据
