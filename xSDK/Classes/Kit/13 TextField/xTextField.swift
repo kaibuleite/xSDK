@@ -51,6 +51,7 @@ open class xTextField: UITextField, UITextFieldDelegate {
         self.returnHandler = nil
         self.previousInput = nil
         self.nextInput = nil
+        self.delegate = nil
     }
     
     // MARK: - Open Override Func
