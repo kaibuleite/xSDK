@@ -68,8 +68,8 @@ open class xTextView: UITextView {
         guard let view = self.loadAccessoryView() else { return }
         self.accessoryView = view
         self.inputAccessoryView = view
-        view.previousBtn.isHidden = true
-        view.nextBtn.isHidden = true
+        view.previousBtn.isEnabled = false
+        view.nextBtn.isEnabled = false
         view.completedBtn.xAddClick {
             [weak self] (sender) in
             guard let ws = self else { return }
@@ -91,7 +91,7 @@ open class xTextView: UITextView {
         let count = self.text.count
         self.placeholderTextView.isHidden = (count != 0)
         if count > self.maxTextCount {
-            xMessageAlert.display(message: "内容不超过100字")
+            xMessageAlert.display(message: "内容不能超过100字")
             let str = self.text.xSubPrefix(length: self.maxTextCount)
             self.text = str
         }
