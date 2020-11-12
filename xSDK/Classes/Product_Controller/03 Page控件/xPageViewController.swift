@@ -179,7 +179,8 @@ public class xPageViewController: UIPageViewController {
     
     // TODO: 其他
     /// 换页
-    public func change(to page : Int)
+    public func change(to page : Int,
+                       animated : Bool = true)
     {
         // xLog("系统换页")
         guard page != self.currentPage else { return }
@@ -191,7 +192,7 @@ public class xPageViewController: UIPageViewController {
         self.currentPage = self.safe(page: page)
         let vc = self.itemViewControllerArray[self.currentPage]
         self.view.isUserInteractionEnabled = false
-        self.setViewControllers([vc], direction: direction, animated: true) {
+        self.setViewControllers([vc], direction: direction, animated: animated) {
             [unowned self] (finish) in
             // xLog("系统换页完成")
             self.view.isUserInteractionEnabled = true
