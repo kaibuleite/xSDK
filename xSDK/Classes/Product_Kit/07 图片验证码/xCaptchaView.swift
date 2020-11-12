@@ -31,11 +31,9 @@ public class xCaptchaView: xView {
     // MARK: - Public Override Func
     public override func viewDidLoad() {
         super.viewDidLoad()
+        self.backgroundColor = UIColor.xNewRandom(alpha: 0.8)
         self.createNewCaptchaCode()
         self.setNeedsDisplay()
-    }
-    public override func viewDidAppear() {
-        super.viewDidAppear()
     }
     /// 点击界面，切换验证码
     public override func touchesBegan(_ touches: Set<UITouch>,
@@ -129,5 +127,4 @@ public class xCaptchaView: xView {
         }
         print(self.code)
     }
-    
 }
