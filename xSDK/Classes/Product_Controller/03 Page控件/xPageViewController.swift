@@ -314,6 +314,7 @@ extension xPageViewController: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         // 计算当前页的偏移量
+        guard self.itemViewControllerArray.count > 0 else { return }
         let vc = self.itemViewControllerArray[self.currentPage]
         let p = vc.view.convert(CGPoint(), to: self.view)
         var direction = xDraggingDirection.next

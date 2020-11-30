@@ -72,10 +72,7 @@ open class xTextField: UITextField, UITextFieldDelegate {
     
     // MARK: - Open Func
     /// 视图已加载
-    open func viewDidLoad() { 
-        // 最小缩放系数(对单行的label才有效果)
-        self.minimumFontSize = 0.5
-        self.adjustsFontSizeToFitWidth = true
+    open func viewDidLoad() {
         self.delegate = self
         // 编辑事件
         self.addTarget(self, action: #selector(textChanged),

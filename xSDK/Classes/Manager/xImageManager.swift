@@ -14,8 +14,8 @@ public class xImageManager: NSObject {
     
     // MARK: - Public Property
     /// 单例
-    public static let shared = xImageManager()
-    private override init() { }
+    // public static let shared = xImageManager()
+    // private override init() { }
     
     // MARK: - Public Func
     //判断是否授权

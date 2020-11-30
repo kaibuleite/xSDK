@@ -23,6 +23,7 @@
 		046D25762546C75100D581D2 /* xVoiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D25752546C75100D581D2 /* xVoiceManager.swift */; };
 		046D259B2546C8F700D581D2 /* xMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D259A2546C8F700D581D2 /* xMusicManager.swift */; };
 		046D25B92546C98B00D581D2 /* xFileDirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D25B82546C98B00D581D2 /* xFileDirectoryManager.swift */; };
+		047061CE256767600054B754 /* xKeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047061CD256767600054B754 /* xKeychainManager.swift */; };
 		04762E2F6696F6B57AC647288F800D2D /* SDWebImageCacheKeyFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 87D8D0461ADB21F78C625C0B0ED94F5A /* SDWebImageCacheKeyFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04E99D9B254A69AC00AD59A9 /* xSegmentPageViewController.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 04E99D8B254A647B00AD59A9 /* xSegmentPageViewController.storyboard */; };
 		04E99D9C254A69AC00AD59A9 /* xVersionDebugView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 04649EE825480224005328CF /* xVersionDebugView.xib */; };
@@ -507,6 +508,7 @@
 		046D25752546C75100D581D2 /* xVoiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xVoiceManager.swift; sourceTree = "<group>"; };
 		046D259A2546C8F700D581D2 /* xMusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xMusicManager.swift; sourceTree = "<group>"; };
 		046D25B82546C98B00D581D2 /* xFileDirectoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xFileDirectoryManager.swift; sourceTree = "<group>"; };
+		047061CD256767600054B754 /* xKeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xKeychainManager.swift; sourceTree = "<group>"; };
 		047741C372691B4C07F68FA24ABC9C7F /* SDImageCodersManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCodersManager.h; path = SDWebImage/Core/SDImageCodersManager.h; sourceTree = "<group>"; };
 		047EACD78A95A19865065B48BC6E01CD /* MJRefreshStateTrailer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateTrailer.h; path = MJRefresh/Custom/Trailer/MJRefreshStateTrailer.h; sourceTree = "<group>"; };
 		04BBA6F431BD1ECD1AB1FA9F47111877 /* SDImageCacheConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCacheConfig.h; path = SDWebImage/Core/SDImageCacheConfig.h; sourceTree = "<group>"; };
@@ -1326,9 +1328,9 @@
 		48177BC5D1F229625BAEA17FEBB16617 /* 04 TableViewController */ = {
 			isa = PBXGroup;
 			children = (
+				071B55520B772679B68BFF87CFB58A94 /* xTableViewController.swift */,
 				1B737F7F5E3D342B48F5350FE81DD750 /* xFilterListTableViewController.swift */,
 				EC269EBA5E1025296B53FC72A710C4A1 /* xListTableViewController.swift */,
-				071B55520B772679B68BFF87CFB58A94 /* xTableViewController.swift */,
 				11F7065F862D108C8A1B041010CB3FB3 /* Cells */,
 			);
 			path = "04 TableViewController";
@@ -1989,6 +1991,7 @@
 				046D25752546C75100D581D2 /* xVoiceManager.swift */,
 				046D259A2546C8F700D581D2 /* xMusicManager.swift */,
 				046D25B82546C98B00D581D2 /* xFileDirectoryManager.swift */,
+				047061CD256767600054B754 /* xKeychainManager.swift */,
 			);
 			name = Manager;
 			path = xSDK/Classes/Manager;
@@ -2682,6 +2685,7 @@
 				10CB446CA2C16EA8783A1D40234E5992 /* Image+xExtension.swift in Sources */,
 				0419161B25494EFF00366B9D /* UIBezierPath+xExtension.swift in Sources */,
 				E925263952288329A7856A6543C036AB /* ImageView+xExtension.swift in Sources */,
+				047061CE256767600054B754 /* xKeychainManager.swift in Sources */,
 				0466CD38254A4BDD008FF1C0 /* xSegmentPageViewController.swift in Sources */,
 				DFF39290E2B77911D8CB426F7E67896A /* Label+xExtension.swift in Sources */,
 				DF1E29F04E864393C2D0A0ECB22E1BFE /* Object+xExtension.swift in Sources */,

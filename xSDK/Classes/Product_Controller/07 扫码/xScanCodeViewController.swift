@@ -139,6 +139,10 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
                               animated : Bool = true,
                               scan handler : @escaping xHandlerScanCode)
     {
+        guard xDeviceManager.isSimulator() == false else {
+            xWarning("模拟器下无法使用扫码功能")
+            return
+        }
         let vc = xScanCodeViewController.quickInstancetype()
         // 设置回调
         vc.scanHandler = handler

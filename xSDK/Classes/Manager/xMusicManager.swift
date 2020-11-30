@@ -11,8 +11,8 @@ public class xMusicManager: NSObject {
     
     // MARK: - Public Property
     /// 单例
-    public static let shared = xMusicManager()
-    private override init() { }
+    // public static let shared = xMusicManager()
+    // private override init() { }
     
     // MARK: - Private Property
     /// 音乐队列

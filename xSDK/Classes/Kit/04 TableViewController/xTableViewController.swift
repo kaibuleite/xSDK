@@ -37,6 +37,8 @@ open class xTableViewController: UITableViewController {
         if self.tableView.isDecelerating { return true }
         return false
     }
+    /// 是否打印滚动日志(默认不打印)
+    public var isPrintScrollingLog = false
     
     // MARK: - Private Property
     /// 滚动开始回调
@@ -218,16 +220,19 @@ open class xTableViewController: UITableViewController {
     /* 停止拖拽*/
     open override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard self.checkDragScrollingEnd(scrollView) else { return }
+        guard self.isPrintScrollingLog else { return }
         xLog("***** 停止类型1: 拖拽后没有减速惯性\n")
     }
     /* 滚动完毕就会调用（人为拖拽scrollView导致滚动完毕，才会调用这个方法） */
     open override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard self.checkDragScrollingEnd(scrollView) else { return }
+        guard self.isPrintScrollingLog else { return }
         xLog("***** 停止类型2: 拖拽后减速惯性消失\n")
     }
     /* 滚动完毕就会调用（不是人为拖拽scrollView导致滚动完毕，才会调用这个方法）*/
     open override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         self.reloadDragScrollinEndVisibleCells()
+        guard self.isPrintScrollingLog else { return }
         xLog("***** 停止类型3: 代码动画结束\n")
     }
     /* 调整内容插页，配合MJ_Header使用 */
