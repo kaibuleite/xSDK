@@ -17,6 +17,7 @@
 		0419161B25494EFF00366B9D /* UIBezierPath+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */; };
 		04649ED225480214005328CF /* xVersionDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04649ED125480214005328CF /* xVersionDebugView.swift */; };
 		0466CD38254A4BDD008FF1C0 /* xSegmentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466CD37254A4BDD008FF1C0 /* xSegmentPageViewController.swift */; };
+		046759452574A52F00EF28E5 /* xDeviceMachine.plist in Resources */ = {isa = PBXBuildFile; fileRef = 046759442574A52F00EF28E5 /* xDeviceMachine.plist */; };
 		046D24FB2546682B00D581D2 /* xGlobalLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D24FA2546682B00D581D2 /* xGlobalLock.swift */; };
 		046D254F2546C5E400D581D2 /* xDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D254E2546C5E400D581D2 /* xDeviceManager.swift */; };
 		046D256D2546C72F00D581D2 /* xImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046D256C2546C72F00D581D2 /* xImageManager.swift */; };
@@ -502,6 +503,7 @@
 		04649ED125480214005328CF /* xVersionDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xVersionDebugView.swift; sourceTree = "<group>"; };
 		04649EE825480224005328CF /* xVersionDebugView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xVersionDebugView.xib; sourceTree = "<group>"; };
 		0466CD37254A4BDD008FF1C0 /* xSegmentPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xSegmentPageViewController.swift; sourceTree = "<group>"; };
+		046759442574A52F00EF28E5 /* xDeviceMachine.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = xDeviceMachine.plist; sourceTree = "<group>"; };
 		046D24FA2546682B00D581D2 /* xGlobalLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xGlobalLock.swift; sourceTree = "<group>"; };
 		046D254E2546C5E400D581D2 /* xDeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDeviceManager.swift; sourceTree = "<group>"; };
 		046D256C2546C72F00D581D2 /* xImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xImageManager.swift; sourceTree = "<group>"; };
@@ -1057,6 +1059,14 @@
 				04E99D8B254A647B00AD59A9 /* xSegmentPageViewController.storyboard */,
 			);
 			path = "11 SegmentPage控件";
+			sourceTree = "<group>";
+		};
+		0467594D2574A53A00EF28E5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				046759442574A52F00EF28E5 /* xDeviceMachine.plist */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		05B7E053A67FAE910BDBD34489D1BD93 /* Pods */ = {
@@ -1992,6 +2002,7 @@
 				046D259A2546C8F700D581D2 /* xMusicManager.swift */,
 				046D25B82546C98B00D581D2 /* xFileDirectoryManager.swift */,
 				047061CD256767600054B754 /* xKeychainManager.swift */,
+				0467594D2574A53A00EF28E5 /* Resource */,
 			);
 			name = Manager;
 			path = xSDK/Classes/Manager;
@@ -2448,6 +2459,7 @@
 				48AF95CA1A853D3E474A50EADE93BF0C /* no_data@2x.png in Resources */,
 				CDFB8FDE7BF6D44AB3669EBFD9EFFD76 /* no_data@3x.png in Resources */,
 				31D8465FDA6B331B5C541698982FEC90 /* scan_back@2x.png in Resources */,
+				046759452574A52F00EF28E5 /* xDeviceMachine.plist in Resources */,
 				494BA9AB48DCBB7F043DACA0AE533586 /* scan_bar_normal@2x.png in Resources */,
 				10008B7D09EE87A3B6686234C0F3FD67 /* scan_bar_select@2x.png in Resources */,
 				9AAD5BB87594F74D0605474E304705EB /* scan_blue_line@2x.png in Resources */,

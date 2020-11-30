@@ -14,7 +14,8 @@ class Test: NSObject {
     /// 运行测试代码
     public static func run()
     {
-        xDeviceManager.isRoot()
+        xLog(xDeviceManager.isRoot ? "已越狱" : "未越狱")
+        xLog(xDeviceManager.machineModelName)
         // 哈希值
 //        self.testHash()
         // 多任务处理

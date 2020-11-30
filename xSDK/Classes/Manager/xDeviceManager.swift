@@ -11,49 +11,67 @@ import AVKit
 
 public class xDeviceManager: NSObject {
 
-    // MARK: - Public Func
-    // TODO: 身份标识
+    // MARK: - Public Property
+    /// 单例
+//    public static let shared = xDeviceManager()
+//    private override init() { }
+    
+    // TODO: 设备信息
     /// 系统版本
-    public static func systemVersion() -> String
-    {
+    public static var systemVersion : String {
         let ret = UIDevice.current.systemVersion
         return ret
     }
-    
+    /// 机型名称
+    public static var machineModelName : String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let key = withUnsafePointer(to: &systemInfo.machine.0) {
+            (ptr) in
+            return String(cString: ptr)
+        }
+        let unknown = "unknown"
+        let bundle = Bundle.init(for: self.classForCoder())
+        guard let path = bundle.path(forResource: "xDeviceMachine.plist", ofType: nil) else { return unknown }
+        guard let dict = NSDictionary.init(contentsOfFile: path) else { return unknown }
+        if let value = dict.value(forKey: key) as? String {
+            return value
+        }
+        return unknown
+    }
     /// UUID
-    public static func UUID() -> String
-    {
+    public static var UUID : String {
         let ret = NSUUID.init().uuidString
         return ret
     }
-    
     /// IDFA
-    public static func IDFA() -> String
-    {
+    public static var IDFA : String {
         let ret = ASIdentifierManager.shared().advertisingIdentifier.uuidString
         return ret
     }
     
     // TODO: 状态判断
     /// 是否是iPAd
-    public static func isPad() -> Bool
+    public static var isPad : Bool
     {
         let ret = UI_USER_INTERFACE_IDIOM() == .pad
         return ret
     }
     
     /// 是否是模拟器
-    public static func isSimulator() -> Bool
+    public static var isSimulator : Bool
     {
-        let ret = UIDevice.current.model.xContains(subStr: "Simulator")
-        return ret
+        #if targetEnvironment(simulator)
+        return true
+        #else
+        return false
+        #endif
     }
     
     /// 是否越狱
-    @discardableResult
-    public static func isRoot() -> Bool
+    public static var isRoot : Bool
     {
-        if self.isSimulator() {
+        if self.isSimulator {
             xLog("模拟器环境下不用检测")
             return false
         }
@@ -84,7 +102,7 @@ public class xDeviceManager: NSObject {
         }
         
         do {
-            let path = String.init(format: "/private/%@", self.UUID())
+            let path = String.init(format: "/private/%@", self.UUID)
             try "xx".write(toFile: path, atomically: true, encoding: .utf8)
             try mgr.removeItem(atPath: path)
             xWarning("存在越狱文件夹:\(path)")
@@ -105,11 +123,11 @@ public class xDeviceManager: NSObject {
             return true
         }
          */
-        xLog("没有越狱")
+        xLog("当前设备未越狱")
         return false
     }
     
-    // TODO: 硬件相关
+    // MARK: - Public Func
     /// 设置手电筒状态
     /// - Parameter isOn: 是否打开
     public static func setFlashLight(_ torchMode: AVCaptureDevice.TorchMode)
