@@ -14,18 +14,49 @@ class Test: NSObject {
     /// 运行测试代码
     public static func run()
     {
+        xLog("********** 设备信息 **********")
         xLog(xDeviceManager.isRoot ? "已越狱" : "未越狱")
         xLog(xDeviceManager.machineModelName)
+        
+        // 钥匙串
+        //self.keychain()
         // 哈希值
-//        self.testHash()
+        //self.testHash()
         // 多任务处理
-//        self.testGroupQueue()
+        //self.testGroupQueue()
         // 锁
-//        self.testLock()
+        //self.testLock()
+    }
+    // MARK: - 钥匙串
+    static func keychain()
+    {
+        xLog("********** 钥匙串 **********")
+        let mgr = xKeychainManager.shared
+        let data = "啊哈~！".data(using: .utf8)!
+        let key = "xxx"
+        xLog("保存数据")
+        mgr.save(value: data, forKey: key)
+        xLog("查询数据")
+        if let ret = mgr.query(valueForKey: key) {
+            xLog(String.init(data: ret, encoding: .utf8)!)
+        }
+        xLog("更新、替换数据")
+        let data1 = "📚😴~！".data(using: .utf8)!
+        mgr.save(value: data1, forKey: key)
+        xLog("查询数据")
+        if let ret = mgr.query(valueForKey: key) {
+            xLog(String.init(data: ret, encoding: .utf8)!)
+        }
+        xLog("删除数据")
+        mgr.delete(valueForKey: key)
+        xLog("查询数据")
+        if let ret = mgr.query(valueForKey: key) {
+            xLog(String.init(data: ret, encoding: .utf8)!)
+        }
     }
     
     // MARK: - 哈希值
-    private static func testHash()
+    static func testHash()
     {
         xLog("********** 哈希值 **********")
         let a = "Hello Apple"
@@ -104,7 +135,7 @@ class Test: NSObject {
     }
     
     // MARK: - 锁 https://www.jianshu.com/p/8b8a01dd6356
-    private static func testLock()
+    static func testLock()
     {
         xLog("********** 锁 **********")
         xOSSpinLock {
