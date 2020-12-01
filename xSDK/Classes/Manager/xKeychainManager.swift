@@ -17,7 +17,7 @@ public class xKeychainManager: NSObject {
     /// 分组信息，一般用于管理一个开发者下的多个应用之间的数据（默认为空）
     public var group = ""
     /// 服务信息（默认使用应用bundle id）
-    public var service = xAppManager.shared.appBundleID
+    public var service = xAppManager.appBundleID
     
     // MARK: - Private Property
     /// 通用查询配置

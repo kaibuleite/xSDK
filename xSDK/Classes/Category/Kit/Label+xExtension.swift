@@ -32,7 +32,7 @@ extension UILabel {
     public func xSetPlaceholderMode(string : String = "     ")
     {
         self.text = string
-        self.backgroundColor = xAppManager.shared.placeholderBackgroundColor
+        self.backgroundColor = xAppManager.shared.placeholderColor
     }
     /// 设置为普通模式
     public func xSetNormalMode()

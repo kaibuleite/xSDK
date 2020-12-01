@@ -14,7 +14,7 @@ class Kit16ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let des = "Build \(xAppManager.shared.appBuildVersion)"
+        let des = "Build \(xAppManager.appBuildVersion)"
         xVersionDebugView.show(des: des)
     }
 

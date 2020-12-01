@@ -27,7 +27,7 @@ public class xVersionDebugView: UIView {
         self.backgroundColor = .clear
         self.container.isUserInteractionEnabled = false
         self.container.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        self.versioinLbl.text = "version \(xAppManager.shared.appVersion)"
+        self.versioinLbl.text = "version \(xAppManager.appVersion)"
         
         let longPress = UILongPressGestureRecognizer.init(target: self, action: #selector(longPress(gesture:)))
         longPress.minimumPressDuration = 1  // 设置长按最低时间条件（这里长按至少1s）

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043C3DA6257620B5008E130E /* Test12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C3DA5257620B5008E130E /* Test12ViewController.swift */; };
 		0460DA50252C0B470076D4B9 /* Test08ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DA4E252C0B470076D4B9 /* Test08ViewController.swift */; };
 		0460DA51252C0B470076D4B9 /* Test08ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0460DA4F252C0B470076D4B9 /* Test08ViewController.xib */; };
 		0461AD282537ED9700397D95 /* Kit15ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0461AD262537ED9700397D95 /* Kit15ViewController.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		043C3DA5257620B5008E130E /* Test12ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test12ViewController.swift; sourceTree = "<group>"; };
 		0460DA4E252C0B470076D4B9 /* Test08ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test08ViewController.swift; sourceTree = "<group>"; };
 		0460DA4F252C0B470076D4B9 /* Test08ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Test08ViewController.xib; sourceTree = "<group>"; };
 		0461AD262537ED9700397D95 /* Kit15ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kit15ViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043C3DA425762077008E130E /* 12 动态线条视图控制器 */ = {
+			isa = PBXGroup;
+			children = (
+				043C3DA5257620B5008E130E /* Test12ViewController.swift */,
+			);
+			path = "12 动态线条视图控制器";
+			sourceTree = "<group>";
+		};
 		0460DA4D252C0B350076D4B9 /* 08 手势密码 */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +400,7 @@
 				0468FE4125413008005510EE /* 09 多图选择器 */,
 				0468FE7625416C37005510EE /* 10 图片预览 */,
 				04E99DAB254A92A800AD59A9 /* 11 SegmentPage控件 */,
+				043C3DA425762077008E130E /* 12 动态线条视图控制器 */,
 			);
 			path = "测试样例";
 			sourceTree = "<group>";
@@ -792,6 +803,7 @@
 				04DE84532510AF50008615B3 /* Test01ViewController.swift in Sources */,
 				04D33E8E253D6CA00080BCEE /* Test.swift in Sources */,
 				04E08A882514424600780C15 /* Kit05ViewController.swift in Sources */,
+				043C3DA6257620B5008E130E /* Test12ViewController.swift in Sources */,
 				04D8D73A2513445100F0B14B /* Kit01ViewController.swift in Sources */,
 				0468FE7925416C4D005510EE /* Test10ViewController.swift in Sources */,
 				0471BBBF25199732005BF3E2 /* Kit12ViewController.swift in Sources */,

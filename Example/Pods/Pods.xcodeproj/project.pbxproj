@@ -15,6 +15,9 @@
 		030F2AC677591D7B138D81E2CB94071D /* MJRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = F521CB485E726F0888EC18B5B6166262 /* MJRefreshAutoNormalFooter.m */; };
 		032A65EE57DEDDE2F1A1DDA4C7B63704 /* MJRefreshTrailer.h in Headers */ = {isa = PBXBuildFile; fileRef = 81611A1E0317B60D3402916BB0E417A9 /* MJRefreshTrailer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0419161B25494EFF00366B9D /* UIBezierPath+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */; };
+		043C3D9C25761BA9008E130E /* xDynamicPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C3D9B25761BA9008E130E /* xDynamicPoint.swift */; };
+		043C3DAC25762545008E130E /* xDynamicLineLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C3DAB25762545008E130E /* xDynamicLineLayer.swift */; };
+		0464380625760FEE0016DFEB /* xDynamicLinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464380525760FEE0016DFEB /* xDynamicLinesViewController.swift */; };
 		04649ED225480214005328CF /* xVersionDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04649ED125480214005328CF /* xVersionDebugView.swift */; };
 		0466CD38254A4BDD008FF1C0 /* xSegmentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466CD37254A4BDD008FF1C0 /* xSegmentPageViewController.swift */; };
 		046759452574A52F00EF28E5 /* xDeviceMachine.plist in Resources */ = {isa = PBXBuildFile; fileRef = 046759442574A52F00EF28E5 /* xDeviceMachine.plist */; };
@@ -500,6 +503,9 @@
 		0396E76855ED13936A676C6CDFFE5975 /* SDAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageView.m; path = SDWebImage/Core/SDAnimatedImageView.m; sourceTree = "<group>"; };
 		04113914B11CD2A21701B5090074E6A4 /* SDFileAttributeHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDFileAttributeHelper.h; path = SDWebImage/Private/SDFileAttributeHelper.h; sourceTree = "<group>"; };
 		0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+xExtension.swift"; sourceTree = "<group>"; };
+		043C3D9B25761BA9008E130E /* xDynamicPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDynamicPoint.swift; sourceTree = "<group>"; };
+		043C3DAB25762545008E130E /* xDynamicLineLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDynamicLineLayer.swift; sourceTree = "<group>"; };
+		0464380525760FEE0016DFEB /* xDynamicLinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDynamicLinesViewController.swift; sourceTree = "<group>"; };
 		04649ED125480214005328CF /* xVersionDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xVersionDebugView.swift; sourceTree = "<group>"; };
 		04649EE825480224005328CF /* xVersionDebugView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xVersionDebugView.xib; sourceTree = "<group>"; };
 		0466CD37254A4BDD008FF1C0 /* xSegmentPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xSegmentPageViewController.swift; sourceTree = "<group>"; };
@@ -1043,6 +1049,16 @@
 			path = xSDK/Classes/Kit;
 			sourceTree = "<group>";
 		};
+		0464380425760FD20016DFEB /* 12 动态线条视图控制器 */ = {
+			isa = PBXGroup;
+			children = (
+				0464380525760FEE0016DFEB /* xDynamicLinesViewController.swift */,
+				043C3D9B25761BA9008E130E /* xDynamicPoint.swift */,
+				043C3DAB25762545008E130E /* xDynamicLineLayer.swift */,
+			);
+			path = "12 动态线条视图控制器";
+			sourceTree = "<group>";
+		};
 		04649ED0254801A5005328CF /* 16 版本提示悬浮窗 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1496,6 +1512,7 @@
 				FB2184CCB65D9AF47E6141CF309F24F9 /* 09 多图选择器 */,
 				4432670763AD0906BEDC8F49B8325BEA /* 10 图片预览 */,
 				0466CD36254A4BC1008FF1C0 /* 11 SegmentPage控件 */,
+				0464380425760FD20016DFEB /* 12 动态线条视图控制器 */,
 			);
 			name = Product_Controller;
 			path = xSDK/Classes/Product_Controller;
@@ -2705,6 +2722,7 @@
 				88B28319E3EF40F33A9682622D901664 /* String+xExtension.swift in Sources */,
 				1F244C0BAF2958D6637284FC76A5C0C3 /* Timer+xExtension.swift in Sources */,
 				E55613FB6D76CA92B9F187C18A109CE4 /* View+xExtension.swift in Sources */,
+				043C3DAC25762545008E130E /* xDynamicLineLayer.swift in Sources */,
 				D4382106B537B450DEF476A704CA64C6 /* ViewController+xExtension.swift in Sources */,
 				0E6244B0AFE7267697E1B2F4F65CDBDE /* xActionSheet.swift in Sources */,
 				7EB83E81F8A5D0F43A6BABF287FDC09C /* xAlert.swift in Sources */,
@@ -2730,6 +2748,7 @@
 				9016164BB046BDF1B0D59B40EFCDD196 /* xDataPickerModel.swift in Sources */,
 				E17D737CB5716F867C6B981FA9FCAE57 /* xDataPickerViewController.storyboard in Sources */,
 				B698022B7979342D5FC677D28C4B5172 /* xDataPickerViewController.swift in Sources */,
+				043C3D9C25761BA9008E130E /* xDynamicPoint.swift in Sources */,
 				942B02F0404BC88DFC0DC2F06A47FC88 /* xDatePickerConfig.swift in Sources */,
 				DE0F5BB1DF0B229C1B97A772E3C327BD /* xDatePickerViewController.storyboard in Sources */,
 				A3DB462F5899190E83630857BCA350A7 /* xDatePickerViewController.swift in Sources */,
@@ -2768,6 +2787,7 @@
 				15F37197C8E082F040EDB495E0659E3A /* xModel.swift in Sources */,
 				5F3E7B9607ED92183763508E12D2A26C /* xMutableDataPickerModel.swift in Sources */,
 				9D1565818DB574B15CE5E21237DD530B /* xMutableDataPickerViewController.storyboard in Sources */,
+				0464380625760FEE0016DFEB /* xDynamicLinesViewController.swift in Sources */,
 				F29AA388B407CAB37AAF81152AE638E0 /* xMutableDataPickerViewController.swift in Sources */,
 				A7FBA871C6FBE590C1F81472C98C1E2D /* xNavigationController.swift in Sources */,
 				CF7B3E757BAB0F2BE166EC8C122A1D4B /* xNavigationView.swift in Sources */,
