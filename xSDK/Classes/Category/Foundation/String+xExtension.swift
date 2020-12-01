@@ -556,4 +556,29 @@ extension String {
         let ret = regex.stringByReplacingMatches(in: self, options: .reportProgress, range: range, withTemplate: str)
         return ret
     }
+    
+    // MARK: 字符串编辑
+    /// 读取输入框内容
+    /// - Parameters:
+    ///   - input: 输入框
+    ///   - emptTip: 空提示
+    /// - Returns: 是否读取成功
+    @discardableResult
+    public mutating func xRead(input : UITextField,
+                               emptTip : String? = nil) -> Bool
+    {
+        let str = input.text ?? ""
+        if str.count > 0 {
+            self = str
+            return true
+        }
+        else {
+            var msg = emptTip ?? ""
+            if msg.count == 0 {
+                msg = input.placeholder ?? ""
+            }
+            xMessageAlert.display(message: msg)
+            return false
+        }
+    }
 }

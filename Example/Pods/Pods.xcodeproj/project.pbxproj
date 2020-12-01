@@ -17,6 +17,7 @@
 		0419161B25494EFF00366B9D /* UIBezierPath+xExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */; };
 		043C3D9C25761BA9008E130E /* xDynamicPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C3D9B25761BA9008E130E /* xDynamicPoint.swift */; };
 		043C3DAC25762545008E130E /* xDynamicLineLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C3DAB25762545008E130E /* xDynamicLineLayer.swift */; };
+		043C3DC82576334A008E130E /* xTwoSideImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C3DC72576334A008E130E /* xTwoSideImageView.swift */; };
 		0464380625760FEE0016DFEB /* xDynamicLinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464380525760FEE0016DFEB /* xDynamicLinesViewController.swift */; };
 		04649ED225480214005328CF /* xVersionDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04649ED125480214005328CF /* xVersionDebugView.swift */; };
 		0466CD38254A4BDD008FF1C0 /* xSegmentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466CD37254A4BDD008FF1C0 /* xSegmentPageViewController.swift */; };
@@ -505,6 +506,7 @@
 		0419161A25494EFF00366B9D /* UIBezierPath+xExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+xExtension.swift"; sourceTree = "<group>"; };
 		043C3D9B25761BA9008E130E /* xDynamicPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDynamicPoint.swift; sourceTree = "<group>"; };
 		043C3DAB25762545008E130E /* xDynamicLineLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDynamicLineLayer.swift; sourceTree = "<group>"; };
+		043C3DC72576334A008E130E /* xTwoSideImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xTwoSideImageView.swift; sourceTree = "<group>"; };
 		0464380525760FEE0016DFEB /* xDynamicLinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xDynamicLinesViewController.swift; sourceTree = "<group>"; };
 		04649ED125480214005328CF /* xVersionDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xVersionDebugView.swift; sourceTree = "<group>"; };
 		04649EE825480224005328CF /* xVersionDebugView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xVersionDebugView.xib; sourceTree = "<group>"; };
@@ -1049,6 +1051,14 @@
 			path = xSDK/Classes/Kit;
 			sourceTree = "<group>";
 		};
+		043C3DB42576327D008E130E /* 17 双面图片 */ = {
+			isa = PBXGroup;
+			children = (
+				043C3DC72576334A008E130E /* xTwoSideImageView.swift */,
+			);
+			path = "17 双面图片";
+			sourceTree = "<group>";
+		};
 		0464380425760FD20016DFEB /* 12 动态线条视图控制器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1211,6 +1221,7 @@
 				91108CF5FB6377E3DFCA7A4BC74CC412 /* 14 过渡动画 */,
 				AACC4258C6F89ABA0FEF3BB26AA4BD5C /* 15 滚动公告 */,
 				04649ED0254801A5005328CF /* 16 版本提示悬浮窗 */,
+				043C3DB42576327D008E130E /* 17 双面图片 */,
 			);
 			name = Product_Kit;
 			path = xSDK/Classes/Product_Kit;
@@ -2760,6 +2771,7 @@
 				046D25762546C75100D581D2 /* xVoiceManager.swift in Sources */,
 				FB16214DDB21BB8C832489EF6DFE88EF /* xGlobalFunction.swift in Sources */,
 				17FD2E2853D1BE84C136530BBC3AE80F /* xGlobalValue.swift in Sources */,
+				043C3DC82576334A008E130E /* xTwoSideImageView.swift in Sources */,
 				21242F97FF6594202F47351D2DBFF123 /* xGPasswordConfig.swift in Sources */,
 				0E2039BEE4BC75F5F72874AFB9109CA3 /* xGPasswordPointView.swift in Sources */,
 				046D25B92546C98B00D581D2 /* xFileDirectoryManager.swift in Sources */,
