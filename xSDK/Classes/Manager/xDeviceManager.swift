@@ -128,6 +128,15 @@ public class xDeviceManager: NSObject {
     }
     
     // MARK: - Public Func
+    /// 拨打电话
+    /// - Parameter phone: 电话
+    public static func call(phone : String)
+    {
+        let str = "tel://" + phone
+        guard let url = str.xToURL() else { return }
+        guard UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.openURL(url)
+    }
     /// 设置手电筒状态
     /// - Parameter isOn: 是否打开
     public static func setFlashLight(_ torchMode: AVCaptureDevice.TorchMode)
