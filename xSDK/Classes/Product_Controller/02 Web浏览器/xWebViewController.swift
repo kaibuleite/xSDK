@@ -133,7 +133,7 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     /// - Parameter str: 地址
     public func load(url str: String)
     {
-        guard let url = URL.init(string: str)  else { return }
+        guard let url = URL.init(string: str) else { return }
         let req = URLRequest.init(url: url)
         self.web.load(req)
     }

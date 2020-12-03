@@ -1,6 +1,6 @@
 {
   "name": "xSDK",
-  "version": "1.3.6",
+  "version": "1.4.7",
   "summary": "自定义框架",
   "swift_versions": "5",
   "description": "TODO: Add long description of the pod here.",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/kaibuleite/xSDK.git",
-    "tag": "1.3.6"
+    "tag": "1.4.7"
   },
   "platforms": {
     "ios": "9.0"
@@ -32,6 +32,9 @@
 
     ],
     "TZImagePickerController": [
+
+    ],
+    "SVProgressHUD": [
 
     ]
   },
