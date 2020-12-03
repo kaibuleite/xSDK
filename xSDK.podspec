@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'xSDK'
-  s.version          = '1.4.7'  # SDK版本号
+  s.version          = '1.4.6'  # SDK版本号
   s.summary          = '自定义框架'
   s.swift_version    = '5'      # Swift版本号
 
@@ -47,5 +47,5 @@ TODO: Add long description of the pod here.
   s.dependency 'SDWebImage' # 可根据情况提高版本
   s.dependency 'MJRefresh' # 可根据情况提高版本
   s.dependency 'TZImagePickerController' # 可根据情况提高版本
-  s.dependency 'SVProgressHUD' # 可根据情况提高版本
+#  s.dependency 'SVProgressHUD' # 可根据情况提高版本
 end
