@@ -499,7 +499,7 @@
 		00F4506A0E841B2439BA0EC583296599 /* UIView+Layout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+Layout.m"; path = "TZImagePickerController/TZImagePickerController/UIView+Layout.m"; sourceTree = "<group>"; };
 		0121302B2F781706455E91C5914D8296 /* xMask+AnimeLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "xMask+AnimeLayer.swift"; sourceTree = "<group>"; };
 		01F8977DA86ED098AB513E8378DA952D /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
-		02553F9CC8A544D98FE6776B3D8C9FF5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		02553F9CC8A544D98FE6776B3D8C9FF5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		029420CBBED8C34B4CD8A00F8A0F59C0 /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+MJExtension.m"; path = "MJRefresh/UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
 		02B4DE6DFB814DF8105E4F9D1F9F21E2 /* MJRefreshBackStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackStateFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.m; sourceTree = "<group>"; };
 		02F49A43FDA6201BBD76A42DAF96CC7F /* xSKUView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xSKUView.swift; sourceTree = "<group>"; };
@@ -516,7 +516,7 @@
 		05CE6C65C35E4A187015D91A5C67E85D /* scan_net@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "scan_net@3x.png"; path = "xSDK/Assets/scan_net@3x.png"; sourceTree = "<group>"; };
 		0826F6FB762ED9F4D26FB310445296A3 /* xMask+AnimeLineJump.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "xMask+AnimeLineJump.swift"; sourceTree = "<group>"; };
 		08623230BF00D117673B281BABF29D1B /* TZImageCropManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TZImageCropManager.m; path = TZImagePickerController/TZImagePickerController/TZImageCropManager.m; sourceTree = "<group>"; };
-		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_xSDK_Example.framework; path = "Pods-xSDK_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		08AB1E8BD44582B982399C98DB1B4683 /* Pods_xSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		096C761F50A08C6AA9F5B9DC6B792394 /* TZImagePickerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TZImagePickerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09B9C2B0F0DB2CF4C6ACE221CD713B64 /* TZGifPhotoPreviewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TZGifPhotoPreviewController.h; path = TZImagePickerController/TZImagePickerController/TZGifPhotoPreviewController.h; sourceTree = "<group>"; };
 		09F487EA47BE5B714B82C5D888C4DF72 /* SDImageLoadersManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageLoadersManager.h; path = SDWebImage/Core/SDImageLoadersManager.h; sourceTree = "<group>"; };
@@ -572,7 +572,7 @@
 		27461744D1132D136F1C12AF70967AFC /* xDefaultOnePageItemViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = xDefaultOnePageItemViewController.xib; sourceTree = "<group>"; };
 		2788B676B09978459E3F318237D4B320 /* TZAssetModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TZAssetModel.h; path = TZImagePickerController/TZImagePickerController/TZAssetModel.h; sourceTree = "<group>"; };
 		27BEB51FC4FF3DE47EA62D979B0A09C5 /* Float+xExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Float+xExtension.swift"; sourceTree = "<group>"; };
-		28293684EF02D93AAB7857296797DCFA /* xSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = xSDK.framework; path = xSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28293684EF02D93AAB7857296797DCFA /* xSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = xSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2900E80066E2CAB185BC3F74426CB842 /* xVoiceManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xVoiceManager.swift; sourceTree = "<group>"; };
 		2961F30EC889C82952CDC888057FE419 /* Object+xExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Object+xExtension.swift"; sourceTree = "<group>"; };
 		29C104983DA0A18F1DD54B9B2C210733 /* SDGraphicsImageRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDGraphicsImageRenderer.h; path = SDWebImage/Core/SDGraphicsImageRenderer.h; sourceTree = "<group>"; };
@@ -627,7 +627,7 @@
 		4A1BAA5A87736787E1368CAAAABE2C11 /* xSKUConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xSKUConfig.swift; sourceTree = "<group>"; };
 		4C678517B630028C2CCC952BBA76C8A9 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+WebCache.h"; path = "SDWebImage/Core/UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		4CC6D4B30EB47549D3288173B031DDB6 /* NSBezierPath+SDRoundedCorners.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+SDRoundedCorners.m"; path = "SDWebImage/Private/NSBezierPath+SDRoundedCorners.m"; sourceTree = "<group>"; };
-		4CF6764A2E7A25DC248B50A82B19C8F8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		4CF6764A2E7A25DC248B50A82B19C8F8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4D58443DFF186AFF70C7D4CE4F508814 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		4F565A20771F0ED119CCCFC64CF40AEC /* xSegmentConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xSegmentConfig.swift; sourceTree = "<group>"; };
 		507F489CBF81EE94873D3C6903BC7EE9 /* UIImage+ExtendedCacheData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ExtendedCacheData.m"; path = "SDWebImage/Core/UIImage+ExtendedCacheData.m"; sourceTree = "<group>"; };
@@ -655,7 +655,7 @@
 		5C36C5BD4C2E63D40C3737B3FC81CA8A /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "SDWebImage/Core/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		5C7CEA79901BECF8200B625437A5C6FC /* SDImageHEICCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageHEICCoder.h; path = SDWebImage/Core/SDImageHEICCoder.h; sourceTree = "<group>"; };
 		5D21998539AC984806DEA33DA218CAEB /* SDWebImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDWebImage.debug.xcconfig; sourceTree = "<group>"; };
-		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E6E994FABB10F4C2030FEACF76140AE /* SDImageGIFCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageGIFCoder.m; path = SDWebImage/Core/SDImageGIFCoder.m; sourceTree = "<group>"; };
 		5E74F68079291364874EB5F08F0D98BE /* TZImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TZImageManager.m; path = TZImagePickerController/TZImagePickerController/TZImageManager.m; sourceTree = "<group>"; };
 		5EB5FC0745DC7EA4F496FDFEBFFD528A /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
@@ -710,7 +710,7 @@
 		795F6E6C6AF247BE8D97111E49E0B3AD /* SDWebImageError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageError.h; path = SDWebImage/Core/SDWebImageError.h; sourceTree = "<group>"; };
 		796EB77455BEB12F053DD921F571030B /* SDAnimatedImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAnimatedImageView.h; path = SDWebImage/Core/SDAnimatedImageView.h; sourceTree = "<group>"; };
 		7ACD7C2B6B726989FE5CCBBAB16375AF /* SDAnimatedImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAnimatedImage.h; path = SDWebImage/Core/SDAnimatedImage.h; sourceTree = "<group>"; };
-		7BC9A59D2F82075520C2A79F0B8C44D3 /* xSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = xSDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7BC9A59D2F82075520C2A79F0B8C44D3 /* xSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = xSDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7C6BABD4C25CCA2B09D5E3C8137A02F5 /* SDWebImageDownloaderConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderConfig.h; path = SDWebImage/Core/SDWebImageDownloaderConfig.h; sourceTree = "<group>"; };
 		7CD1584F2B1FB89EDB90561789FCB097 /* SDWebImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDWebImage.release.xcconfig; sourceTree = "<group>"; };
 		7CEC75111F1754AD15E1A428915405F8 /* Pods-xSDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-xSDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -753,7 +753,7 @@
 		8C4571506C5660E5B5062157D8650952 /* Button+xExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Button+xExtension.swift"; sourceTree = "<group>"; };
 		8C7C20203918F65DB9F4FEDA4664EF9D /* xFilterListTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xFilterListTableViewController.swift; sourceTree = "<group>"; };
 		8DDAEEF933CAE875F00CB1DF419A8320 /* MJRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MJRefresh.release.xcconfig; sourceTree = "<group>"; };
-		8E1D5C0FCA0D872C3F21E87F25420681 /* TZImagePickerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TZImagePickerController.framework; path = TZImagePickerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E1D5C0FCA0D872C3F21E87F25420681 /* TZImagePickerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TZImagePickerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FB023BC0711A1BBBE29CAB21B886E54 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MultiFormat.m"; path = "SDWebImage/Core/UIImage+MultiFormat.m"; sourceTree = "<group>"; };
 		90B99F86CA2079A509F5F5F3AA42C04E /* xEANCodeImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xEANCodeImageView.swift; sourceTree = "<group>"; };
 		92E023537F71B039E71363F17AD34A28 /* NSBundle+TZImagePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+TZImagePicker.h"; path = "TZImagePickerController/TZImagePickerController/NSBundle+TZImagePicker.h"; sourceTree = "<group>"; };
@@ -774,7 +774,7 @@
 		9C8F769AD8A0C87F5BCF18802C14B68F /* xNavigationView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = xNavigationView.xib; sourceTree = "<group>"; };
 		9C951136CEADF8E0CB1813C6AEA7FC87 /* SDImageCodersManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCodersManager.m; path = SDWebImage/Core/SDImageCodersManager.m; sourceTree = "<group>"; };
 		9C98939F9BFCA88E511206EA34C6112E /* SDWebImageCacheKeyFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCacheKeyFilter.m; path = SDWebImage/Core/SDWebImageCacheKeyFilter.m; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E7E4314413527B45BF3CCC984717387 /* Alamofire-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Alamofire-Info.plist"; sourceTree = "<group>"; };
 		9EB1CC85AE79968DBEA65DAE640AE528 /* SDWebImageDownloaderDecryptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderDecryptor.m; path = SDWebImage/Core/SDWebImageDownloaderDecryptor.m; sourceTree = "<group>"; };
 		9ED077A3B0FA8F82887A8B0D7570756B /* TZAssetCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TZAssetCell.h; path = TZImagePickerController/TZImagePickerController/TZAssetCell.h; sourceTree = "<group>"; };
@@ -807,13 +807,13 @@
 		AE5B61C4E1123EE4A3CD6C712EEBFA45 /* Pods-xSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		AFBD2F9DF4654D0BE4AC671938B9AA5E /* MJRefreshNormalTrailer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshNormalTrailer.h; path = MJRefresh/Custom/Trailer/MJRefreshNormalTrailer.h; sourceTree = "<group>"; };
 		B064C2106B1421DFB73CB2948671BE83 /* SDImageCacheDefine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCacheDefine.h; path = SDWebImage/Core/SDImageCacheDefine.h; sourceTree = "<group>"; };
-		B0B214D775196BA7CA8E17E53048A493 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SDWebImage.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B214D775196BA7CA8E17E53048A493 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B372EEF13063743A20CDFD06E7F8442D /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImagePrefetcher.h; path = SDWebImage/Core/SDWebImagePrefetcher.h; sourceTree = "<group>"; };
 		B44B3A16F53C99590C6A95CA42FE5D36 /* SDImageGraphics.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageGraphics.m; path = SDWebImage/Core/SDImageGraphics.m; sourceTree = "<group>"; };
 		B4D0C3719FAE392F7DAC9628880033A1 /* SDImageTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageTransformer.h; path = SDWebImage/Core/SDImageTransformer.h; sourceTree = "<group>"; };
 		B551944B9799D524D9857C00B7CB993B /* SDImageCachesManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManager.h; path = SDWebImage/Core/SDImageCachesManager.h; sourceTree = "<group>"; };
 		B5B118A58C92D66193C945CAB6A863AB /* xGPasswordViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = xGPasswordViewController.storyboard; sourceTree = "<group>"; };
-		B84B7B4946D6E11A10C4CC0E4CEEDAB4 /* Pods_xSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_xSDK_Tests.framework; path = "Pods-xSDK_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B84B7B4946D6E11A10C4CC0E4CEEDAB4 /* Pods_xSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8772D10DF5A6320191F4534DBA2AFC4 /* NSBundle+MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+MJRefresh.h"; path = "MJRefresh/NSBundle+MJRefresh.h"; sourceTree = "<group>"; };
 		B87A9B8C6B202EEB97D1A5EDC27878FF /* SDWebImageError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageError.m; path = SDWebImage/Core/SDWebImageError.m; sourceTree = "<group>"; };
 		B8AFCCBED4E33C7517A1329A08614250 /* xSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "xSDK-dummy.m"; sourceTree = "<group>"; };
@@ -906,7 +906,7 @@
 		E366556D85F28F1779D6AE903D2328ED /* TZImagePickerController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TZImagePickerController.debug.xcconfig; sourceTree = "<group>"; };
 		E3BB5BB55C1E43ACE6E8E90FF0585FA1 /* SDAnimatedImagePlayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAnimatedImagePlayer.h; path = SDWebImage/Core/SDAnimatedImagePlayer.h; sourceTree = "<group>"; };
 		E461A2D097E2CD9C59FF1FCE7CFAE6AC /* light_off@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "light_off@2x.png"; path = "xSDK/Assets/light_off@2x.png"; sourceTree = "<group>"; };
-		E49D6D248DD1CEE584E6776B9164A1B2 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MJRefresh.framework; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49D6D248DD1CEE584E6776B9164A1B2 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4DE7E2A7E82D131BC1E0D3BA87F6E3D /* xInputAccessoryView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = xInputAccessoryView.xib; sourceTree = "<group>"; };
 		E505D0C7927D48494F5476532FD95883 /* xSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = xSDK.modulemap; sourceTree = "<group>"; };
 		E7543F9A91FEEA74DA169316583DB9F7 /* xTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xTableViewController.swift; sourceTree = "<group>"; };
@@ -1036,7 +1036,6 @@
 			children = (
 				90B99F86CA2079A509F5F5F3AA42C04E /* xEANCodeImageView.swift */,
 			);
-			name = "08 条形码";
 			path = "08 条形码";
 			sourceTree = "<group>";
 		};
@@ -1045,7 +1044,6 @@
 			children = (
 				0435F699378BD425D28518C3AA2A1888 /* xTableViewCell.swift */,
 			);
-			name = Cells;
 			path = Cells;
 			sourceTree = "<group>";
 		};
@@ -1056,7 +1054,6 @@
 				258ADE2D4945787541EF18C9E6E7A9C3 /* xDatePickerViewController.storyboard */,
 				5892B2CA09893D1874A13F9315DF5430 /* xDatePickerViewController.swift */,
 			);
-			name = "04 日期选择器";
 			path = "04 日期选择器";
 			sourceTree = "<group>";
 		};
@@ -1066,7 +1063,6 @@
 				EC8605A428723382CE3D3B6482EA80C9 /* xSegmentPageViewController.storyboard */,
 				87E93E81FD5607100A5CB9312A1A80BF /* xSegmentPageViewController.swift */,
 			);
-			name = "11 SegmentPage控件";
 			path = "11 SegmentPage控件";
 			sourceTree = "<group>";
 		};
@@ -1103,7 +1099,6 @@
 				6EF6F7F037C1F682297F65FA0ECED59A /* xButton.swift */,
 				CF8C4ECDE92AD42858AE6ADC53412D18 /* xCountDownButton.swift */,
 			);
-			name = "12 Button";
 			path = "12 Button";
 			sourceTree = "<group>";
 		};
@@ -1123,7 +1118,6 @@
 			children = (
 				EBD4330F3C064FAEC34DFE758BAF33CD /* xNavigationController.swift */,
 			);
-			name = "02 NavigationController";
 			path = "02 NavigationController";
 			sourceTree = "<group>";
 		};
@@ -1162,7 +1156,6 @@
 				BFCB13EF2C8FA02116B681CC25DA069A /* xListCollectionViewController.swift */,
 				7DA509F319663B77B3760E3BD8F5D515 /* Cells */,
 			);
-			name = "05 CollectionViewController";
 			path = "05 CollectionViewController";
 			sourceTree = "<group>";
 		};
@@ -1197,7 +1190,6 @@
 				A73A22A28D8C0F4E6CA5C060F8A49F1B /* xDataEmptyView.swift */,
 				62C6211DFED35B6D5D30E88F1AD4F663 /* xDataEmptyView.xib */,
 			);
-			name = "03 列表空数据";
 			path = "03 列表空数据";
 			sourceTree = "<group>";
 		};
@@ -1207,7 +1199,6 @@
 				4F565A20771F0ED119CCCFC64CF40AEC /* xSegmentConfig.swift */,
 				D02D30EEFF27D064A458D64BD4B50EB3 /* xSegmentView.swift */,
 			);
-			name = "11 Segment组件";
 			path = "11 Segment组件";
 			sourceTree = "<group>";
 		};
@@ -1218,7 +1209,6 @@
 				3410CE6C322E57047CD3432FF356A637 /* xMutableDataPickerViewController.storyboard */,
 				A3A5597CFD2859E53824894950C980A4 /* xMutableDataPickerViewController.swift */,
 			);
-			name = "06 数据选择器_可变";
 			path = "06 数据选择器_可变";
 			sourceTree = "<group>";
 		};
@@ -1229,7 +1219,6 @@
 				468270E03724287E01CB28BA8B93D7F3 /* xWebViewController.storyboard */,
 				737DD970A8E0C1F2934F82D81F8E0151 /* xWebViewController.swift */,
 			);
-			name = "02 Web浏览器";
 			path = "02 Web浏览器";
 			sourceTree = "<group>";
 		};
@@ -1286,7 +1275,6 @@
 				4753EAD74672E6159451CD69A018D7D0 /* Resources */,
 				FF2075D85FE6AB591D1B74C5F097423F /* Support Files */,
 			);
-			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -1297,7 +1285,6 @@
 				2C0D520B814081BAB524368519D78CBE /* xPushAlertViewController.swift */,
 				5AD7660955C2C00C9928A555D13A13C3 /* xViewController.swift */,
 			);
-			name = "03 ViewController";
 			path = "03 ViewController";
 			sourceTree = "<group>";
 		};
@@ -1306,7 +1293,6 @@
 			children = (
 				A136D7E1FFA54D5BA940F2C7AC783830 /* xTabBarController.swift */,
 			);
-			name = "01 TabBarController";
 			path = "01 TabBarController";
 			sourceTree = "<group>";
 		};
@@ -1336,7 +1322,6 @@
 				22D27F37835F56FB06678830CAC33BAC /* xPageControl.swift */,
 				F121D661675961DAAEBCE7DC2839361B /* xPageControl.xib */,
 			);
-			name = "12 PageControl组件";
 			path = "12 PageControl组件";
 			sourceTree = "<group>";
 		};
@@ -1345,7 +1330,6 @@
 			children = (
 				ABC9EAAE75DD1B6FFD51E3D4AB5013F9 /* xDeviceMachine.plist */,
 			);
-			name = Resource;
 			path = Resource;
 			sourceTree = "<group>";
 		};
@@ -1384,7 +1368,6 @@
 				8997AD0A5E031D848D29AB72E6D2E9E3 /* View+xExtension.swift */,
 				9558F2FF372112EB5D425BD81EB7F05D /* ViewController+xExtension.swift */,
 			);
-			name = Kit;
 			path = Kit;
 			sourceTree = "<group>";
 		};
@@ -1394,7 +1377,6 @@
 				776309C3EB7C5C8F1A39E299F42CFCAD /* xCaptchaConfig.swift */,
 				CD0DD63BE8EC5EA54F78B3DA5308A859 /* xCaptchaView.swift */,
 			);
-			name = "07 图片验证码";
 			path = "07 图片验证码";
 			sourceTree = "<group>";
 		};
@@ -1404,7 +1386,6 @@
 				68C74CEF38F4906C14723FE95616AB68 /* xInputAccessoryView.swift */,
 				E4DE7E2A7E82D131BC1E0D3BA87F6E3D /* xInputAccessoryView.xib */,
 			);
-			name = "06 输入框附加视图";
 			path = "06 输入框附加视图";
 			sourceTree = "<group>";
 		};
@@ -1413,7 +1394,6 @@
 			children = (
 				6CAB10CE8BCFB7439B55C23C785AF4D2 /* xRoundCornerView.swift */,
 			);
-			name = "01 圆角矩形容器";
 			path = "01 圆角矩形容器";
 			sourceTree = "<group>";
 		};
@@ -1438,7 +1418,6 @@
 			children = (
 				C09E7F1124612B70AE2C7B513B85D555 /* xTwoSideImageView.swift */,
 			);
-			name = "17 双面图片";
 			path = "17 双面图片";
 			sourceTree = "<group>";
 		};
@@ -1462,7 +1441,6 @@
 			children = (
 				129CF54F3FCD8FF719D2C73048498EAB /* xImageView.swift */,
 			);
-			name = "11 ImageView";
 			path = "11 ImageView";
 			sourceTree = "<group>";
 		};
@@ -1474,7 +1452,6 @@
 				E7543F9A91FEEA74DA169316583DB9F7 /* xTableViewController.swift */,
 				0BD322B064E9660CE7C01210C01568A0 /* Cells */,
 			);
-			name = "04 TableViewController";
 			path = "04 TableViewController";
 			sourceTree = "<group>";
 		};
@@ -1486,7 +1463,6 @@
 				31537E9FE251271C7EB7C864FCD65310 /* xPageViewController.storyboard */,
 				32E48223B1AB09B30F87C30B08ED7DF9 /* xPageViewController.swift */,
 			);
-			name = "03 Page控件";
 			path = "03 Page控件";
 			sourceTree = "<group>";
 		};
@@ -1512,7 +1488,6 @@
 				BEE896D347D4566EFD584ADAE05B3C90 /* xScanCodeViewController.storyboard */,
 				63B8E6D879079E5FC5BF644E16A25B40 /* xScanCodeViewController.swift */,
 			);
-			name = "07 扫码";
 			path = "07 扫码";
 			sourceTree = "<group>";
 		};
@@ -1532,7 +1507,6 @@
 			children = (
 				5F9AC1C76F1C2FF1520D3FC09FA00E80 /* xTextField.swift */,
 			);
-			name = "13 TextField";
 			path = "13 TextField";
 			sourceTree = "<group>";
 		};
@@ -1571,7 +1545,6 @@
 			children = (
 				6649223113F902F9B5E77557B66DC335 /* xChooseAlbumPhotosViewController.swift */,
 			);
-			name = "09 多图选择器";
 			path = "09 多图选择器";
 			sourceTree = "<group>";
 		};
@@ -1580,7 +1553,6 @@
 			children = (
 				785341F05C743ACCC6F7118988EF2B1B /* xAnimation.swift */,
 			);
-			name = "14 过渡动画";
 			path = "14 过渡动画";
 			sourceTree = "<group>";
 		};
@@ -1632,7 +1604,6 @@
 			children = (
 				3200C0D9EA7AEDE17A49B1D9231FB97D /* xCollectionViewCell.swift */,
 			);
-			name = Cells;
 			path = Cells;
 			sourceTree = "<group>";
 		};
@@ -1672,7 +1643,6 @@
 				22EE2B8BD0848F359B98C457BC0B19B9 /* Resources */,
 				6BF16CFB1FDDFB698A6B9B8716A25329 /* Support Files */,
 			);
-			name = TZImagePickerController;
 			path = TZImagePickerController;
 			sourceTree = "<group>";
 		};
@@ -1831,7 +1801,6 @@
 				A51BE6DB2C321039900AFA79020CF721 /* xNavigationView.swift */,
 				9C8F769AD8A0C87F5BCF18802C14B68F /* xNavigationView.xib */,
 			);
-			name = "04 导航栏";
 			path = "04 导航栏";
 			sourceTree = "<group>";
 		};
@@ -1865,7 +1834,6 @@
 				4D58443DFF186AFF70C7D4CE4F508814 /* Validation.swift */,
 				6F1EFD77A77C0BDCAE2527D05BB1C968 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1874,7 +1842,6 @@
 			children = (
 				963FD93F33183E9FB5721FF3D6980AD2 /* xQRCodeImageView.swift */,
 			);
-			name = "09 二维码";
 			path = "09 二维码";
 			sourceTree = "<group>";
 		};
@@ -1886,7 +1853,6 @@
 				CE7D6A89CEBE0E0934FCF031EEADD4C0 /* xMaskViewController.swift */,
 				A631F5316E16E9AC4DB110D2F729E5D5 /* Animation */,
 			);
-			name = "01 Mask遮罩";
 			path = "01 Mask遮罩";
 			sourceTree = "<group>";
 		};
@@ -1915,7 +1881,6 @@
 				0826F6FB762ED9F4D26FB310445296A3 /* xMask+AnimeLineJump.swift */,
 				40330C12826684AF1A510536AA68DA3C /* xMask+AnimeMagic1.swift */,
 			);
-			name = Animation;
 			path = Animation;
 			sourceTree = "<group>";
 		};
@@ -1924,7 +1889,6 @@
 			children = (
 				A592ADC85B8A4A2F679B0CBB373208CF /* xChooseNavigationMapActionSheet.swift */,
 			);
-			name = "13 选择外部导航地图";
 			path = "13 选择外部导航地图";
 			sourceTree = "<group>";
 		};
@@ -1933,7 +1897,6 @@
 			children = (
 				F25A4EF8FD744757CCB888391EA21811 /* xGradientColorView.swift */,
 			);
-			name = "05 渐变色";
 			path = "05 渐变色";
 			sourceTree = "<group>";
 		};
@@ -1962,7 +1925,6 @@
 			children = (
 				6243D56BEDAD3DBB53422ECDAF1B158C /* xNoticeScrollView.swift */,
 			);
-			name = "15 滚动公告";
 			path = "15 滚动公告";
 			sourceTree = "<group>";
 		};
@@ -1971,7 +1933,6 @@
 			children = (
 				C3A5E4AEEA85D0DF450E81FBAE1DEDE3 /* xTextView.swift */,
 			);
-			name = "14 TextView";
 			path = "14 TextView";
 			sourceTree = "<group>";
 		};
@@ -1982,7 +1943,6 @@
 				7892A25148E4AB644133319B23EC4986 /* xDynamicLinesViewController.swift */,
 				3D20F9BB1E758D02C892A8BB8DBD5569 /* xDynamicPoint.swift */,
 			);
-			name = "12 动态线条视图控制器";
 			path = "12 动态线条视图控制器";
 			sourceTree = "<group>";
 		};
@@ -1994,7 +1954,6 @@
 				C4553418C670334288647653D106F333 /* xInputAlert.swift */,
 				438CBBD7C278EFFF7C1C179B3A248075 /* xMessageAlert.swift */,
 			);
-			name = "15 AlertController";
 			path = "15 AlertController";
 			sourceTree = "<group>";
 		};
@@ -2019,7 +1978,6 @@
 				B5B118A58C92D66193C945CAB6A863AB /* xGPasswordViewController.storyboard */,
 				6D054C84CEDF79247A2AE3F8EE73305A /* xGPasswordViewController.swift */,
 			);
-			name = "08 手势密码";
 			path = "08 手势密码";
 			sourceTree = "<group>";
 		};
@@ -2029,7 +1987,6 @@
 				56CBF5EBA95A36993E756AC16A9CD5C7 /* xPreviewImagesViewController.storyboard */,
 				D879D46E1B1E49B13290856BD18F5165 /* xPreviewImagesViewController.swift */,
 			);
-			name = "10 图片预览";
 			path = "10 图片预览";
 			sourceTree = "<group>";
 		};
@@ -2039,7 +1996,6 @@
 				A941F2878AEA7FAED3898800A0834E5C /* xChoosePhotoActionSheet.swift */,
 				B9C20813DB717E4148CB356DA76C06FC /* xImagePickerController.swift */,
 			);
-			name = "02 选择照片";
 			path = "02 选择照片";
 			sourceTree = "<group>";
 		};
@@ -2078,7 +2034,6 @@
 				DB1A29CD8FB3B487BF4F1F2EC7B63CD6 /* xSafeView.swift */,
 				D0062A3BD8B267871C2497535F25C405 /* xView.swift */,
 			);
-			name = "10 View";
 			path = "10 View";
 			sourceTree = "<group>";
 		};
@@ -2099,7 +2054,6 @@
 				CD821B1DE7ACB465D023705D73F57D84 /* xDataPickerViewController.storyboard */,
 				F9F5ADFD7480AF804046F0DD9D2DCEE7 /* xDataPickerViewController.swift */,
 			);
-			name = "05 数据选择器_固定";
 			path = "05 数据选择器_固定";
 			sourceTree = "<group>";
 		};
@@ -2109,7 +2063,6 @@
 				4A1BAA5A87736787E1368CAAAABE2C11 /* xSKUConfig.swift */,
 				02F49A43FDA6201BBD76A42DAF96CC7F /* xSKUView.swift */,
 			);
-			name = "10 SKU组件";
 			path = "10 SKU组件";
 			sourceTree = "<group>";
 		};
@@ -2125,7 +2078,6 @@
 				1726D0931F797E839D451BC0BA04BA44 /* String+xExtension.swift */,
 				235584B87270943B2FD99571D9777197 /* Timer+xExtension.swift */,
 			);
-			name = Foundation;
 			path = Foundation;
 			sourceTree = "<group>";
 		};
@@ -2135,7 +2087,6 @@
 				8CF0C1241FAE3A25F08DED4BAF363295 /* Core */,
 				2C367B9DB7B11A1391B572E9B65D669E /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -2145,7 +2096,6 @@
 				0AFEA9CBA290B8BA27DB22CC565DC766 /* xVersionDebugView.swift */,
 				EDC5157E7947B570D0E126AE65041A06 /* xVersionDebugView.xib */,
 			);
-			name = "16 版本提示悬浮窗";
 			path = "16 版本提示悬浮窗";
 			sourceTree = "<group>";
 		};
@@ -2972,7 +2922,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Alamofire/Alamofire-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				PRODUCT_MODULE_NAME = Alamofire;
@@ -3038,7 +2988,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MJRefresh/MJRefresh-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MJRefresh/MJRefresh-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MJRefresh/MJRefresh.modulemap";
 				PRODUCT_MODULE_NAME = MJRefresh;
@@ -3104,7 +3054,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Alamofire/Alamofire-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				PRODUCT_MODULE_NAME = Alamofire;
@@ -3135,7 +3085,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/TZImagePickerController/TZImagePickerController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/TZImagePickerController/TZImagePickerController-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/TZImagePickerController/TZImagePickerController.modulemap";
 				PRODUCT_MODULE_NAME = TZImagePickerController;
@@ -3166,7 +3116,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MJRefresh/MJRefresh-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MJRefresh/MJRefresh-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MJRefresh/MJRefresh.modulemap";
 				PRODUCT_MODULE_NAME = MJRefresh;
@@ -3298,8 +3248,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -3449,7 +3398,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/TZImagePickerController/TZImagePickerController-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/TZImagePickerController/TZImagePickerController-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/TZImagePickerController/TZImagePickerController.modulemap";
 				PRODUCT_MODULE_NAME = TZImagePickerController;
