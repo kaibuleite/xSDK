@@ -14,21 +14,26 @@ public class xImageManager: NSObject {
     
     // MARK: - Public Property
     /// 单例
-    // public static let shared = xImageManager()
-    // private override init() { }
+    public static let shared = xImageManager()
+    private override init() { }
     
-    // MARK: - Public Func
-    //判断是否授权
-    public static func isAuthorized() -> Bool {
+    // MARK: - Public Property
+    /// 是否授权了相册读写
+    public var isGetAlbumAuthorization : Bool
+    {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
-        case .authorized, .notDetermined:
-            return true
+        case .notDetermined:
+            return true // 未决定
+        case .authorized:
+            return true // 获得授权
         default:
             xMessageAlert.display(message: "未获得相册权限")
             return false
         }
     }
+    
+    // MARK: - Public Func
     // TODO: SD框架缓存
     /// SD框架图片缓存大小
     /// - Returns: 缓存大小
@@ -103,7 +108,7 @@ public class xImageManager: NSObject {
                                         completed handler: ((Bool) -> Void)?)
     {
         xLog(">>>>>>>>>> 开始保存图片")
-        guard self.isAuthorized() else {
+        guard shared.isGetAlbumAuthorization else {
             xLog(">>>>>>>>>> ❌未取得相册权限")
             return
         }

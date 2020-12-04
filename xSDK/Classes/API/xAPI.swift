@@ -18,9 +18,9 @@ open class xAPI: NSObject {
         case upload
     }
     /// 上传文件类型枚举
-    public enum xUploadFileTypeEnum : String {
+    public enum xUploadFileType : String {
         // 图片
-        case image = "image/png"
+        case png = "image/png"
         case jpeg, jpg = "image/jpeg"
         case gif = "image/gif"
         // 多媒体
@@ -29,6 +29,22 @@ open class xAPI: NSObject {
         case mov = "video/mov"
         // 文本
         case txt = "text/plain"
+        
+        /// 类型
+        var type : String {
+            switch self {
+            case .png:  return "png"
+            case .jpg:  return "jpg"
+            case .jpeg: return "jpeg"
+            case .gif:  return "gif"
+            case .mp3:  return "mp3"
+            case .mp4:  return "mp4"
+            case .mpg4: return "mp4"
+            case .m4vmp4v:  return "mp4"
+            case .mov:  return "mov"
+            case .txt:  return "txt"
+            }
+        }
     }
 
     // MARK: - Handler
@@ -237,7 +253,7 @@ open class xAPI: NSObject {
                               parameter : [String : Any]?,
                               file : Data,
                               name : String,
-                              type : xAPI.xUploadFileTypeEnum,
+                              type : xAPI.xUploadFileType,
                               isAlertSuccessMsg : Bool = false,
                               isAlertFailureMsg : Bool = true,
                               progress : @escaping xHandlerApiUploadProgress,
@@ -275,7 +291,7 @@ open class xAPI: NSObject {
             }
             // 把文件塞到表单里
             let timeStapm = "\(xTimeStamp)"
-            let fileName = name + "_iOS_" + "_" + "\(timeStapm)" + ".jpg"
+            let fileName = "iOS_\(name)_\(timeStapm).\(type.type)"
             formData.append(file, withName: name, fileName: fileName, mimeType: type.rawValue)
             
         }, to: fm_url, method: .post, headers: fm_head, encodingCompletion: {

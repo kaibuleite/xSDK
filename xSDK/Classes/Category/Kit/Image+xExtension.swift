@@ -99,6 +99,28 @@ extension UIImage {
         return ret
     }
     
+    // TODO: 图片压缩
+    /// 压缩图片
+    /// - Parameter size: 指定尺寸(kb)
+    /// - Returns: 新图片
+    public func xCompress(to size : CGFloat) -> Data?
+    {
+        // 原始大小
+        var data = self.jpegData(compressionQuality: 1)
+        guard size > 0 else { return data }
+        
+        var kb = CGFloat(data?.count ?? 0) / 1024
+        var quality = CGFloat(1)
+        var sub = CGFloat(0.05) // 每次递减
+        while kb > size {
+            if quality < sub { sub /= 2 }
+            quality -= sub
+            data = self.jpegData(compressionQuality: quality)
+            kb = CGFloat(data?.count ?? 0) / 1024
+        }
+        return data
+    }
+    
     // TODO: 编辑图片
     /// 裁剪图片
     /// - Parameter rect: 剪范围裁
