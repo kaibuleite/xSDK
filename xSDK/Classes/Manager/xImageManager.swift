@@ -7,7 +7,6 @@
 
 import UIKit
 import Photos
-import AssetsLibrary
 import SDWebImage
 
 public class xImageManager: NSObject {
@@ -144,7 +143,7 @@ public class xImageManager: NSObject {
     }
     
     /*
-     方法过时，用上面的替换
+     方法过时，用上面的替换，需要导入 AssetsLibrary
     /// 保存GIF图片到相册
     /// - Parameter data: GIF图片数据
     public static func saveGifDataToPhotosAlbum(_ data : NSData,

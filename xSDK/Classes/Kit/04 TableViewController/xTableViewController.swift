@@ -217,7 +217,7 @@ open class xTableViewController: UITableViewController {
             scrollView.contentOffset = offset
         }
     }
-    /* 停止拖拽*/
+    /* 停止拖拽（直接放开手指，没有拖动操作） */
     open override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard self.checkDragScrollingEnd(scrollView) else { return }
         guard self.isPrintScrollingLog else { return }

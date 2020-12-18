@@ -17,7 +17,9 @@ class Test: NSObject {
         xLog("********** 设备信息 **********")
         xLog(xDeviceManager.isRoot ? "已越狱" : "未越狱")
         xLog(xDeviceManager.machineModelName)
-        
+        DispatchQueue.main.async {
+            xLog("状态栏高度 \(xStatusHeight)")
+        }
         // 钥匙串
         //self.keychain()
         // 哈希值

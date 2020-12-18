@@ -9,6 +9,10 @@ import UIKit
 
 public class xNavigationView: xNibView {
     
+    // MARK: - Handler
+    /// 返回按钮点击回调
+    public typealias HandkerClickBackBtn = (UIButton) -> Void
+    
     // MARK: - IBOutlet Property
     /// 背景色
     @IBOutlet public weak var barColorView: xGradientColorView!
@@ -53,6 +57,14 @@ public class xNavigationView: xNibView {
             self.backgroundColor = self.barColor
         }
     }
+    // MARK: - Private Property
+    /// 返回按钮点击回调
+    var backHandler : HandkerClickBackBtn?
+    
+    // MARK: - 内存释放
+    deinit {
+        self.backHandler = nil
+    }
     
     // MARK: - Public Override Func
     public override func viewDidLoad() {
@@ -71,12 +83,23 @@ public class xNavigationView: xNibView {
             self.titleLbl.text = self.vc?.title
         }
     }
-
+    
+    // MARK: - Public Func
+    /// 添加返回按钮回调
+    public func addBackBtnClick(handler : @escaping HandkerClickBackBtn)
+    {
+        self.backHandler = handler
+    }
+    
     // MARK: - IBAction Func
     /// 返回
     @IBAction func backBtnClick(_ sender: UIButton)
     {
         xKeyWindow?.endEditing(true)
+        if let handler = self.backHandler {
+            handler(sender)
+            return
+        }
         // 尝试模态退出
         guard let nvc = self.vc?.navigationController else {
             self.vc?.dismiss(animated: true, completion: nil)

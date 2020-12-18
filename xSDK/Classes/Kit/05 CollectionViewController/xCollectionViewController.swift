@@ -193,8 +193,7 @@ open class xCollectionViewController: UICollectionViewController {
         
     }
     /* 滚动中 */
-    open override func scrollViewDidScroll(_ scrollView: UIScrollView)
-    {
+    open override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var offset = scrollView.contentOffset
         // 关闭顶部下拉
         if self.isCloseTopBounces {
@@ -216,7 +215,7 @@ open class xCollectionViewController: UICollectionViewController {
             scrollView.contentOffset = offset
         }
     }
-    /* 停止拖拽*/
+    /* 停止拖拽（直接放开手指，没有拖动操作） */
     open override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard self.checkDragScrollingEnd(scrollView) else { return }
         guard self.isPrintScrollingLog else { return }

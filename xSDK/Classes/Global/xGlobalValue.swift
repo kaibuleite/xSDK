@@ -23,17 +23,27 @@ public let xTabbarHeight = UITabBarController().tabBar.frame.height
 public let xNotificationReLogin = Notification.Name.init("x重新登录")
 
 /// 当前窗口
-public var xKeyWindow : UIWindow? {
-    var ret : UIWindow?
+public var xKeyWindow : UIWindow?
+{
+    if let win = UIApplication.shared.delegate?.window {
+        return win
+    }
+    var win : UIWindow?
     if #available(iOS 13.0, *) {
-        guard let scene = UIApplication.shared.connectedScenes.first else { return nil }
-        guard let delegate = scene.delegate as? UIWindowSceneDelegate else { return nil }
-        ret = delegate.window as? UIWindow
+        let sceneList = UIApplication.shared.connectedScenes
+        if let scene = sceneList.first {
+            if let delegate = scene.delegate as? UIWindowSceneDelegate {
+                win = delegate.window as? UIWindow
+            }
+        }
+        if win == nil {
+            win = UIApplication.shared.windows.last
+        }
     }
     else {
-        ret = UIApplication.shared.keyWindow
+        win = UIApplication.shared.keyWindow
     }
-    return ret
+    return win
 }
 /// 秒级时间戳
 public var xTimeStamp : Int
