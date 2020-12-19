@@ -21,13 +21,12 @@ public let xTabbarHeight = UITabBarController().tabBar.frame.height
 
 /// 重新登录提示
 public let xNotificationReLogin = Notification.Name.init("x重新登录")
+/// 重新登录提示
+public let xNotificationPlaySound = Notification.Name.init("x播放推送音效")
 
 /// 当前窗口
 public var xKeyWindow : UIWindow?
 {
-    if let win = UIApplication.shared.delegate?.window {
-        return win
-    }
     var win : UIWindow?
     if #available(iOS 13.0, *) {
         let sceneList = UIApplication.shared.connectedScenes

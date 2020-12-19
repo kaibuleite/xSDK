@@ -69,7 +69,9 @@ open class xListTableViewController: xTableViewController {
         }
         self.tableView.reloadData()
         self.reloadDragScrollinEndVisibleCells()
-        xLog("***** 停止类型4: MJRefresh数据加载完成\n")
+        if self.isPrintScrollingLog {
+            xLog("***** 停止类型4: MJRefresh数据加载完成\n")
+        }
         // 显示空数据提示视图
         self.dataEmptyView?.removeFromSuperview()
         guard self.dataArray.count == 0 else { return }

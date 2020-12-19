@@ -67,7 +67,7 @@ open class xListCollectionViewController: xCollectionViewController {
         }
         self.collectionView.reloadData()
         self.reloadDragScrollinEndVisibleCells()
-        if self.isLoadRequestDataCompleted {
+        if self.isPrintScrollingLog {
             xLog("***** 停止类型4: MJRefresh数据加载完成\n")
         }
         // 显示空数据提示视图
