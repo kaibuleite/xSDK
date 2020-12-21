@@ -15,7 +15,12 @@ extension UIImageView {
                              placeholderImage : UIImage? = xAppManager.shared.placeholderImage,
                              completed : (() -> Void)? = nil)
     {
-        self.sd_setImage(with: url.xToURL(), placeholderImage: placeholderImage, options: .retryFailed) {
+        var str = url
+        if url.hasPrefix("http") == false {
+            str = xAppManager.shared.webImageURLPrefix + url
+        }
+        str = str.xToUrlEncodeString() ?? str
+        self.sd_setImage(with: str.xToURL(), placeholderImage: placeholderImage, options: .retryFailed) {
             (img, err, _, _) in
             completed?()
         }

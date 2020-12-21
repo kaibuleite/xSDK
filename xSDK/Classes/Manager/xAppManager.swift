@@ -23,6 +23,8 @@ public class xAppManager: NSObject {
     public var isLogModelNoPropertyTip = false
     
     // TODO: - 常用参数（可编辑）
+    /// 网络图通用前缀
+    public var webImageURLPrefix = "http"
     /// 主题色
     public var themeColor = UIColor.xNew(hex: "#487FFC")
     /// TableView背景色
