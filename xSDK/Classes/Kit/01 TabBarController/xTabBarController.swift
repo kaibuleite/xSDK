@@ -28,4 +28,36 @@ open class xTabBarController: UITabBarController {
             self.addChildren()
         }
     }
+    
+    /// 设置默认标题颜色
+    /// - Parameter color: 指定颜色
+    public func setNormalItemTitleColor(_ color : UIColor)
+    {
+        let attr = [NSAttributedString.Key.foregroundColor : color]
+        if #available(iOS 13.0, *) {
+            let appearance = UITabBarAppearance.init()
+            let normal = appearance.stackedLayoutAppearance.normal
+            normal.titleTextAttributes = attr
+            self.tabBar.standardAppearance = appearance;
+        }
+        else {
+            self.tabBarItem.setTitleTextAttributes(attr, for: .normal)
+        }
+    }
+    
+    /// 设置选中标题颜色
+    /// - Parameter color: 指定颜色
+    public func setSelectedItemTitleColor(_ color : UIColor)
+    {
+        let attr = [NSAttributedString.Key.foregroundColor : color]
+        if #available(iOS 13.0, *) {
+            let appearance = UITabBarAppearance.init()
+            let selected = appearance.stackedLayoutAppearance.selected
+            selected.titleTextAttributes = attr
+            self.tabBar.standardAppearance = appearance;
+        }
+        else {
+            self.tabBarItem.setTitleTextAttributes(attr, for: .selected)
+        }
+    }
 }
