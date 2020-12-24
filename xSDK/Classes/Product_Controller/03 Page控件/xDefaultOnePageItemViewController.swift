@@ -15,8 +15,10 @@ class xDefaultOnePageItemViewController: xViewController {
     @IBOutlet weak var imgIcon: xImageView!
 
     // MARK: - Public Property
-    /// 图片链接
-    var pictureUrl = ""
+    /// 网络图片
+    var webImage = ""
+    /// 本地图片
+    var locImage : UIImage?
     
     // MARK: - 内存释放
     deinit {
@@ -32,19 +34,12 @@ class xDefaultOnePageItemViewController: xViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if self.pictureUrl.hasPrefix("http") {
-            self.imgIcon.sd_setImage(with: self.pictureUrl.xToURL(), completed: nil)
+    override func addKit() {
+        if let img = self.locImage {
+            self.imgIcon.image = img
         }
         else {
-            if let img = UIImage.init(named: self.pictureUrl) {
-                self.imgIcon.image = img
-            }
-            else {
-                let bundle = Bundle.init(for: self.classForCoder)
-                self.imgIcon.image = UIImage.init(named: self.pictureUrl, in: bundle, compatibleWith: nil)
-            }
+            self.imgIcon.xSetWebImage(url: self.webImage)
         }
     }
 

@@ -119,19 +119,36 @@ public class xPageViewController: UIPageViewController {
     }
     
     // TODO: 数据加载
-    /// 刷新数据（默认样式）
+    /// 加载网络图片
     /// - Parameters:
     ///   - pictureArray: 图片链接
     ///   - handlerChange: 切换回调
     ///   - handlerClick: 点击回调
-    public func reload(pictureArray : [String],
+    public func reload(webImageArray : [String],
                        change handler1 : @escaping xHandlerChangePage,
                        click handler2 : @escaping xHandlerClickPage)
     {
         var vcArray = [UIViewController]()
-        for url in pictureArray {
+        for url in webImageArray {
             let vc = xDefaultOnePageItemViewController.quickInstancetype()
-            vc.pictureUrl = url
+            vc.webImage = url
+            vcArray.append(vc)
+        }
+        self.reload(itemViewControllerArray: vcArray, change: handler1, click: handler2)
+    }
+    /// 加载本地图片
+    /// - Parameters:
+    ///   - pictureArray: 图片链接
+    ///   - handlerChange: 切换回调
+    ///   - handlerClick: 点击回调
+    public func reload(locImageArray : [UIImage],
+                       change handler1 : @escaping xHandlerChangePage,
+                       click handler2 : @escaping xHandlerClickPage)
+    {
+        var vcArray = [UIViewController]()
+        for img in locImageArray {
+            let vc = xDefaultOnePageItemViewController.quickInstancetype()
+            vc.locImage = img
             vcArray.append(vc)
         }
         self.reload(itemViewControllerArray: vcArray, change: handler1, click: handler2)

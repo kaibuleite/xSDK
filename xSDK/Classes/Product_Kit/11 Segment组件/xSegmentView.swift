@@ -166,14 +166,16 @@ public class xSegmentView: xView {
     /// 更新选中样式
     public func updateSegmentStyle(choose idx : Int)
     {
+        // 更新控件约束
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
+        // 更新样式
         self.setItemNormalStyle(at: self.currentChooseIdx)
         self.setItemChooseStyle(at: idx)
-        
-        self.currentChooseIdx = idx // 保存idx
-        self.layoutIfNeeded()   // 更新控件约束
-        
         self.setLineMove(to: idx)
         self.setContentSideScroll(to: idx)
+        // 保存idx
+        self.currentChooseIdx = idx
     }
     /// 设置普通样式
     public func setItemNormalStyle(at idx : Int)

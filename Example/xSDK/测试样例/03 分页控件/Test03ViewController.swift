@@ -56,7 +56,7 @@ class Test03ViewController: xViewController {
             return "http://fudouzhongkang.oss-cn-shenzhen.aliyuncs.com/uploads" + str
         }
         self.page2.isOpenAutoChangeTimer = true
-        self.page2.reload(pictureArray: arr, change: {
+        self.page2.reload(webImageArray: arr, change: {
             (page) in
             xLog("Page2 Change \(page)")
         }, click: {
