@@ -10,7 +10,7 @@ import Alamofire
 
 extension xAPI {
     
-    // TODO: 格式化字符串
+    // MARK: - 格式化GET参数为字符串
     /// 格式化GET参数为字符串
     public static func formatGetString(of parameters : [String : Any]?) -> String
     {
@@ -24,6 +24,8 @@ extension xAPI {
         }
         return ret
     }
+    
+    // MARK: - 格式化POST参数为字符串
     /// 格式化POST参数为字符串
     public static func formatPostString(of parameters : [String : Any]?) -> String
     {
@@ -38,7 +40,7 @@ extension xAPI {
         return ret
     }
     
-    // TODO: 错误日志打印
+    // MARK: - 错误日志打印 
     /// 返回错误
     public static func logResponseError(of response : DataResponse<Any>)
     {

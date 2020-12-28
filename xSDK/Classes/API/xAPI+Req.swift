@@ -10,7 +10,7 @@ import Alamofire
 
 extension xAPI {
     
-    // TODO: 数据请求
+    // MARK: - GET请求
     /// GET请求
     public static func get(urlStr : String,
                            header : [String : String]? = nil,
@@ -64,7 +64,8 @@ extension xAPI {
             self.check(record: record, response: response, success: success, failure: failure)
         }
     }
-     
+    
+    // MARK: - POS请求
     /// POS请求
     public static func post(urlStr : String,
                             header : [String : String]? = nil,
@@ -112,6 +113,7 @@ extension xAPI {
         }
     }
     
+    // MARK: - 上传文件
     /// 上传文件
     public static func upload(urlStr : String,
                               header : [String : String]? = nil,

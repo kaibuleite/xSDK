@@ -10,8 +10,7 @@ import Alamofire
 
 extension xAPI {
     
-    // TODO: 返回数据校验
-    /// 默认判断逻辑，校验返回结果
+    // MARK: - 校验返回结果
     public static func check(record : xAPIRecord,
                              response : DataResponse<Any>,
                              success : @escaping xHandlerApiRequestSuccess,
@@ -46,7 +45,7 @@ extension xAPI {
         if let error = response.error {
             let code = (error as NSError).code
             // 尝试捕获响应失败后的数据
-            if self.tryCatchResponseError(code: code, data: result) == false {
+            if self.tryCatchResponseError(code: code, data: response.data) == false {
                 self.logResponseError(of: response)
                 failure("❎ Response Code处理")
                 return
@@ -67,6 +66,7 @@ extension xAPI {
                             failure: failure)
     }
     
+    // MARK: - 响应数据处理
     /// 响应数据处理
     public static func returnResponse(record : xAPIRecord,
                                       data : Any,
