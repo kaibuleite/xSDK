@@ -10,11 +10,11 @@ import Alamofire
 
 extension xAPI {
     
-    // MARK: - GET请求
-    /// GET请求
-    public static func get(urlStr : String,
+    // MARK: - REQ请求
+    public static func req(urlStr : String,
+                           method : HTTPMethod,
                            header : [String : String]? = nil,
-                           parameter : [String : String]?,
+                           parameter : [String : Any]?,
                            isAlertSuccessMsg : Bool = false,
                            isAlertFailureMsg : Bool = true,
                            success : @escaping xHandlerApiRequestSuccess,
@@ -24,23 +24,26 @@ extension xAPI {
         let config = self.formatApiConfig() // 加载配置
         var fm_url = self.formatRequest(urlStr: urlStr)
         var fm_head = self.formatRequest(header: header)
-        let fm_parm = self.formatRequest(parameter: parameter)
-        
+        var fm_parm = self.formatRequest(parameter: parameter)
         if let sign = self.sign(urlStr: fm_url, header: fm_head, parameter: fm_parm) {
             fm_head[config.reqSignKey] = sign
         }
-        // 参数中文编码
-        let getStr = self.formatGetString(of: fm_parm)
-        fm_url = fm_url + "?" + getStr
-        let chaset = CharacterSet.urlQueryAllowed
-        if let str = fm_url.addingPercentEncoding(withAllowedCharacters: chaset) {
-            fm_url = str
+        // GET请求凭借参数到URL中
+        if method == .get {
+            let getStr = self.formatGetString(of: fm_parm)
+            fm_url = fm_url + "?" + getStr
+            let chaset = CharacterSet.urlQueryAllowed
+            // 处理中文编码
+            if let str = fm_url.addingPercentEncoding(withAllowedCharacters: chaset) {
+                fm_url = str
+            }
+            fm_parm = .init()   // 重置参数对象
         }
         // 保存请求记录
         shared.requestCount += 1
         let record = xAPIRecord.init(config: config)
         record.id = shared.requestCount
-        record.method = .get
+        record.method = method
         record.url = urlStr
         record.header = header
         record.parameter = parameter
@@ -52,8 +55,8 @@ extension xAPI {
         
         // 创建请求体
         let request = Alamofire.request(fm_url,
-                                        method: .get,
-                                        parameters: nil,
+                                        method: method,
+                                        parameters: fm_parm,
                                         headers: fm_head)
         // 校验请求信息
         request.validate()
@@ -61,8 +64,31 @@ extension xAPI {
         request.responseJSON {
             (response) in
             // 处理请求结果
-            self.check(record: record, response: response, success: success, failure: failure)
+            self.check(record: record,
+                       response: response,
+                       success: success,
+                       failure: failure)
         }
+    }
+    
+    // MARK: - GET请求
+    /// GET请求
+    public static func get(urlStr : String,
+                           header : [String : String]? = nil,
+                           parameter : [String : String]?,
+                           isAlertSuccessMsg : Bool = false,
+                           isAlertFailureMsg : Bool = true,
+                           success : @escaping xHandlerApiRequestSuccess,
+                           failure : @escaping xHandlerApiRequestFailure)
+    {
+        self.req(urlStr: urlStr,
+                 method: .get,
+                 header: header,
+                 parameter: parameter,
+                 isAlertSuccessMsg: isAlertSuccessMsg,
+                 isAlertFailureMsg: isAlertFailureMsg,
+                 success: success,
+                 failure: failure)
     }
     
     // MARK: - POS请求
@@ -75,42 +101,14 @@ extension xAPI {
                             success : @escaping xHandlerApiRequestSuccess,
                             failure : @escaping xHandlerApiRequestFailure)
     {
-        // 格式化请求数据
-        let config = self.formatApiConfig() // 加载配置
-        let fm_url = self.formatRequest(urlStr: urlStr)
-        var fm_head = self.formatRequest(header: header)
-        let fm_parm = self.formatRequest(parameter: parameter)
-        
-        if let sign = self.sign(urlStr: fm_url, header: fm_head, parameter: fm_parm) {
-            fm_head[config.reqSignKey] = sign
-        }
-        // 保存请求记录
-        shared.requestCount += 1
-        let record = xAPIRecord.init(config: config)
-        record.id = shared.requestCount
-        record.method = .post
-        record.url = urlStr
-        record.header = header
-        record.parameter = parameter
-        record.isAlertSuccessMsg = isAlertSuccessMsg
-        record.isAlertFailureMsg = isAlertFailureMsg
-        record.success = success
-        record.failure = failure
-        shared.requestRecordList.append(record)
-        
-        // 创建请求体
-        let request = Alamofire.request(fm_url,
-                                        method: .post,
-                                        parameters: fm_parm,
-                                        headers: fm_head)
-        // 校验请求信息
-        request.validate()
-        // 进行请求
-        request.responseJSON {
-            (response) in
-            // 处理请求结果
-            self.check(record: record, response: response, success: success, failure: failure)
-        }
+        self.req(urlStr: urlStr,
+                 method: .post,
+                 header: header,
+                 parameter: parameter,
+                 isAlertSuccessMsg: isAlertSuccessMsg,
+                 isAlertFailureMsg: isAlertFailureMsg,
+                 success: success,
+                 failure: failure)
     }
     
     // MARK: - 上传文件
@@ -140,12 +138,15 @@ extension xAPI {
         shared.requestCount += 1
         let record = xAPIRecord.init(config: config)
         record.id = shared.requestCount
-        record.method = .upload
+        record.method = .post
         record.url = urlStr
         record.header = header
         record.parameter = parameter
         record.isAlertSuccessMsg = isAlertSuccessMsg
         record.isAlertFailureMsg = isAlertFailureMsg
+        record.success = success
+        record.failure = failure
+        //shared.requestRecordList.append(record)
         
         // 创建请求体
         Alamofire.upload(multipartFormData: {
@@ -178,7 +179,10 @@ extension xAPI {
                 request.responseJSON(completionHandler: {
                     (response) in
                     // 处理请求结果
-                    self.check(record: record, response: response, success: success, failure: failure)
+                    self.check(record: record,
+                               response: response,
+                               success: success,
+                               failure: failure)
                 })
             case .failure(let error):
                 xWarning("表单拼接失败：\(error.localizedDescription)")

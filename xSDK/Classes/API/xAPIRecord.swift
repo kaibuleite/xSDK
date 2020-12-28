@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 public class xAPIRecord: NSObject {
 
@@ -13,7 +14,7 @@ public class xAPIRecord: NSObject {
     /// 记录id
     public var id = 0
     /// 请求方式
-    public var method = xAPI.xRequestMethod.post
+    public var method = HTTPMethod.post
     /// 接口地址
     public var url = ""
     /// 头部
@@ -34,6 +35,5 @@ public class xAPIRecord: NSObject {
     public init(config : xAPIConfig) {
         self.config = config
     }
-    
     
 }

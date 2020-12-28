@@ -11,12 +11,6 @@ import Alamofire
 open class xAPI: NSObject {
     
     // MARK: - Enum
-    /// 请求类型枚举
-    public enum xRequestMethod {
-        case get
-        case post
-        case upload
-    }
     /// 上传文件类型枚举
     public enum xUploadFileType : String {
         // 图片
@@ -189,8 +183,6 @@ open class xAPI: NSObject {
             return (true, str)
         }
         else {
-            xWarning("未知的 Restful 格式")
-            xLog(data)
             return (false, data)
         }
     }
@@ -201,6 +193,9 @@ open class xAPI: NSObject {
     open class func formatterOtherStyleResponseData(_ data : Any,
                                                     record : xAPIRecord) -> (status: Bool, data: Any?)
     {
+        if let obj = data as? Data {
+            xLog(String.init(data: obj, encoding: .utf8) ?? "")
+        }
         return (false, data)
     }
     
