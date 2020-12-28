@@ -29,6 +29,7 @@ extension xAPI {
         if result.isSuccess {
             if let data = result.value {
                 self.returnResponse(record: record,
+                                    response: response,
                                     data: data,
                                     success: success,
                                     failure: failure)
@@ -44,10 +45,11 @@ extension xAPI {
         // 响应失败
         if let error = response.error {
             let code = (error as NSError).code
+            xWarning("响应失败，进行兼容操作: code = \(code), \(error.localizedDescription)")
             // 尝试捕获响应失败后的数据
             if self.tryCatchResponseError(code: code, data: response.data) == false {
                 self.logResponseError(of: response)
-                failure("❎ Response Code处理")
+                failure("❎ \(error.localizedDescription)")
                 return
             }
         }
@@ -61,6 +63,7 @@ extension xAPI {
         }
         // 排查不出错误，而且数据解析成功，当成功处理
         self.returnResponse(record: record,
+                            response: response,
                             data: data,
                             success: success,
                             failure: failure)
@@ -69,6 +72,7 @@ extension xAPI {
     // MARK: - 响应数据处理
     /// 响应数据处理
     public static func returnResponse(record : xAPIRecord,
+                                      response : DataResponse<Any>,
                                       data : Any,
                                       success : @escaping xHandlerApiRequestSuccess,
                                       failure : @escaping xHandlerApiRequestFailure)
@@ -91,7 +95,10 @@ extension xAPI {
             success(result.data)
             return
         }
-        // 失败回调
+        // 解析失败
+        self.logDataError(record: record,
+                          isReqSuccess: false,
+                          response: response)
         failure("数据解析失败")
     }
     
