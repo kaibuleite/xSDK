@@ -11,9 +11,14 @@ open class xPushAlertViewController: xViewController {
     
     // MARK: - IBOutlet Property
     /// 弹窗容器
-    @IBOutlet weak var alertContainer: UIView!
+    @IBOutlet public weak  var alertContainer: UIView!
     /// 弹窗容器底部距离
-    @IBOutlet weak var alertContinerBottomLayout: NSLayoutConstraint!
+    @IBOutlet public weak var alertContinerBottomLayout: NSLayoutConstraint!
+    
+    // MARK: - Open Property
+    open var isOpenTapBgClose : Bool {
+        return true
+    }
     
     // MARK: - Open Override Func
     open override class func quickInstancetype() -> Self {
@@ -81,6 +86,8 @@ open class xPushAlertViewController: xViewController {
     /// 点击背景
     @objc private func tapBackground(_ gesture : UITapGestureRecognizer)
     {
-        self.dismiss()
+        if self.isOpenTapBgClose {
+            self.dismiss()
+        }
     }
 }

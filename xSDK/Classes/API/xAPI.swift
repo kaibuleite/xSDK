@@ -120,9 +120,99 @@ open class xAPI: NSObject {
         return nil
     }
     
-    // TODO: 断点调试
-    /// 根据出错状态码判断是否中断处理
-    open class func breakCheckResponse(withErrorCode code : Int) -> Bool {
+    // TODO: 解析响应数据
+    /// 用默认风格（code，msg，data）解析响应数据
+    /// - Parameter data: 响应数据
+    /// - Returns: 解析结果
+    open class func formatterDefaultStyleResponseData(_ data : Any,
+                                                      record : xAPIRecord) -> (status: Bool, data: Any?)
+    {
+        guard let obj = data as? Data else {
+            return (false, data)
+        }
+        // 解析JSON
+        guard let json = try? JSONSerialization.jsonObject(with: obj, options: .mutableContainers) else {
+            return (false, data)
+        }
+        guard let dict = json as? [String : Any] else {
+            return (false, data)
+        }
+        // 结果处理
+        let config = record.config
+        let code = dict[config.repCodeKey] as? Int ?? config.failureCode
+        let msg = dict[config.repMsgKey] as? String ?? ""
+        let result = dict[config.repDataKey]
+        if code == config.successCode {
+            // 状态正常
+            if record.isAlertSuccessMsg {
+                xMessageAlert.display(message: msg)
+            }
+        }
+        else {
+            // 状态异常
+            if record.isAlertFailureMsg {
+                xMessageAlert.display(message: msg)
+            }
+            // 重新登录
+            if code == config.failureCodeUserTokenInvalid {
+                NotificationCenter.default.post(name: xNotificationReLogin, object: nil)
+            }
+            else {
+                for str in config.reLoginMsgArray {
+                    guard str == msg else { continue }
+                    NotificationCenter.default.post(name: xNotificationReLogin, object: nil)
+                    break
+                }
+            }
+            // 打印出错日志
+            self.logApiCodeError(record: record, info: dict)
+            
+        }
+        return (true, result)
+    }
+    
+    /// 用 Restful 风格（直接传data，可能为 arr，dict，str...）解析响应数据
+    /// - Parameter data: 响应数据
+    /// - Returns: 解析结果
+    open class func formatterRestfulStyleResponseData(_ data : Any,
+                                                      record : xAPIRecord) -> (status: Bool, data: Any?)
+    {
+        if let dict = data as? [String : Any] {
+            return (true, dict)
+        }
+        else
+        if let arr = data as? [Any] {
+            return (true, arr)
+        }
+        else
+        if let str = data as? String {
+            return (true, str)
+        }
+        else {
+            xWarning("未知的 Restful 格式")
+            xLog(data)
+            return (false, data)
+        }
+    }
+    
+    /// 用默认风格（code，msg，data）解析响应数据
+    /// - Parameter data: 响应数据
+    /// - Returns: 解析结果
+    open class func formatterOtherStyleResponseData(_ data : Any,
+                                                    record : xAPIRecord) -> (status: Bool, data: Any?)
+    {
+        return (false, data)
+    }
+    
+    // TODO: 错误回收
+    /// 尝试捕获响应失败后的数据 状态码可参考 https://blog.csdn.net/lyyybz/article/details/53257270
+    /// - Parameters:
+    ///   - code: 出错码
+    ///   - data: 回收数据
+    /// - Returns: 捕获结果
+    open class func tryCatchResponseError(code : Int,
+                                          data : Any?) -> Bool
+    {
         return false
     }
     /// 显示调试网页
@@ -145,356 +235,4 @@ open class xAPI: NSObject {
         }
     }
     
-    // MARK: - Public Func
-    // TODO: 数据请求
-    /// GET请求
-    public static func get(urlStr : String,
-                           header : [String : String]? = nil,
-                           parameter : [String : String]?,
-                           isAlertSuccessMsg : Bool = false,
-                           isAlertFailureMsg : Bool = true,
-                           success : @escaping xHandlerApiRequestSuccess,
-                           failure : @escaping xHandlerApiRequestFailure)
-    {
-        // 格式化请求数据
-        let config = self.formatApiConfig() // 加载配置
-        var fm_url = self.formatRequest(urlStr: urlStr)
-        var fm_head = self.formatRequest(header: header)
-        let fm_parm = self.formatRequest(parameter: parameter)
-        
-        if let sign = self.sign(urlStr: fm_url, header: fm_head, parameter: fm_parm) {
-            fm_head[config.reqSignKey] = sign
-        }
-        // 参数中文编码
-        let getStr = self.formatGetString(of: fm_parm)
-        fm_url = fm_url + "?" + getStr
-        let chaset = CharacterSet.urlQueryAllowed
-        if let str = fm_url.addingPercentEncoding(withAllowedCharacters: chaset) {
-            fm_url = str
-        }
-        // 保存请求记录
-        shared.requestCount += 1
-        let record = xAPIRecord.init(config: config)
-        record.id = shared.requestCount
-        record.method = .get
-        record.url = urlStr
-        record.header = header
-        record.parameter = parameter
-        record.isAlertSuccessMsg = isAlertSuccessMsg
-        record.isAlertFailureMsg = isAlertFailureMsg
-        record.success = success
-        record.failure = failure
-        shared.requestRecordList.append(record)
-        
-        // 创建请求体
-        let request = Alamofire.request(fm_url,
-                                        method: .get,
-                                        parameters: nil,
-                                        headers: fm_head)
-        // 校验请求信息
-        request.validate()
-        // 进行请求
-        request.responseJSON {
-            (response) in
-            // 处理请求结果
-            self.check(record: record, response: response, success: success, failure: failure)
-        }
-    }
-     
-    /// POS请求
-    public static func post(urlStr : String,
-                            header : [String : String]? = nil,
-                            parameter : [String : Any]?,
-                            isAlertSuccessMsg : Bool = false,
-                            isAlertFailureMsg : Bool = true,
-                            success : @escaping xHandlerApiRequestSuccess,
-                            failure : @escaping xHandlerApiRequestFailure)
-    {
-        // 格式化请求数据
-        let config = self.formatApiConfig() // 加载配置
-        let fm_url = self.formatRequest(urlStr: urlStr)
-        var fm_head = self.formatRequest(header: header)
-        let fm_parm = self.formatRequest(parameter: parameter)
-        
-        if let sign = self.sign(urlStr: fm_url, header: fm_head, parameter: fm_parm) {
-            fm_head[config.reqSignKey] = sign
-        }
-        // 保存请求记录
-        shared.requestCount += 1
-        let record = xAPIRecord.init(config: config)
-        record.id = shared.requestCount
-        record.method = .post
-        record.url = urlStr
-        record.header = header
-        record.parameter = parameter
-        record.isAlertSuccessMsg = isAlertSuccessMsg
-        record.isAlertFailureMsg = isAlertFailureMsg
-        record.success = success
-        record.failure = failure
-        shared.requestRecordList.append(record)
-        
-        // 创建请求体
-        let request = Alamofire.request(fm_url,
-                                        method: .post,
-                                        parameters: fm_parm,
-                                        headers: fm_head)
-        // 校验请求信息
-        request.validate()
-        // 进行请求
-        request.responseJSON {
-            (response) in
-            // 处理请求结果
-            self.check(record: record, response: response, success: success, failure: failure)
-        }
-    }
-    /// 上传文件
-    public static func upload(urlStr : String,
-                              header : [String : String]? = nil,
-                              parameter : [String : Any]?,
-                              file : Data,
-                              name : String,
-                              type : xAPI.xUploadFileType,
-                              isAlertSuccessMsg : Bool = false,
-                              isAlertFailureMsg : Bool = true,
-                              progress : @escaping xHandlerApiUploadProgress,
-                              success : @escaping xHandlerApiRequestSuccess,
-                              failure : @escaping xHandlerApiRequestFailure)
-    {
-        // 格式化请求数据
-        let config = self.formatApiConfig() // 加载配置
-        let fm_url = self.formatRequest(urlStr: urlStr)
-        var fm_head = self.formatRequest(header: header)
-        let fm_parm = self.formatRequest(parameter: parameter)
-        
-        if let sign = self.sign(urlStr: fm_url, header: fm_head, parameter: fm_parm) {
-            fm_head[config.reqSignKey] = sign
-        }
-        // 上传不保存请求记录
-        shared.requestCount += 1
-        let record = xAPIRecord.init(config: config)
-        record.id = shared.requestCount
-        record.method = .upload
-        record.url = urlStr
-        record.header = header
-        record.parameter = parameter
-        record.isAlertSuccessMsg = isAlertSuccessMsg
-        record.isAlertFailureMsg = isAlertFailureMsg
-        
-        // 创建请求体
-        Alamofire.upload(multipartFormData: {
-            (formData) in
-            // 把参数塞到表单里
-            for (k, v) in fm_parm {
-                guard let obj = v as? String else { continue }
-                guard let data = obj.data(using: .utf8) else { continue }
-                formData.append(data, withName: k)
-            }
-            // 把文件塞到表单里
-            let timeStapm = "\(xTimeStamp)"
-            let fileName = "iOS_\(name)_\(timeStapm).\(type.type)"
-            formData.append(file, withName: name, fileName: fileName, mimeType: type.rawValue)
-            
-        }, to: fm_url, method: .post, headers: fm_head, encodingCompletion: {
-            (formDataEncodingResult) in
-            // xLog("数据准备完成")
-            // 判断表单创建是否完成
-            switch formDataEncodingResult {
-            case .success(let request, _, _):
-                // 初始化上传进度回调
-                request.uploadProgress(closure: {
-                    (pro) in
-                    progress(pro)
-                })
-                // 校验请求信息
-                request.validate()
-                // 进行请求
-                request.responseJSON(completionHandler: {
-                    (response) in
-                    // 处理请求结果
-                    self.check(record: record, response: response, success: success, failure: failure)
-                })
-            case .failure(let error):
-                xWarning("表单拼接失败：\(error.localizedDescription)")
-                break
-            }
-        })
-    }
-    
-    // TODO: 返回数据校验
-    /// 默认判断逻辑，校验返回结果
-    public static func check(record : xAPIRecord,
-                             response : DataResponse<Any>,
-                             success : @escaping xHandlerApiRequestSuccess,
-                             failure : @escaping xHandlerApiRequestFailure)
-    {
-        defer {
-            for (i, v) in shared.requestRecordList.enumerated() {
-                guard v.id == record.id else { continue }
-                shared.requestRecordList.remove(at: i)
-                break
-            }
-        }
-        // 响应成功
-        if response.result.isSuccess {
-            if let info = response.result.value as? [String : Any] {
-                self.returnResponse(record: record,
-                                    info: info,
-                                    success: success,
-                                    failure: failure)
-            }
-            else {
-                self.logDataError(record: record,
-                                  isReqSuccess: true,
-                                  response: response)
-                failure("接口返回的Data解析出错0")
-            }
-            return
-        }
-        // 响应失败
-        if let error = response.error {
-            let code = (error as NSError).code
-            // 状态码可参考 https://blog.csdn.net/lyyybz/article/details/53257270
-            if self.breakCheckResponse(withErrorCode: code) {
-                self.logNetworkBroken(of: response)
-                failure("❎ Response Code处理")
-                return
-            }
-        }
-        guard let data = response.data else {
-            self.logDataError(record: record,
-                              isReqSuccess: false,
-                              response: response)
-            failure("接口返回的Data解析出错1")
-            return
-        }
-        guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) else {
-            self.logDataError(record: record,
-                              isReqSuccess: false,
-                              response: response)
-            failure("接口返回的Data解析出错2")
-            return
-        }
-        guard let info = json as? [String : Any] else {
-            self.logDataError(record: record,
-                              isReqSuccess: false,
-                              response: response)
-            failure("接口返回的Data解析出错3")
-            return
-        }
-        // 排查不出错误，而且数据解析成功，当成功处理
-        self.returnResponse(record: record,
-                            info: info,
-                            success: success,
-                            failure: failure)
-    }
-    
-    /// 响应数据处理
-    public static func returnResponse(record : xAPIRecord,
-                                      info : [String : Any],
-                                      success : @escaping xHandlerApiRequestSuccess,
-                                      failure : @escaping xHandlerApiRequestFailure)
-    {
-        let config = record.config
-        let code = info[config.repCodeKey] as? Int ?? config.failureCode
-        // 弹出提示
-        let msg = info[config.repMsgKey] as? String ?? ""
-        // 状态判断
-        if code == config.successCode {
-            if record.isAlertSuccessMsg {
-                xMessageAlert.display(message: msg)
-            }
-            // 成功回调
-            let result = info[config.repDataKey]
-            success(result)
-        }
-        else {
-            if record.isAlertFailureMsg {
-                xMessageAlert.display(message: msg)
-            }
-            // 失败回调
-            self.logApiCodeError(record: record, info: info)
-            failure(msg)
-            // 重新登录
-            if code == config.failureCodeUserTokenInvalid {
-                NotificationCenter.default.post(name: xNotificationReLogin, object: nil)
-                return
-            }
-            for str in config.reLoginMsgArray {
-                guard str == msg else { continue }
-                NotificationCenter.default.post(name: xNotificationReLogin, object: nil)
-                return
-            }
-        }
-    }
-    
-    // TODO: 格式化字符串
-    /// 格式化GET参数为字符串
-    public static func formatGetString(of parameters : [String : Any]?) -> String
-    {
-        var ret = ""
-        guard let param = parameters else { return ret }
-        for (key, value) in param {
-            if ret != "" {
-                ret += "&"
-            }
-            ret += key + "=" + "\(value)"
-        }
-        return ret
-    }
-    /// 格式化POST参数为字符串
-    public static func formatPostString(of parameters : [String : Any]?) -> String
-    {
-        var ret = ""
-        guard let param = parameters else {
-            return ret
-        }
-        guard let data = try? JSONSerialization.data(withJSONObject: param, options: .prettyPrinted) else {
-            return ret
-        }
-        ret = String.init(data: data, encoding: .utf8) ?? "JSON转换错误"
-        return ret
-    }
-    
-    // TODO: 错误日志打印
-    /// 网络错误
-    public static func logNetworkBroken(of response : DataResponse<Any>)
-    {
-        xWarning("网络请求错误")
-        xLog("************************************")
-        xLog("\(response.result)")
-        xLog("************************************")
-    }
-    /// Api逻辑错误
-    public static func logApiCodeError(record : xAPIRecord?,
-                                       info : [String : Any])
-    {
-        xWarning("API Code 错误")
-        xLog("************************************")
-        xLog("\(info)")
-        if let obj = record {
-            xLog("接口地址：\(obj.url)")
-            xLog("GET参数：\(self.formatGetString(of: obj.parameter))")
-            xLog("POST参数：\(self.formatPostString(of: obj.parameter))")
-        }
-        xLog("************************************")
-    }
-    /// 数据解析错误
-    public static func logDataError(record : xAPIRecord?,
-                                    isReqSuccess : Bool,
-                                    response : DataResponse<Any>)
-    {
-        xWarning("API请求\(isReqSuccess ? "成功" : "失败")，数据解析失败")
-        xLog("************************************")
-        // NSURLErrorTimedOut
-        if let obj = record {
-            xLog("接口地址：\(obj.url)")
-            xLog("GET参数：\(self.formatGetString(of: obj.parameter))")
-            xLog("POST参数：\(self.formatPostString(of: obj.parameter))")
-        }
-        xLog(response.error?.localizedDescription ?? "")
-        xLog("************************************")
-        guard let data = response.data else { return }
-        guard let html = String.init(data: data, encoding: .utf8) else { return }
-        self.showDebugWeb(html: html)
-    }
 }
