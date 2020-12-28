@@ -23,11 +23,9 @@ extension xAPI {
                 break
             }
         }
-        // 响应结果
-        let result = response.result
         // 响应成功
-        if result.isSuccess {
-            if let data = result.value {
+        if response.result.isSuccess {
+            if let data = response.result.value {
                 self.returnResponse(record: record,
                                     response: response,
                                     data: data,
@@ -44,17 +42,19 @@ extension xAPI {
         }
         // 响应失败
         if let error = response.error {
-            let code = (error as NSError).code
-            xWarning("响应失败，进行兼容操作: code = \(code), \(error.localizedDescription)")
+            let code = response.response?.statusCode ?? -1
+            let msg = error.localizedDescription
+            xWarning("响应失败，进行兼容操作: code = \(code), \(msg)")
             // 尝试捕获响应失败后的数据
             if self.tryCatchResponseError(code: code, data: response.data) == false {
-                self.logResponseError(of: response)
+                self.logResponseError(record: record,
+                                      response: response)
                 failure("❎ \(error.localizedDescription)")
                 return
             }
         }
         // 捕获失败，最终处理
-        guard let data = response.data else {
+        guard let data = response.data, data.count > 0 else {
             self.logDataError(record: record,
                               isReqSuccess: false,
                               response: response)

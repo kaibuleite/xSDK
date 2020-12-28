@@ -42,11 +42,19 @@ extension xAPI {
     
     // MARK: - 错误日志打印 
     /// 返回错误
-    public static func logResponseError(of response : DataResponse<Any>)
+    public static func logResponseError(record : xAPIRecord?,
+                                        response : DataResponse<Any>)
     {
         xWarning("网络请求错误")
         xLog("************************************")
-        xLog("\(response.result)")
+        if let obj = record {
+            xLog("接口地址：\(self.urlPrefix() + obj.url)")
+            xLog("GET参数：\(self.formatGetString(of: obj.parameter))")
+            xLog("POST参数：\(self.formatPostString(of: obj.parameter))")
+        }
+        if let data = response.data {
+            xLog("\(String.init(data: data, encoding: .utf8) ?? "")")
+        }
         xLog("************************************")
     }
     /// Api逻辑错误
@@ -55,12 +63,12 @@ extension xAPI {
     {
         xWarning("API Code 错误")
         xLog("************************************")
-        xLog("\(info)")
         if let obj = record {
             xLog("接口地址：\(self.urlPrefix() + obj.url)")
             xLog("GET参数：\(self.formatGetString(of: obj.parameter))")
             xLog("POST参数：\(self.formatPostString(of: obj.parameter))")
         }
+        xLog("\(info)")
         xLog("************************************")
     }
     /// 数据解析错误

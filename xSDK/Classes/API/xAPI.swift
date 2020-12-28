@@ -213,7 +213,19 @@ open class xAPI: NSObject {
     open class func tryCatchResponseError(code : Int,
                                           data : Any?) -> Bool
     {
-        return false
+        switch code {
+        case 400:   // 逻辑错误
+            guard let obj = data as? Data else { return false }
+            guard let json = try? JSONSerialization.jsonObject(with: obj, options: .mutableContainers) else { return false }
+            if let dict = json as? [String : Any] {
+                if let msg = dict["msg"] as? String {
+                    xMessageAlert.display(message: msg)
+                }
+            }
+            return false
+        default:
+            return true
+        }
     }
     /// 显示调试网页
     open class func showDebugWeb(html : String)
