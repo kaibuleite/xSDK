@@ -31,7 +31,7 @@ public class xAPIRecord: NSObject {
     public var isAlertFailureMsg = true
     /// 其他配置
     public var config = xAPIConfig()
-    
+    /// 初始化配置信息
     public init(config : xAPIConfig) {
         self.config = config
     }

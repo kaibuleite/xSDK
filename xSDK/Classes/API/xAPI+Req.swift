@@ -64,10 +64,8 @@ extension xAPI {
         request.responseJSON {
             (response) in
             // 处理请求结果
-            self.check(record: record,
-                       response: response,
-                       success: success,
-                       failure: failure)
+            self.check(response: response,
+                       record: record)
         }
     }
     
@@ -111,9 +109,50 @@ extension xAPI {
                  failure: failure)
     }
     
+    // MARK: - PUT请求
+    /// PUT请求
+    public static func put(urlStr : String,
+                           header : [String : String]? = nil,
+                           parameter : [String : Any]?,
+                           isAlertSuccessMsg : Bool = false,
+                           isAlertFailureMsg : Bool = true,
+                           success : @escaping xHandlerApiRequestSuccess,
+                           failure : @escaping xHandlerApiRequestFailure)
+    {
+        self.req(urlStr: urlStr,
+                 method: .put,
+                 header: header,
+                 parameter: parameter,
+                 isAlertSuccessMsg: isAlertSuccessMsg,
+                 isAlertFailureMsg: isAlertFailureMsg,
+                 success: success,
+                 failure: failure)
+    }
+    
+    // MARK: - Delete请求
+    /// Delete请求
+    public static func delete(urlStr : String,
+                              header : [String : String]? = nil,
+                              parameter : [String : Any]?,
+                              isAlertSuccessMsg : Bool = false,
+                              isAlertFailureMsg : Bool = true,
+                              success : @escaping xHandlerApiRequestSuccess,
+                              failure : @escaping xHandlerApiRequestFailure)
+    {
+        self.req(urlStr: urlStr,
+                 method: .delete,
+                 header: header,
+                 parameter: parameter,
+                 isAlertSuccessMsg: isAlertSuccessMsg,
+                 isAlertFailureMsg: isAlertFailureMsg,
+                 success: success,
+                 failure: failure)
+    }
+    
     // MARK: - 上传文件
     /// 上传文件
     public static func upload(urlStr : String,
+                              method : HTTPMethod,
                               header : [String : String]? = nil,
                               parameter : [String : Any]?,
                               file : Data,
@@ -138,7 +177,7 @@ extension xAPI {
         shared.requestCount += 1
         let record = xAPIRecord.init(config: config)
         record.id = shared.requestCount
-        record.method = .post
+        record.method = method
         record.url = urlStr
         record.header = header
         record.parameter = parameter
@@ -146,7 +185,7 @@ extension xAPI {
         record.isAlertFailureMsg = isAlertFailureMsg
         record.success = success
         record.failure = failure
-        //shared.requestRecordList.append(record)
+        shared.requestRecordList.append(record)
         
         // 创建请求体
         Alamofire.upload(multipartFormData: {
@@ -162,7 +201,7 @@ extension xAPI {
             let fileName = "iOS_\(name)_\(timeStapm).\(type.type)"
             formData.append(file, withName: name, fileName: fileName, mimeType: type.rawValue)
             
-        }, to: fm_url, method: .post, headers: fm_head, encodingCompletion: {
+        }, to: fm_url, method: method, headers: fm_head, encodingCompletion: {
             (formDataEncodingResult) in
             // xLog("数据准备完成")
             // 判断表单创建是否完成
@@ -179,10 +218,8 @@ extension xAPI {
                 request.responseJSON(completionHandler: {
                     (response) in
                     // 处理请求结果
-                    self.check(record: record,
-                               response: response,
-                               success: success,
-                               failure: failure)
+                    self.check(response: response,
+                               record: record)
                 })
             case .failure(let error):
                 xWarning("表单拼接失败：\(error.localizedDescription)")

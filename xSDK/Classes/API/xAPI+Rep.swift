@@ -11,95 +11,52 @@ import Alamofire
 extension xAPI {
     
     // MARK: - 校验返回结果
-    public static func check(record : xAPIRecord,
-                             response : DataResponse<Any>,
-                             success : @escaping xHandlerApiRequestSuccess,
-                             failure : @escaping xHandlerApiRequestFailure)
+    static func check(response : DataResponse<Any>,
+                      record : xAPIRecord)
     {
-        defer {
-            for (i, v) in shared.requestRecordList.enumerated() {
-                guard v.id == record.id else { continue }
-                shared.requestRecordList.remove(at: i)
-                break
-            }
-        }
-        // 响应成功
         if response.result.isSuccess {
-            if let data = response.result.value {
-                self.returnResponse(record: record,
-                                    response: response,
-                                    data: data,
-                                    success: success,
-                                    failure: failure)
-            }
-            else {
-                self.logDataError(record: record,
-                                  isReqSuccess: true,
-                                  response: response)
-                failure("接口返回的Data解析出错")
-            }
-            return
+            self.responseSuccess(response,
+                                 record: record)
         }
-        // 响应失败
-        if let error = response.error {
-            let code = response.response?.statusCode ?? -1
-            let msg = error.localizedDescription
-            xWarning("响应失败，进行兼容操作: code = \(code), \(msg)")
-            // 尝试捕获响应失败后的数据
-            if self.tryCatchResponseError(code: code, data: response.data) == false {
-                self.logResponseError(record: record,
-                                      response: response)
-                failure("❎ \(error.localizedDescription)")
-                return
-            }
+        else {
+            self.responseFailure(response,
+                                 record: record)
         }
-        // 捕获失败，最终处理
-        guard let data = response.data, data.count > 0 else {
-            self.logDataError(record: record,
-                              isReqSuccess: false,
-                              response: response)
-            failure("接口返回的Data解析出错")
-            return
+        // 移除请求记录
+        for (i, v) in shared.requestRecordList.enumerated() {
+            guard v.id == record.id else { continue }
+            shared.requestRecordList.remove(at: i)
+            break
         }
-        // 排查不出错误，而且数据解析成功，当成功处理
-        self.returnResponse(record: record,
-                            response: response,
-                            data: data,
-                            success: success,
-                            failure: failure)
     }
     
-    // MARK: - 响应数据处理
-    /// 响应数据处理
-    public static func returnResponse(record : xAPIRecord,
-                                      response : DataResponse<Any>,
-                                      data : Any,
-                                      success : @escaping xHandlerApiRequestSuccess,
-                                      failure : @escaping xHandlerApiRequestFailure)
+    // MARK: - 响应成功
+    private static func responseSuccess(_ rep : DataResponse<Any>,
+                                        record : xAPIRecord)
     {
-        var result = self.formatterDefaultStyleResponseData(data, record: record)
-        // 默认风格解析
-        if result.status {
-            success(result.data)
-            return
+        self.analysisResponseData(rep.result.value,
+                                  record: record)
+    }
+    
+    // MARK: - 响应失败
+    private static func responseFailure(_ rep : DataResponse<Any>,
+                                        record : xAPIRecord)
+    {
+        // 响应失败
+        let code = rep.response?.statusCode ?? -1
+        let msg = rep.error?.localizedDescription ?? ""
+        xWarning("API响应状态为失败: code = \(code), \(msg)")
+        if self.breakResponseFailure(statusCode: code) {
+            // 中断后续操作
+            self.logResponseError(response: rep,
+                                  record: record)
+            record.failure?("接口返回的Data解析出错")
         }
-        // Restful风格解析
-        result = self.formatterRestfulStyleResponseData(data, record: record)
-        if result.status {
-            success(result.data)
-            return
+        else {
+            // 不中断，尝试解析数据
+            self.analysisResponseData(rep.data,
+                                      record: record)
         }
-        // 其他风格解析
-        result = self.formatterOtherStyleResponseData(data, record: record)
-        if result.status {
-            success(result.data)
-            return
-        }
-        // 解析失败
-        self.logDataError(record: record,
-                          isReqSuccess: false,
-                          response: response)
-        failure("数据解析失败")
     }
     
 }

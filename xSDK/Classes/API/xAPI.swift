@@ -68,15 +68,15 @@ open class xAPI: NSObject {
     
     // MARK: - Open Func
     // TODO: 参数处理
-    /// 格式化接口配置
-    open class func formatApiConfig() -> xAPIConfig
-    {
-        return xAPIConfig()
-    }
     /// URL前缀
     open class func urlPrefix() -> String
     {
         return "API前缀"
+    }
+    /// 格式化接口配置
+    open class func formatApiConfig() -> xAPIConfig
+    {
+        return xAPIConfig()
     }
     /// 格式化Api请求URL
     open class func formatRequest(urlStr : String) -> String
@@ -115,32 +115,83 @@ open class xAPI: NSObject {
     }
     
     // TODO: 解析响应数据
-    /// 用默认风格（code，msg，data）解析响应数据
-    /// - Parameter data: 响应数据
-    /// - Returns: 解析结果
-    open class func formatterDefaultStyleResponseData(_ data : Any,
-                                                      record : xAPIRecord) -> (status: Bool, data: Any?)
+    /// 响应数据处理
+    open class func analysisResponseData(_ data : Any?,
+                                         record : xAPIRecord)
     {
-        guard let obj = data as? Data else {
-            return (false, data)
+        if let obj = data as? [String : Any] {
+            self.handlerResponseDictionaryAnalysis(obj, record: record)
         }
-        // 解析JSON
-        guard let json = try? JSONSerialization.jsonObject(with: obj, options: .mutableContainers) else {
-            return (false, data)
+        else
+        if let obj = data as? [Any] {
+            self.handlerResponseArrayAnalysis(obj, record: record)
         }
-        guard let dict = json as? [String : Any] else {
-            return (false, data)
+        else
+        if let obj = data as? String {
+            self.handlerResponseStringAnalysis(obj, record: record)
         }
+        else
+        if let obj = data as? NSNumber {
+            self.handlerResponseNumberAnalysis(obj, record: record)
+        }
+        else
+        if let obj = data as? Float {
+            self.handlerResponseFloatAnalysis(obj, record: record)
+        }
+        else
+        if let obj = data as? Data {
+            // 尝试解析JSON
+            guard let json = try? JSONSerialization.jsonObject(with: obj, options: .mutableContainers) else {
+                self.logCheckDataError(data: obj, record: record)
+                record.failure?("数据解析失败")
+                return
+            }
+            xLog("JSON解析成功，重新处理相应数据")
+            self.analysisResponseData(json, record: record)
+        }
+        else
+        if let obj = data {
+            self.handlerResponseOtherAnalysis(obj, record: record)
+        }
+        else {
+            self.logCheckDataError(data: data, record: record)
+            record.failure?("数据解析失败")
+        }
+    }
+    
+    /// 处理字典解析结果
+    /// - Parameters:
+    ///   - dict: 字典数据
+    ///   - record: API记录
+    @discardableResult
+    open class func handlerResponseDictionaryAnalysis(_ dict : [String : Any],
+                                                      record : xAPIRecord) -> Bool
+    {
         // 结果处理
         let config = record.config
-        let code = dict[config.repCodeKey] as? Int ?? config.failureCode
+        guard let obj = dict[config.repCodeKey] else {
+            // Restful 模式
+            return self.handlerResponseRestfulDictionaryAnalysis(dict, record: record)
+        }
+        
+        // code msg data组合模式
+        var code = config.failureCode
+        if let str = obj as? String {
+            code = str.xToInt()
+        }
+        else
+        if let num = obj as? Int {
+            code = num
+        }
         let msg = dict[config.repMsgKey] as? String ?? ""
-        let result = dict[config.repDataKey]
         if code == config.successCode {
             // 状态正常
             if record.isAlertSuccessMsg {
                 xMessageAlert.display(message: msg)
             }
+            let result = dict[config.repDataKey]
+            record.success?(result)
+            return true
         }
         else {
             // 状态异常
@@ -159,64 +210,87 @@ open class xAPI: NSObject {
                 }
             }
             // 打印出错日志
-            self.logApiCodeError(record: record, info: dict)
-            
-        }
-        return (true, result)
-    }
-    
-    /// 用 Restful 风格（直接传data，可能为 arr，dict，str...）解析响应数据
-    /// - Parameter data: 响应数据
-    /// - Returns: 解析结果
-    open class func formatterRestfulStyleResponseData(_ data : Any,
-                                                      record : xAPIRecord) -> (status: Bool, data: Any?)
-    {
-        if let dict = data as? [String : Any] {
-            return (true, dict)
-        }
-        else
-        if let arr = data as? [Any] {
-            return (true, arr)
-        }
-        else
-        if let str = data as? String {
-            return (true, str)
-        }
-        else {
-            return (false, data)
+            self.logApiCodeError(data: dict, record: record)
+            record.failure?(msg)
+            return false
         }
     }
-    
-    /// 用默认风格（code，msg，data）解析响应数据
-    /// - Parameter data: 响应数据
-    /// - Returns: 解析结果
-    open class func formatterOtherStyleResponseData(_ data : Any,
-                                                    record : xAPIRecord) -> (status: Bool, data: Any?)
-    {
-        if let obj = data as? Data {
-            xLog(String.init(data: obj, encoding: .utf8) ?? "")
-        }
-        return (false, data)
-    }
-    
-    // TODO: 错误回收
-    /// 尝试捕获响应失败后的数据 状态码可参考 https://blog.csdn.net/lyyybz/article/details/53257270
+    /// 处理Restful字典解析结果
     /// - Parameters:
-    ///   - code: 出错码
-    ///   - data: 回收数据
-    /// - Returns: 捕获结果
-    open class func tryCatchResponseError(code : Int,
-                                          data : Any?) -> Bool
+    ///   - dict: 字典数据
+    ///   - record: API记录
+    @discardableResult
+    open class func handlerResponseRestfulDictionaryAnalysis(_ dict : [String : Any],
+                                                             record : xAPIRecord) -> Bool
     {
-        switch code {
+        return false
+    }
+    /// 处理数组解析结果
+    /// - Parameters:
+    ///   - arr: 数组数据
+    ///   - record: API记录
+    @discardableResult
+    open class func handlerResponseArrayAnalysis(_ arr : [Any],
+                                                 record : xAPIRecord) -> Bool
+    {
+        record.failure?("Array类型没有指定处理方式")
+        return false
+    }
+    /// 处理字符串解析结果
+    /// - Parameters:
+    ///   - str: 字符串数据
+    ///   - record: API记录
+    @discardableResult
+    open class func handlerResponseStringAnalysis(_ str : String,
+                                                  record : xAPIRecord) -> Bool
+    {
+        record.failure?("String类型没有指定处理方式")
+        return false
+    }
+    /// 处理数字解析结果
+    /// - Parameters:
+    ///   - num: 数字数据
+    ///   - record: API记录
+    @discardableResult
+    open class func handlerResponseNumberAnalysis(_ num : NSNumber,
+                                                  record : xAPIRecord) -> Bool
+    {
+        record.failure?("Number类型没有指定处理方式")
+        return false
+    }
+    /// 处理浮点数解析结果
+    /// - Parameters:
+    ///   - float: 浮点数据
+    ///   - record: API记录
+    @discardableResult
+    open class func handlerResponseFloatAnalysis(_ float : Float,
+                                                 record : xAPIRecord) -> Bool
+    {
+        record.failure?("Float类型没有指定处理方式")
+        return false
+    }
+    /// 处理其他类型解析结果
+    /// - Parameters:
+    ///   - obj: 其他类型
+    ///   - record: API记录
+    @discardableResult
+    open class func handlerResponseOtherAnalysis(_ obj : Any,
+                                                 record : xAPIRecord) -> Bool
+    {
+        record.failure?("未知类型没有指定处理方式")
+        return false
+    }
+    
+    // TODO: 响应失败操作
+    /// 根据响应状态码决定是否中断响应失败后续处理
+    /// 状态码可参考 https://blog.csdn.net/lyyybz/article/details/53257270
+    /// - Parameters:
+    ///   - statusCode: 出错码
+    /// - Returns: 判断结果
+    open class func breakResponseFailure(statusCode : Int) -> Bool
+    {
+        switch statusCode {
         case 400:   // 逻辑错误
-            guard let obj = data as? Data else { return false }
-            guard let json = try? JSONSerialization.jsonObject(with: obj, options: .mutableContainers) else { return false }
-            if let dict = json as? [String : Any] {
-                if let msg = dict["msg"] as? String {
-                    xMessageAlert.display(message: msg)
-                }
-            }
             return false
         default:
             return true
