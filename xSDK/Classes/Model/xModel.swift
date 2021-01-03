@@ -30,41 +30,46 @@ open class xModel: NSObject {
     open override func setValue(_ value: Any?,
                                 forKey key: String)
     {
-        guard let obj = value else {
-            // xWarning("【\(self.classForCoder)】的【\(key)】为 nil")
-            return
-        }
+        guard value != nil else { return }
         // 注意数据类型
-        if let str = obj as? String {
-            super.setValue(str, forKey: key)
+        if let obj = value as? String {
+            super.setValue(obj, forKey: key)
         }
         // 数字类型转换成字符串
         else
-        if let num = obj as? Int {
-            super.setValue(String(num), forKey: key)
+        if let obj = value as? Int {
+            super.setValue(String(obj), forKey: key)
         }
         // 数字类型转换成字符串
         else
-        if let num = obj as? Float {
-            super.setValue(String(num), forKey: key)
+        if let obj = value as? Float {
+            super.setValue(String(obj), forKey: key)
         }
         // 数字类型转换成字符串
         else
-        if let num = obj as? Double {
-            super.setValue(String(num), forKey: key)
+        if let obj = value as? Double {
+            super.setValue(String(obj), forKey: key)
         }
         // 数组类型
         else
-        if let arr = obj as? Array<Any> {
-            super.setValue(arr, forKey: key)
+        if let obj = value as? Array<Any> {
+            super.setValue(obj, forKey: key)
         }
         // 字典类型
         else
-        if let dic = obj as? Dictionary<String, Any> {
-            super.setValue(dic, forKey: key)
+        if let obj = value as? Dictionary<String, Any> {
+            super.setValue(obj, forKey: key)
+        }
+        // xModel
+        else
+        if let obj = value as? xModel {
+            guard let sobj = self.value(forKey: key) as? xModel else { return }
+            // xLog(sobj, obj)
+            guard sobj.isMember(of: obj.classForCoder) else { return }
+            sobj.copyIvarData(from: obj)
         }
         else {
-            xWarning("成员变量的数据格式不是常用类型,请确认:\(key) = \(obj), \(type(of: obj))")
+            xWarning("成员变量的数据格式不是常用类型,请确认:\(key) = \(value!), \(type(of: value))")
             super.setValue(value, forKey: key)
         }
     }
@@ -179,22 +184,19 @@ open class xModel: NSObject {
                              isCopyEmpty : Bool = false)
     {
         guard let obj = model else { return }
-        // obj必须于self同级或是self父级
+        // 要拼接内容的对象必须于self同级或是self父级，key才能都找得到对应的value
         guard self.isKind(of: obj.classForCoder) else {
-            xWarning("数据类型不同，无法拼接 : \(obj.classForCoder)")
+            xWarning("两个对象不是同源，无法拼接 : \(self.classForCoder) ≠ \(obj.classForCoder)")
             return
         }
-        let list = self.getIvarList(obj: obj)
-        for k in list {
-            let v = obj.value(forKey: k)
-            // 空数据判断
-            if isCopyEmpty == false {
-                if v == nil { continue }
-                if let str = v as? String {
-                    if str.isEmpty { continue }
-                }
+        let ivarList = obj.getIvarList(obj: obj)
+        for key in ivarList {
+            let value = obj.value(forKey: key)
+            // 如果不执行替换空数据操作，则跳过
+            if isCopyEmpty == false, value == nil {
+                continue
             }
-            self.setValue(v, forKey: k)
+            self.setValue(value, forKey: key)
         }
     }
     
@@ -298,7 +300,7 @@ open class xModel: NSObject {
             }
         }
         return result
-    } 
+    }
     /// 获取一个对象的成员属性键值表(只返回字符串成员，方便存取)
     /// - Parameter obj: 指定的对象
     /// - Returns: 成员属性键值表
