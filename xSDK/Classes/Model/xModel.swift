@@ -180,21 +180,31 @@ open class xModel: NSObject {
     ///   - model: 要拼接的对象
     ///   - isCopyEmpty: 是否将空数据也拷进去
     /// - Returns: 拼接后的结果
-    public func copyIvarData(from model : xModel?,
+    public func copyIvarData(from targetModel : xModel?,
                              isCopyEmpty : Bool = false)
     {
-        guard let obj = model else { return }
+        guard let target = targetModel else { return }
         // 要拼接内容的对象必须于self同级或是self父级，key才能都找得到对应的value
-        guard self.isKind(of: obj.classForCoder) else {
-            xWarning("两个对象不是同源，无法拼接 : \(self.classForCoder) ≠ \(obj.classForCoder)")
+        guard self.isKind(of: target.classForCoder) else {
+            xWarning("两个对象不是同源，无法拼接 : \(self.classForCoder) ≠ \(target.classForCoder)")
             return
         }
-        let ivarList = obj.getIvarList(obj: obj)
+        let ivarList = target.getIvarList(obj: target)
         for key in ivarList {
-            let value = obj.value(forKey: key)
+            let value = target.value(forKey: key)
             // 如果不执行替换空数据操作，则跳过
-            if isCopyEmpty == false, value == nil {
-                continue
+            if isCopyEmpty == false {
+                if let obj = value as? String {
+                    if obj.isEmpty { continue }
+                }
+                else
+                if let obj = value as? Array<Any> {
+                    if obj.isEmpty { continue }
+                }
+                else
+                if let obj = value as? Dictionary<String, Any> {
+                    if obj.isEmpty { continue }
+                }
             }
             self.setValue(value, forKey: key)
         }
