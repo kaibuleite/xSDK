@@ -19,6 +19,8 @@ extension UIImageView {
         if url.hasPrefix("http") == false {
             str = xAppManager.shared.webImageURLPrefix + url
         }
+        // 先解码再编码，防止URL已经编码导致2次编码
+        str = str.xToUrlDecodeString() ?? str
         str = str.xToUrlEncodeString() ?? str
         self.sd_setImage(with: str.xToURL(), placeholderImage: placeholderImage, options: .retryFailed) {
             (img, err, _, _) in
