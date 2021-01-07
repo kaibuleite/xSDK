@@ -15,7 +15,7 @@ open class xNavigationController: UINavigationController {
     
     // MARK: - 内存释放
     deinit {
-        xLog("💥_NVC \(self.xClassStruct.name)")
+        xLog("💥 NVC \(self.xClassStruct.name)")
     }
     
     // MARK: - Open Override Func
@@ -30,6 +30,7 @@ open class xNavigationController: UINavigationController {
         DispatchQueue.main.async {
             self.addKit()
             self.addChildren()
+            self.requestData()
         }
     }
     /// 修改状态栏样式

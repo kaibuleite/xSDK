@@ -50,7 +50,7 @@ extension xAPI {
             // 中断后续操作
             self.logResponseError(response: rep,
                                   record: record)
-            record.failure?("接口返回的Data解析出错")
+            record.failure?("中断API响应数据分析")
         }
         else {
             // 不中断，尝试解析数据

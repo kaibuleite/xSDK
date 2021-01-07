@@ -11,7 +11,7 @@ open class xTabBarController: UITabBarController {
     
     // MARK: - 内存释放
     deinit {
-        xLog("💥_TBC \(self.xClassStruct.name)")
+        xLog("💥 TBC \(self.xClassStruct.name)")
     }
     
     // MARK: - Open Override Func
@@ -26,6 +26,7 @@ open class xTabBarController: UITabBarController {
         DispatchQueue.main.async {
             self.addKit()
             self.addChildren()
+            self.requestData()
         }
     }
     

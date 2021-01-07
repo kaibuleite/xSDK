@@ -85,6 +85,7 @@ open class xCollectionViewController: UICollectionViewController {
         DispatchQueue.main.async {
             self.addKit()
             self.addChildren()
+            self.requestData()
         }
     }
     open override func viewDidAppear(_ animated: Bool) {

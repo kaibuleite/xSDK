@@ -80,6 +80,7 @@ open class xTableViewController: UITableViewController {
         DispatchQueue.main.async {
             self.addKit()
             self.addChildren()
+            self.requestData()
         }
     }
     open override func viewDidAppear(_ animated: Bool) {
