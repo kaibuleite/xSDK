@@ -20,6 +20,17 @@ class Test: NSObject {
         DispatchQueue.main.async {
             xLog("状态栏高度 \(xStatusHeight)")
         }
+        xLog("********** API响应 **********")
+        xAPI.post(urlStr: "https://mingdev.fudouzhongkang.com/api/business.good/categorylist", parameter: nil) {
+            (rep) in
+            if let obj = rep {
+                xLog(obj)
+            }
+        } failure: {
+            (msg) in
+            xWarning(msg)
+        }
+
         // 钥匙串
         //self.keychain()
         // 哈希值

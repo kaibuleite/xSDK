@@ -13,6 +13,9 @@
 		030F2AC677591D7B138D81E2CB94071D /* MJRefreshAutoNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = F521CB485E726F0888EC18B5B6166262 /* MJRefreshAutoNormalFooter.m */; };
 		032A65EE57DEDDE2F1A1DDA4C7B63704 /* MJRefreshTrailer.h in Headers */ = {isa = PBXBuildFile; fileRef = 81611A1E0317B60D3402916BB0E417A9 /* MJRefreshTrailer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03A5C1865C8EDB11BCE36CADBA94F26C /* xView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF9F705A995C4287518182BDE86FF20 /* xView.swift */; };
+		040A089D25ABED7300C55F44 /* xReqConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A089C25ABED7300C55F44 /* xReqConfig.swift */; };
+		040A08A625ABED7C00C55F44 /* xRepConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A08A525ABED7C00C55F44 /* xRepConfig.swift */; };
+		040A08AF25ABED9800C55F44 /* xReqRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A08AE25ABED9800C55F44 /* xReqRecord.swift */; };
 		046976B925998D5000499991 /* xAPI+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046976B825998D5000499991 /* xAPI+Log.swift */; };
 		046976C225998D6B00499991 /* xAPI+Req.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046976C125998D6B00499991 /* xAPI+Req.swift */; };
 		046976CB25998DCC00499991 /* xAPI+Rep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046976CA25998DCC00499991 /* xAPI+Rep.swift */; };
@@ -509,6 +512,9 @@
 		02B4DE6DFB814DF8105E4F9D1F9F21E2 /* MJRefreshBackStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackStateFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.m; sourceTree = "<group>"; };
 		02DAF0A40148DE7A4A45E45FA94B8038 /* xSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "xSDK-dummy.m"; sourceTree = "<group>"; };
 		0396E76855ED13936A676C6CDFFE5975 /* SDAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageView.m; path = SDWebImage/Core/SDAnimatedImageView.m; sourceTree = "<group>"; };
+		040A089C25ABED7300C55F44 /* xReqConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xReqConfig.swift; sourceTree = "<group>"; };
+		040A08A525ABED7C00C55F44 /* xRepConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xRepConfig.swift; sourceTree = "<group>"; };
+		040A08AE25ABED9800C55F44 /* xReqRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xReqRecord.swift; sourceTree = "<group>"; };
 		04113914B11CD2A21701B5090074E6A4 /* SDFileAttributeHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDFileAttributeHelper.h; path = SDWebImage/Private/SDFileAttributeHelper.h; sourceTree = "<group>"; };
 		046976B825998D5000499991 /* xAPI+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xAPI+Log.swift"; sourceTree = "<group>"; };
 		046976C125998D6B00499991 /* xAPI+Req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xAPI+Req.swift"; sourceTree = "<group>"; };
@@ -1488,6 +1494,9 @@
 				046976B825998D5000499991 /* xAPI+Log.swift */,
 				713820B92D8EDEF3F45B0573F3772F53 /* xAPIConfig.swift */,
 				1D7941881FB6CE05300DFBECFCAAD6EA /* xAPIRecord.swift */,
+				040A089C25ABED7300C55F44 /* xReqConfig.swift */,
+				040A08A525ABED7C00C55F44 /* xRepConfig.swift */,
+				040A08AE25ABED9800C55F44 /* xReqRecord.swift */,
 			);
 			name = API;
 			path = xSDK/Classes/API;
@@ -2621,6 +2630,7 @@
 				869276A2389882232EA1EBF7F68A7FF7 /* xDataEmptyView.xib in Sources */,
 				5A0E078A2FA76E34F7C219F45022B2E3 /* xDataPickerModel.swift in Sources */,
 				5D69942329C9404F57A3C2EC58AC8160 /* xDataPickerViewController.storyboard in Sources */,
+				040A08A625ABED7C00C55F44 /* xRepConfig.swift in Sources */,
 				1627B68726A7468BE84D0B6FD2B60C1E /* xDataPickerViewController.swift in Sources */,
 				C4C242ED141D8D452428BE6037A4E207 /* xDatePickerConfig.swift in Sources */,
 				32DDF5C188A06217B91B45D5C67FFF1F /* xDatePickerViewController.storyboard in Sources */,
@@ -2642,6 +2652,7 @@
 				89570C56A703E1B59B3501267824AC61 /* xGPasswordPointView.swift in Sources */,
 				E62F0CAFCB139A4C3EF4094CDDFBEBDE /* xGPasswordResultView.swift in Sources */,
 				20BFFE52A6E51F9158312553C094E66C /* xGPasswordViewController.storyboard in Sources */,
+				040A089D25ABED7300C55F44 /* xReqConfig.swift in Sources */,
 				3C033B0541CCDB46809057C24ACDFC9B /* xGPasswordViewController.swift in Sources */,
 				F9AD0CCD8FA721B878F43EBC9A082156 /* xGradientColorView.swift in Sources */,
 				4CF67DE0FAFEBAF34630A802C5A57EF1 /* xImageManager.swift in Sources */,
@@ -2663,6 +2674,7 @@
 				294BA365D69E33DA19AA076C6B5D839F /* xMaskViewController.swift in Sources */,
 				ED7B9A9007F42D152624FF5879566FAE /* xMessageAlert.swift in Sources */,
 				75A0F3B7EFC059151332F1BD586B44DF /* xModel.swift in Sources */,
+				040A08AF25ABED9800C55F44 /* xReqRecord.swift in Sources */,
 				3E6D6FB05976B9014D91FCCDFFBA5ECE /* xMusicManager.swift in Sources */,
 				90167B922D492FD689DC06C3F93C39D5 /* xMutableDataPickerModel.swift in Sources */,
 				3ABA3F9DC298BE05691CCA646FE0BEE0 /* xMutableDataPickerViewController.storyboard in Sources */,
