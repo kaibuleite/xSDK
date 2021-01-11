@@ -40,7 +40,7 @@ extension xAPI {
         return ret
     }
     
-    // MARK: - 错误日志打印 
+    // MARK: - 错误日志打印
     /// 响应失败
     public static func logResponseError(response : DataResponse<Any>,
                                         record : xReqRecord?)
@@ -48,8 +48,13 @@ extension xAPI {
         xWarning("API 响应失败")
         xLog("************************************")
         self.logReqRecordInfo(record)
-        if let data = response.data {
-            xLog("\(String.init(data: data, encoding: .utf8) ?? "")")
+        if let obj = response.data {
+            if let str = String.init(data: obj, encoding: .utf8) {
+                self.showDebugWeb(html: str)
+            }
+            else {
+                xLog(obj)
+            }
         }
         xLog("************************************")
     }

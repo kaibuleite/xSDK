@@ -312,6 +312,7 @@ open class xAPI: NSObject {
     {
         guard html.xContains(subStr: "<html") else {
             xWarning("不是HTML文本")
+            xLog(html)
             return
         }
         guard let win = xKeyWindow else { return }
