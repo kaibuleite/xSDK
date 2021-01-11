@@ -12,7 +12,7 @@ extension xAPI {
     
     // MARK: - 校验返回结果
     static func check(response : DataResponse<Any>,
-                      record : xAPIRecord)
+                      record : xReqRecord)
     {
         if response.result.isSuccess {
             self.responseSuccess(response,
@@ -32,7 +32,7 @@ extension xAPI {
     
     // MARK: - 响应成功
     private static func responseSuccess(_ rep : DataResponse<Any>,
-                                        record : xAPIRecord)
+                                        record : xReqRecord)
     {
         self.analysisResponseData(rep.result.value,
                                   record: record)
@@ -40,7 +40,7 @@ extension xAPI {
     
     // MARK: - 响应失败
     private static func responseFailure(_ rep : DataResponse<Any>,
-                                        record : xAPIRecord)
+                                        record : xReqRecord)
     {
         // 响应失败
         let code = rep.response?.statusCode ?? -1

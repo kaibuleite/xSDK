@@ -158,7 +158,6 @@
 		4F9B8F367350FE6F02486D6B0AFC0D0C /* UIImage+ForceDecode.h in Headers */ = {isa = PBXBuildFile; fileRef = C755C7D17C59A2E90519CF85AE49CA1A /* UIImage+ForceDecode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FF4F5FF7D91886687C5A00F345FDA85 /* xMask+AnimeLineJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C54620EB1D37FE43F28588EED019F35 /* xMask+AnimeLineJump.swift */; };
 		502D148FB284EE012260A1AA96674EEE /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1D60364F30E770512BAB53DBEDF0B7 /* SDWebImageManager.m */; };
-		50B13CB286712853418CCAD75C74234B /* xAPIRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7941881FB6CE05300DFBECFCAAD6EA /* xAPIRecord.swift */; };
 		50D8855B55FA9168F6B5F68D4F42C627 /* xPreviewImagesViewController.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 657CCE37C477E46B05913D083462BA85 /* xPreviewImagesViewController.storyboard */; };
 		5133331821D9D576A546B6ACF9A49829 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 029420CBBED8C34B4CD8A00F8A0F59C0 /* UIScrollView+MJExtension.m */; };
 		53791F5E5F07400F92CFDFC89A432305 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D58443DFF186AFF70C7D4CE4F508814 /* Validation.swift */; };
@@ -242,7 +241,6 @@
 		83956E20859CDBBE7BC38ABADE0170FB /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFB2093A2C4AB11928872CE7BBCE1ED /* AFError.swift */; };
 		8455BCE504DBC893ECEC9150784B9F69 /* xDeviceMachine.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4AA9BC7643F24A9B31B5D31C75D2A81 /* xDeviceMachine.plist */; };
 		8457A9DA065DF5AD7A3A2720BCEFE4EA /* xVoiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41A89A6AC9B91F18378A7E286545869 /* xVoiceManager.swift */; };
-		84AACF5F8F74430B5F9C0E32CBCB8397 /* xAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713820B92D8EDEF3F45B0573F3772F53 /* xAPIConfig.swift */; };
 		84B3C925CCA883C89A4FAF942D952371 /* SDWebImageCompat.h in Headers */ = {isa = PBXBuildFile; fileRef = DA89D94D5F11ED438948D1E8FB5CFF11 /* SDWebImageCompat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		85FB50C8A79A473625B9BB664BCCEBBE /* SDDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BE09C453EEDEDEB35B1B98D2D9FE70 /* SDDisplayLink.m */; };
 		8654E62199C00D909EC3CB5890EEEDB5 /* xFilterListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612DDD94A9BD8884FD7D2DAC6E627F7F /* xFilterListTableViewController.swift */; };
@@ -571,7 +569,6 @@
 		1BF14F463BD1F031A2161EB16BC70EAA /* xTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xTextField.swift; sourceTree = "<group>"; };
 		1C54620EB1D37FE43F28588EED019F35 /* xMask+AnimeLineJump.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "xMask+AnimeLineJump.swift"; sourceTree = "<group>"; };
 		1CF9F705A995C4287518182BDE86FF20 /* xView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xView.swift; sourceTree = "<group>"; };
-		1D7941881FB6CE05300DFBECFCAAD6EA /* xAPIRecord.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xAPIRecord.swift; sourceTree = "<group>"; };
 		1DACF84A277A07AA0431F5DDA7AB6E1A /* TZImagePickerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TZImagePickerController.h; path = TZImagePickerController/TZImagePickerController/TZImagePickerController.h; sourceTree = "<group>"; };
 		1DD19CDE970889698D96115D5AFC9662 /* MJRefreshNormalHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshNormalHeader.m; path = MJRefresh/Custom/Header/MJRefreshNormalHeader.m; sourceTree = "<group>"; };
 		1E8B5117FCC2DFD7D6BA2B2820256A61 /* xMask+AnimeEatBeans.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "xMask+AnimeEatBeans.swift"; sourceTree = "<group>"; };
@@ -708,7 +705,6 @@
 		6F6E183D2481702CC92DC4EE3F51CC5C /* xCollectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xCollectionViewController.swift; sourceTree = "<group>"; };
 		6F7038F6A1AC2CD35435B2E97084CCAE /* SDWebImageCacheSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCacheSerializer.h; path = SDWebImage/Core/SDWebImageCacheSerializer.h; sourceTree = "<group>"; };
 		6F71EAE238B18481ACB52626E451753C /* SDWebImageIndicator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageIndicator.m; path = SDWebImage/Core/SDWebImageIndicator.m; sourceTree = "<group>"; };
-		713820B92D8EDEF3F45B0573F3772F53 /* xAPIConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xAPIConfig.swift; sourceTree = "<group>"; };
 		716673B3CC8094B341297E88689D263C /* TZGifPhotoPreviewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TZGifPhotoPreviewController.m; path = TZImagePickerController/TZImagePickerController/TZGifPhotoPreviewController.m; sourceTree = "<group>"; };
 		71C80EBBA9DE95C5DCFBCD40AB32C6BF /* xGradientColorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xGradientColorView.swift; sourceTree = "<group>"; };
 		7238466E89329FAE693FDB0F66C95FD1 /* xPage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = xPage.swift; sourceTree = "<group>"; };
@@ -1492,11 +1488,9 @@
 				046976C125998D6B00499991 /* xAPI+Req.swift */,
 				046976CA25998DCC00499991 /* xAPI+Rep.swift */,
 				046976B825998D5000499991 /* xAPI+Log.swift */,
-				713820B92D8EDEF3F45B0573F3772F53 /* xAPIConfig.swift */,
-				1D7941881FB6CE05300DFBECFCAAD6EA /* xAPIRecord.swift */,
+				040A08AE25ABED9800C55F44 /* xReqRecord.swift */,
 				040A089C25ABED7300C55F44 /* xReqConfig.swift */,
 				040A08A525ABED7C00C55F44 /* xRepConfig.swift */,
-				040A08AE25ABED9800C55F44 /* xReqRecord.swift */,
 			);
 			name = API;
 			path = xSDK/Classes/API;
@@ -2611,8 +2605,6 @@
 				8228AB6F6F549CE12EBB5427842C15DA /* xAlertViewController.swift in Sources */,
 				1457D7FEA348D19A42C23730C1D40421 /* xAnimation.swift in Sources */,
 				3121AFC6455177DB80C58EE6612BD9AB /* xAPI.swift in Sources */,
-				84AACF5F8F74430B5F9C0E32CBCB8397 /* xAPIConfig.swift in Sources */,
-				50B13CB286712853418CCAD75C74234B /* xAPIRecord.swift in Sources */,
 				604213525D35227F601A14D2A1702EF0 /* xAppManager.swift in Sources */,
 				046976C225998D6B00499991 /* xAPI+Req.swift in Sources */,
 				8FCEB8A8E579132A57CF26ADB370D5F8 /* xButton.swift in Sources */,

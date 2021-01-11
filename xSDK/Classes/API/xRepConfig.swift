@@ -10,6 +10,11 @@ import UIKit
 public class xRepConfig: NSObject {
     
     // MARK: - Public Property
+    /// 单例
+    public static let shared = xRepConfig()
+    /// 是否锁定配置数据
+    public var isLockConfigData = false
+    
     /// 成功Code
     public var successCode = 1
     /// API请求失败——API逻辑错误

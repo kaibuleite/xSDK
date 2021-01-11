@@ -44,8 +44,9 @@ TODO: Add long description of the pod here.
   
   # 必备框架
   s.dependency 'Alamofire' , '~> 4.9.1'   # API代码基于4.x，5.x后代码变动太大
-  s.dependency 'SDWebImage' # 可根据情况提高版本
-  s.dependency 'MJRefresh' # 可根据情况提高版本
-  s.dependency 'TZImagePickerController' # 可根据情况提高版本
+#  s.dependency 'Alamofire'
+  s.dependency 'SDWebImage'
+  s.dependency 'MJRefresh'
+  s.dependency 'TZImagePickerController'
 #  s.dependency 'SVProgressHUD' # 可根据情况提高版本
 end

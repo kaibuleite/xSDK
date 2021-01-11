@@ -20,38 +20,46 @@ extension xAPI {
                            success : @escaping xHandlerApiRequestSuccess,
                            failure : @escaping xHandlerApiRequestFailure)
     {
-        // 格式化请求数据
-        let config = self.formatApiConfig() // 加载配置
-        var fm_url = self.formatRequest(urlStr: urlStr)
-        var fm_head = self.formatRequest(header: header)
-        var fm_parm = self.formatRequest(parameter: parameter)
-        if let sign = self.sign(urlStr: fm_url, header: fm_head, parameter: fm_parm) {
-            fm_head[config.reqSignKey] = sign
-        }
-        // GET请求凭借参数到URL中
-        if method == .get {
-            let getStr = self.formatGetString(of: fm_parm)
-            fm_url = fm_url + "?" + getStr
-            let chaset = CharacterSet.urlQueryAllowed
-            // 处理中文编码
-            if let str = fm_url.addingPercentEncoding(withAllowedCharacters: chaset) {
-                fm_url = str
-            }
-            fm_parm = .init()   // 重置参数对象
-        }
-        // 保存请求记录
         shared.requestCount += 1
-        let record = xAPIRecord.init(config: config)
+        // 创建请求记录
+        let record = xReqRecord.init()
         record.id = shared.requestCount
-        record.method = method
         record.url = urlStr
+        record.method = method
         record.header = header
         record.parameter = parameter
         record.isAlertSuccessMsg = isAlertSuccessMsg
         record.isAlertFailureMsg = isAlertFailureMsg
         record.success = success
         record.failure = failure
+        // 添加配置信息
+        record.reqConfig = self.getReqConfig()
+        record.repConfig = self.getRepConfig()
         shared.requestRecordList.append(record)
+        
+        // 格式化请求数据
+        var fm_url = self.formatterReq(url: urlStr)
+        var fm_head = self.formatterReq(header: header)
+        var fm_parm = self.formatterReq(parameter: parameter)
+        
+        // 数据摘要(签名)处理
+        if let sign = self.sign(url: fm_url, header: fm_head, parameter: fm_parm) {
+            switch record.reqConfig.signPlace {
+            case .header:   fm_head[record.reqConfig.signKey] = sign
+            case .body:     fm_parm[record.reqConfig.signKey] = sign
+            default: break
+            }
+        }
+        
+        // GET请求拼接参数到URL中
+        if method == .get, fm_parm.count > 0 {
+            let getStr = self.formatterGetString(of: fm_parm)
+            fm_url = fm_url + "?" + getStr
+            // URL编码(先解码再编码，防止2次编码)
+            fm_url = fm_url.xToUrlDecodeString() ?? fm_url
+            fm_url = fm_url.xToUrlEncodeString() ?? fm_url
+            fm_parm.removeAll() // 重置参数对象
+        }
         
         // 创建请求体
         let request = Alamofire.request(fm_url,
@@ -154,7 +162,7 @@ extension xAPI {
     public static func upload(urlStr : String,
                               method : HTTPMethod,
                               header : [String : String]? = nil,
-                              parameter : [String : Any]?,
+                              parameter : [String : String]?,
                               file : Data,
                               name : String,
                               type : xAPI.xUploadFileType,
@@ -164,32 +172,53 @@ extension xAPI {
                               success : @escaping xHandlerApiRequestSuccess,
                               failure : @escaping xHandlerApiRequestFailure)
     {
-        // 格式化请求数据
-        let config = self.formatApiConfig() // 加载配置
-        let fm_url = self.formatRequest(urlStr: urlStr)
-        var fm_head = self.formatRequest(header: header)
-        let fm_parm = self.formatRequest(parameter: parameter)
-        
-        if let sign = self.sign(urlStr: fm_url, header: fm_head, parameter: fm_parm) {
-            fm_head[config.reqSignKey] = sign
-        }
-        // 上传不保存请求记录
         shared.requestCount += 1
-        let record = xAPIRecord.init(config: config)
+        // 创建请求记录
+        let record = xReqRecord.init()
         record.id = shared.requestCount
-        record.method = method
         record.url = urlStr
+        record.method = method
         record.header = header
         record.parameter = parameter
         record.isAlertSuccessMsg = isAlertSuccessMsg
         record.isAlertFailureMsg = isAlertFailureMsg
         record.success = success
         record.failure = failure
+        // 添加配置信息
+        record.reqConfig = self.getReqConfig()
+        record.repConfig = self.getRepConfig()
         shared.requestRecordList.append(record)
+        
+        // 格式化请求数据
+        var fm_url = self.formatterReq(url: urlStr)
+        var fm_head = self.formatterReq(header: header)
+        var fm_parm = self.formatterReq(parameter: parameter)
+        
+        // 数据摘要(签名)处理
+        if let sign = self.sign(url: fm_url, header: fm_head, parameter: fm_parm) {
+            switch record.reqConfig.signPlace {
+            case .header:   fm_head[record.reqConfig.signKey] = sign
+            case .body:     fm_parm[record.reqConfig.signKey] = sign
+            default: break
+            }
+        }
+        
+        // GET请求拼接参数到URL中
+        if method == .get, fm_parm.count > 0 {
+            let getStr = self.formatterGetString(of: fm_parm)
+            fm_url = fm_url + "?" + getStr
+            // URL编码(先解码再编码，防止2次编码)
+            fm_url = fm_url.xToUrlDecodeString() ?? fm_url
+            fm_url = fm_url.xToUrlEncodeString() ?? fm_url
+            fm_parm.removeAll() // 重置参数对象
+        }
         
         // 创建请求体
         Alamofire.upload(multipartFormData: {
             (formData) in
+            // 从新命名文件
+            let timeStapm = "\(xTimeStamp)"
+            let fileName = "iOS_\(name)_\(timeStapm).\(type.type)"
             // 把参数塞到表单里
             for (k, v) in fm_parm {
                 guard let obj = v as? String else { continue }
@@ -197,9 +226,10 @@ extension xAPI {
                 formData.append(data, withName: k)
             }
             // 把文件塞到表单里
-            let timeStapm = "\(xTimeStamp)"
-            let fileName = "iOS_\(name)_\(timeStapm).\(type.type)"
-            formData.append(file, withName: name, fileName: fileName, mimeType: type.rawValue)
+            formData.append(file,
+                            withName: name,
+                            fileName: fileName,
+                            mimeType: type.rawValue)
             
         }, to: fm_url, method: method, headers: fm_head, encodingCompletion: {
             (formDataEncodingResult) in

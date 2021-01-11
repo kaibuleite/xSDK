@@ -261,7 +261,7 @@ extension String {
         return ret
     }
     
-    /// URL编码
+    /// URL解码
     public func xToUrlDecodeString() -> String?
     {
         let ret = self.removingPercentEncoding

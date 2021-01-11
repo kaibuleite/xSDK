@@ -53,61 +53,74 @@ open class xAPI: NSObject {
     /// 单例
     public static let shared = xAPI()
     private override init() { }
-    /// 错误提示浏览器
-    let errWeb = xWebViewController.quickInstancetype()
+    
+    /// 是否打印请求次数
+    public var isLogReqCount = false
 
     // MARK: - Private Property
+    /// 错误提示浏览器
+    lazy var errWeb : xWebViewController = {
+        let web = xWebViewController.quickInstancetype()
+        return web
+    }()
     /// 请求次数
     var requestCount = 0
     /// 请求记录
-    var requestRecordList = [xAPIRecord]() {
+    var requestRecordList = [xReqRecord]() {
         didSet {
-            //xLog("🍥🍥🍥 ReqCount = \(self.requestRecordList.count)   🍥🍥🍥")
+            guard self.isLogReqCount else { return }
+            xLog("🍥🍥🍥🍥🍥🍥🍥🍥🍥")
+            xLog("总请求数 = \(self.requestCount)")
+            xLog("当前剩余 = \(self.requestRecordList.count)")
+            xLog("🍥🍥🍥🍥🍥🍥🍥🍥🍥")
         }
     }
     
     // MARK: - Open Func
-    // TODO: 参数处理
+    // TODO: 初始化请求、响应参数
     /// URL前缀
-    open class func urlPrefix() -> String
+    open class func getUrlPrefix() -> String
     {
         return "API前缀"
     }
-    /// 格式化接口配置
-    open class func formatApiConfig() -> xAPIConfig
+    /// API请求配置
+    open class func getReqConfig() -> xReqConfig
     {
-        return xAPIConfig()
+        return xReqConfig.shared
     }
-    /// 格式化Api请求URL
-    open class func formatRequest(urlStr : String) -> String
+    /// API响应配置
+    open class func getRepConfig() -> xRepConfig
     {
-        // 关掉键盘
-        xKeyWindow?.endEditing(true)
-        var url = urlStr
-        if urlStr.hasPrefix("http") == false {
-            url = self.urlPrefix() + urlStr
+        return xRepConfig.shared
+    }
+    // TODO: 格式化请求参数
+    /// 格式化Api请求URL
+    open class func formatterReq(url link : String) -> String
+    {
+        var url = link
+        if link.hasPrefix("http") == false {
+            url = self.getUrlPrefix() + link
         }
-        // 转码
-        let chaset = CharacterSet.urlQueryAllowed
-        if let ret = url.addingPercentEncoding(withAllowedCharacters: chaset) {
-            return ret
-        }
-        return url
+        // URL编码(先解码再编码，防止2次编码)
+        var ret = url.xToUrlDecodeString() ?? url
+        ret = ret.xToUrlEncodeString() ?? url
+        return ret
     }
     /// 格式化Api头部参数
-    open class func formatRequest(header: [String : String]?) -> [String : String]
+    open class func formatterReq(header: [String : String]?) -> [String : String]
     {
         let head = header ?? [String : String]()
         return head
     }
     /// 格式化Api请求参数
-    open class func formatRequest(parameter : [String : Any]?) -> [String : Any]
+    open class func formatterReq(parameter : [String : Any]?) -> [String : Any]
     {
         let parm = parameter ?? [String : Any]()
         return parm
     }
+    // TODO: 数据摘要（签名）
     /// API接口加签
-    open class func sign(urlStr : String,
+    open class func sign(url : String,
                          header: [String : String],
                          parameter : [String : Any]) -> String?
     {
@@ -117,7 +130,7 @@ open class xAPI: NSObject {
     // TODO: 解析响应数据
     /// 响应数据处理
     open class func analysisResponseData(_ data : Any?,
-                                         record : xAPIRecord)
+                                         record : xReqRecord)
     {
         if let obj = data as? [String : Any] {
             self.handlerResponseDictionaryAnalysis(obj, record: record)
@@ -165,17 +178,15 @@ open class xAPI: NSObject {
     ///   - record: API记录
     @discardableResult
     open class func handlerResponseDictionaryAnalysis(_ dict : [String : Any],
-                                                      record : xAPIRecord) -> Bool
+                                                      record : xReqRecord) -> Bool
     {
         // 结果处理
-        let config = record.config
-        guard let obj = dict[config.repCodeKey] else {
+        guard let obj = dict[record.repConfig.codeKey] else {
             // Restful 模式
             return self.handlerResponseRestfulDictionaryAnalysis(dict, record: record)
         }
-        
         // code msg data组合模式
-        var code = config.failureCode
+        var code = record.repConfig.failureCode
         if let str = obj as? String {
             code = str.xToInt()
         }
@@ -183,13 +194,13 @@ open class xAPI: NSObject {
         if let num = obj as? Int {
             code = num
         }
-        let msg = dict[config.repMsgKey] as? String ?? ""
-        if code == config.successCode {
+        let msg = dict[record.repConfig.msgKey] as? String ?? ""
+        if code == record.repConfig.successCode {
             // 状态正常
             if record.isAlertSuccessMsg {
                 xMessageAlert.display(message: msg)
             }
-            let result = dict[config.repDataKey]
+            let result = dict[record.repConfig.dataKey]
             record.success?(result)
             return true
         }
@@ -199,11 +210,11 @@ open class xAPI: NSObject {
                 xMessageAlert.display(message: msg)
             }
             // 重新登录
-            if code == config.failureCodeUserTokenInvalid {
+            if code == record.repConfig.failureCode_UserTokenInvalid {
                 NotificationCenter.default.post(name: xNotificationReLogin, object: nil)
             }
             else {
-                for str in config.reLoginMsgArray {
+                for str in record.repConfig.reLoginMsgArray {
                     guard str == msg else { continue }
                     NotificationCenter.default.post(name: xNotificationReLogin, object: nil)
                     break
@@ -221,7 +232,7 @@ open class xAPI: NSObject {
     ///   - record: API记录
     @discardableResult
     open class func handlerResponseRestfulDictionaryAnalysis(_ dict : [String : Any],
-                                                             record : xAPIRecord) -> Bool
+                                                             record : xReqRecord) -> Bool
     {
         return false
     }
@@ -231,7 +242,7 @@ open class xAPI: NSObject {
     ///   - record: API记录
     @discardableResult
     open class func handlerResponseArrayAnalysis(_ arr : [Any],
-                                                 record : xAPIRecord) -> Bool
+                                                 record : xReqRecord) -> Bool
     {
         record.failure?("Array类型没有指定处理方式")
         return false
@@ -242,7 +253,7 @@ open class xAPI: NSObject {
     ///   - record: API记录
     @discardableResult
     open class func handlerResponseStringAnalysis(_ str : String,
-                                                  record : xAPIRecord) -> Bool
+                                                  record : xReqRecord) -> Bool
     {
         record.failure?("String类型没有指定处理方式")
         return false
@@ -253,7 +264,7 @@ open class xAPI: NSObject {
     ///   - record: API记录
     @discardableResult
     open class func handlerResponseNumberAnalysis(_ num : NSNumber,
-                                                  record : xAPIRecord) -> Bool
+                                                  record : xReqRecord) -> Bool
     {
         record.failure?("Number类型没有指定处理方式")
         return false
@@ -264,7 +275,7 @@ open class xAPI: NSObject {
     ///   - record: API记录
     @discardableResult
     open class func handlerResponseFloatAnalysis(_ float : Float,
-                                                 record : xAPIRecord) -> Bool
+                                                 record : xReqRecord) -> Bool
     {
         record.failure?("Float类型没有指定处理方式")
         return false
@@ -275,7 +286,7 @@ open class xAPI: NSObject {
     ///   - record: API记录
     @discardableResult
     open class func handlerResponseOtherAnalysis(_ obj : Any,
-                                                 record : xAPIRecord) -> Bool
+                                                 record : xReqRecord) -> Bool
     {
         record.failure?("未知类型没有指定处理方式")
         return false
