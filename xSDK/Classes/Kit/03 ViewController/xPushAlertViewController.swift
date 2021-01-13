@@ -42,12 +42,12 @@ open class xPushAlertViewController: xViewController {
         self.dismiss()
     }
     
-    // MARK: - Public Func
+    // MARK: - Open Func
     /// 显示选择器
     /// - Parameters:
     ///   - animeType: 动画类型
     ///   - isSpring: 是否开启弹性动画
-    public func display(isSpring : Bool = true)
+    open func display(isSpring : Bool = true)
     {
         self.alertContinerBottomLayout.constant = xScreenHeight
         self.view.layoutIfNeeded()
@@ -70,7 +70,7 @@ open class xPushAlertViewController: xViewController {
     /// 隐藏选择器
     /// - Parameters:
     ///   - animeType: 动画类型
-    public func dismiss()
+    open func dismiss()
     {
         UIView.animate(withDuration: 0.25, animations: {
             self.alertContinerBottomLayout.constant = xScreenHeight
