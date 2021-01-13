@@ -17,7 +17,7 @@ open class xPushAlertViewController: xViewController {
     
     // MARK: - Open Property
     open var isOpenTapBgClose : Bool {
-        return true
+        return false
     }
     
     // MARK: - Open Override Func
