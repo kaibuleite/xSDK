@@ -581,4 +581,18 @@ extension String {
             return false
         }
     }
+    @discardableResult
+    public mutating func xRead(input : UITextView,
+                               emptTip : String) -> Bool
+    {
+        let str = input.text ?? ""
+        if str.count > 0 {
+            self = str
+            return true
+        }
+        else {
+            xMessageAlert.display(message: emptTip)
+            return false
+        }
+    }
 }

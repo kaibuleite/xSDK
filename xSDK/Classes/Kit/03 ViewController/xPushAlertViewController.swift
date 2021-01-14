@@ -15,11 +15,6 @@ open class xPushAlertViewController: xViewController {
     /// 弹窗容器底部距离
     @IBOutlet public weak var alertContinerBottomLayout: NSLayoutConstraint!
     
-    // MARK: - Open Property
-    open var isOpenTapBgClose : Bool {
-        return false
-    }
-    
     // MARK: - Open Override Func
     open override class func quickInstancetype() -> Self {
         let vc = xPushAlertViewController()
@@ -30,9 +25,6 @@ open class xPushAlertViewController: xViewController {
         // 基本配置
         self.view.isHidden = true
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        // 手势点击事件
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapBackground(_:)))
-        self.view.addGestureRecognizer(tap)
     }
     
     // MARK: - IBOutlet Func
@@ -49,7 +41,12 @@ open class xPushAlertViewController: xViewController {
     ///   - isSpring: 是否开启弹性动画
     open func display(isSpring : Bool = true)
     {
-        self.alertContinerBottomLayout.constant = xScreenHeight
+        if self.alertContainer.isEqual(self.alertContinerBottomLayout.firstItem) {
+            self.alertContinerBottomLayout.constant = xScreenHeight
+        }
+        else {
+            self.alertContinerBottomLayout.constant = -xScreenHeight
+        }
         self.view.layoutIfNeeded()
         self.view.isHidden = false
         if isSpring {
@@ -82,12 +79,4 @@ open class xPushAlertViewController: xViewController {
         })
     }
     
-    // MARK: - Private Func
-    /// 点击背景
-    @objc private func tapBackground(_ gesture : UITapGestureRecognizer)
-    {
-        if self.isOpenTapBgClose {
-            self.dismiss()
-        }
-    }
 }
