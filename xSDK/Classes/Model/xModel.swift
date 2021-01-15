@@ -23,7 +23,10 @@ open class xModel: NSObject {
     /// 计数器
     private static var xModelCount = 0
     /// 成员变量列表
-    private var ivarList = [String]()
+    private lazy var ivarList : [String] = {
+        let ret = xGetIvarList(obj: self)
+        return ret
+    }()
     
     // MARK: - Open Override Func
     /// 配对成员属性
@@ -189,8 +192,7 @@ open class xModel: NSObject {
             xWarning("两个对象不是同源，无法拼接 : \(self.classForCoder) ≠ \(target.classForCoder)")
             return
         }
-        let ivarList = target.getIvarList(obj: target)
-        for key in ivarList {
+        for key in target.ivarList {
             let value = target.value(forKey: key)
             // 如果不执行替换空数据操作，则跳过
             if isCopyEmpty == false {
@@ -215,119 +217,58 @@ open class xModel: NSObject {
     /// - Returns: 生成的字典
     public func toDictionary() -> [String : Any]
     {
-        let dict = self.getDictionary(obj: self)
+        let dict = self.getDictionary()
         return dict
     }
     /// 转换成成员属性字典(字符串成员)
     /// - Returns: 生成的字典
     public func toStringDictionary() -> [String : String]
     {
-        let dict = self.getStringDictionary(obj: self)
+        let dict = self.getStringDictionary()
         return dict
     }
     
     // MARK: - Private Func
-    // TODO: 获取成员属性列表
-    /// 获取一个对象的成员属性列表
-    /// - Parameter obj: 指定的对象
-    /// - Returns: 成员属性列表
-    private func getIvarList(obj : xModel) -> [String]
-    {
-        // 如果有缓存则直接返回
-        guard self.ivarList.count == 0 else { return self.ivarList }
-        var ret : [String] = []
-        if self.isMember(of: NSObject.classForCoder()) { return ret }
-        if self.isMember(of: xModel.classForCoder()) { return ret }
-        // 读取对象父类的成员变量
-        guard var spClass = obj.superclass else { return ret }
-        while spClass != NSObject.classForCoder() {
-            let spIvarList = self.getIvarList(objClass: spClass)
-            ret += spIvarList
-            if let sspClass = spClass.superclass() {
-                // 父级的父级
-                spClass = sspClass
-            }
-            else {
-               break
-            }
-        }
-        // 读取对象自身的成员变量
-        ret += self.getIvarList(objClass: obj.classForCoder)
-        /* 映射
-         let morror = Mirror.init(reflecting: obj)
-         for (key, value) in (morror.children) {
-         if key == nil {
-         continue
-         }
-         result[key!] = value
-         }
-         */
-        // 排个序
-        ret.sort()
-        self.ivarList = ret
-        return ret
-    }
-    /// 获取指定类的成员属性列表
-    /// - Parameter objClass: 指定的类
-    /// - Returns: 成员属性列表
-    private func getIvarList(objClass : AnyClass) -> [String]
-    {
-        var ret : [String] = []
-        var count : UInt32 = 0
-        let list = class_copyIvarList(objClass, &count)
-        for i in 0 ..< count {
-            let ivar = list![Int(i)]
-            let ivarName = ivar_getName(ivar)
-            let nName = String(cString: ivarName!)
-            ret.append(nName)
-        }
-        free(list)
-        return ret
-    }
-    
     // TODO: 获取成员属性键值表
     /// 获取一个对象的成员属性键值表
     /// - Parameter obj: 指定的对象
     /// - Returns: 成员属性键值表
-    private func getDictionary(obj : xModel) -> [String : Any]
+    private func getDictionary() -> [String : Any]
     {
-        var result = [String : Any]()
-        let ivarList = self.getIvarList(obj: obj)
-        for key in ivarList {
+        var ret = [String : Any]()
+        for key in self.ivarList {
             // 过滤本地创建的数据
             guard key != "xid" else { continue }
             guard key != "xContent" else { continue }
             guard key != "xOrigin" else { continue }
             guard let value = self.value(forKey: key) else { continue }
-            let property = value as AnyObject
             // 递归继续拆分
-            if let subObj = property as? xModel {
-                let subResult = self.getDictionary(obj: subObj)
-                result.updateValue(subResult, forKey: key)
+            if let subObj = value as? xModel {
+                let subRet = subObj.getDictionary()
+                ret[key] = subRet
             }
             else {
-                result.updateValue(value, forKey: key)
+                ret[key] = value
             }
         }
-        return result
+        return ret
     }
     /// 获取一个对象的成员属性键值表(只返回字符串成员，方便存取)
     /// - Parameter obj: 指定的对象
     /// - Returns: 成员属性键值表
-    private func getStringDictionary(obj : xModel) -> [String : String]
+    private func getStringDictionary() -> [String : String]
     {
-        var result = [String : String]()
-        let ivarList = self.getIvarList(obj: obj)
-        for key in ivarList {
+        var ret = [String : String]()
+        for key in self.ivarList {
             // 过滤本地创建的数据
             guard key != "xid" else { continue }
             guard key != "xContent" else { continue }
             guard key != "xOrigin" else { continue }
             guard let value = self.value(forKey: key) else { continue }
             guard let str = value as? String else { continue }
-            result[key] = str
+            ret[key] = str
         }
-        return result
+        return ret
     }
     
 }
