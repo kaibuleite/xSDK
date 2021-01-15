@@ -217,24 +217,6 @@ open class xModel: NSObject {
     /// - Returns: 生成的字典
     public func toDictionary() -> [String : Any]
     {
-        let dict = self.getDictionary()
-        return dict
-    }
-    /// 转换成成员属性字典(字符串成员)
-    /// - Returns: 生成的字典
-    public func toStringDictionary() -> [String : String]
-    {
-        let dict = self.getStringDictionary()
-        return dict
-    }
-    
-    // MARK: - Private Func
-    // TODO: 获取成员属性键值表
-    /// 获取一个对象的成员属性键值表
-    /// - Parameter obj: 指定的对象
-    /// - Returns: 成员属性键值表
-    private func getDictionary() -> [String : Any]
-    {
         var ret = [String : Any]()
         for key in self.ivarList {
             // 过滤本地创建的数据
@@ -244,7 +226,7 @@ open class xModel: NSObject {
             guard let value = self.value(forKey: key) else { continue }
             // 递归继续拆分
             if let subObj = value as? xModel {
-                let subRet = subObj.getDictionary()
+                let subRet = subObj.toDictionary()
                 ret[key] = subRet
             }
             else {
@@ -253,10 +235,9 @@ open class xModel: NSObject {
         }
         return ret
     }
-    /// 获取一个对象的成员属性键值表(只返回字符串成员，方便存取)
-    /// - Parameter obj: 指定的对象
-    /// - Returns: 成员属性键值表
-    private func getStringDictionary() -> [String : String]
+    /// 转换成成员属性字典(字符串成员)
+    /// - Returns: 生成的字典
+    public func toStringDictionary() -> [String : String]
     {
         var ret = [String : String]()
         for key in self.ivarList {
