@@ -17,6 +17,7 @@ extension xAPI {
                            parameter : [String : Any]?,
                            isAlertSuccessMsg : Bool = false,
                            isAlertFailureMsg : Bool = true,
+                           queue : DispatchQueue? = .main,
                            success : @escaping xHandlerApiRequestSuccess,
                            failure : @escaping xHandlerApiRequestFailure)
     {
@@ -66,10 +67,8 @@ extension xAPI {
                                         method: method,
                                         parameters: fm_parm,
                                         headers: fm_head)
-        // 校验请求信息
-        request.validate()
-        // 进行请求
-        request.responseJSON {
+        // 校验请求信息、进行请求
+        request.validate().responseJSON(queue: queue) {
             (response) in
             // 处理请求结果
             self.check(response: response,
@@ -84,6 +83,7 @@ extension xAPI {
                            parameter : [String : String]?,
                            isAlertSuccessMsg : Bool = false,
                            isAlertFailureMsg : Bool = true,
+                           queue : DispatchQueue? = .main,
                            success : @escaping xHandlerApiRequestSuccess,
                            failure : @escaping xHandlerApiRequestFailure)
     {
@@ -93,6 +93,7 @@ extension xAPI {
                  parameter: parameter,
                  isAlertSuccessMsg: isAlertSuccessMsg,
                  isAlertFailureMsg: isAlertFailureMsg,
+                 queue: queue,
                  success: success,
                  failure: failure)
     }
@@ -104,6 +105,7 @@ extension xAPI {
                             parameter : [String : Any]?,
                             isAlertSuccessMsg : Bool = false,
                             isAlertFailureMsg : Bool = true,
+                            queue : DispatchQueue? = .main,
                             success : @escaping xHandlerApiRequestSuccess,
                             failure : @escaping xHandlerApiRequestFailure)
     {
@@ -113,6 +115,7 @@ extension xAPI {
                  parameter: parameter,
                  isAlertSuccessMsg: isAlertSuccessMsg,
                  isAlertFailureMsg: isAlertFailureMsg,
+                 queue: queue,
                  success: success,
                  failure: failure)
     }
@@ -124,6 +127,7 @@ extension xAPI {
                            parameter : [String : Any]?,
                            isAlertSuccessMsg : Bool = false,
                            isAlertFailureMsg : Bool = true,
+                           queue : DispatchQueue? = .main,
                            success : @escaping xHandlerApiRequestSuccess,
                            failure : @escaping xHandlerApiRequestFailure)
     {
@@ -133,6 +137,7 @@ extension xAPI {
                  parameter: parameter,
                  isAlertSuccessMsg: isAlertSuccessMsg,
                  isAlertFailureMsg: isAlertFailureMsg,
+                 queue: queue,
                  success: success,
                  failure: failure)
     }
@@ -144,6 +149,7 @@ extension xAPI {
                               parameter : [String : Any]?,
                               isAlertSuccessMsg : Bool = false,
                               isAlertFailureMsg : Bool = true,
+                              queue : DispatchQueue? = .main,
                               success : @escaping xHandlerApiRequestSuccess,
                               failure : @escaping xHandlerApiRequestFailure)
     {
@@ -153,6 +159,7 @@ extension xAPI {
                  parameter: parameter,
                  isAlertSuccessMsg: isAlertSuccessMsg,
                  isAlertFailureMsg: isAlertFailureMsg,
+                 queue: queue,
                  success: success,
                  failure: failure)
     }
@@ -168,6 +175,7 @@ extension xAPI {
                               type : xAPI.xUploadFileType,
                               isAlertSuccessMsg : Bool = false,
                               isAlertFailureMsg : Bool = true,
+                              queue : DispatchQueue? = .main,
                               progress : @escaping xHandlerApiUploadProgress,
                               success : @escaping xHandlerApiRequestSuccess,
                               failure : @escaping xHandlerApiRequestFailure)
@@ -242,15 +250,13 @@ extension xAPI {
                     (pro) in
                     progress(pro)
                 })
-                // 校验请求信息
-                request.validate()
-                // 进行请求
-                request.responseJSON(completionHandler: {
+                // 校验请求信息、进行请求
+                request.validate().responseJSON(queue: queue) {
                     (response) in
                     // 处理请求结果
                     self.check(response: response,
                                record: record)
-                })
+                }
             case .failure(let error):
                 xWarning("表单拼接失败：\(error.localizedDescription)")
                 break
