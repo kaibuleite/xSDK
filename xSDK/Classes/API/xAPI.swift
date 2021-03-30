@@ -321,8 +321,7 @@ open class xAPI: NSObject {
         win.addSubview(shared.errWeb.view)
         shared.errWeb.load(html: html)
         shared.errWeb.isShowCloseBtn = true
-        shared.errWeb.addClickCloseBtn {
-            (sender) in
+        shared.errWeb.addCloseWeb {
             // 手动控制关闭
             shared.errWeb.view.removeFromSuperview()
         }

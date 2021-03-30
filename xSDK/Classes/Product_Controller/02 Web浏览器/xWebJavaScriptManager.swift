@@ -12,13 +12,13 @@ public class xWebJavaScriptManager: NSObject, WKScriptMessageHandler {
 
     // MARK: - Handler
     /// 收到JS事件回调
-    public typealias xHandlerReceiveWebJS = (String) -> Void
+    public typealias xHandlerReceiveWebJS = (String, WKScriptMessage) -> Void
     
     // MARK: - Private Property
     /// 弱引用浏览器
     weak var xWeb : xWebViewController?
     /// 回调
-    private var handler : xHandlerReceiveWebJS?
+    var handler : xHandlerReceiveWebJS?
     
     // MARK: - 内存释放
     deinit {
@@ -27,19 +27,13 @@ public class xWebJavaScriptManager: NSObject, WKScriptMessageHandler {
         xLog("🗑 xWebJavaScriptManager")
     }
     
-    // MARK: - Public Func
-    /// 添加收到JS事件回调
-    public func addReceiveWebJS(handler : @escaping xHandlerReceiveWebJS)
-    {
-        self.handler = handler
-    }
-    
     // MARK: - WKScriptMessageHandler
     public func userContentController(_ userContentController: WKUserContentController,
                                       didReceive message: WKScriptMessage) {
         
         let name = message.name
+        let msg = message
         // message.body
-        self.handler?(name)
+        self.handler?(name, msg)
     }
 }

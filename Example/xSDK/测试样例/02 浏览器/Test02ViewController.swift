@@ -21,9 +21,13 @@ class Test02ViewController: UIViewController {
             str = self.urlInput.placeholder!
         }
         vc.load(url: str)
-        vc.jsMgr.addReceiveWebJS {
-            (name) in
+        /*
+        let list = ["JS事件1", "JS事件2", "JS事件3", ]
+        vc.addJavaScriptMethod(list: list)
+        
+        vc.addReceiveJavaScriptMethod {
+            (name, msg) in
             xLog("js事件 ——— \(name)")
-        }
+        }*/
     }
 }

@@ -19,10 +19,10 @@ public let xNavigationBarHeight = UINavigationController().navigationBar.frame.h
 /// 菜单栏高度
 public let xTabbarHeight = UITabBarController().tabBar.frame.height
 
-/// 重新登录提示
+/// 重新登录消息推送
 public let xNotificationReLogin = Notification.Name.init("x重新登录")
-/// 重新登录提示
-public let xNotificationPlaySound = Notification.Name.init("x播放推送音效")
+/// 播放推送音效消息推送
+public let xNotificationPlayPushSound = Notification.Name.init("x播放推送音效")
 
 /// 当前窗口
 public var xKeyWindow : UIWindow?

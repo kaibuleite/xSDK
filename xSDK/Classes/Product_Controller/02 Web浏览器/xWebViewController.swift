@@ -13,7 +13,9 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
 
     // MARK: - Handle
     /// 点击关闭按钮回调
-    public typealias xHandlerClickCloseBtn = (UIButton) -> Void
+    public typealias xHandlerCloseWeb = () -> Void
+    /// 网页加载完成回调
+    public typealias xHandlerReloadCompleted = (Bool) -> Void
     
     // MARK: - IBOutlet Property
     /// 关闭按钮
@@ -21,9 +23,19 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     
     // MARK: - IBInspectable Property
     /// 是否显示关闭按钮
-    @IBInspectable public var isShowCloseBtn : Bool = true
+    @IBInspectable public var isShowCloseBtn : Bool = true {
+        didSet {
+            self.closeBtn.isHidden = !self.isShowCloseBtn
+        }
+    }
     /// 是否显示加载进度条(默认显示)
     @IBInspectable public var isShowLoadingProgress : Bool = true
+    {
+        didSet {
+            self.progressView.isHidden = !self.isShowLoadingProgress
+            self.progressView.progress = 0
+        }
+    }
     /// 进度条颜色
     @IBInspectable public var loadingProgressColor : UIColor = UIColor.blue.withAlphaComponent(0.5) {
         didSet {
@@ -31,19 +43,19 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         }
     }
     
-    // MARK: - Public Property
-    /// JavaScript 管理器(无主引用，管理器依托于WebController)
-    public let jsMgr = xWebJavaScriptManager()
-    
     // MARK: - Private Property
+    /// JavaScript 管理器
+    let jsMgr = xWebJavaScriptManager()
     /// js事件名列表
     var jsNameArray = [String]()
     /// 进度条
     let progressView = UIProgressView()
     /// 浏览器主体
     let web = WKWebView.init(frame: .zero, configuration: xWebViewController.getWebConfig())
-    /// 回调
-    var clickCloseBtnHandler : xHandlerClickCloseBtn?
+    /// 点击关闭按钮回调
+    var closeWebHandler : xHandlerCloseWeb?
+    /// 页面加载完成回调
+    var reloadCompletedHandler : xHandlerReloadCompleted?
     
     // MARK: - 内存释放
     deinit {
@@ -51,7 +63,8 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         self.removeObserver()
         self.web.uiDelegate = nil
         self.web.navigationDelegate = nil
-        self.clickCloseBtnHandler = nil
+        self.closeWebHandler = nil
+        self.reloadCompletedHandler = nil
     }
     
     // MARK: - Open Override Func
@@ -118,16 +131,38 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
          */
         return config
     }
-    /// 调用JS
-    open func actJavaScriptMethod() { }
+    
+    // MARK: - IBAction Private Func
+    @IBAction func closeBtnClick()
+    {
+        if let handler = self.closeWebHandler {
+            handler()
+            return
+        }
+        guard let nvc = self.navigationController else {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        if self.isEqual(nvc.children.first) == false {
+            nvc.popViewController(animated: true)
+            return
+        }
+        xWarning("请添加关闭事件")
+    }
     
     // MARK: - Public Func
-    /// 绑定按钮关闭回调（退出界面啥的）
+    /// 添加关闭回调（退出界面啥的）
     /// - Parameter handler: 回调
-    public func addClickCloseBtn(handler : @escaping xHandlerClickCloseBtn)
+    public func addCloseWeb(handler : @escaping xHandlerCloseWeb)
     {
         self.closeBtn.isHidden = !self.isShowCloseBtn
-        self.clickCloseBtnHandler = handler
+        self.closeWebHandler = handler
+    }
+    /// 添加页面加载完成回调
+    /// - Parameter handler: 回调
+    public func addReloadCompleted(handler : @escaping xHandlerReloadCompleted)
+    {
+        self.reloadCompletedHandler = handler
     }
     /// 加载URL地址
     /// - Parameter str: 地址
@@ -169,11 +204,10 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
             uc.add(self.jsMgr, name: name)
         }
     }
-
-    // MARK: - IBAction Private Func
-    @IBAction func closeBtnClick()
+    /// 添加收到JS事件回调
+    public func addReceiveJavaScriptMethod(handler : @escaping xWebJavaScriptManager.xHandlerReceiveWebJS)
     {
-        self.clickCloseBtnHandler?(self.closeBtn)
+        self.jsMgr.handler = handler
     }
     
     // MARK: - Private Func
@@ -204,10 +238,8 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
                         didStartProvisionalNavigation navigation: WKNavigation!) {
         xLog("准备加载页面")
         // 判断是否显示加载进度条
-        if self.isShowLoadingProgress {
-            self.progressView.isHidden = false
-            self.progressView.progress = 0 // 重置进度
-        }
+        self.progressView.isHidden = !self.isShowLoadingProgress
+        self.progressView.progress = 0 // 重置进度
     }
     
     /// 内容开始加载(view的过渡动画可在此方法中加载)
@@ -221,7 +253,9 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
                         didFail navigation: WKNavigation!,
                         withError error: Error) {
         xLog("导航发生错误 \(error.localizedDescription)")
-        self.progressView.isHidden = true  // 隐藏加载进度条
+        // 隐藏加载进度条
+        self.progressView.isHidden = true
+        self.reloadCompletedHandler?(false)
     }
     
     /// Web视图加载内容时发生错误时调用(没有网络，加载地址)
@@ -229,7 +263,9 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
                         didFailProvisionalNavigation navigation: WKNavigation!,
                         withError error: Error) {
         xLog("网页加载内容时发生错误时 \(error.localizedDescription)")
-        self.progressView.isHidden = true  // 隐藏加载进度条
+        // 隐藏加载进度条
+        self.progressView.isHidden = true
+        self.reloadCompletedHandler?(false)
     }
     
     /// 服务器重定向，主机地址被重定向时调用
@@ -243,7 +279,6 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
                         didFinish navigation: WKNavigation!) {
         xLog("网页加载完成")
         self.progressView.isHidden = true  // 隐藏加载进度条
-        // 可以在此处调用 JS
-        self.actJavaScriptMethod()
+        self.reloadCompletedHandler?(true)
     }
 }
