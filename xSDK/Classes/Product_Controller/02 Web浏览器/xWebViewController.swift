@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 
 /// 方法详情可以参考 https://www.jianshu.com/p/747b7a1dfd06
-open class xWebViewController: xViewController, WKNavigationDelegate {
+open class xWebViewController: xViewController {
 
     // MARK: - Handle
     /// 点击关闭按钮回调
@@ -23,19 +23,9 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     
     // MARK: - IBInspectable Property
     /// 是否显示关闭按钮
-    @IBInspectable public var isShowCloseBtn : Bool = true {
-        didSet {
-            self.closeBtn.isHidden = !self.isShowCloseBtn
-        }
-    }
+    @IBInspectable public var isShowCloseBtn : Bool = true
     /// 是否显示加载进度条(默认显示)
     @IBInspectable public var isShowLoadingProgress : Bool = true
-    {
-        didSet {
-            self.progressView.isHidden = !self.isShowLoadingProgress
-            self.progressView.progress = 0
-        }
-    }
     /// 进度条颜色
     @IBInspectable public var loadingProgressColor : UIColor = UIColor.blue.withAlphaComponent(0.5) {
         didSet {
@@ -51,7 +41,8 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     /// 进度条
     let progressView = UIProgressView()
     /// 浏览器主体
-    let web = WKWebView.init(frame: .zero, configuration: xWebViewController.getWebConfig())
+    let web = WKWebView.init(frame: .zero,
+                             configuration: .init())
     /// 点击关闭按钮回调
     var closeWebHandler : xHandlerCloseWeb?
     /// 页面加载完成回调
@@ -77,6 +68,8 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         // 基本配置
         self.view.backgroundColor = .white
         self.closeBtn.isHidden = !self.isShowCloseBtn
+        self.progressView.isHidden = !self.isShowLoadingProgress
+        self.progressView.progress = 0
         self.jsMgr.xWeb = self
         // web
         self.web.allowsBackForwardNavigationGestures = true // 是否支持手势返回
@@ -110,10 +103,11 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     }
     
     // MARK: - Open Func
-    /// WEB配置
-    open class func getWebConfig() -> WKWebViewConfiguration
+    /// 更新Web配置
+    open func updateWebConfig()
     {
-        let config = WKWebViewConfiguration.init()
+        let config = self.web.configuration
+        // 可用允许触发网页 JavaScript
         config.preferences.javaScriptEnabled = true
         /*
         // 是否允许播放 AirPlay
@@ -126,10 +120,9 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         config.allowsAirPlayForMediaPlayback = true
         // 媒体播放是否可以全屏控制
         config.allowsInlineMediaPlayback = true
-        // 可用允许触发网页 JavaScript
+        // 跨域
         config.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
          */
-        return config
     }
     
     // MARK: - IBAction Private Func
@@ -209,6 +202,13 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
     {
         self.jsMgr.handler = handler
     }
+    /// 调用JS事件
+    public func evaluateJavaScript(code : String,
+                                   handler : @escaping (Any?, Error?) -> Void)
+    {
+        self.web.evaluateJavaScript(code,
+                                    completionHandler: handler)
+    }
     
     // MARK: - Private Func
     /// 移除 JS 事件
@@ -232,53 +232,4 @@ open class xWebViewController: xViewController, WKNavigationDelegate {
         self.web.removeObserver(self, forKeyPath: "estimatedProgress")
     }
     
-    // MARK: - WKNavigationDelegate
-    /// 准备加载页面
-    public func webView(_ webView: WKWebView,
-                        didStartProvisionalNavigation navigation: WKNavigation!) {
-        xLog("准备加载页面")
-        // 判断是否显示加载进度条
-        self.progressView.isHidden = !self.isShowLoadingProgress
-        self.progressView.progress = 0 // 重置进度
-    }
-    
-    /// 内容开始加载(view的过渡动画可在此方法中加载)
-    public func webView(_ webView: WKWebView,
-                        didCommit navigation: WKNavigation!) {
-        xLog("内容开始加载")
-    }
-    
-    /// 导航过程中发生错误时调用(跳转失败)
-    public func webView(_ webView: WKWebView,
-                        didFail navigation: WKNavigation!,
-                        withError error: Error) {
-        xLog("导航发生错误 \(error.localizedDescription)")
-        // 隐藏加载进度条
-        self.progressView.isHidden = true
-        self.reloadCompletedHandler?(false)
-    }
-    
-    /// Web视图加载内容时发生错误时调用(没有网络，加载地址)
-    public func webView(_ webView: WKWebView,
-                        didFailProvisionalNavigation navigation: WKNavigation!,
-                        withError error: Error) {
-        xLog("网页加载内容时发生错误时 \(error.localizedDescription)")
-        // 隐藏加载进度条
-        self.progressView.isHidden = true
-        self.reloadCompletedHandler?(false)
-    }
-    
-    /// 服务器重定向，主机地址被重定向时调用
-    public func webView(_ webView: WKWebView,
-                        didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        xLog("网页重定向")
-    }
-    
-    /// 网页加载完成时
-    public func webView(_ webView: WKWebView,
-                        didFinish navigation: WKNavigation!) {
-        xLog("网页加载完成")
-        self.progressView.isHidden = true  // 隐藏加载进度条
-        self.reloadCompletedHandler?(true)
-    }
 }

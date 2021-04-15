@@ -29,8 +29,8 @@ public class xWebJavaScriptManager: NSObject, WKScriptMessageHandler {
     
     // MARK: - WKScriptMessageHandler
     public func userContentController(_ userContentController: WKUserContentController,
-                                      didReceive message: WKScriptMessage) {
-        
+                                      didReceive message: WKScriptMessage)
+    {
         let name = message.name
         let msg = message
         // message.body
